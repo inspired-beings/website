@@ -1,0 +1,54 @@
+{
+  "name": "website",
+  "version": "0.0.0",
+  "description": "",
+  "license": "AGPL-3.0",
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "prepare": "husky install",
+    "start": "next start",
+    "test": "yarn test:lint && yar test:type",
+    "test:lint": "eslint --ext ts,tsx .",
+    "test:type": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/inspired-beings/website/issues"
+  },
+  "homepage": "https://github.com/inspired-beings/website#readme",
+  "dependencies": {
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "17.0.0",
+    "@commitlint/config-conventional": "17.0.0",
+    "@ivangabriele/commitlint-config": "1.0.6",
+    "@ivangabriele/eslint-config-typescript-next": "4.1.1",
+    "@ivangabriele/prettier-config": "3.1.0",
+    "@ivangabriele/tsconfig-next": "1.2.2",
+    "@swc/core": "1.2.197",
+    "@types/react": "18.0.12",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
+    "eslint": "8.0.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "17.0.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jest": "26.0.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "eslint-plugin-sort-destructure-keys": "1.4.0",
+    "eslint-plugin-sort-keys-fix": "1.1.2",
+    "eslint-plugin-typescript-sort-keys": "2.1.0",
+    "husky": "8.0.0",
+    "prettier": "2.0.0",
+    "typescript": "4.4.4"
+  },
+  "prettier": "@ivangabriele/prettier-config"
+}
