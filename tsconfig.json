@@ -1,0 +1,24 @@
+{
+  "extends": "@ivangabriele/tsconfig-next",
+  "compilerOptions": {
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "strictNullChecks": true
+  },
+  "exclude": [".next/*", ".yarn/*", "node_modules/*"],
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "**/*.cjs",
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.mjs",
+    "**/*.cts",
+    "**/*.mts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
+}
