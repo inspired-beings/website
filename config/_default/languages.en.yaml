@@ -1,0 +1,12 @@
+languageCode: 'en'
+languageName: 'English (International)'
+weight: 1
+params:
+  i18n:
+    bottomBar:
+      # "All rights reserved." text
+      copyright: All rights reserved.
+
+    home:
+      # "More" is a link to the full article
+      more: More

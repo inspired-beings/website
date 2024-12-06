@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ .Site.Language.LanguageCode }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{{ block "title" . }}{{ .Site.Title }} – {{ .Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Description }}" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    {{ $cssSassOptions := dict "enableSourceMap" true "includePaths" (slice "node_modules") "outputStyle" "compressed" "sourceMapIncludeSources" true "transpiler" "libsass" }}
+    {{ $cssPostCssOptions := dict "inlineImports" true }}
+    {{ $style := resources.Get "sass/main.scss" | css.Sass $cssSassOptions | css.PostCSS $cssPostCssOptions | resources.Minify }}
+    {{- /* Workaround to silent undismissable VSCode CSS linting error */ -}}
+    {{ printf "<%s>%s</%s>" "style" $style.Content "style" | safeHTML }}
+  </head>
+  <body>
+    {{ partial "top-bar.html" . }}
+    <main>{{ block "content" . }}{{ end }}</main>
+    {{ partial "bottom-bar.html" . }}
+    {{ partial "i18n-menu.html" . }}
+
+    {{ $jsBuildOptions := dict "format" "esm" "minify" hugo.IsProduction "sourceMap" "external" }}
+    {{ $script := resources.Get "js/main.js" | js.Build $jsBuildOptions  | resources.Fingerprint "sha512" }}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+languageCode: 'fr-FR'
+languageName: 'Français (France)'
+weight: 2
+params:
+  i18n:
+    bottomBar:
+      # "All rights reserved." text
+      copyright: Tous droits réservés.
+
+    home:
+      # "More" is a link to the full article
+      more: Plus

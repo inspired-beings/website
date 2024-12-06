@@ -1,0 +1,50 @@
+.I18nMenu {
+  background-color: $tertiary-background-color;
+  bottom: 0;
+  color: $tertiary-text-color;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding: 48px 48px;
+  position: fixed;
+  right: 0;
+  top: 120px;
+  z-index: 1;
+
+  &Section {
+    &-Title {
+      font-size: 150%;
+    }
+    &:not(:first-child) > &-Title {
+      margin-top: 32px;
+    }
+
+    &-Menu {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: 180px;
+      max-width: 800px;
+    }
+    &-Item {
+      line-height: 1.5;
+      white-space: nowrap;
+      width: 50%;
+
+      &:hover:not([aria-disabled='true']) {
+        color: #000000;
+        text-decoration: underline;
+      }
+
+      &[aria-disabled='true'] {
+        color: $tertiary-text-color-light;
+        cursor: not-allowed;
+        user-select: none;
+
+        > a {
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

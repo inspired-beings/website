@@ -1,0 +1,148 @@
+// https://gist.github.com/rveitch/84cea9650092119527bc
+
+// -----------------------------------------------------------------------------
+// Fonts
+
+@import '@fontsource/karla/300.css';
+@import '@fontsource/karla/500.css';
+@import '@fontsource/karla/700.css';
+// @import '@fontsource/karla/800.css';
+
+@mixin font($weight, $style: normal) {
+  font-family: Karla, sans-serif;
+  font-optical-sizing: auto;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+// -----------------------------------------------------------------------------
+// Bootstrap
+// https://getbootstrap.com/docs/5.3/customize/sass/#importing
+
+@import 'bootstrap/scss/functions';
+
+@import 'bootstrap/scss/variables';
+
+// @import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+// @import 'bootstrap/scss/root';
+
+// @import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/reboot';
+// @import 'bootstrap/scss/type';
+// @import 'bootstrap/scss/images';
+// @import 'bootstrap/scss/containers';
+// @import 'bootstrap/scss/grid';
+// @import 'bootstrap/scss/helpers';
+
+// @import 'bootstrap/scss/utilities/api';
+
+// -----------------------------------------------------------------------------
+// Reset
+
+* {
+  line-height: 1;
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+button {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  padding: 0;
+  margin: 0;
+  width: auto;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+div {
+  display: flex;
+}
+
+menu,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Helpers
+
+.hidden {
+  display: none !important;
+}
+.hidden-down-xl {
+  @include media-breakpoint-down(xl) {
+    display: none !important;
+  }
+}
+.hidden-up-lg {
+  @include media-breakpoint-up(lg) {
+    display: none !important;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Custom
+
+body {
+  @include font(300);
+  color: #222222;
+  font-size: 24px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 8px 0 24px;
+  @include media-breakpoint-up(lg) {
+    padding: 8px 0 48px;
+  }
+}
+
+p {
+  line-height: 1.5;
+
+  * > p + &:not(:first-child) {
+    margin-top: 16px;
+  }
+}
+
+@import './utils/variables';
+
+@import './layouts/top-bar';
+@import './layouts/bottom-bar';
+
+@import './pages/home';
+@import './pages/single';
+
+@import './components/i18n-menu';

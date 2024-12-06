@@ -1,0 +1,9 @@
+.SingleArticle {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0 16px;
+  @include media-breakpoint-up(md) {
+    padding: 0 48px;
+  }
+}

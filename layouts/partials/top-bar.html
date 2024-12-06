@@ -1,0 +1,38 @@
+<header class="TopBar">
+  <a class="TopBarBrand" href="{{ relref . "/" }}">Inpired Beings</a>
+
+  <menu class="TopBarMenu hidden-down-xl" role="menubar">
+    {{ range site.Menus.top }}
+      {{ $class := "TopBarMenu-Item" }}
+      {{ if page.IsMenuCurrent .Menu . }}
+        {{ $class = print $class " TopBarMenu-Item_active" }}
+      {{ end }}
+      {{ if .Params.isHidden }}
+        {{ $class = print $class " hidden" }}
+      {{ end }}
+
+
+      <li class="{{ $class }}" role="menuitem">
+        <a class="TopBarMenu-Link" href="{{ .URL }}" aria-label="{{ .Title }}">
+          {{ .Name }}
+        </a>
+      </li>
+    {{ end }}
+
+    {{ $image := resources.Get "icons/globe.svg" }}
+    <li class="TopBarMenu-Item" role="menuitem">
+      <button class="TopBarMenu-Button TopBarMenu-Button_globe" aria-label="Change country and language" role="button">
+        <img src="{{ $image.RelPermalink }}" alt="Globe icon" />
+      </button>
+    </li>
+  </menu>
+
+  {{ $image := resources.Get "icons/list.svg" }}
+  <button class="TopBarMenu-Button TopBarMenu-Button_list" aria-label="Open the menu" role="button">
+    <img src="{{ $image.RelPermalink }}" alt="List icon" />
+  </button>
+  {{ $image := resources.Get "icons/x-lg.svg" }}
+  <button class="TopBarMenu-Button TopBarMenu-Button_close hidden" aria-label="Close the menu" role="button">
+    <img src="{{ $image.RelPermalink }}" alt="Close icon" />
+  </button>
+</header>
