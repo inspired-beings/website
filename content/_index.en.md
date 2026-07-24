@@ -17,7 +17,7 @@ services:
     - name: AI Engineering
       tagline: Design and build custom AI systems.
       body: We bring AI in where it creates real value — assistants, automations, and language-model features built into your product or internal tools. We handle the whole system, from your own data to reliable, monitored operation in production.
-    - name: AI Enablement
+    - name: AI Adoption
       tagline: Help your teams get real value from AI.
       body: We help your people bring AI into their everyday work — choosing the right tools, setting safe and practical guidelines, and training teams hands-on. The goal is real, measurable time saved, not hype.
 
