@@ -1,3 +1,54 @@
 {{ define "content" }}
-  <h1>Home</h1>
+  {{ $p := .Params }}
+  <div class="Home">
+    <section class="HomeHero">
+      <div class="Home-Inner">
+        <h1 class="HomeHero-Title">{{ $p.hero.title }}</h1>
+        {{ with $p.hero.subtitle }}
+          <p class="HomeHero-Subtitle">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    {{ with $p.services }}
+      <section class="HomeServices">
+        <div class="Home-Inner">
+          <h2 class="Home-SectionHeading">{{ .heading }}</h2>
+          <ul class="HomeServices-Grid">
+            {{ range .items }}
+              <li class="HomeService">
+                <h3 class="HomeService-Name">{{ .name }}</h3>
+                <p class="HomeService-Tagline">{{ .tagline }}</p>
+                <p class="HomeService-Body">{{ .body }}</p>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      </section>
+    {{ end }}
+
+    {{ with $p.openSource }}
+      <section class="HomeOpenSource">
+        <div class="Home-Inner">
+          <h2 class="Home-SectionHeading">{{ .heading }}</h2>
+          <p class="HomeOpenSource-Body">{{ .body }}</p>
+          {{ with .linkUrl }}
+            <a class="HomeOpenSource-Link" href="{{ . }}" rel="noopener">{{ $p.openSource.linkText }}</a>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+
+    {{ with $p.contact }}
+      <section class="HomeContact">
+        <div class="Home-Inner">
+          <h2 class="Home-SectionHeading">{{ .heading }}</h2>
+          <p class="HomeContact-Body">{{ .body }}</p>
+          {{ with .ctaUrl }}
+            <a class="HomeContact-Cta" href="{{ . }}">{{ $p.contact.ctaText }}</a>
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  </div>
 {{ end }}
