@@ -1,4 +1,8 @@
 <footer class="BottomBar">
   <!-- Copyright disclaimer -->
   <p>&copy; 2024-{{ time.Now | time.Format "2006" }} Inspired Beings EURL. {{ site.Params.i18n.bottomBar.copyright }}</p>
+
+  {{ with site.GetPage "/privacy" }}
+    <p><a href="{{ .RelPermalink }}">{{ .Title }}</a></p>
+  {{ end }}
 </footer>
