@@ -9,9 +9,9 @@
     "node": "22"
   },
   "scripts": {
-    "build": "yarn clean && hugo",
+    "build": "pnpm clean && hugo",
     "clean": "rm -Rf ./public ./resources",
-    "dev": "yarn clean && hugo server",
+    "dev": "pnpm clean && hugo server",
     "start": "serve ./public"
   },
   "dependencies": {
@@ -29,5 +29,5 @@
     "prettier": "3.4.2",
     "prettier-plugin-go-template": "0.0.15"
   },
-  "packageManager": "yarn@4.5.3"
+  "packageManager": "pnpm@11.16.0"
 }

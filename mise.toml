@@ -2,4 +2,4 @@
 # hugo-extended: required by css.Sass (libsass) in layouts/_default/baseof.html
 hugo-extended = "0.162.1"
 node = "22.23.1"
-yarn = "4.5.3"
+pnpm = "11.16.0"
