@@ -1,151 +1,181 @@
-.HomeHero {
+// Home page — company presentation + services.
+// Sober register: grayscale palette, left-aligned, no decorative flourishes.
+
+$home-max-width: 1200px;
+
+.Home {
+  flex-direction: column;
   flex-grow: 1;
-  overflow: hidden;
-  position: relative;
+  width: 100%;
 
-  &-Slide {
-    min-height: 100%;
-    min-width: 100%;
-    padding: 0 16px;
-    transition: transform 0.5s ease-in-out;
-    @include media-breakpoint-up(md) {
-      padding: 0 48px;
-    }
-  }
-
-  &-Left {
-    display: flex;
+  // Every section shares the same gutter + centered inner column.
+  &-Inner {
+    align-items: flex-start;
     flex-direction: column;
-    // height: 100%;
-    @include media-breakpoint-up(xl) {
-      max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: $home-max-width;
+    padding-left: 16px;
+    padding-right: 16px;
+    width: 100%;
+    @include media-breakpoint-up(md) {
+      padding-left: 48px;
       padding-right: 48px;
-      width: 60%;
     }
   }
-  &-Header {
-    @include media-breakpoint-up(xl) {
-      align-items: flex-end;
-      height: 50%;
-    }
+
+  &-SectionHeading {
+    @include font(500);
+    color: $tertiary-text-color-light;
+    font-size: 70%;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
+}
+
+.HomeHero {
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 48px;
+  @include media-breakpoint-up(lg) {
+    padding-top: 64px;
+    padding-bottom: 96px;
+  }
+
   &-Title {
     @include font(700);
-    font-size: 150%;
+    color: #000000;
+    font-size: 200%;
+    line-height: 1.15;
+    max-width: 900px;
     @include media-breakpoint-up(md) {
-      font-size: 200%;
-    }
-    @include media-breakpoint-up(xl) {
-      font-size: 240%;
-      white-space: nowrap;
-    }
-    @include media-breakpoint-up(xxl) {
       font-size: 280%;
     }
+    @include media-breakpoint-up(xl) {
+      font-size: 320%;
+    }
+  }
+
+  &-Subtitle {
+    color: #444444;
+    font-size: 90%;
+    line-height: 1.5;
+    margin-top: 24px;
+    max-width: 640px;
+  }
+}
+
+.HomeServices {
+  flex-direction: column;
+  padding-bottom: 48px;
+  @include media-breakpoint-up(lg) {
+    padding-bottom: 96px;
+  }
+
+  &-Grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+    margin-top: 32px;
+    width: 100%;
+    @include media-breakpoint-up(lg) {
+      gap: 48px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+.HomeService {
+  border-top: 2px solid #000000;
+  padding-top: 20px;
+
+  &-Name {
+    @include font(700);
+    color: #000000;
+    font-size: 120%;
+    line-height: 1.2;
+  }
+
+  &-Tagline {
+    @include font(500);
+    color: #222222;
+    font-size: 100%;
+    line-height: 1.4;
+    margin-top: 12px;
   }
 
   &-Body {
-    flex-direction: column;
-    flex-grow: 1;
-    padding-top: 8px;
-    overflow-y: auto;
-    @include media-breakpoint-up(md) {
-      padding-top: 16px;
-    }
-    @include media-breakpoint-up(lg) {
-      flex-direction: row;
-      flex-wrap: wrap;
-      overflow-y: unset;
-    }
-    @include media-breakpoint-up(xl) {
-    }
-    @include media-breakpoint-up(xxl) {
-      flex-wrap: nowrap;
-    }
-  }
-  &-Column {
-    display: block;
     color: #444444;
-    width: 100%;
-    @include media-breakpoint-up(lg) {
-      width: 50%;
-
-      &:not(&_isLast) {
-        padding-right: 36px;
-      }
-    }
-    @include media-breakpoint-up(xxl) {
-      padding-right: 36px;
-    }
+    font-size: 85%;
+    line-height: 1.6;
+    margin-top: 12px;
   }
-  &-More {
+}
+
+.HomeOpenSource {
+  background-color: $tertiary-background-color;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  @include media-breakpoint-up(lg) {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  &-Body {
+    color: $tertiary-text-color;
+    font-size: 95%;
+    line-height: 1.6;
+    margin-top: 20px;
+    max-width: 640px;
+  }
+
+  &-Link {
     @include font(500);
-    align-items: flex-start;
+    border-bottom: 2px solid #000000;
     color: #000000;
-    display: flex;
-    flex-grow: 1;
-    font-size: 125%;
-    line-height: 1.5;
-    justify-content: flex-end;
-    margin-top: 16px;
-    @include media-breakpoint-up(xl) {
-      font-size: 100%;
-      margin-top: 6px;
-    }
+    font-size: 90%;
+    line-height: 1.2;
+    margin-top: 24px;
+    padding-bottom: 2px;
 
-    > a {
-      padding-left: 260px;
-      @include media-breakpoint-up(xl) {
-        padding-left: 72px;
-      }
-
-      > span {
-        position: relative;
-
-        &::before {
-          background-color: #000000;
-          content: '';
-          display: block;
-          height: 2px;
-          left: -260px;
-          position: absolute;
-          top: 20px;
-          width: 248px;
-          @include media-breakpoint-up(xl) {
-            left: -72px;
-            top: 15px;
-            width: 64px;
-          }
-        }
-      }
+    &:hover {
+      opacity: 0.6;
     }
   }
+}
 
-  &-Right {
-    display: none;
-    @include media-breakpoint-up(xl) {
-      background-position: center;
-      background-size: cover;
-      display: flex;
-      flex-grow: 1;
-      height: 100%;
-    }
+.HomeContact {
+  flex-direction: column;
+  padding-top: 48px;
+  padding-bottom: 24px;
+  @include media-breakpoint-up(lg) {
+    padding-top: 96px;
+    padding-bottom: 48px;
   }
 
-  &-Nav {
-    bottom: 36px;
-    position: absolute;
-    right: 96px;
+  &-Body {
+    color: #444444;
+    font-size: 95%;
+    line-height: 1.6;
+    margin-top: 20px;
+    max-width: 640px;
+  }
 
-    > button {
-      @include font(500);
+  &-Cta {
+    @include font(500);
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 85%;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin-top: 28px;
+    padding: 16px 28px;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: #333333;
       color: #ffffff;
-      font-size: 650%;
-      opacity: 0.5;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 }
