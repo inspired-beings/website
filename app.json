@@ -1,0 +1,11 @@
+{
+  "healthchecks": {
+    "web": {
+      "type": "startup",
+      "name": "website",
+      "description": "Check if the website is up and running",
+      "path": "/",
+      "attempt": 3
+    }
+  }
+}

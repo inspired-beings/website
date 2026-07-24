@@ -1,3 +1,168 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:14925f82a13cf9dfabe184a553ef8eb1c4cfab27028704f8fa03dbafb814b695
-size 5210
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1024"
+   height="1024"
+   viewBox="0 0 1024 1024"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
+   sodipodi:docname="logo.raw.svg"
+   inkscape:export-filename="logo-1024x1024-bottom-square.0.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <title
+     id="title4">Inpired Beings Logo</title>
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="false"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="1"
+     inkscape:cx="395.5"
+     inkscape:cy="573.5"
+     inkscape:window-width="3390"
+     inkscape:window-height="1371"
+     inkscape:window-x="50"
+     inkscape:window-y="32"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="8"
+       spacingy="8"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="2"
+       enabled="true"
+       visible="true" />
+    <inkscape:grid
+       type="modular"
+       id="grid2"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="151.1811"
+       spacingy="151.1811"
+       empcolor="#0047cb"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="0"
+       marginx="0"
+       marginy="0"
+       gapx="37.795276"
+       gapy="37.795276"
+       enabled="false"
+       visible="true" />
+    <inkscape:grid
+       id="grid3"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="1"
+       spacingy="1"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       enabled="false"
+       visible="true" />
+    <inkscape:grid
+       type="axonomgrid"
+       id="grid4"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="3.7795276"
+       spacingy="3.7795276"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       enabled="false"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="default"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path6"
+       style="fill:#c4c4c4;stroke-width:1.302;fill-opacity:1"
+       d="M 512 640 A 319.99982 320 0 0 0 192 960 A 319.99982 320 0 0 0 199.27344 1024 L 264.90234 1024 A 256 256.00015 0 0 1 256 960 A 256 256.00015 0 0 1 512 704 A 256 256.00015 0 0 1 768 960 A 256 256.00015 0 0 1 759.09766 1024 L 824.72656 1024 A 319.99982 320 0 0 0 832 960 A 319.99982 320 0 0 0 512 640 z "
+       inkscape:label="small-arch" />
+    <path
+       id="path5"
+       style="fill:#e0e0e0;stroke-width:1.06686;fill-opacity:1"
+       d="M 512 544 A 416 416 0 0 0 96 960 A 416 416 0 0 0 101.27734 1024 L 166.47852 1024 A 352 352 0 0 1 160 960 A 352 352 0 0 1 512 608 A 352 352 0 0 1 864 960 A 352 352 0 0 1 857.52148 1024 L 922.72266 1024 A 416 416 0 0 0 928 960 A 416 416 0 0 0 512 544 z "
+       inkscape:label="medium-arch" />
+    <path
+       id="path4"
+       style="fill:#666666;stroke-width:1.90098;fill-opacity:1"
+       d="M 512 448 A 512 512 0 0 0 0 960 A 512 512 0 0 0 4.5761719 1024 L 69.037109 1024 A 448 448 0 0 1 64 960 A 448 448 0 0 1 512 512 A 448 448 0 0 1 960 960 A 448 448 0 0 1 954.96289 1024 L 1019.4238 1024 A 512 512 0 0 0 1024 960 A 512 512 0 0 0 512 448 z "
+       inkscape:label="large-arch" />
+    <circle
+       style="fill:#c4c4c4;fill-opacity:1;stroke-width:0.901548"
+       id="path7"
+       cx="768"
+       cy="256"
+       r="128" />
+  </g>
+  <metadata
+     id="metadata4">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Inpired Beings Logo</dc:title>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Ivan Gabriele</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>© 2024 Inpired Beings EURL. All rights reserved.</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Inpired Beings EURL</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>logo</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:date>2024-12-03T08:00:00Z</dc:date>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>
