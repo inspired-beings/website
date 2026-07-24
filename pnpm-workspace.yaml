@@ -1,0 +1,3 @@
+# Hugo's sandboxed PostCSS requires node_modules/.bin/postcss to be a Node.js
+# script; pnpm's default sh shims break it.
+preferSymlinkedExecutables: true
