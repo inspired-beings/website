@@ -10,11 +10,9 @@
   },
   "scripts": {
     "build": "yarn clean && hugo",
-    "build:docker": "docker build -t inspired-beings/website .",
     "clean": "rm -Rf ./public ./resources",
     "dev": "yarn clean && hugo server",
-    "start": "serve ./public",
-    "start:docker": "docker run -p 3000:3000 inspired-beings/website"
+    "start": "serve ./public"
   },
   "dependencies": {
     "@fontsource/karla": "5.1.0",
