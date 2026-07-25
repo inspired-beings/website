@@ -5,3 +5,9 @@ preferSymlinkedExecutables: true
 # with ERR_PNPM_IGNORED_BUILDS.
 allowBuilds:
   puppeteer: true
+# Dependabot-flagged transitives pinned too tightly by serve/compression — drop
+# each override once upstream moves past the patched version.
+overrides:
+  'ajv@>=7.0.0 <8.18.0': 8.20.0
+  'minimatch@<3.1.4': 3.1.5
+  'on-headers@<1.1.0': 1.1.0
