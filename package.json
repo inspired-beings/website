@@ -12,12 +12,11 @@
     "build": "pnpm clean && hugo",
     "clean": "rm -Rf ./public ./resources",
     "dev": "pnpm clean && hugo server",
-    "start": "serve ./public"
+    "start": "node tool/serve.mjs public 3000"
   },
   "dependencies": {
     "@fontsource/karla": "5.1.0",
-    "bootstrap": "5.3.3",
-    "serve": "14.2.4"
+    "bootstrap": "5.3.3"
   },
   "devDependencies": {
     "@ivangabriele/prettier-config": "5.0.1",

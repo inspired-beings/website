@@ -5,44 +5,18 @@
 // - per-page weight: the sum of all response bodies must stay under tool/page-budget.json
 //   (budget numbers are product-owner decisions — propose, don't self-serve).
 import { promises as fs } from 'node:fs'
-import { createServer } from 'node:http'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import puppeteer from 'puppeteer'
 
+import { createStaticServer } from './serve.mjs'
+
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
 const publicDir = path.join(root, 'public')
 const budget = JSON.parse(await fs.readFile(path.join(root, 'tool', 'page-budget.json'), 'utf8'))
 
-const MIME = {
-  '.css': 'text/css',
-  '.html': 'text/html',
-  '.ico': 'image/x-icon',
-  '.js': 'text/javascript',
-  '.json': 'application/json',
-  '.png': 'image/png',
-  '.svg': 'image/svg+xml',
-  '.txt': 'text/plain',
-  '.webmanifest': 'application/manifest+json',
-  '.woff2': 'font/woff2',
-  '.xml': 'application/xml',
-}
-
-const server = createServer(async (req, res) => {
-  try {
-    let pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname)
-    if (pathname.endsWith('/')) pathname += 'index.html'
-    const file = path.normalize(path.join(publicDir, pathname))
-    if (!file.startsWith(publicDir + path.sep)) throw new Error('traversal')
-    const body = await fs.readFile(file)
-    res.writeHead(200, { 'content-type': MIME[path.extname(file)] ?? 'application/octet-stream' })
-    res.end(body)
-  } catch {
-    res.writeHead(404)
-    res.end()
-  }
-})
+const server = createStaticServer(publicDir)
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
 const origin = `http://127.0.0.1:${server.address().port}`
 
