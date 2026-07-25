@@ -1,3 +1,7 @@
 # Hugo's sandboxed PostCSS requires node_modules/.bin/postcss to be a Node.js
 # script; pnpm's default sh shims break it.
 preferSymlinkedExecutables: true
+# puppeteer's postinstall (browser download) must run or pnpm run hard-fails
+# with ERR_PNPM_IGNORED_BUILDS.
+allowBuilds:
+  puppeteer: true
