@@ -17,6 +17,26 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
 
+  # WCAG 2 AA (axe + htmlcs) over every built page, both locales.
+  a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: ./tool/check_a11y.sh
+
+  # Per-page weight budget + zero third-party requests, measured in a real browser.
+  page-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: node tool/check_page_budget.mjs
+
   # Same gate the deploy relies on, kept on every PR so a new alert surfaces here first.
   security-alerts:
     runs-on: ubuntu-latest

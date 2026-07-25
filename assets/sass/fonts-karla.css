@@ -1,0 +1,24 @@
+/* Hand-rolled from @fontsource/karla latin-*.css: woff2-only (the woff fallbacks doubled
+   every page's inlined font bytes for browsers that never use them) and latin subset only
+   (EN + FR content proven to need nothing from latin-ext — see tool/check_page_budget.mjs). */
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url(../../node_modules/@fontsource/karla/files/karla-latin-300-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(../../node_modules/@fontsource/karla/files/karla-latin-500-normal.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'Karla';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(../../node_modules/@fontsource/karla/files/karla-latin-700-normal.woff2) format('woff2');
+}

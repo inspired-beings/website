@@ -1,3 +1,4 @@
 $tertiary-background-color: #f2f2f2;
 $tertiary-text-color: #333333;
-$tertiary-text-color-light: #777777;
+// ≥4.5:1 (WCAG AA) on both #ffffff and $tertiary-background-color — CI-gated, don't lighten.
+$tertiary-text-color-light: #6e6e6e;

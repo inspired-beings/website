@@ -3,10 +3,8 @@
 // -----------------------------------------------------------------------------
 // Fonts
 
-@import '@fontsource/karla/300.css';
-@import '@fontsource/karla/500.css';
-@import '@fontsource/karla/700.css';
-// @import '@fontsource/karla/800.css';
+// woff2/latin only — the full @fontsource css inlines redundant woff + latin-ext bytes.
+@import 'fonts-karla.css';
 
 @mixin font($weight, $style: normal) {
   font-family: Karla, sans-serif;

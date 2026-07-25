@@ -1,0 +1,4 @@
+{
+  "maxPageBytes": 135000,
+  "rules": "Product-owner decided 2026-07-25 (baseline 117,836 + ~15%). Ratchet-down-only: any PR that reduces page weight must lower maxPageBytes in the same PR — reclaimed bytes are banked, never slack. Raising is a product-owner decision; image-bearing pages get a justified per-page override, not a global raise. Before any raise, audit the ~43 KB favicon set first."
+}
