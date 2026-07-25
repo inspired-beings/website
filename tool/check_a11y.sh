@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 readonly PORT=4173
 [[ -d public ]] || { echo "public/ missing — run pnpm build first" >&2; exit 1; }
 
-pnpm exec serve --no-clipboard --no-request-logging -l "$PORT" public &
+node tool/serve.mjs public "$PORT" &
 readonly SERVER_PID=$!
 trap 'kill "$SERVER_PID" 2>/dev/null || true' EXIT
 for _ in $(seq 1 60); do
