@@ -4,15 +4,15 @@ on:
   push:
     branches: [main]
   pull_request:
-  schedule:
-    # Weekly re-scan so new queries catch drift without a push.
-    - cron: "17 6 * * 1"
 
 permissions:
   contents: read
 
 jobs:
+  # Result upload needs Code Security, which is metered billing on private repos —
+  # arms itself if the repo goes public. Human decision pending (see website.md).
   analyze:
+    if: github.event.repository.private == false
     runs-on: ubuntu-latest
     permissions:
       contents: read
