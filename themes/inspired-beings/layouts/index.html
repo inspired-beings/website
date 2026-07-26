@@ -2,11 +2,8 @@
   flagship layout. Content model: every word lives in front matter
   (`exampleSite/content/_index.{en,fr-fr}.md`), this template only renders
   structure — hero{title_lines[],cta{label,url},image{src,alt}} → intro
-  {body,cta} → problems[]{title,body} (5 — Task 13 trimmed from 6, budget-
-  driven, same rationale as the pricing-table feature cut below) →
-  services_extract[]{icon,title,body,link{href,label}} (4 — Task 13
-  trimmed from 6 for the same reason; the dedicated `/services/` page still
-  lists all 6, reuses `card.html`) → stats[]{value,unit,label}
+  {body,cta} → problems[]{title,body} (6) → services_extract[]{icon,title,
+  body,link{href,label}} (6, reuses `card.html`) → stats[]{value,unit,label}
   (reuses `stats-band.html`) → pricing_extract{caption,plans[]{name,price,
   period,cta}} (each plan rendered via `card.html`, Task 13 — was the full
   `pricing-table.html` comparison grid until the home-page copy over-budget
