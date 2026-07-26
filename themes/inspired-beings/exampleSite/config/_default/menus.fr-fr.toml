@@ -1,1 +1,160 @@
 # Entrées de menu FR. Renseignées une fois les gabarits top-bar/footer construits.
+#
+# Mêmes identifiants/poids que menus.en.toml (voir ce fichier pour le
+# commentaire d'ensemble) ; les URLs portent le préfixe `/fr-fr/`
+# (`defaultContentLanguageInSubdir = false` place l'anglais à la racine).
+
+[[menus.main]]
+  identifier = "home"
+  name = "Accueil"
+  url = "/fr-fr/"
+  weight = 10
+
+[[menus.main]]
+  identifier = "services"
+  name = "Services"
+  weight = 20
+
+[[menus.main]]
+  identifier = "services-web-app-development"
+  name = "Développement web & mobile"
+  url = "/fr-fr/services/web-app-development/"
+  parent = "services"
+  weight = 10
+
+[[menus.main]]
+  identifier = "services-cloud-devops"
+  name = "Cloud & DevOps"
+  url = "/fr-fr/services/cloud-devops/"
+  parent = "services"
+  weight = 20
+
+[[menus.main]]
+  identifier = "services-security-audits"
+  name = "Audits de sécurité"
+  url = "/fr-fr/services/security-audits/"
+  parent = "services"
+  weight = 30
+
+[[menus.main]]
+  identifier = "services-accessibility-audits"
+  name = "Audits d'accessibilité"
+  url = "/fr-fr/services/accessibility-audits/"
+  parent = "services"
+  weight = 40
+
+[[menus.main]]
+  identifier = "services-consulting"
+  name = "Conseil"
+  url = "/fr-fr/services/consulting/"
+  parent = "services"
+  weight = 50
+
+[[menus.main]]
+  identifier = "services-maintenance-tma"
+  name = "Maintenance & TMA"
+  url = "/fr-fr/services/maintenance-tma/"
+  parent = "services"
+  weight = 60
+
+[[menus.main]]
+  identifier = "pricing"
+  name = "Tarifs"
+  url = "/fr-fr/pricing/"
+  weight = 30
+
+[[menus.main]]
+  identifier = "about"
+  name = "À propos"
+  url = "/fr-fr/about/"
+  weight = 40
+
+[[menus.main]]
+  identifier = "news"
+  name = "Actualités"
+  url = "/fr-fr/news/"
+  weight = 50
+
+[[menus.main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "/fr-fr/contact/"
+  weight = 60
+
+[[menus.footercompany]]
+  identifier = "footer-about"
+  name = "À propos"
+  url = "/fr-fr/about/"
+  weight = 10
+
+[[menus.footercompany]]
+  identifier = "footer-careers"
+  name = "Carrières"
+  url = "/fr-fr/careers/"
+  weight = 20
+
+[[menus.footercompany]]
+  identifier = "footer-news"
+  name = "Actualités"
+  url = "/fr-fr/news/"
+  weight = 30
+
+[[menus.footercompany]]
+  identifier = "footer-contact"
+  name = "Contact"
+  url = "/fr-fr/contact/"
+  weight = 40
+
+[[menus.footerservices]]
+  identifier = "footer-services-web-app-development"
+  name = "Développement web & mobile"
+  url = "/fr-fr/services/web-app-development/"
+  weight = 10
+
+[[menus.footerservices]]
+  identifier = "footer-services-cloud-devops"
+  name = "Cloud & DevOps"
+  url = "/fr-fr/services/cloud-devops/"
+  weight = 20
+
+[[menus.footerservices]]
+  identifier = "footer-services-security-audits"
+  name = "Audits de sécurité"
+  url = "/fr-fr/services/security-audits/"
+  weight = 30
+
+[[menus.footerservices]]
+  identifier = "footer-services-accessibility-audits"
+  name = "Audits d'accessibilité"
+  url = "/fr-fr/services/accessibility-audits/"
+  weight = 40
+
+[[menus.footerservices]]
+  identifier = "footer-services-consulting"
+  name = "Conseil"
+  url = "/fr-fr/services/consulting/"
+  weight = 50
+
+[[menus.footerservices]]
+  identifier = "footer-services-maintenance-tma"
+  name = "Maintenance & TMA"
+  url = "/fr-fr/services/maintenance-tma/"
+  weight = 60
+
+[[menus.footerresources]]
+  identifier = "footer-pricing"
+  name = "Tarifs"
+  url = "/fr-fr/pricing/"
+  weight = 10
+
+[[menus.footerresources]]
+  identifier = "footer-faq"
+  name = "FAQ"
+  url = "/fr-fr/faq/"
+  weight = 20
+
+[[menus.footerresources]]
+  identifier = "footer-products"
+  name = "Produits"
+  url = "/fr-fr/products/"
+  weight = 30

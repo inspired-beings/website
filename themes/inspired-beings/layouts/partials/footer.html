@@ -1,0 +1,45 @@
+{{/* BEM block `footer` — inverse band (see _footer.scss): background is
+  --color-inverse-band-bg and content re-asserts dark-scheme tokens
+  verbatim regardless of the page's own scheme. Three nav columns driven by
+  the footercompany/footerservices/footerresources menus (Hugo lowercases
+  menu config keys — dotted template field access must match) + copyright. */}}
+<footer class="footer">
+  <div class="footer__inner container">
+    <div class="footer__columns">
+      <nav class="footer__column" aria-label="{{ i18n "footerCompanyHeading" }}">
+        <h2 class="footer__heading">{{ i18n "footerCompanyHeading" }}</h2>
+        <ul class="footer__list" role="list">
+          {{ range .Site.Menus.footercompany }}
+            <li class="footer__item">
+              <a class="footer__link" href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+
+      <nav class="footer__column" aria-label="{{ i18n "footerServicesHeading" }}">
+        <h2 class="footer__heading">{{ i18n "footerServicesHeading" }}</h2>
+        <ul class="footer__list" role="list">
+          {{ range .Site.Menus.footerservices }}
+            <li class="footer__item">
+              <a class="footer__link" href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+
+      <nav class="footer__column" aria-label="{{ i18n "footerResourcesHeading" }}">
+        <h2 class="footer__heading">{{ i18n "footerResourcesHeading" }}</h2>
+        <ul class="footer__list" role="list">
+          {{ range .Site.Menus.footerresources }}
+            <li class="footer__item">
+              <a class="footer__link" href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+          {{ end }}
+        </ul>
+      </nav>
+    </div>
+
+    <p class="footer__copyright">{{ i18n "footerCopyright" (dict "year" now.Year "name" .Site.Title) }}</p>
+  </div>
+</footer>

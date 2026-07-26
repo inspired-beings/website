@@ -1,0 +1,20 @@
+{{/* Links to `.Translations`; works on every page kind since both are
+  universal Page fields. Current language is a non-interactive element
+  (no self-link to the page you're already on), marked aria-current. */}}
+<nav class="language-switcher" aria-label="{{ i18n "languageSwitcherLabel" }}">
+  <ul class="language-switcher__list" role="list">
+    <li class="language-switcher__item">
+      <span class="language-switcher__current" aria-current="true">
+        {{ .Language.Label }}
+        <span class="language-switcher__current-suffix">{{ i18n "languageSwitcherCurrentSuffix" }}</span>
+      </span>
+    </li>
+    {{ range .Translations }}
+      <li class="language-switcher__item">
+        <a class="language-switcher__link" href="{{ .RelPermalink }}" hreflang="{{ .Language.Lang }}" lang="{{ .Language.Lang }}">
+          {{ .Language.Label }}
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

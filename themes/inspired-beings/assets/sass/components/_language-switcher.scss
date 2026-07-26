@@ -1,0 +1,45 @@
+// Language switcher: links to `.Translations` + the current language marked
+// via `[aria-current="true"]` on a non-interactive element (see the
+// `language-switcher.html` partial).
+
+.language-switcher__list {
+  display: flex;
+  gap: var(--sp-xs);
+  align-items: center;
+}
+
+.language-switcher__item {
+  display: flex;
+}
+
+.language-switcher__item:not(:last-child)::after {
+  content: "/";
+  margin-inline-start: var(--sp-xs);
+  color: var(--color-border-default);
+}
+
+.language-switcher__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-default);
+  }
+}
+
+.language-switcher__current {
+  color: var(--color-text-default);
+  font-weight: 700;
+}
+
+.language-switcher__current-suffix {
+  // Visually redundant next to the bold styling above — kept for
+  // screen-reader users only, not a general-purpose utility class.
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

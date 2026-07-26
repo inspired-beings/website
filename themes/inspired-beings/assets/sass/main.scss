@@ -10,7 +10,13 @@
 @use "base/typography";
 @use "base/elements";
 @use "layout/container";
+@use "layout/top-bar";
+@use "layout/footer";
+@use "components/skip-link";
+@use "components/language-switcher";
+@use "components/theme-toggle";
 
 // @use "vendors"; — slot: third-party CSS overrides (empty at birth)
-// @use "components/..."; — slot: Task 4-5
+// @use "components/..."; — slot: Task 4-5 (skip-link/language-switcher/
+//   theme-toggle added in Task 3, above)
 // @use "pages/..."; — slot: Task 6-11

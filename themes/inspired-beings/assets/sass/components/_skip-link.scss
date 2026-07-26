@@ -1,0 +1,19 @@
+// Skip-link: first focusable element in the document (see baseof.html);
+// off-screen (not display:none/visibility:hidden, so it stays focusable)
+// until it receives keyboard focus.
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: var(--sp-md);
+  z-index: var(--z-skip-link);
+  padding: var(--sp-xs) var(--sp-md);
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-default);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+
+  &:focus-visible {
+    left: var(--sp-md);
+  }
+}

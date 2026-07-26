@@ -2,6 +2,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ .Title }} · {{ .Site.Title }}</title>
 
+{{/* Anti-flash: read the manual theme choice from localStorage and stamp
+  `data-theme` before any CSS paints, so the dark/light override in
+  themes/_dark.scss and _light.scss (`[data-theme="…"]`) is already correct
+  on first paint. Deliberately not bundled via js.Build — it must run
+  inline and synchronously, before the stylesheet link below. */}}
+<script>
+  try {
+    var storedTheme = localStorage.getItem('theme')
+    if (storedTheme === 'light' || storedTheme === 'dark') document.documentElement.setAttribute('data-theme', storedTheme)
+  } catch (e) {}
+</script>
+
 {{/* Fingerprint the self-hosted fonts once, then hand the same URLs to the
   Sass @font-face `src` (via hugo:vars) so the stylesheet and the preload
   below resolve to the identical fingerprinted path — no double download. */}}

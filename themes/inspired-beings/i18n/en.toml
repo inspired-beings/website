@@ -1,1 +1,31 @@
 # UI strings (EN). Populated as layouts/components are built in later tasks.
+
+[skipLink]
+other = "Skip to main content"
+
+[topBarNavLabel]
+other = "Primary navigation"
+
+[topBarMenuToggleLabel]
+other = "Menu"
+
+[languageSwitcherLabel]
+other = "Language"
+
+[languageSwitcherCurrentSuffix]
+other = "(current)"
+
+[themeToggleLabel]
+other = "Dark mode"
+
+[footerCompanyHeading]
+other = "Company"
+
+[footerServicesHeading]
+other = "Services"
+
+[footerResourcesHeading]
+other = "Resources"
+
+[footerCopyright]
+other = "© {{ .year }} {{ .name }}. All rights reserved."

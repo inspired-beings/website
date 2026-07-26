@@ -1,0 +1,146 @@
+// Site chrome header: logo, desktop nav w/ services disclosure dropdown
+// (APG Disclosure pattern — real links, not an ARIA menu), burger < lg.
+//
+// No-JS fallback (documented in task-3-report.md):
+// - Burger: `.top-bar__nav` is visible by default below `lg`. `menu.js`
+//   sets `aria-expanded="false"` on init (collapsing it) and toggles on
+//   click — the attribute is never present in the server-rendered HTML, so
+//   without JS the nav simply stays visible/reachable (brief's "burger
+//   degrades to always-visible nav" option). A brief flash of the open nav
+//   before JS collapses it is an accepted trade-off.
+// - Dropdown: `.top-bar__dropdown-panel` opens on `:hover`/`:focus-within`
+//   regardless of JS (keyboard Tab into the trigger, then into the panel's
+//   links, is real focus movement, not synthetic) — `menu.js` layers
+//   click-to-open, Esc-to-close and click-outside-to-close on top for
+//   pointer/touch users, but is not required for keyboard reachability.
+
+@use "../abstracts";
+
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background-color: var(--color-surface-default);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.top-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-lg);
+  padding-block: var(--sp-sm);
+}
+
+.top-bar__logo {
+  margin-inline-end: auto;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: 600;
+  color: var(--color-text-default);
+  text-decoration: none;
+}
+
+.top-bar__burger {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2xs) var(--sp-sm);
+  font-weight: 500;
+
+  @include abstracts.mq-up("lg") {
+    display: none;
+  }
+}
+
+.top-bar__nav {
+  @include abstracts.mq-down("lg") {
+    display: block;
+    width: 100%;
+    order: 10; // stack below the logo/burger row
+  }
+}
+
+.top-bar__burger[aria-expanded="false"] + .top-bar__nav {
+  @include abstracts.mq-down("lg") {
+    display: none;
+  }
+}
+
+.top-bar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+
+  @include abstracts.mq-up("lg") {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sp-lg);
+  }
+}
+
+.top-bar__item {
+  position: relative;
+}
+
+.top-bar__link {
+  display: inline-block;
+  padding-block: var(--sp-2xs);
+  color: var(--color-text-default);
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-default);
+  }
+
+  &[aria-current="page"] {
+    color: var(--color-accent-default);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.top-bar__dropdown-toggle {
+  border: none;
+  background: none;
+  font: inherit;
+}
+
+.top-bar__dropdown-panel {
+  display: none;
+  flex-direction: column;
+  min-width: 14rem;
+  padding: var(--sp-xs);
+  gap: var(--sp-2xs);
+
+  @include abstracts.mq-up("lg") {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--z-dropdown);
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.top-bar__dropdown:hover .top-bar__dropdown-panel,
+.top-bar__dropdown:focus-within .top-bar__dropdown-panel,
+.top-bar__dropdown-toggle[aria-expanded="true"] ~ .top-bar__dropdown-panel {
+  display: flex;
+}
+
+.top-bar__dropdown--active > .top-bar__dropdown-toggle {
+  color: var(--color-accent-default);
+}
+
+.top-bar__dropdown-item {
+  display: block;
+}
+
+.top-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}

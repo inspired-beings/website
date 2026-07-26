@@ -1,0 +1,79 @@
+// Site footer: inverse band (spec rule) — background is
+// `--color-inverse-band-bg` and everything inside re-asserts the
+// dark-scheme semantic tokens verbatim, regardless of the page's own
+// light/dark scheme, by re-including the same `dark-semantics` mixin
+// `_dark.scss` already defines (never hardcoded hexes).
+
+@use "../abstracts";
+@use "../themes/dark";
+
+// Content tokens forced to dark-scheme values verbatim (spec rule) — this
+// necessarily re-overrides `--color-inverse-band-bg` itself too (the mixin
+// sets every semantic token), so the background can't be read back via
+// var(--color-inverse-band-bg) inside this same rule. Restored below by
+// mirroring the light/dark primitive directly, per spec: "Light-scheme
+// inverse band is literally #091018 (night) … in dark scheme the band
+// drops to #04070D (night-deep)".
+.footer {
+  @include dark.dark-semantics;
+  color: var(--color-text-default);
+  padding-block: var(--sp-2xl);
+}
+
+.footer {
+  background-color: var(--color-primitive-night);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root .footer {
+    background-color: var(--color-primitive-night-deep);
+  }
+}
+
+:root[data-theme="dark"] .footer {
+  background-color: var(--color-primitive-night-deep);
+}
+
+:root[data-theme="light"] .footer {
+  background-color: var(--color-primitive-night);
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-xl);
+  margin-bottom: var(--sp-xl);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footer__heading {
+  font-size: var(--fs-md);
+  font-family: var(--font-body);
+  margin-bottom: var(--sp-sm);
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.footer__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-default);
+  }
+}
+
+.footer__copyright {
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--color-border-subtle);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}

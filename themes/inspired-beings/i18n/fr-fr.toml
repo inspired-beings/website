@@ -1,1 +1,31 @@
 # Chaînes d'interface (FR). Renseignées au fil des tâches suivantes.
+
+[skipLink]
+other = "Aller au contenu principal"
+
+[topBarNavLabel]
+other = "Navigation principale"
+
+[topBarMenuToggleLabel]
+other = "Menu"
+
+[languageSwitcherLabel]
+other = "Langue"
+
+[languageSwitcherCurrentSuffix]
+other = "(actuel)"
+
+[themeToggleLabel]
+other = "Mode sombre"
+
+[footerCompanyHeading]
+other = "Entreprise"
+
+[footerServicesHeading]
+other = "Services"
+
+[footerResourcesHeading]
+other = "Ressources"
+
+[footerCopyright]
+other = "© {{ .year }} {{ .name }}. Tous droits réservés."

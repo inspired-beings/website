@@ -1,0 +1,5 @@
+{{/* Single bundle: main.js imports menu.js + theme.js, esbuild inlines
+  both via Hugo's js.Build — one request, IIFE output (no ESM needed once
+  bundled). Fingerprinted + SRI, same pattern as the CSS/font pipeline. */}}
+{{ $js := resources.Get "js/main.js" | js.Build (dict "minify" true "format" "iife") | resources.Fingerprint "sha384" }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>

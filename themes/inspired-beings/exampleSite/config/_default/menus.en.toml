@@ -1,1 +1,168 @@
 # EN menu entries. Populated once the top-bar/footer layouts are built.
+#
+# `main` drives the top-bar (Task 3); the six `services-*` entries share
+# `parent = "services"`, making "Services" the APG-disclosure dropdown
+# trigger — it has no `url` of its own (button-only, not a page link).
+# Target pages for services/pricing/about/news/contact/careers/faq/products
+# don't exist yet (later tasks add them) — the routes are placeholders.
+
+[[menus.main]]
+  identifier = "home"
+  name = "Home"
+  url = "/"
+  weight = 10
+
+[[menus.main]]
+  identifier = "services"
+  name = "Services"
+  weight = 20
+
+[[menus.main]]
+  identifier = "services-web-app-development"
+  name = "Web & App Development"
+  url = "/services/web-app-development/"
+  parent = "services"
+  weight = 10
+
+[[menus.main]]
+  identifier = "services-cloud-devops"
+  name = "Cloud & DevOps"
+  url = "/services/cloud-devops/"
+  parent = "services"
+  weight = 20
+
+[[menus.main]]
+  identifier = "services-security-audits"
+  name = "Security Audits"
+  url = "/services/security-audits/"
+  parent = "services"
+  weight = 30
+
+[[menus.main]]
+  identifier = "services-accessibility-audits"
+  name = "Accessibility Audits"
+  url = "/services/accessibility-audits/"
+  parent = "services"
+  weight = 40
+
+[[menus.main]]
+  identifier = "services-consulting"
+  name = "Consulting"
+  url = "/services/consulting/"
+  parent = "services"
+  weight = 50
+
+[[menus.main]]
+  identifier = "services-maintenance-tma"
+  name = "Maintenance & TMA"
+  url = "/services/maintenance-tma/"
+  parent = "services"
+  weight = 60
+
+[[menus.main]]
+  identifier = "pricing"
+  name = "Pricing"
+  url = "/pricing/"
+  weight = 30
+
+[[menus.main]]
+  identifier = "about"
+  name = "About"
+  url = "/about/"
+  weight = 40
+
+[[menus.main]]
+  identifier = "news"
+  name = "News"
+  url = "/news/"
+  weight = 50
+
+[[menus.main]]
+  identifier = "contact"
+  name = "Contact"
+  url = "/contact/"
+  weight = 60
+
+# `footercompany` / `footerservices` / `footerresources` drive the footer's
+# three nav columns (Task 3). Lowercase-only: Hugo lowercases menu config
+# keys, and Go template dotted field access (`.Site.Menus.foo`) is
+# case-sensitive, so a camelCase name here would be unreachable from the
+# partial.
+
+[[menus.footercompany]]
+  identifier = "footer-about"
+  name = "About"
+  url = "/about/"
+  weight = 10
+
+[[menus.footercompany]]
+  identifier = "footer-careers"
+  name = "Careers"
+  url = "/careers/"
+  weight = 20
+
+[[menus.footercompany]]
+  identifier = "footer-news"
+  name = "News"
+  url = "/news/"
+  weight = 30
+
+[[menus.footercompany]]
+  identifier = "footer-contact"
+  name = "Contact"
+  url = "/contact/"
+  weight = 40
+
+[[menus.footerservices]]
+  identifier = "footer-services-web-app-development"
+  name = "Web & App Development"
+  url = "/services/web-app-development/"
+  weight = 10
+
+[[menus.footerservices]]
+  identifier = "footer-services-cloud-devops"
+  name = "Cloud & DevOps"
+  url = "/services/cloud-devops/"
+  weight = 20
+
+[[menus.footerservices]]
+  identifier = "footer-services-security-audits"
+  name = "Security Audits"
+  url = "/services/security-audits/"
+  weight = 30
+
+[[menus.footerservices]]
+  identifier = "footer-services-accessibility-audits"
+  name = "Accessibility Audits"
+  url = "/services/accessibility-audits/"
+  weight = 40
+
+[[menus.footerservices]]
+  identifier = "footer-services-consulting"
+  name = "Consulting"
+  url = "/services/consulting/"
+  weight = 50
+
+[[menus.footerservices]]
+  identifier = "footer-services-maintenance-tma"
+  name = "Maintenance & TMA"
+  url = "/services/maintenance-tma/"
+  weight = 60
+
+[[menus.footerresources]]
+  identifier = "footer-pricing"
+  name = "Pricing"
+  url = "/pricing/"
+  weight = 10
+
+[[menus.footerresources]]
+  identifier = "footer-faq"
+  name = "FAQ"
+  url = "/faq/"
+  weight = 20
+
+[[menus.footerresources]]
+  identifier = "footer-products"
+  name = "Products"
+  url = "/products/"
+  weight = 30
