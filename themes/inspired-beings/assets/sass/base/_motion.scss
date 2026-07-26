@@ -34,4 +34,26 @@
     opacity: 1;
     transform: none;
   }
+
+  // CSS failsafe: `[data-fade]` depends on TWO JS steps (head.html's inline
+  // script stamping `[data-js]`, then `fade.js`'s `IntersectionObserver`
+  // adding `data-visible`) — if the second one never runs (a bug earlier in
+  // `main.js`'s init chain throwing before `initFade`, the bundle failing to
+  // load, an ad/privacy blocker, …) content styled by the rule above would
+  // stay invisible forever with no other recourse. This keyframe reveals it
+  // unconditionally after a short delay, entirely independent of `fade.js`;
+  // once the observer DOES flip `data-visible` (the normal case), the
+  // element stops matching `:not([data-visible])` so the animation never
+  // even starts. Kept inside the same reduced-motion media query as the
+  // rest of this file.
+  [data-js] [data-fade]:not([data-visible]) {
+    animation: fade-in-failsafe 0.01s 2.5s forwards;
+  }
+
+  @keyframes fade-in-failsafe {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
