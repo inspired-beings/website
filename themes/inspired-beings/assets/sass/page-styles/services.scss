@@ -1,0 +1,7 @@
+// Per-page-kind entrypoint (Task 8b split) — compiled + linked for the
+// services index and every service single page (see `partials/head.html`'s
+// page-kind switch, matched on `.Section == "services"`). Selects the
+// `pages/_services.scss` partial; shared/abstracts/themes/base/layout/
+// components already ship in `main.scss` — must NOT be re-`@use`d here or
+// their rules would emit twice.
+@use "../pages/services";

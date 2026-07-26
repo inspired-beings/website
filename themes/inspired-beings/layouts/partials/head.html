@@ -23,5 +23,33 @@
 {{ $cssSassOptions := dict "transpiler" "dartsass" "vars" $fontVars }}
 {{ $style := resources.Get "sass/main.scss" | css.Sass $cssSassOptions | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
+
+{{/* Per-page-kind stylesheet (Task 8b split) — `main.scss` above is the
+  SHARED bundle (abstracts+themes+base+layout+components) every page pays
+  for; page-scoped rules (`sass/pages/*`) instead live behind one small
+  `sass/page-styles/<kind>.scss` entrypoint per page kind, picked here by
+  page kind/section/type so each page only ships the CSS it uses and the
+  shared bundle stops growing with every new page task. Pages that match no
+  kind below (e.g. contact/careers/news placeholders) get no second
+  stylesheet at all. */}}
+{{ $pageStyleKind := "" }}
+{{ if eq .Kind "home" }}
+  {{ $pageStyleKind = "home" }}
+{{ else if eq .Section "services" }}
+  {{ $pageStyleKind = "services" }}
+{{ else if eq .Type "styleguide" }}
+  {{ $pageStyleKind = "styleguide" }}
+{{ else if .File }}
+  {{ if in (slice "about" "faq" "pricing") .File.TranslationBaseName }}
+    {{ $pageStyleKind = .File.TranslationBaseName }}
+  {{ end }}
+{{ end }}
+{{ with $pageStyleKind }}
+  {{ with resources.Get (printf "sass/page-styles/%s.scss" .) }}
+    {{ $pageStyle := . | css.Sass (dict "transpiler" "dartsass") | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
+    <link rel="stylesheet" href="{{ $pageStyle.RelPermalink }}" integrity="{{ $pageStyle.Data.Integrity }}" />
+  {{ end }}
+{{ end }}
+
 <link rel="preload" as="font" type="font/woff2" href="{{ $fraunces.RelPermalink }}" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="{{ $karla.RelPermalink }}" crossorigin />
