@@ -25,7 +25,7 @@ Oui — les contrats de TMA (maintien en conditions opérationnelles) couvrent l
 
 <h2 id="styleguide-cta-band">Bandeau d'appel à l'action</h2>
 
-{{< cta title="Prêt à moderniser votre stack ?" body="Échangez avec notre équipe d'ingénierie sur votre prochaine mise en production." href="/contact/" label="Demander un devis" >}}
+{{< cta title="Prêt à moderniser votre stack ?" body="Échangez avec notre équipe d'ingénierie sur votre prochaine mise en production." href="/fr-fr/contact/" label="Demander un devis" >}}
 
 </section>
 

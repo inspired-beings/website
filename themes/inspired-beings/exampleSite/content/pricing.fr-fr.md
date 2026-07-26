@@ -21,7 +21,7 @@ plans:
       "Atelier d'onboarding": true
       "Intégrations sur mesure": false
     cta:
-      href: "/contact/"
+      href: "/fr-fr/contact/"
       label: "Commencer"
   - name: "Standard"
     highlighted: true
@@ -34,7 +34,7 @@ plans:
       "Atelier d'onboarding": true
       "Intégrations sur mesure": "Partiel"
     cta:
-      href: "/contact/"
+      href: "/fr-fr/contact/"
       label: "Commencer"
   - name: "Enterprise"
     audience: "Systèmes critiques, couverture garantie."
@@ -46,7 +46,7 @@ plans:
       "Atelier d'onboarding": true
       "Intégrations sur mesure": true
     cta:
-      href: "/contact/"
+      href: "/fr-fr/contact/"
       label: "Nous contacter"
 notes: "Prix hors taxes, engagement de trois mois minimum. Besoins spécifiques sur devis."
 ---
