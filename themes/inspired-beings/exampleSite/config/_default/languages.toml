@@ -6,4 +6,9 @@
 ["fr-fr"]
   languageCode = "fr-FR"
   languageName = "Français"
+  # Per-language override of the top-level `title` (hugo.toml) — the brand
+  # name itself never translates (same as the live site's own FR config,
+  # which reuses the single global "Inspired Beings" as-is), only the
+  # descriptive suffix does.
+  title = "Inspired Beings — Site d'exemple du thème"
   weight = 2
