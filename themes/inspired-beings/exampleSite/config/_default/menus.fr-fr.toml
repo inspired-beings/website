@@ -16,9 +16,9 @@
   weight = 20
 
 [[menus.main]]
-  identifier = "services-web-app-development"
+  identifier = "services-web-development"
   name = "Développement web & mobile"
-  url = "/fr-fr/services/web-app-development/"
+  url = "/fr-fr/services/web-development/"
   parent = "services"
   weight = 10
 
@@ -44,9 +44,9 @@
   weight = 40
 
 [[menus.main]]
-  identifier = "services-consulting"
-  name = "Conseil"
-  url = "/fr-fr/services/consulting/"
+  identifier = "services-technical-consulting"
+  name = "Conseil technique"
+  url = "/fr-fr/services/technical-consulting/"
   parent = "services"
   weight = 50
 
@@ -106,9 +106,9 @@
   weight = 40
 
 [[menus.footerservices]]
-  identifier = "footer-services-web-app-development"
+  identifier = "footer-services-web-development"
   name = "Développement web & mobile"
-  url = "/fr-fr/services/web-app-development/"
+  url = "/fr-fr/services/web-development/"
   weight = 10
 
 [[menus.footerservices]]
@@ -130,9 +130,9 @@
   weight = 40
 
 [[menus.footerservices]]
-  identifier = "footer-services-consulting"
-  name = "Conseil"
-  url = "/fr-fr/services/consulting/"
+  identifier = "footer-services-technical-consulting"
+  name = "Conseil technique"
+  url = "/fr-fr/services/technical-consulting/"
   weight = 50
 
 [[menus.footerservices]]

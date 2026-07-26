@@ -1,0 +1,43 @@
+---
+title: "Technical Consulting"
+weight: 50
+icon: "🧭"
+tagline: "A second, senior opinion before the big call."
+summary: "Architecture reviews and fractional CTO support for teams making a decision they'll live with for years."
+audience:
+  - "Founders about to make an architecture or vendor decision with long-term lock-in."
+  - "Engineering teams stuck between two technical approaches with no clear tie-breaker."
+  - "Companies without a CTO who need senior technical judgment on a part-time basis."
+  - "Boards or investors who want an independent technical review before funding a build."
+coverage:
+  - title: "Architecture review"
+    body: "An independent read on your proposed or existing architecture, stress-tested against your actual growth plans."
+  - title: "Build vs. buy analysis"
+    body: "A clear-eyed comparison of building in-house against integrating an existing platform, with total cost of ownership spelled out."
+  - title: "Fractional CTO support"
+    body: "Ongoing technical leadership — hiring input, roadmap sanity checks, vendor evaluation — without a full-time executive hire."
+  - title: "Technical due diligence"
+    body: "Independent review of a target company's codebase and infrastructure ahead of an acquisition or investment."
+  - title: "Team & process review"
+    body: "An honest look at how your engineering team actually ships, with recommendations sized to your team, not a generic playbook."
+stats:
+  - value: "50"
+    unit: "+"
+    label: "Architecture reviews delivered"
+  - value: "12"
+    unit: "M€"
+    label: "Investment decisions informed"
+  - value: "20"
+    unit: "+"
+    label: "Due-diligence engagements"
+  - value: "15"
+    unit: "yrs"
+    label: "Average consultant experience"
+faq:
+  - q: "Is this a one-off engagement or an ongoing retainer?"
+    a: "Both models exist — a single architecture review, or a fractional CTO retainer with a fixed number of hours per month."
+  - q: "Do you get involved in hiring decisions?"
+    a: "When asked — reviewing candidates' technical assessments or sitting in on senior engineering interviews is a common part of the fractional CTO role."
+  - q: "Will you recommend your own development team for the resulting work?"
+    a: "Only if it's genuinely the best fit — our recommendations are scoped to give you an honest option, including staying in-house or hiring elsewhere."
+---

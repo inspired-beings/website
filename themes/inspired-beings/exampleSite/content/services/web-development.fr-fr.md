@@ -1,0 +1,43 @@
+---
+title: "Développement web & mobile"
+weight: 10
+icon: "🧩"
+tagline: "Des produits full-stack conçus pour durer, pas juste pour démarrer."
+summary: "Nous concevons, construisons et livrons des produits web et mobiles de bout en bout, du premier choix d'architecture à l'incident de production trois ans plus tard."
+audience:
+  - "Fondateurs qui lancent un premier produit et ont besoin d'ingénierie senior dès le premier commit."
+  - "Équipes produit qui remplacent un MVP fragile par une base construite pour grandir."
+  - "Entreprises dont l'équipe interne a besoin d'un renfort senior pour une mise en production."
+  - "Équipes qui fusionnent ou migrent une stack historique vers des fondations modernes."
+coverage:
+  - title: "Cadrage produit & architecture"
+    body: "Nous cartographions le domaine, les contraintes et les arbitrages avant la moindre ligne de code, pour que la stack livrée soit celle dont vous avez vraiment besoin."
+  - title: "Ingénierie frontend"
+    body: "Des interfaces accessibles et performantes dans des frameworks modernes, testées sur de vrais appareils et de vraies connexions — pas seulement un ordinateur au bureau."
+  - title: "Conception backend & API"
+    body: "Des services Node.js et TypeScript pensés pour la charge que vous aurez dans un an, pas seulement pour la démo de la semaine prochaine."
+  - title: "Livraison mobile"
+    body: "Des applications natives pour iOS et Android à partir d'une base de code unique, connectées à votre backend existant plutôt qu'à un système parallèle."
+  - title: "Mise en production & transfert"
+    body: "Documenté, testé et remis à votre équipe avec un runbook — pas une boîte noire que nous seuls comprenons."
+stats:
+  - value: "140"
+    unit: "+"
+    label: "Produits mis en production"
+  - value: "98"
+    unit: "%"
+    label: "Projets livrés dans le périmètre prévu"
+  - value: "30"
+    unit: "j"
+    label: "Délai médian avant première livraison"
+  - value: "9"
+    unit: "ans"
+    label: "Ancienneté client moyenne"
+faq:
+  - q: "Dans quels langages et frameworks travaillez-vous ?"
+    a: "Node.js et TypeScript pour le backend par défaut, avec React, Vue ou des frameworks mobiles natifs choisis selon le projet — nous choisissons l'outil adapté plutôt qu'un framework maison."
+  - q: "Travaillez-vous sur une base de code existante, ou uniquement sur du neuf ?"
+    a: "Les deux — la plupart des missions démarrent sur une base que nous n'avons pas écrite. Nous l'auditons d'abord, puis nous construisons sur ce qui est solide et remplaçons le reste."
+  - q: "Qui possède le code une fois le projet livré ?"
+    a: "Vous, entièrement — code source, infrastructure et documentation sont transférés à votre équipe à la remise, sans dépendance vis-à-vis de nous."
+---

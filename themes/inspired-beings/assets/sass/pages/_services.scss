@@ -1,0 +1,213 @@
+// Services index + single (Task 7). Page-scoped blocks only — the single
+// page's stats band, FAQ accordions and CTA band all reuse the existing
+// `stats-band`/`accordion`/`cta-band` components verbatim (see
+// `layouts/services/single.html`'s header comment); this file adds the two
+// new page blocks (`services-index`, `service-*`) and their layout/spacing.
+@use "../abstracts";
+
+// --- Services index --------------------------------------------------
+
+.services-index__intro {
+  padding-block: var(--sp-2xl) var(--sp-xl);
+  max-width: 44rem;
+}
+
+.services-index__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.services-index__list {
+  padding-block-end: var(--sp-2xl);
+}
+
+.services-index__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  padding-block: var(--sp-xl);
+  border-top: 1px solid var(--color-border-subtle);
+
+  @include abstracts.mq-up("md") {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--sp-2xl);
+  }
+}
+
+.services-index__row--reverse {
+  @include abstracts.mq-up("md") {
+    flex-direction: row-reverse;
+  }
+}
+
+.services-index__title {
+  flex: 0 0 auto;
+
+  @include abstracts.mq-up("md") {
+    flex-basis: 28%;
+  }
+}
+
+// Standalone heading-link (not running text): underline regains on
+// hover/focus, same idiom as `card__link`/`top-bar__link`.
+.services-index__title-link {
+  text-decoration: none;
+}
+
+.services-index__title-link:hover,
+.services-index__title-link:focus-visible {
+  text-decoration: underline;
+}
+
+.services-index__detail {
+  flex: 1 1 auto;
+  max-width: 36rem;
+}
+
+.services-index__icon {
+  display: block;
+  font-size: var(--fs-2xl);
+  margin-block-end: var(--sp-2xs);
+}
+
+.services-index__tagline {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.services-index__summary {
+  margin-block-start: var(--sp-xs);
+  color: var(--color-text-muted);
+}
+
+.services-index__link {
+  display: inline-block;
+  margin-block-start: var(--sp-sm);
+  text-decoration: none;
+}
+
+.services-index__link:hover,
+.services-index__link:focus-visible {
+  text-decoration: underline;
+}
+
+// --- Service single ---------------------------------------------------
+
+.service-hero {
+  padding-block: var(--sp-2xl);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.service-hero__icon {
+  display: block;
+  font-size: var(--fs-4xl);
+  margin-block-end: var(--sp-sm);
+}
+
+.service-hero__title {
+  margin-block-end: var(--sp-sm);
+}
+
+.service-hero__tagline {
+  max-width: 40rem;
+  margin-inline: auto;
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.service-audience,
+.service-coverage,
+.service-stats,
+.service-faq {
+  padding-block: var(--sp-2xl);
+}
+
+.service-stats {
+  background-color: var(--color-surface-alt);
+}
+
+.service-audience__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-md);
+  margin-block-start: var(--sp-lg);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service-audience__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-sm);
+}
+
+// Pure CSS shape, not a Unicode glyph — same reasoning as
+// `pricing-table__mark--yes` (axe's color-contrast rule skips dingbat-range
+// characters instead of computing a real ratio). Purely decorative here
+// (the list item's own text conveys the meaning), so `aria-hidden` only —
+// no `role="img"` / accessible name needed.
+.service-audience__mark {
+  flex-shrink: 0;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin-block-start: 0.2em;
+}
+
+.service-audience__mark::before {
+  content: "";
+  position: absolute;
+  top: 0.05em;
+  left: 0.2em;
+  width: 0.4em;
+  height: 0.7em;
+  border-bottom: 2px solid var(--color-accent-default);
+  border-right: 2px solid var(--color-accent-default);
+  transform: rotate(45deg);
+}
+
+.service-coverage__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-xl);
+  margin-block-start: var(--sp-lg);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.service-coverage__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+}
+
+.service-coverage__number {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--color-accent-default);
+}
+
+.service-coverage__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.service-coverage__body {
+  color: var(--color-text-muted);
+}
+
+.service-stats > .container > .stats-band {
+  margin-block-start: var(--sp-lg);
+}
+
+.service-faq__list {
+  margin-block-start: var(--sp-lg);
+}

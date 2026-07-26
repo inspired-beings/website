@@ -365,3 +365,27 @@ other = "Les dernières actualités"
 
 [homeNewsCtaLabel]
 other = "Voir toutes les actualités"
+
+[servicesIndexLinkLabel]
+other = "En savoir plus"
+
+[serviceAudienceHeading]
+other = "Pour qui"
+
+[serviceCoverageHeading]
+other = "Ce que couvre cette offre"
+
+[serviceStatsHeading]
+other = "L'impact, en chiffres"
+
+[serviceFaqHeading]
+other = "Questions fréquentes"
+
+[serviceCtaHeading]
+other = "Prêt·e à parler de votre projet ?"
+
+[serviceCtaBody]
+other = "Dites-nous où vous bloquez — nous répondrons sous un jour ouvré, avec des étapes concrètes, pas un argumentaire commercial."
+
+[serviceCtaLabel]
+other = "Démarrer la conversation"

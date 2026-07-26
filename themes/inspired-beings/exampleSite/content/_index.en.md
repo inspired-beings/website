@@ -33,7 +33,7 @@ services_extract:
     title: "Web & App Development"
     body: "Full-stack builds across Node.js, TypeScript and modern frontend/mobile frameworks, first commit to production."
     link:
-      href: "/services/web-app-development/"
+      href: "/services/web-development/"
       label: "Learn more"
   - icon: "☁️"
     title: "Cloud & DevOps"
@@ -54,10 +54,10 @@ services_extract:
       href: "/services/accessibility-audits/"
       label: "Learn more"
   - icon: "🧭"
-    title: "Consulting"
+    title: "Technical Consulting"
     body: "Architecture reviews and fractional CTO support for teams making a big call."
     link:
-      href: "/services/consulting/"
+      href: "/services/technical-consulting/"
       label: "Learn more"
   - icon: "🔧"
     title: "Maintenance & TMA"

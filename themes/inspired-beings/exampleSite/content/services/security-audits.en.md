@@ -1,0 +1,43 @@
+---
+title: "Security Audits"
+weight: 30
+icon: "🛡️"
+tagline: "Know your real exposure, not a generic checklist."
+summary: "Independent review of your code, infrastructure and dependency chain against current threat models, with fixes prioritised by actual risk."
+audience:
+  - "Teams handling customer data who've never had an independent security review."
+  - "Companies preparing for a client's security questionnaire or SOC 2 process."
+  - "Engineering leads inheriting a codebase with an unknown dependency footprint."
+  - "Startups about to raise a round where investors will ask about security posture."
+coverage:
+  - title: "Threat modelling"
+    body: "We map what an attacker would actually target in your system, not a generic industry checklist."
+  - title: "Code & dependency review"
+    body: "Static analysis and manual review of your codebase and its dependency chain, including transitive packages nobody reads the changelog for."
+  - title: "Infrastructure & access review"
+    body: "Cloud configuration, secrets management and access control audited against least-privilege principles."
+  - title: "Penetration testing"
+    body: "Hands-on testing of your live application, scoped to what matters to your business, not a boilerplate scan."
+  - title: "Prioritised remediation"
+    body: "A ranked report with concrete fixes and effort estimates — something your team can act on the same sprint."
+stats:
+  - value: "210"
+    unit: "+"
+    label: "Vulnerabilities remediated"
+  - value: "4"
+    unit: "h"
+    label: "Median critical-fix turnaround"
+  - value: "100"
+    unit: "%"
+    label: "Findings shipped with a concrete fix"
+  - value: "45"
+    unit: "+"
+    label: "Audits completed"
+faq:
+  - q: "Do you perform automated scans or manual review?"
+    a: "Both — automated tooling catches the obvious, but every finding is manually verified and every audit includes hands-on manual review."
+  - q: "Will we get a report we can share with clients or investors?"
+    a: "Yes — a redacted executive summary alongside the full technical report, built for exactly that audience."
+  - q: "What happens after the audit?"
+    a: "We stay available to help prioritise and verify fixes, and can re-test specific findings once they're patched."
+---

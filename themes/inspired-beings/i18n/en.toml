@@ -365,3 +365,27 @@ other = "Latest from the team"
 
 [homeNewsCtaLabel]
 other = "View all news"
+
+[servicesIndexLinkLabel]
+other = "Learn more"
+
+[serviceAudienceHeading]
+other = "Who this is for"
+
+[serviceCoverageHeading]
+other = "What's covered"
+
+[serviceStatsHeading]
+other = "The impact, in numbers"
+
+[serviceFaqHeading]
+other = "Frequently asked questions"
+
+[serviceCtaHeading]
+other = "Ready to talk about your project?"
+
+[serviceCtaBody]
+other = "Tell us where you're stuck — we'll reply within one business day with next steps, not a sales script."
+
+[serviceCtaLabel]
+other = "Start the conversation"

@@ -1,0 +1,43 @@
+---
+title: "Audits de sécurité"
+weight: 30
+icon: "🛡️"
+tagline: "Connaître votre exposition réelle, pas une checklist générique."
+summary: "Revue indépendante de votre code, de votre infrastructure et de votre chaîne de dépendances face aux menaces actuelles, avec des correctifs priorisés par risque réel."
+audience:
+  - "Équipes traitant des données clients qui n'ont jamais eu de revue de sécurité indépendante."
+  - "Entreprises qui préparent un questionnaire de sécurité client ou une démarche SOC 2."
+  - "Responsables techniques héritant d'une base de code à la chaîne de dépendances inconnue."
+  - "Startups sur le point de lever des fonds, où les investisseurs interrogeront la posture de sécurité."
+coverage:
+  - title: "Modélisation des menaces"
+    body: "Nous identifions ce qu'un attaquant viserait réellement dans votre système, pas une checklist sectorielle générique."
+  - title: "Revue de code & de dépendances"
+    body: "Analyse statique et revue manuelle de votre code et de sa chaîne de dépendances, y compris les paquets transitifs dont personne ne lit le changelog."
+  - title: "Revue infrastructure & accès"
+    body: "Configuration cloud, gestion des secrets et contrôle d'accès audités selon le principe du moindre privilège."
+  - title: "Tests d'intrusion"
+    body: "Tests manuels sur votre application en production, cadrés sur ce qui compte pour votre activité, pas un scan générique."
+  - title: "Remédiation priorisée"
+    body: "Un rapport classé par risque avec des correctifs concrets et une estimation d'effort — de quoi agir dès le sprint suivant."
+stats:
+  - value: "210"
+    unit: "+"
+    label: "Vulnérabilités corrigées"
+  - value: "4"
+    unit: "h"
+    label: "Délai médian de correction critique"
+  - value: "100"
+    unit: "%"
+    label: "Constats livrés avec un correctif concret"
+  - value: "45"
+    unit: "+"
+    label: "Audits réalisés"
+faq:
+  - q: "Faites-vous des scans automatisés ou une revue manuelle ?"
+    a: "Les deux — l'outillage automatisé détecte l'évident, mais chaque constat est vérifié manuellement et chaque audit inclut une revue manuelle approfondie."
+  - q: "Obtiendrons-nous un rapport partageable avec nos clients ou investisseurs ?"
+    a: "Oui — une synthèse exécutive expurgée en plus du rapport technique complet, pensée exactement pour ce public."
+  - q: "Que se passe-t-il après l'audit ?"
+    a: "Nous restons disponibles pour aider à prioriser et vérifier les correctifs, et pouvons retester des constats précis une fois corrigés."
+---

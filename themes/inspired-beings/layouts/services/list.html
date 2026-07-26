@@ -1,0 +1,37 @@
+{{/* Services index (Task 7) — alternating rows per the visual reference:
+  title left / icon+tagline+summary right, flipped on every other row.
+  Content model: `_index.{en,fr-fr}.md` carries only `title` + `lead`; each
+  row's content is the linked service page's own front matter (`icon`,
+  `tagline`, `summary` — see `archetypes/service.md`), sorted by `weight`.
+  New page block: `services-index` (`services-index__intro|lead|list|row
+  |row--reverse|title|title-link|detail|icon|tagline|summary|link`). */}}
+{{ define "main" }}
+  <article class="container services-index">
+    <header class="services-index__intro">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}
+        <p class="services-index__lead">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="services-index__list">
+      {{ range $i, $page := .RegularPages.ByWeight }}
+        <div class="services-index__row{{ if eq (mod $i 2) 1 }} services-index__row--reverse{{ end }}">
+          <h2 class="services-index__title">
+            <a class="services-index__title-link" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+          </h2>
+          <div class="services-index__detail">
+            {{ with $page.Params.icon }}
+              <span class="services-index__icon" aria-hidden="true">{{ . }}</span>
+            {{ end }}
+            <p class="services-index__tagline">{{ $page.Params.tagline }}</p>
+            <p class="services-index__summary">{{ $page.Params.summary }}</p>
+            <a class="services-index__link" href="{{ $page.RelPermalink }}">
+              {{ i18n "servicesIndexLinkLabel" }}
+            </a>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

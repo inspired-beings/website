@@ -33,7 +33,7 @@ services_extract:
     title: "Développement web & mobile"
     body: "Des réalisations full-stack en Node.js, TypeScript et frameworks modernes, du premier commit à la production."
     link:
-      href: "/fr-fr/services/web-app-development/"
+      href: "/fr-fr/services/web-development/"
       label: "En savoir plus"
   - icon: "☁️"
     title: "Cloud & DevOps"
@@ -54,10 +54,10 @@ services_extract:
       href: "/fr-fr/services/accessibility-audits/"
       label: "En savoir plus"
   - icon: "🧭"
-    title: "Conseil"
+    title: "Conseil technique"
     body: "Revues d'architecture et accompagnement CTO à temps partagé pour les décisions qui comptent."
     link:
-      href: "/fr-fr/services/consulting/"
+      href: "/fr-fr/services/technical-consulting/"
       label: "En savoir plus"
   - icon: "🔧"
     title: "Maintenance & TMA"
