@@ -2,11 +2,18 @@
   flagship layout. Content model: every word lives in front matter
   (`exampleSite/content/_index.{en,fr-fr}.md`), this template only renders
   structure — hero{title_lines[],cta{label,url},image{src,alt}} → intro
-  {body,cta} → problems[]{title,body} (6) → services_extract[]{icon,title,
-  body,link{href,label}} (6, reuses `card.html`) → stats[]{value,unit,label}
-  (reuses `stats-band.html`) → pricing_extract{caption,plans,features}
-  (reuses `pricing-table.html`, same shape as its own dict param) →
-  news_count (int; latest N posts from a real `news` section — absent
+  {body,cta} → problems[]{title,body} (5 — Task 13 trimmed from 6, budget-
+  driven, same rationale as the pricing-table feature cut below) →
+  services_extract[]{icon,title,body,link{href,label}} (4 — Task 13
+  trimmed from 6 for the same reason; the dedicated `/services/` page still
+  lists all 6, reuses `card.html`) → stats[]{value,unit,label}
+  (reuses `stats-band.html`) → pricing_extract{caption,plans[]{name,price,
+  period,cta}} (each plan rendered via `card.html`, Task 13 — was the full
+  `pricing-table.html` comparison grid until the home-page copy over-budget
+  fix dropped it in favour of a plans-only summary; the dedicated
+  `/pricing/` page still supplies its own `features` (and `highlighted`)
+  and renders the full table) → news_count (int; latest N posts from a
+  real `news` section — absent
   until Task 9, so this section renders nothing until then, not an empty
   shell) → cta_band{heading,body,cta{label,url}} (reuses `cta-band.html`).
   Section headings + "view all" link labels are template-owned i18n
@@ -82,10 +89,25 @@
     </div>
   </section>
 
+  {{/* Task 13 (budget): home shows a lightweight plan summary — cards, not
+    the full `pricing-table.html` comparison grid the dedicated /pricing/
+    page uses — same names/prices/CTAs, no feature-by-feature rows. Budget-
+    driven simplification (same rationale as Task 8's table feature trim),
+    not a content cut: every plan and price still shown, "View full
+    pricing" still links through to the complete comparison. */}}
   <section class="home-pricing" aria-labelledby="home-pricing-heading">
     <div class="container">
       <h2 id="home-pricing-heading" data-fade>{{ i18n "homePricingHeading" }}</h2>
-      {{ partial "pricing-table.html" .Params.pricing_extract }}
+      <p class="home-pricing__caption">{{ .Params.pricing_extract.caption }}</p>
+      <div class="home-pricing__grid">
+        {{ range .Params.pricing_extract.plans }}
+          {{ partial "card.html" (dict
+            "title" .name
+            "body" (printf "%s%s" .price (.period | default ""))
+            "link" .cta
+          ) }}
+        {{ end }}
+      </div>
       <a class="button button--outlined button--medium" href="{{ "pricing/" | relLangURL }}">
         {{ i18n "homePricingCtaLabel" }}
       </a>

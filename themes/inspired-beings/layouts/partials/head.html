@@ -1,6 +1,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>{{ .Title }} · {{ .Site.Title }}</title>
+{{/* Deferred since Task 0: home's own `.Title` duplicates `.Site.Title`
+  ("Inspired Beings · Inspired Beings — …") — skip the page-title half on
+  the home page only. */}}
+<title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
 
 {{/* Two early, synchronous flags stamped on <html> before any CSS paints —
   deliberately not bundled via js.Build, both must run inline before the

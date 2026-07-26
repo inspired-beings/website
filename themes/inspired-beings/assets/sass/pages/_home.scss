@@ -70,6 +70,7 @@
 
 .home-problems__grid,
 .home-services__grid,
+.home-pricing__grid,
 .home-news__grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -98,8 +99,9 @@
   margin-block-start: var(--sp-lg);
 }
 
-.home-pricing > .container > .pricing-table {
-  margin-block-start: var(--sp-lg);
+.home-pricing__caption {
+  color: var(--color-text-muted);
+  margin-block-start: var(--sp-xs);
 }
 
 .home-services > .container > .button,
