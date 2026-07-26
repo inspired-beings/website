@@ -1,0 +1,83 @@
+{{/* Pricing (Task 8) — steps flow (front matter `steps[]`) → 3-plan
+  comparison table → notes → CTA band. Content model (brief contract):
+  `steps[]{title,body}`, `plans[]{name,audience,price,features{key:bool|
+  "Partial"}}`, `notes`.
+
+  The reused `pricing-table.html` partial (Task 5) expects its own shape —
+  a `plans` list {name,price,highlighted,cta} plus a shared `features` list
+  {name,values[]}, one entry per plan in `plans` order — not a per-plan
+  feature map. This template transforms the brief's per-plan `features` map
+  into that shape by walking the *first* plan's feature keys: Go
+  html/template sorts map-key ranges alphabetically, so as long as every
+  plan's front matter uses the exact same feature-name keys, each plan
+  yields the identical column order on every render.
+
+  `audience` isn't part of `pricing-table.html`'s own dict contract (Task 5
+  report), so it's rendered in a page-scoped intro strip just above the
+  table instead of being smuggled into the shared component — flagged in
+  the task report. */}}
+{{ define "main" }}
+  <article class="pricing">
+    <section class="pricing-hero">
+      <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}
+          <p class="pricing-hero__lead">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="pricing-steps" aria-labelledby="pricing-steps-heading">
+      <div class="container">
+        <h2 id="pricing-steps-heading">{{ i18n "pricingStepsHeading" }}</h2>
+        {{ partial "steps-flow.html" (dict "steps" .Params.steps) }}
+      </div>
+    </section>
+
+    {{ $plans := .Params.plans }}
+    <section class="pricing-plans" aria-labelledby="pricing-plans-heading">
+      <div class="container">
+        <h2 id="pricing-plans-heading">{{ i18n "pricingPlansHeading" }}</h2>
+
+        <div class="pricing-plans__intro">
+          {{ range $plans }}
+            <p class="pricing-plans__intro-item"><strong>{{ .name }}</strong> — {{ .audience }}</p>
+          {{ end }}
+        </div>
+
+        {{ $planList := slice }}
+        {{ range $plans }}
+          {{ $planList = $planList | append (dict "name" .name "price" .price "highlighted" .highlighted "cta" .cta) }}
+        {{ end }}
+
+        {{ $features := slice }}
+        {{ $firstPlan := index $plans 0 }}
+        {{ range $key, $val := $firstPlan.features }}
+          {{ $values := slice }}
+          {{ range $plans }}
+            {{ $values = $values | append (index .features $key) }}
+          {{ end }}
+          {{ $features = $features | append (dict "name" $key "values" $values) }}
+        {{ end }}
+
+        {{ partial "pricing-table.html" (dict
+          "caption" (i18n "pricingComparisonCaption")
+          "plans" $planList
+          "features" $features
+        ) }}
+
+        {{ with .Params.notes }}
+          <p class="pricing-plans__notes">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="pricing-cta">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "pricingCtaHeading")
+        "body" (i18n "pricingCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "pricingCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}

@@ -1,0 +1,78 @@
+// About (Task 8). Page-scoped blocks only — facts table, timeline and both
+// CTA bands reuse the existing `facts-table`/`timeline`/`cta-band`
+// components verbatim; this file adds the `about-*` section wrappers plus
+// the founder-message quote block, which has no shared component (a single
+// page uses it once).
+@use "../abstracts";
+
+.about-hero {
+  padding-block: var(--sp-2xl);
+  max-width: 44rem;
+}
+
+.about-hero__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.about-philosophy,
+.about-founder,
+.about-facts,
+.about-history {
+  padding-block: var(--sp-2xl);
+}
+
+.about-philosophy {
+  background-color: var(--color-surface-alt);
+}
+
+.about-philosophy__body {
+  margin-block-start: var(--sp-lg);
+  max-width: 48rem;
+  font-size: var(--fs-lg);
+}
+
+.about-founder__quote {
+  margin-block-start: var(--sp-lg);
+  max-width: 48rem;
+  padding-inline-start: var(--sp-lg);
+  border-inline-start: 3px solid var(--color-accent-default);
+}
+
+.about-founder__body {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+}
+
+.about-founder__attribution {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2xs) var(--sp-xs);
+  margin-block-start: var(--sp-md);
+  font-style: normal;
+}
+
+.about-founder__name {
+  font-weight: 500;
+  font-style: normal;
+}
+
+.about-founder__role {
+  color: var(--color-text-muted);
+}
+
+.about-facts > .container > .facts-table {
+  margin-block-start: var(--sp-lg);
+}
+
+.about-history > .container > .timeline {
+  margin-block-start: var(--sp-lg);
+}
+
+.about-join {
+  margin-block-start: var(--sp-2xl);
+}
+
+.about-cta {
+  margin-block: var(--sp-lg) var(--sp-2xl);
+}

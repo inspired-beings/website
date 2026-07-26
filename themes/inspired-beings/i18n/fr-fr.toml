@@ -389,3 +389,60 @@ other = "Dites-nous où vous bloquez — nous répondrons sous un jour ouvré, a
 
 [serviceCtaLabel]
 other = "Démarrer la conversation"
+
+[pricingStepsHeading]
+other = "Comment se déroule une mission"
+
+[pricingPlansHeading]
+other = "Offres & tarifs"
+
+[pricingComparisonCaption]
+other = "Comparer les trois offres"
+
+[pricingCtaHeading]
+other = "Vous hésitez entre deux offres ?"
+
+[pricingCtaBody]
+other = "Dites-nous ce que vous construisez — nous recommandons une offre."
+
+[pricingCtaLabel]
+other = "Nous contacter"
+
+[aboutPhilosophyHeading]
+other = "Ce en quoi nous croyons"
+
+[aboutFounderHeading]
+other = "Le mot de notre fondateur"
+
+[aboutFactsHeading]
+other = "En bref"
+
+[aboutHistoryHeading]
+other = "Notre histoire jusqu'ici"
+
+[aboutJoinHeading]
+other = "Nous recherchons toujours des personnes seniors qui partagent ces convictions"
+
+[aboutJoinBody]
+other = "Si l'accessibilité, une ingénierie durable et la sécurité ne sont pas de simples cases à cocher pour vous non plus, nous aimerions vous rencontrer."
+
+[aboutJoinLabel]
+other = "Voir les postes ouverts"
+
+[aboutCtaHeading]
+other = "Prêt·e à travailler avec nous ?"
+
+[aboutCtaBody]
+other = "Parlez-nous de votre produit — nous répondrons sous un jour ouvré, avec des étapes concrètes, pas un argumentaire commercial."
+
+[aboutCtaLabel]
+other = "Démarrer la conversation"
+
+[faqCtaHeading]
+other = "Une question sans réponse ici ?"
+
+[faqCtaBody]
+other = "Dites-nous ce qui vous bloque — nous répondrons sous un jour ouvré."
+
+[faqCtaLabel]
+other = "Nous poser la question"

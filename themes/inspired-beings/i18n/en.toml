@@ -389,3 +389,60 @@ other = "Tell us where you're stuck — we'll reply within one business day with
 
 [serviceCtaLabel]
 other = "Start the conversation"
+
+[pricingStepsHeading]
+other = "How an engagement works"
+
+[pricingPlansHeading]
+other = "Plans & pricing"
+
+[pricingComparisonCaption]
+other = "Compare the three plans"
+
+[pricingCtaHeading]
+other = "Not sure which plan fits?"
+
+[pricingCtaBody]
+other = "Tell us what you're building — we'll recommend a plan."
+
+[pricingCtaLabel]
+other = "Talk to us"
+
+[aboutPhilosophyHeading]
+other = "What we believe"
+
+[aboutFounderHeading]
+other = "From our founder"
+
+[aboutFactsHeading]
+other = "At a glance"
+
+[aboutHistoryHeading]
+other = "Our story so far"
+
+[aboutJoinHeading]
+other = "We're always looking for senior people who care"
+
+[aboutJoinBody]
+other = "If accessibility, sustainable engineering and security aren't check-boxes to you either, we'd like to meet you."
+
+[aboutJoinLabel]
+other = "View open roles"
+
+[aboutCtaHeading]
+other = "Ready to work with us?"
+
+[aboutCtaBody]
+other = "Tell us about your product — we'll reply within one business day with next steps, not a sales script."
+
+[aboutCtaLabel]
+other = "Start the conversation"
+
+[faqCtaHeading]
+other = "Still have a question?"
+
+[faqCtaBody]
+other = "Tell us what you're trying to figure out — we'll reply within one business day."
+
+[faqCtaLabel]
+other = "Ask us directly"

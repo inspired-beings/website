@@ -1,0 +1,52 @@
+// Pricing (Task 8). Page-scoped blocks only — steps flow, pricing table and
+// CTA band all reuse the existing `steps`/`pricing-table`/`cta-band`
+// components verbatim (see `layouts/pricing/single.html`'s header comment);
+// this file adds the `pricing-*` section wrappers and the plan-audience
+// intro strip that sits above the table (not part of `pricing-table`'s own
+// contract — Task 5 report).
+@use "../abstracts";
+
+.pricing-hero {
+  padding-block: var(--sp-2xl);
+  max-width: 44rem;
+}
+
+.pricing-hero__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.pricing-steps,
+.pricing-plans {
+  padding-block: var(--sp-2xl);
+}
+
+.pricing-steps {
+  background-color: var(--color-surface-alt);
+}
+
+.pricing-steps > .container > .steps {
+  margin-block-start: var(--sp-lg);
+}
+
+.pricing-plans__intro {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-md);
+  margin-block: var(--sp-lg) var(--sp-xl);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pricing-plans__intro-item {
+  color: var(--color-text-muted);
+}
+
+.pricing-plans__notes {
+  margin-block-start: var(--sp-lg);
+  max-width: 48rem;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}

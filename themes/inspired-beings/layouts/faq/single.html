@@ -1,0 +1,44 @@
+{{/* FAQ (Task 8) — hero → grouped accordions → CTA band. Content model
+  (brief contract): `groups[]{title,items[]{q,a}}`. Each item reuses the
+  `.accordion`/`.accordion__summary`/`.accordion__content` markup directly
+  (data-driven from front matter), the same pattern Task 7's service FAQ
+  established — not the `{{< accordion >}}` shortcode, which is for
+  Markdown-authored content. */}}
+{{ define "main" }}
+  <article class="faq">
+    <section class="faq-hero">
+      <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}
+          <p class="faq-hero__lead">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    {{ range $gi, $group := .Params.groups }}
+      <section class="faq-group" aria-labelledby="faq-group-heading-{{ $gi }}">
+        <div class="container">
+          <h2 id="faq-group-heading-{{ $gi }}">{{ $group.title }}</h2>
+          <div class="faq-group__list">
+            {{ range $group.items }}
+              <details class="accordion">
+                <summary class="accordion__summary">{{ .q }}</summary>
+                <div class="accordion__content">
+                  <p>{{ .a }}</p>
+                </div>
+              </details>
+            {{ end }}
+          </div>
+        </div>
+      </section>
+    {{ end }}
+
+    <section class="faq-cta">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "faqCtaHeading")
+        "body" (i18n "faqCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "faqCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}
