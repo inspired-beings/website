@@ -1,0 +1,42 @@
+// The real contact form (Task 10; promoted from `pages/_contact.scss` to a
+// shared component in the final fix wave once `partials/contact-form.html`
+// started rendering on TWO page kinds — contact and styleguide — so it
+// needs to ship in the SHARED bundle (`main.scss`, every page already pays
+// for it) rather than duplicating it behind two page-style entrypoints.
+// Every form field reuses the existing `form-field`/`form-fieldset`
+// component classes verbatim (Task 4 partials); this file only adds the
+// `contact-form` section wrapper, the narrow form column and the inline
+// status region. `.contact-hero`/`.contact-mailto*` stay page-scoped in
+// `pages/_contact.scss` — contact-page-only, not reused elsewhere.
+
+.contact-form {
+  padding-block-end: var(--sp-2xl);
+}
+
+.contact-form__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 34rem;
+}
+
+.contact-form__status {
+  padding: var(--sp-sm) var(--sp-md);
+  margin-block-end: var(--sp-md);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+
+  &[hidden] {
+    display: none;
+  }
+}
+
+.contact-form__status--success {
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.contact-form__status--error {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}

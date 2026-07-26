@@ -32,11 +32,14 @@
 @use "components/facts-table";
 @use "components/pagination";
 @use "components/figure";
+@use "components/contact-form";
 
 // @use "vendors"; — slot: third-party CSS overrides (empty at birth)
 // @use "components/..."; — slot: Task 9+ if any further components appear
 //   (skip-link/language-switcher/theme-toggle in Task 3; button/card/chip/
 //   accordion/form in Task 4; pricing-table/stat/cta-band/steps/timeline/
-//   facts-table/pagination/figure in Task 5)
+//   facts-table/pagination/figure in Task 5; contact-form promoted here
+//   from `pages/_contact.scss` in the final fix wave, once it started
+//   rendering on the styleguide page too)
 // `pages/*` partials are compiled per-page-kind from `page-styles/*.scss`,
 // not `@use`d here — see `page-styles/` and `partials/head.html` (Task 8b).

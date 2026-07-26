@@ -9,7 +9,15 @@
   here. Section copy for the partial-driven sections is template-authored
   (i18n), not page content, since it's fixed structural demo copy rather
   than authored prose — matching how top-bar/footer do i18n for their own
-  strings. */}}
+  strings.
+
+  The "Forms" section below demos individual field partials/states in
+  isolation; the separate "Contact form" section further down instantiates
+  the REAL, complete `partials/contact-form.html` (shared with
+  `layouts/contact/single.html`) against a relative demo endpoint — final
+  fix wave, so the full form + consent/radio-group branches stay under the
+  pa11y gate permanently, independent of exampleSite's own
+  `contactFormEndpoint` param. */}}
 {{ define "main" }}
   <article class="container styleguide">
     <h1>{{ .Title }}</h1>
@@ -115,9 +123,21 @@
       {{ partial "form/field-consent.html" (dict
         "name" "styleguide-consent"
         "label" (i18n "styleguideFormConsentLabel")
-        "linkHref" "/privacy/"
+        "linkHref" ("legal/" | relLangURL)
         "linkLabel" (i18n "styleguideFormConsentLinkLabel")
       ) }}
+    </section>
+
+    {{/* Final fix wave: a full, real `contact-form.html` instance (not a
+      standalone field, like the section above) — puts the form + status
+      region + all four field partials permanently under the pa11y gate
+      (light+dark), on both locales, without depending on exampleSite's
+      `contactFormEndpoint` param ever being set. The demo endpoint is
+      relative (never dereferenced — pa11y only loads the page, it never
+      submits the form), same security posture as the real contact page. */}}
+    <section class="styleguide__section" aria-labelledby="styleguide-contact-form">
+      <h2 id="styleguide-contact-form">{{ i18n "styleguideContactFormHeading" }}</h2>
+      {{ partial "contact-form.html" (dict "endpoint" "/api/demo-contact") }}
     </section>
 
     <section class="styleguide__section" aria-labelledby="styleguide-pricing-table">

@@ -90,6 +90,9 @@ other = "Deprecated"
 [styleguideFormsHeading]
 other = "Forms"
 
+[styleguideContactFormHeading]
+other = "Contact form"
+
 [styleguideFormNameLabel]
 other = "Full name"
 

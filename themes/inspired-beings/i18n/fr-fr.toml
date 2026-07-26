@@ -90,6 +90,9 @@ other = "Obsolète"
 [styleguideFormsHeading]
 other = "Formulaires"
 
+[styleguideContactFormHeading]
+other = "Formulaire de contact"
+
 [styleguideFormNameLabel]
 other = "Nom complet"
 

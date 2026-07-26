@@ -84,10 +84,18 @@ function showStatus(status, message, isError) {
   status.classList.toggle('contact-form__status--success', !isError)
 }
 
-export function initContactForm() {
-  const form = document.querySelector('[data-contact-form]')
-  if (!form) return
+// Hides and empties the status region — called at the start of a new
+// submit attempt so a stale success/error message from a previous attempt
+// doesn't linger on screen while the next one is still in flight or being
+// corrected.
+function resetStatus(status) {
+  if (!status) return
+  status.hidden = true
+  status.textContent = ''
+  status.classList.remove('contact-form__status--error', 'contact-form__status--success')
+}
 
+function initOneContactForm(form) {
   const status = form.querySelector('[data-contact-status]')
   const submitButton = form.querySelector('[data-contact-submit]')
 
@@ -95,10 +103,11 @@ export function initContactForm() {
   // form" algorithm's interactive constraint validation runs (that
   // algorithm is the submit button's activation behavior, which runs
   // AFTER this click listener returns — not a race). Also resets the
-  // per-attempt focus flag below.
+  // per-attempt focus flag below and the status region.
   let focusedThisAttempt = false
   submitButton?.addEventListener('click', () => {
     clearErrors(form)
+    resetStatus(status)
     focusedThisAttempt = false
   })
 
@@ -163,4 +172,13 @@ export function initContactForm() {
         submitInFlight = false
       })
   })
+}
+
+// Looped rather than a single `querySelector` — a page can render more than
+// one `[data-contact-form]` instance (the styleguide's permanent demo
+// instance is a second, independent form on its own page; a future page
+// could render two on the same page), and each needs its own closure state
+// (`focusedThisAttempt`/`submitInFlight`), not one shared across instances.
+export function initContactForm() {
+  document.querySelectorAll('[data-contact-form]').forEach(initOneContactForm)
 }
