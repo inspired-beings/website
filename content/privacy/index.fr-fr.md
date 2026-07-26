@@ -5,7 +5,7 @@ description: Comment Inspired Beings traite vos données, sur ce site web et dan
 slug: confidentialite
 ---
 
-_Dernière mise à jour : 24 juillet 2026._
+_Dernière mise à jour : 26 juillet 2026._
 
 ## Qui sommes-nous
 
@@ -39,6 +39,17 @@ agrandie en direct.
   votre appareil et ne le quittent jamais.
 - L'application ne demande **aucune permission Internet** : elle est techniquement incapable de
   transmettre la moindre donnée.
+- Aucun compte, aucun cookie, aucun identifiant, aucune collecte de données d'aucune sorte.
+
+### Fossling Piano
+
+Fossling Piano transforme votre écran en clavier de piano.
+
+- L'application ne demande **aucune permission** — pas même l'accès à Internet : elle est
+  techniquement incapable de transmettre la moindre donnée.
+- Tous les sons proviennent d'échantillons de piano intégrés à l'application et sont produits
+  sur votre appareil. Le microphone n'est jamais utilisé et rien de ce que vous jouez n'est
+  enregistré ni conservé.
 - Aucun compte, aucun cookie, aucun identifiant, aucune collecte de données d'aucune sorte.
 
 ## Vos droits

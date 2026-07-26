@@ -5,7 +5,7 @@ description: How Inspired Beings handles your data, on this website and in our m
 slug: privacy
 ---
 
-_Last updated: July 24, 2026._
+_Last updated: July 26, 2026._
 
 ## Who we are
 
@@ -35,6 +35,16 @@ Fossling Magnifier uses your device's camera to display a live magnified image o
 - The **camera permission** is used solely for that purpose. Images are processed on your
   device and never leave it.
 - The app requests **no Internet permission**: it is technically unable to transmit any data.
+- No account, no cookies, no identifiers, no data collection of any kind.
+
+### Fossling Piano
+
+Fossling Piano turns your screen into a playable piano keyboard.
+
+- The app requests **no permission whatsoever** — not even Internet access: it is technically
+  unable to transmit any data.
+- Every sound comes from piano samples bundled inside the app and is produced on your device.
+  The microphone is never used, and nothing you play is recorded or stored.
 - No account, no cookies, no identifiers, no data collection of any kind.
 
 ## Your rights
