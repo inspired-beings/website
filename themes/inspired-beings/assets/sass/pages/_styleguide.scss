@@ -1,25 +1,12 @@
-// Page-specific scaffolding for the living styleguide (`/styleguide/`,
-// Task 4 deliverable — not deferred to the Task 6-11 `pages/` wave like the
-// rest of that folder, since the page ships now). Layout glue around the
-// component blocks above (flex/grid, spacing) plus one semantic-token color
-// use (`.styleguide__caption`, a de-emphasized label) — no new typography
-// rules and no raw colors.
+// The ONE page-scoped file (side-effect budget): demo scaffolding for the
+// living styleguide, inherently tied to that page. `.styleguide__section`
+// can't become `.section` (margin-based rhythm, not padding — and the class
+// is hand-authored in the styleguide content Markdown, so it's frozen);
+// `.styleguide__caption` is a demo-only label with its own spacing. All
+// real layout inside the page uses the shared `.cluster`/`.grid` primitives.
 
 .styleguide__section {
   margin-block-end: var(--sp-2xl);
-}
-
-.styleguide__group {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: var(--sp-md);
-}
-
-.styleguide__card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--sp-lg);
 }
 
 .styleguide__caption {

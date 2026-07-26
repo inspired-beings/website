@@ -1,0 +1,10 @@
+// Ruled text item (title + body under a top rule) — grid-cell scale,
+// lighter than `.card` (no box, no icon slot).
+.feature {
+  padding-block-start: var(--sp-md);
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.feature__body {
+  color: var(--color-text-muted);
+}

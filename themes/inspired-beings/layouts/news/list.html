@@ -1,34 +1,30 @@
-{{/* News list (Task 9) — hero → category chips filter row → date/chip/
-  title item rows → pagination (`paginate = 9`) → CTA band. Standard site
-  container width throughout (spec: inspiration's narrowed news layout was
-  rejected). Content model: `_index.{en,fr-fr}.md` carries only `title` +
-  optional `lead`; each row's content is the article's own front matter
+{{/* News list — hero → category `.chip-filter` row → `.article-list` rows →
+  pagination (`pagerSize = 9`) → CTA band. Standard site container width
+  throughout (spec: inspiration's narrowed news layout was rejected).
+  Content model: `_index.{en,fr-fr}.md` carries only `title` + optional
+  `lead`; each row's content is the article's own front matter
   (`categories[]` — see `archetypes/news.md`). Section headings/CTA copy are
   template-owned i18n strings, same convention as every other list page.
-
-  New page block: `news-list` (`news-list__intro|lead|categories|items|
-  item|...`, shared with `categories/term.html` via `partials/
-  news-list-content.html`). `news-cta` is a page-scoped section wrapper
-  around the reused `cta-band` component, same pattern as `pricing-cta`/
-  `service-cta`. */}}
+  Body shared with `categories/term.html` via
+  `partials/news-list-content.html`. */}}
 {{ define "main" }}
-  <article class="news-list">
-    <section class="news-list__intro">
+  <article>
+    <section class="hero hero--intro">
       <div class="container">
         <h1>{{ .Title }}</h1>
         {{ with .Params.lead }}
-          <p class="news-list__lead">{{ . }}</p>
+          <p class="hero__lead">{{ . }}</p>
         {{ end }}
       </div>
     </section>
 
-    <section class="news-list__body">
+    <section class="section section--flush-top">
       <div class="container">
         {{ partial "news-list-content.html" (dict "paginator" .Paginator "current" nil) }}
       </div>
     </section>
 
-    <section class="news-cta">
+    <section class="section section--band">
       {{ partial "cta-band.html" (dict
         "title" (i18n "newsCtaHeading")
         "body" (i18n "newsCtaBody")

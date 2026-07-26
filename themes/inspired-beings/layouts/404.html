@@ -1,27 +1,23 @@
-{{/* 404 (Task 11) — Hugo's special "404" kind, one per language (verified
-  via build: `public/404.html` (EN, root — `defaultContentLanguageInSubdir
-  = false`) + `public/fr-fr/404.html`, each rendered with that language's
-  `i18n` strings and `.Lang`-correct `<html lang>`/nav via the standard
+{{/* 404 — Hugo's special "404" kind, one per language (`public/404.html`
+  (EN, root — `defaultContentLanguageInSubdir = false`) +
+  `public/fr-fr/404.html`, each rendered with that language's `i18n` strings
+  and `.Lang`-correct `<html lang>`/nav via the standard
   `_default/baseof.html`). No content file needed — the "404" kind has no
   backing page bundle, so there is nothing to translate at the content
   layer, only at the i18n layer (`notFoundTitle`/`Body`/`HomeLabel`).
-
-  Reuses `legal`/`legal-hero` classes and stylesheet verbatim (a "page not
-  found" message is exactly as typographically plain as a legal notice) —
-  no new `sass/pages/_404.scss` partial, no new `page-styles/404.scss`
-  entrypoint; `partials/head.html`'s switch loads the `legal` stylesheet
-  for `.Kind == "404"` too. The one addition, `.not-found__actions`, lives
-  in `pages/_legal.scss` alongside `.legal-*` (documented there). */}}
+  Assembled from the same shared hero/section primitives as every other
+  page (a "page not found" message is exactly as typographically plain as a
+  legal notice) — no page-scoped CSS. */}}
 {{ define "main" }}
-  <article class="legal not-found">
-    <section class="legal-hero">
+  <article>
+    <section class="hero hero--narrow">
       <div class="container">
         <h1>{{ i18n "notFoundTitle" }}</h1>
-        <p class="legal-hero__lead">{{ i18n "notFoundBody" }}</p>
+        <p class="hero__lead">{{ i18n "notFoundBody" }}</p>
       </div>
     </section>
 
-    <section class="not-found__actions">
+    <section class="section section--flush-top">
       <div class="container">
         <a class="button button--solid button--large" href="{{ "/" | relLangURL }}">
           {{ i18n "notFoundHomeLabel" }}

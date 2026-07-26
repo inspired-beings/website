@@ -1,18 +1,18 @@
-{{/* Contact (Task 10) — hero → full form OR mailto fallback, switched on
+{{/* Contact — hero → full form OR mailto fallback (`.callout`), switched on
   the site param `contactFormEndpoint` (exampleSite ships it empty, so CI
   always sees the mailto path; set it locally to exercise the form path).
-  Content model: `lead` (string, hero intro — same pattern as about/faq).
+  Content model: `lead` (string, hero intro).
 
   The form itself lives in `partials/contact-form.html`, shared verbatim
-  with the styleguide's permanent demo instance (final fix wave) — see
-  that partial's own doc comment for why. */}}
+  with the styleguide's permanent demo instance — see that partial's own doc
+  comment for why. */}}
 {{ define "main" }}
-  <article class="contact">
-    <section class="contact-hero">
+  <article>
+    <section class="hero hero--narrow">
       <div class="container">
         <h1>{{ .Title }}</h1>
         {{ with .Params.lead }}
-          <p class="contact-hero__lead">{{ . }}</p>
+          <p class="hero__lead">{{ . }}</p>
         {{ end }}
       </div>
     </section>
@@ -21,11 +21,11 @@
     {{ if $endpoint }}
       {{ partial "contact-form.html" (dict "endpoint" $endpoint) }}
     {{ else }}
-      <section class="contact-mailto">
+      <section class="section section--flush-top">
         <div class="container">
-          <div class="contact-mailto__box">
-            <p class="contact-mailto__body">{{ i18n "contactMailtoBody" }}</p>
-            <a class="contact-mailto__email" href="mailto:{{ i18n "contactMailtoEmail" }}">
+          <div class="callout">
+            <p class="callout__body">{{ i18n "contactMailtoBody" }}</p>
+            <a class="callout__emphasis" href="mailto:{{ i18n "contactMailtoEmail" }}">
               {{ i18n "contactMailtoEmail" }}
             </a>
             <a class="button button--solid button--large" href="mailto:{{ i18n "contactMailtoEmail" }}">

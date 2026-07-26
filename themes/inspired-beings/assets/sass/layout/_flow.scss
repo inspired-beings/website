@@ -1,0 +1,9 @@
+// Prose-flow rhythm for rendered Markdown scopes (owl selector): element
+// styling itself stays in `base/`; this only spaces successive blocks.
+.flow > * + * {
+  margin-block-start: var(--sp-md);
+}
+
+.flow .figure {
+  margin-block: var(--sp-lg);
+}

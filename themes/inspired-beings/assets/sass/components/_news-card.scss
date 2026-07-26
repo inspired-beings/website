@@ -1,0 +1,9 @@
+// Article teaser (title + date + summary) for grid extracts.
+.news-card__date {
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.news-card__body {
+  color: var(--color-text-muted);
+}

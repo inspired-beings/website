@@ -1,0 +1,20 @@
+// Measured prose scope for rendered Markdown (legal notices and the like).
+// h2/h3 sizing already comes from `base/_typography.scss`; only the measure
+// and vertical rhythm live here.
+.prose {
+  max-width: 48rem;
+}
+
+.prose h2 {
+  margin-block-start: var(--sp-xl);
+}
+
+.prose h2:first-child {
+  margin-block-start: 0;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  margin-block-start: var(--sp-sm);
+}

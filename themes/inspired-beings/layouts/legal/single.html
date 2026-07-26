@@ -1,27 +1,25 @@
-{{/* Legal (Task 11) — plain typographic single, per the design spec ("legal
-  layout hosts the future frozen privacy paths — generic typographic
-  single"): hero (title + optional `lead`) + `.legal__body` Markdown content
-  scope, same idiom as `news-article__body` (Task 9) — no page-specific
-  component, the content itself is prose. This is the layout that later
-  hosts the site's real frozen paths (`/privacy/`, `/fr-fr/confidentialite/`
-  per the spec) without any template change — only the content changes.
+{{/* Legal — plain typographic single, per the design spec ("legal layout
+  hosts the future frozen privacy paths — generic typographic single"):
+  hero (title + optional `lead`) + a `.prose` Markdown scope. This is the
+  layout that later hosts the site's real frozen paths (`/privacy/`,
+  `/fr-fr/confidentialite/` per the spec) without any template change —
+  only the content changes.
 
-  404 (`layouts/404.html`) reuses this page's `.legal`/`.legal-hero`
-  classes and stylesheet rather than shipping its own — see that file's
-  header comment for why. */}}
+  404 (`layouts/404.html`) assembles the same hero/section primitives — see
+  that file's header comment. */}}
 {{ define "main" }}
-  <article class="legal">
-    <section class="legal-hero">
+  <article>
+    <section class="hero hero--narrow">
       <div class="container">
         <h1>{{ .Title }}</h1>
         {{ with .Params.lead }}
-          <p class="legal-hero__lead">{{ . }}</p>
+          <p class="hero__lead">{{ . }}</p>
         {{ end }}
       </div>
     </section>
 
-    <section class="legal-body">
-      <div class="container legal-body__content">
+    <section class="section section--flush-top">
+      <div class="container prose">
         {{ .Content }}
       </div>
     </section>

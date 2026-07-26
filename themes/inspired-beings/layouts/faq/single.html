@@ -1,25 +1,26 @@
-{{/* FAQ (Task 8) — hero → grouped accordions → CTA band. Content model
-  (brief contract): `groups[]{title,items[]{q,a}}`. Each item reuses the
-  `.accordion`/`.accordion__summary`/`.accordion__content` markup directly
-  (data-driven from front matter), the same pattern Task 7's service FAQ
-  established — not the `{{< accordion >}}` shortcode, which is for
+{{/* FAQ — hero → grouped accordions → CTA band. Content model:
+  `groups[]{title,items[]{q,a}}`. Each item reuses the `.accordion`/
+  `.accordion__summary`/`.accordion__content` markup directly (data-driven
+  from front matter) — not the `{{< accordion >}}` shortcode, which is for
   Markdown-authored content. */}}
 {{ define "main" }}
-  <article class="faq">
-    <section class="faq-hero">
+  <article>
+    <section class="hero hero--narrow">
       <div class="container">
         <h1>{{ .Title }}</h1>
         {{ with .Params.lead }}
-          <p class="faq-hero__lead">{{ . }}</p>
+          <p class="hero__lead">{{ . }}</p>
         {{ end }}
       </div>
     </section>
 
     {{ range $gi, $group := .Params.groups }}
-      <section class="faq-group" aria-labelledby="faq-group-heading-{{ $gi }}">
+      <section class="section section--tight section--ruled" aria-labelledby="faq-group-heading-{{ $gi }}">
         <div class="container">
           <h2 id="faq-group-heading-{{ $gi }}">{{ $group.title }}</h2>
-          <div class="faq-group__list">
+          {{/* No grid `gap` here: `.accordion + .accordion` (component-owned)
+            already spaces consecutive items. */}}
+          <div class="section__body section__body--measure">
             {{ range $group.items }}
               <details class="accordion">
                 <summary class="accordion__summary">{{ .q }}</summary>
@@ -33,7 +34,7 @@
       </section>
     {{ end }}
 
-    <section class="faq-cta">
+    <section class="section section--band section--gap-top section--gap-bottom">
       {{ partial "cta-band.html" (dict
         "title" (i18n "faqCtaHeading")
         "body" (i18n "faqCtaBody")

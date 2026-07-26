@@ -19,12 +19,12 @@
   pa11y gate permanently, independent of exampleSite's own
   `contactFormEndpoint` param. */}}
 {{ define "main" }}
-  <article class="container styleguide">
+  <article class="container">
     <h1>{{ .Title }}</h1>
 
     <section class="styleguide__section" aria-labelledby="styleguide-buttons">
       <h2 id="styleguide-buttons">{{ i18n "styleguideButtonsHeading" }}</h2>
-      <div class="styleguide__group">
+      <div class="cluster">
         <div>
           <p class="styleguide__caption">{{ i18n "styleguideSizeLargeLabel" }}</p>
           <button type="button" class="button button--solid button--large">{{ i18n "styleguideButtonSolidLabel" }}</button>
@@ -50,7 +50,7 @@
 
     <section class="styleguide__section" aria-labelledby="styleguide-cards">
       <h2 id="styleguide-cards">{{ i18n "styleguideCardsHeading" }}</h2>
-      <div class="styleguide__card-grid">
+      <div class="grid grid--auto">
         {{ partial "card.html" (dict
           "icon" "🛠"
           "title" (i18n "styleguideCardOneTitle")
@@ -66,7 +66,7 @@
 
     <section class="styleguide__section" aria-labelledby="styleguide-chips">
       <h2 id="styleguide-chips">{{ i18n "styleguideChipsHeading" }}</h2>
-      <div class="styleguide__group">
+      <div class="cluster">
         <span class="chip">{{ i18n "styleguideChipNeutralLabel" }}</span>
         <span class="chip chip--accent">{{ i18n "styleguideChipAccentLabel" }}</span>
         <span class="chip chip--success">{{ i18n "styleguideChipSuccessLabel" }}</span>

@@ -5,8 +5,10 @@
   each <dt>/<dd> pair in its own <div> (a "name-value group"), which is
   what gives `facts-table__row` a styling hook without breaking <dl>
   semantics. Dict params: `caption` (optional), `facts` (list, required),
-  each `{term, value}`. Usage: see the styleguide's "Facts table" section. */}}
-<div class="facts-table">
+  each `{term, value}`; `class` (optional, extra classes mixed onto the
+  root — e.g. `section__body`). Usage: see the styleguide's "Facts table"
+  section. */}}
+<div class="facts-table{{ with .class }} {{ . }}{{ end }}">
   {{ with .caption }}
     <p class="facts-table__caption">{{ . }}</p>
   {{ end }}

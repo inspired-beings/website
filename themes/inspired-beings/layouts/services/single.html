@@ -1,42 +1,34 @@
-{{/* Service single (Task 7) — hero (icon+title+tagline) → audience
-  checklist → numbered coverage (01-05) → stats band → FAQ accordions
-  (native <details>, zero JS) → CTA band. Content model: every word past
-  the section headings comes from front matter (`icon`, `tagline`,
-  `audience[]`, `coverage[]{title,body}`, `stats[]`, `faq[]{q,a}` — see
+{{/* Service single — centered hero (icon+title+lead) → audience checklist →
+  numbered coverage (01-05) → stats band → FAQ accordions (native
+  <details>, zero JS) → CTA band. Content model: every word past the
+  section headings comes from front matter (`icon`, `tagline`, `audience[]`,
+  `coverage[]{title,body}`, `stats[]`, `faq[]{q,a}` — see
   `archetypes/service.md`); section headings + the CTA band's copy are
   template-owned i18n strings (fixed structural chrome, generic across
-  every service, same convention as home's section headings) — the one
-  field the brief's front-matter contract doesn't name, flagged here
-  rather than silently added to it.
-
-  New page blocks: `service-hero`, `service-audience`, `service-coverage`.
-  `service-stats`/`service-faq`/`service-cta` are page-scoped section
-  wrappers around the reused `stats-band`/`accordion`/`cta-band`
-  components — no new component classes, per the brief's "Consumes: card,
-  stat, accordion, cta-band". FAQ items reuse `.accordion` markup/classes
-  directly (data-driven), not the `{{< accordion >}}` shortcode, since that
-  shortcode is for Markdown-authored content, not front-matter data. */}}
+  every service). FAQ items reuse `.accordion` markup/classes directly
+  (data-driven), not the `{{< accordion >}}` shortcode, since that shortcode
+  is for Markdown-authored content, not front-matter data. */}}
 {{ define "main" }}
-  <article class="service">
-    <section class="service-hero">
-      <div class="container service-hero__inner">
+  <article>
+    <section class="hero hero--centered hero--ruled">
+      <div class="container">
         {{ with .Params.icon }}
-          <span class="service-hero__icon" aria-hidden="true">{{ . }}</span>
+          <span class="hero__icon" aria-hidden="true">{{ . }}</span>
         {{ end }}
-        <h1 class="service-hero__title">{{ .Title }}</h1>
+        <h1 class="hero__title">{{ .Title }}</h1>
         {{ with .Params.tagline }}
-          <p class="service-hero__tagline">{{ . }}</p>
+          <p class="hero__lead">{{ . }}</p>
         {{ end }}
       </div>
     </section>
 
-    <section class="service-audience" aria-labelledby="service-audience-heading">
+    <section class="section" aria-labelledby="service-audience-heading">
       <div class="container">
         <h2 id="service-audience-heading">{{ i18n "serviceAudienceHeading" }}</h2>
-        <ul class="service-audience__list">
+        <ul class="checklist grid grid--2 grid--gap-md section__body">
           {{ range .Params.audience }}
-            <li class="service-audience__item">
-              <span class="service-audience__mark" aria-hidden="true"></span>
+            <li class="checklist__item">
+              <span class="checklist__mark" aria-hidden="true"></span>
               {{ . }}
             </li>
           {{ end }}
@@ -44,32 +36,34 @@
       </div>
     </section>
 
-    <section class="service-coverage" aria-labelledby="service-coverage-heading">
+    <section class="section" aria-labelledby="service-coverage-heading">
       <div class="container">
         <h2 id="service-coverage-heading">{{ i18n "serviceCoverageHeading" }}</h2>
-        <ol class="service-coverage__list">
+        <ol class="numbered-list grid grid--2 section__body">
           {{ range $i, $item := .Params.coverage }}
-            <li class="service-coverage__item">
-              <span class="service-coverage__number" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
-              <h3 class="service-coverage__title">{{ $item.title }}</h3>
-              <p class="service-coverage__body">{{ $item.body }}</p>
+            <li class="numbered-list__item">
+              <span class="numbered-list__number" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+              <h3 class="numbered-list__title">{{ $item.title }}</h3>
+              <p class="numbered-list__body">{{ $item.body }}</p>
             </li>
           {{ end }}
         </ol>
       </div>
     </section>
 
-    <section class="service-stats" aria-labelledby="service-stats-heading">
+    <section class="section section--alt" aria-labelledby="service-stats-heading">
       <div class="container">
         <h2 id="service-stats-heading">{{ i18n "serviceStatsHeading" }}</h2>
-        {{ partial "stats-band.html" (dict "stats" .Params.stats) }}
+        {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "section__body") }}
       </div>
     </section>
 
-    <section class="service-faq" aria-labelledby="service-faq-heading">
+    <section class="section" aria-labelledby="service-faq-heading">
       <div class="container">
         <h2 id="service-faq-heading">{{ i18n "serviceFaqHeading" }}</h2>
-        <div class="service-faq__list">
+        {{/* No grid `gap` here: `.accordion + .accordion` (component-owned)
+          already spaces consecutive items. */}}
+        <div class="section__body">
           {{ range .Params.faq }}
             <details class="accordion">
               <summary class="accordion__summary">{{ .q }}</summary>
@@ -82,7 +76,7 @@
       </div>
     </section>
 
-    <section class="service-cta">
+    <section class="section section--band">
       {{ partial "cta-band.html" (dict
         "title" (i18n "serviceCtaHeading")
         "body" (i18n "serviceCtaBody")

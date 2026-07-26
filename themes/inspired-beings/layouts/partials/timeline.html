@@ -1,8 +1,9 @@
 {{/* BEM block `timeline` — real <ol> (`timeline__item|date|title|body`).
-  Dict param: `events` (list, required), each `{date, title, body}`, in
-  chronological order (the `<ol>` conveys that order to assistive tech).
-  Usage: see the styleguide's "Timeline" section. */}}
-<ol class="timeline" role="list">
+  Dict params: `events` (list, required), each `{date, title, body}`, in
+  chronological order (the `<ol>` conveys that order to assistive tech);
+  `class` (optional, extra classes mixed onto the root — e.g.
+  `section__body`). Usage: see the styleguide's "Timeline" section. */}}
+<ol class="timeline{{ with .class }} {{ . }}{{ end }}" role="list">
   {{ range .events }}
     <li class="timeline__item">
       <span class="timeline__date">{{ .date }}</span>

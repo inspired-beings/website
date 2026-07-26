@@ -1,6 +1,0 @@
-// Per-page-kind entrypoint (Task 8b split) — compiled + linked only on the
-// contact page (see `partials/head.html`'s page-kind switch). Selects the
-// `pages/_contact.scss` partial; shared/abstracts/themes/base/layout/
-// components already ship in `main.scss` — must NOT be re-`@use`d here or
-// their rules would emit twice.
-@use "../pages/contact";

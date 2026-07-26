@@ -1,0 +1,38 @@
+// Dated article rows (news/category listings): date + optional chip +
+// title per row, whole row is the link.
+.article-list__item {
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.article-list__item-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding-block: var(--sp-md);
+  color: var(--color-text-default);
+  text-decoration: none;
+}
+
+.article-list__item-link:hover .article-list__item-title,
+.article-list__item-link:focus-visible .article-list__item-title {
+  text-decoration: underline;
+}
+
+.article-list__item-date {
+  flex: 0 0 auto;
+  min-width: 9rem;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.article-list__item-title {
+  flex: 1 1 20rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+// Pagination directly following a listing sits off it by a step.
+.article-list + .pagination {
+  margin-block-start: var(--sp-lg);
+}

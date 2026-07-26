@@ -1,0 +1,59 @@
+@use "../abstracts";
+
+// Shared responsive grid: pages compose `.grid` + a column modifier instead
+// of re-declaring per-page `*__grid` blocks. Single-column by default
+// (which also covers "vertical stack with xl gaps" lists).
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-xl);
+}
+
+.grid--2 {
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid--3 {
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include abstracts.mq-up("lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Jumps straight to three columns at `md` (no two-column intermediate).
+.grid--3-md {
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.grid--gap-md {
+  gap: var(--sp-md);
+}
+
+// Phone-aspect screenshot gallery: always multi-column, capped figures so a
+// 2-up mobile row doesn't stretch them edge to edge.
+.grid--gallery {
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-lg);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .figure {
+    max-width: 16rem;
+    margin-inline: auto;
+  }
+}
+
+// Self-packing card shelf (styleguide demos and the like).
+.grid--auto {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-lg);
+}

@@ -1,5 +1,5 @@
-{{/* Shared news list body (Task 9) — category-chips filter row + date/chip/
-  title item rows + pagination. Used identically by `news/list.html` and
+{{/* Shared news list body — `.chip-filter` category row + `.article-list`
+  rows + pagination. Used identically by `news/list.html` and
   `categories/term.html` so both pages render the same structure; only the
   data differs (the term page's `.Paginator` is already scoped to that
   term's pages by Hugo). Dict params:
@@ -14,11 +14,11 @@
   come from each term's own content bundle (`content/categories/<term>/
   _index.<lang>.md`) via `site.GetPage`, so the chip label is the real
   localized title, not a humanized slug. */}}
-<nav class="news-list__categories" aria-label="{{ i18n "newsCategoriesLabel" }}">
-  <ul class="news-list__categories-list" role="list">
-    <li class="news-list__categories-item">
+<nav class="chip-filter" aria-label="{{ i18n "newsCategoriesLabel" }}">
+  <ul class="chip-filter__list" role="list">
+    <li class="chip-filter__item">
       <a
-        class="chip news-list__categories-link"
+        class="chip chip-filter__link"
         href="{{ "news/" | relLangURL }}"
         {{ if not .current }}aria-current="page"{{ end }}
       >
@@ -26,9 +26,9 @@
       </a>
     </li>
     {{ range site.Taxonomies.categories.Alphabetical }}
-      <li class="news-list__categories-item">
+      <li class="chip-filter__item">
         <a
-          class="chip news-list__categories-link"
+          class="chip chip-filter__link"
           href="{{ .Page.RelPermalink }}"
           {{ if eq $.current .Page }}aria-current="page"{{ end }}
         >
@@ -39,19 +39,19 @@
   </ul>
 </nav>
 
-<ul class="news-list__items" role="list">
+<ul class="article-list" role="list">
   {{ range .paginator.Pages }}
-    <li class="news-list__item">
-      <a class="news-list__item-link" href="{{ .RelPermalink }}">
-        <time class="news-list__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
+    <li class="article-list__item">
+      <a class="article-list__item-link" href="{{ .RelPermalink }}">
+        <time class="article-list__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
           {{ .Date | time.Format ":date_long" }}
         </time>
         {{ with .Params.categories }}
           {{ with site.GetPage (printf "categories/%s" (index . 0)) }}
-            <span class="chip news-list__item-chip">{{ .Title }}</span>
+            <span class="chip">{{ .Title }}</span>
           {{ end }}
         {{ end }}
-        <span class="news-list__item-title">{{ .Title }}</span>
+        <span class="article-list__item-title">{{ .Title }}</span>
       </a>
     </li>
   {{ end }}

@@ -1,9 +1,8 @@
-// 7-1 manifest — the SHARED bundle only (Task 8b split every page pays for).
-// Load order encodes the cascade: abstracts (no CSS) → themes (tokens) →
-// base (element defaults) → layout (page scaffolding) → components.
-// Page-scoped styles (`pages/*`) are NOT `@use`d here anymore — each page
-// kind gets its own small entrypoint under `page-styles/` (see that dir and
-// `partials/head.html`) so the shared bundle stops growing per new page.
+// 7-1 manifest — the single site bundle. Load order encodes the cascade:
+// abstracts (no CSS) → themes (tokens) → base (element defaults) → layout
+// (scaffolding primitives) → components (page-agnostic blocks) → pages
+// (rare page-scoped side effects — kept near-empty by design: pages
+// assemble sections/grids/components, they don't own styles).
 
 @use "abstracts";
 @use "themes/primitives";
@@ -14,6 +13,10 @@
 @use "base/elements";
 @use "base/motion";
 @use "layout/container";
+@use "layout/section";
+@use "layout/grid";
+@use "layout/flow";
+@use "layout/cluster";
 @use "layout/top-bar";
 @use "layout/footer";
 @use "components/skip-link";
@@ -33,13 +36,22 @@
 @use "components/pagination";
 @use "components/figure";
 @use "components/contact-form";
+@use "components/hero";
+@use "components/lede";
+@use "components/feature";
+@use "components/quote";
+@use "components/job-offer";
+@use "components/showcase";
+@use "components/checklist";
+@use "components/numbered-list";
+@use "components/article-list";
+@use "components/chip-filter";
+@use "components/news-card";
+@use "components/callout";
+@use "components/prose";
+@use "components/task-list";
+@use "components/plan-summary";
+@use "components/standalone-link";
+@use "pages/styleguide";
 
 // @use "vendors"; — slot: third-party CSS overrides (empty at birth)
-// @use "components/..."; — slot: Task 9+ if any further components appear
-//   (skip-link/language-switcher/theme-toggle in Task 3; button/card/chip/
-//   accordion/form in Task 4; pricing-table/stat/cta-band/steps/timeline/
-//   facts-table/pagination/figure in Task 5; contact-form promoted here
-//   from `pages/_contact.scss` in the final fix wave, once it started
-//   rendering on the styleguide page too)
-// `pages/*` partials are compiled per-page-kind from `page-styles/*.scss`,
-// not `@use`d here — see `page-styles/` and `partials/head.html` (Task 8b).

@@ -1,0 +1,54 @@
+@use "../abstracts";
+
+// Alternating title/detail listing rows (index pages from the visual
+// reference): title left, detail right, flipped every other row via
+// `--reverse` on the row.
+.showcase__row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  padding-block: var(--sp-xl);
+  border-block-start: 1px solid var(--color-border-subtle);
+
+  @include abstracts.mq-up("md") {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--sp-2xl);
+  }
+}
+
+.showcase__row--reverse {
+  @include abstracts.mq-up("md") {
+    flex-direction: row-reverse;
+  }
+}
+
+.showcase__title {
+  flex: 0 0 auto;
+
+  @include abstracts.mq-up("md") {
+    flex-basis: 28%;
+  }
+}
+
+.showcase__detail {
+  flex: 1 1 auto;
+  max-width: 36rem;
+}
+
+.showcase__icon {
+  display: block;
+  font-size: var(--fs-2xl);
+  margin-block-end: var(--sp-2xs);
+}
+
+.showcase__tagline {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.showcase__summary {
+  margin-block-start: var(--sp-xs);
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,103 @@
+@use "../abstracts";
+
+// The single page-opening hero, everywhere. Variation is modifiers only:
+// `--narrow` (left-anchored 44rem column — an intentional narrow measure on
+// the block itself, not a container-width violation), `--intro` (tighter
+// bottom padding when a list/grid follows directly), `--centered` (icon +
+// title + lead, centered, for detail pages), `--ruled` (bottom rule),
+// `--display` (the home staircase-title flagship variant).
+.hero {
+  padding-block: var(--sp-2xl);
+}
+
+.hero--narrow {
+  max-width: 44rem;
+}
+
+.hero--intro {
+  padding-block-end: var(--sp-xl);
+}
+
+.hero--ruled {
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+
+.hero--centered {
+  text-align: center;
+}
+
+.hero__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.hero__icon {
+  display: block;
+  font-size: var(--fs-4xl);
+  margin-block-end: var(--sp-sm);
+}
+
+.hero--centered .hero__title {
+  margin-block-end: var(--sp-sm);
+}
+
+.hero--centered .hero__lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+// Article-header variant elements: date and/or category chip stacked above
+// the title. The sibling rule spaces the title only when such meta precedes
+// it, so plain heroes stay untouched.
+.hero__date {
+  display: block;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.hero__chip {
+  display: inline-flex;
+  margin-block-start: var(--sp-xs);
+}
+
+.hero__date + .hero__title,
+.hero__chip + .hero__title {
+  margin-block-start: var(--sp-sm);
+}
+
+// --- Display (home flagship) variant -----------------------------------
+
+.hero--display {
+  padding-block: var(--sp-3xl) 0;
+}
+
+.hero--display .hero__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+  font-size: var(--fs-4xl);
+  max-width: 40rem;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-5xl);
+    max-width: 56rem;
+  }
+}
+
+// Mobile keeps every line left-aligned (readability); the staggered
+// "staircase" from the visual reference only appears from `md` up.
+.hero__title-line--right {
+  @include abstracts.mq-up("md") {
+    align-self: flex-end;
+    text-align: right;
+  }
+}
+
+.hero__cta {
+  display: inline-flex;
+  margin-block-start: var(--sp-xl);
+}
+
+.hero__image {
+  margin-block-start: var(--sp-2xl);
+}

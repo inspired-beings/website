@@ -1,0 +1,16 @@
+// Standalone lead statement (large muted paragraph + optional inline CTA),
+// mixed onto `.container` — its 44rem measure intentionally overrides the
+// container's own max-width (components load after layout in `main.scss`).
+.lede {
+  max-width: 44rem;
+}
+
+.lede__body {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.lede__cta {
+  display: inline-block;
+  margin-block-start: var(--sp-sm);
+}

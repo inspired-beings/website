@@ -33,48 +33,5 @@
 {{ $style := resources.Get "sass/main.scss" | css.Sass $cssSassOptions | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
 
-{{/* Per-page-kind stylesheet (Task 8b split) — `main.scss` above is the
-  SHARED bundle (abstracts+themes+base+layout+components) every page pays
-  for; page-scoped rules (`sass/pages/*`) instead live behind one small
-  `sass/page-styles/<kind>.scss` entrypoint per page kind, picked here by
-  page kind/section/type so each page only ships the CSS it uses and the
-  shared bundle stops growing with every new page task. Pages that match no
-  kind below (e.g. contact/careers/news placeholders) get no second
-  stylesheet at all. */}}
-{{ $pageStyleKind := "" }}
-{{ if eq .Kind "home" }}
-  {{ $pageStyleKind = "home" }}
-{{ else if eq .Section "services" }}
-  {{ $pageStyleKind = "services" }}
-{{ else if eq .Section "products" }}
-  {{ $pageStyleKind = "products" }}
-{{ else if eq .Type "styleguide" }}
-  {{ $pageStyleKind = "styleguide" }}
-{{ else if or (eq .Section "news") (eq .Kind "term") }}
-  {{/* `.Section == "news"` covers the news list + every article
-    (`content/news/`); `.Kind == "term"` covers category pages
-    (`content/categories/<term>/`, kind `term`, `.Section` is their own
-    "categories" section, not "news"). Safe as a bare `.Kind == "term"`
-    check only because `categories` is the theme's one taxonomy — a future
-    second taxonomy would need this narrowed to also check the taxonomy
-    name. */}}
-  {{ $pageStyleKind = "news" }}
-{{ else if eq .Kind "404" }}
-  {{/* The 404 kind has no backing content file (no `.File`), so it can't
-    go through the `.File.TranslationBaseName` branch below — it reuses the
-    `legal` stylesheet directly (see `layouts/404.html`'s header comment). */}}
-  {{ $pageStyleKind = "legal" }}
-{{ else if .File }}
-  {{ if in (slice "about" "faq" "pricing" "contact" "careers" "legal") .File.TranslationBaseName }}
-    {{ $pageStyleKind = .File.TranslationBaseName }}
-  {{ end }}
-{{ end }}
-{{ with $pageStyleKind }}
-  {{ with resources.Get (printf "sass/page-styles/%s.scss" .) }}
-    {{ $pageStyle := . | css.Sass (dict "transpiler" "dartsass") | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
-    <link rel="stylesheet" href="{{ $pageStyle.RelPermalink }}" integrity="{{ $pageStyle.Data.Integrity }}" />
-  {{ end }}
-{{ end }}
-
 <link rel="preload" as="font" type="font/woff2" href="{{ $fraunces.RelPermalink }}" crossorigin />
 <link rel="preload" as="font" type="font/woff2" href="{{ $karla.RelPermalink }}" crossorigin />

@@ -1,0 +1,16 @@
+// Standalone link (not running text): underline regains on hover/focus —
+// the shared idiom `card__link`/`top-bar__link` follow, for links assembled
+// outside those blocks. `--offset` spaces it off the content above.
+.standalone-link {
+  text-decoration: none;
+}
+
+.standalone-link:hover,
+.standalone-link:focus-visible {
+  text-decoration: underline;
+}
+
+.standalone-link--offset {
+  display: inline-block;
+  margin-block-start: var(--sp-sm);
+}

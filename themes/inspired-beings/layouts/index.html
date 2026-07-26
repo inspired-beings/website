@@ -1,102 +1,91 @@
-{{/* Home page (Task 6) — assembles chrome + component library into the
-  flagship layout. Content model: every word lives in front matter
+{{/* Home page — assembles the shared section/grid primitives + component
+  library into the flagship layout; it owns NO page-scoped CSS. Content
+  model: every word lives in front matter
   (`exampleSite/content/_index.{en,fr-fr}.md`), this template only renders
   structure — hero{title_lines[],cta{label,url},image{src,alt}} → intro
   {body,cta} → problems[]{title,body} (6) → services_extract[]{icon,title,
   body,link{href,label}} (6, reuses `card.html`) → stats[]{value,unit,label}
   (reuses `stats-band.html`) → pricing_extract{caption,plans[]{name,price,
-  period,cta}} (each plan rendered via `card.html`, Task 13 — was the full
-  `pricing-table.html` comparison grid until the home-page copy over-budget
-  fix dropped it in favour of a plans-only summary; the dedicated
-  `/pricing/` page still supplies its own `features` (and `highlighted`)
-  and renders the full table) → news_count (int; latest N posts from a
-  real `news` section — absent
-  until Task 9, so this section renders nothing until then, not an empty
-  shell) → cta_band{heading,body,cta{label,url}} (reuses `cta-band.html`).
-  Section headings + "view all" link labels are template-owned i18n
-  strings (fixed structural chrome, same convention as top-bar/footer),
-  not front matter — only the per-item content is authored copy.
-
-  New page blocks: `home-hero` (`home-hero__title-line`, `--right` modifier
-  on every other line, alternating the "staircase" title from the visual
-  reference — mobile keeps every line left-aligned, see `_home.scss`),
-  `home-problems`, `home-services`, `home-stats`, `home-news`. `home-intro`,
-  `home-pricing` and the cta-band's own section wrapper are page-scoped
-  layout-only additions (spacing), not separate component blocks. */}}
+  period,cta}} (each plan rendered via `card.html` — a plans-only summary;
+  the dedicated `/pricing/` page renders the full comparison table) →
+  news_count (int; latest N posts from the `news` section) → cta_band
+  {heading,body,cta{label,url}} (reuses `cta-band.html`). Section headings +
+  "view all" link labels are template-owned i18n strings (fixed structural
+  chrome, same convention as top-bar/footer), not front matter — only the
+  per-item content is authored copy. */}}
 {{ define "main" }}
-  <section class="home-hero">
-    <div class="container home-hero__inner">
-      <h1 class="home-hero__title">
+  <section class="hero hero--display">
+    <div class="container">
+      <h1 class="hero__title">
         {{ range $i, $line := .Params.hero.title_lines }}
-          <span class="home-hero__title-line{{ if eq (mod $i 2) 1 }} home-hero__title-line--right{{ end }}">{{ $line }}</span>
+          <span class="hero__title-line{{ if eq (mod $i 2) 1 }} hero__title-line--right{{ end }}">{{ $line }}</span>
         {{ end }}
       </h1>
-      <a class="button button--solid button--large home-hero__cta" href="{{ .Params.hero.cta.url }}">
+      <a class="button button--solid button--large hero__cta" href="{{ .Params.hero.cta.url }}">
         {{ .Params.hero.cta.label }}
       </a>
     </div>
     {{ with .Params.hero.image }}
-      <div class="home-hero__image container">
+      <div class="hero__image container">
         {{ partial "figure.html" (dict "src" .src "alt" .alt "eager" true) }}
       </div>
     {{ end }}
   </section>
 
-  <section class="home-intro">
-    <div class="container home-intro__inner">
-      <p class="home-intro__body">{{ .Params.intro.body }}</p>
+  <section class="section">
+    <div class="container lede">
+      <p class="lede__body">{{ .Params.intro.body }}</p>
       {{ with .Params.intro.cta }}
-        <a class="home-intro__cta" href="{{ .url }}">{{ .label }}</a>
+        <a class="lede__cta" href="{{ .url }}">{{ .label }}</a>
       {{ end }}
     </div>
   </section>
 
-  <section class="home-problems" aria-labelledby="home-problems-heading">
+  <section class="section" aria-labelledby="home-problems-heading">
     <div class="container">
       <h2 id="home-problems-heading" data-fade>{{ i18n "homeProblemsHeading" }}</h2>
-      <div class="home-problems__grid">
+      <div class="grid grid--3 section__body">
         {{ range .Params.problems }}
-          <div class="home-problems__item">
-            <h3 class="home-problems__title">{{ .title }}</h3>
-            <p class="home-problems__body">{{ .body }}</p>
+          <div class="feature">
+            <h3 class="feature__title">{{ .title }}</h3>
+            <p class="feature__body">{{ .body }}</p>
           </div>
         {{ end }}
       </div>
     </div>
   </section>
 
-  <section class="home-services" aria-labelledby="home-services-heading">
+  <section class="section" aria-labelledby="home-services-heading">
     <div class="container">
       <h2 id="home-services-heading" data-fade>{{ i18n "homeServicesHeading" }}</h2>
-      <div class="home-services__grid">
+      <div class="grid grid--3 section__body">
         {{ range .Params.services_extract }}
           {{ partial "card.html" (dict "icon" .icon "title" .title "body" .body "link" .link) }}
         {{ end }}
       </div>
-      <a class="button button--outlined button--medium" href="{{ "services/" | relLangURL }}">
+      <a class="button button--outlined button--medium section__cta" href="{{ "services/" | relLangURL }}">
         {{ i18n "homeServicesCtaLabel" }}
       </a>
     </div>
   </section>
 
-  <section class="home-stats" aria-labelledby="home-stats-heading">
+  <section class="section section--alt" aria-labelledby="home-stats-heading">
     <div class="container">
       <h2 id="home-stats-heading" data-fade>{{ i18n "homeStatsHeading" }}</h2>
-      {{ partial "stats-band.html" (dict "stats" .Params.stats) }}
+      {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "section__body") }}
     </div>
   </section>
 
-  {{/* Task 13 (budget): home shows a lightweight plan summary — cards, not
-    the full `pricing-table.html` comparison grid the dedicated /pricing/
-    page uses — same names/prices/CTAs, no feature-by-feature rows. Budget-
-    driven simplification (same rationale as Task 8's table feature trim),
-    not a content cut: every plan and price still shown, "View full
-    pricing" still links through to the complete comparison. */}}
-  <section class="home-pricing" aria-labelledby="home-pricing-heading">
+  {{/* Home shows a lightweight plan summary — cards, not the full
+    `pricing-table.html` comparison grid the dedicated /pricing/ page uses —
+    same names/prices/CTAs, no feature-by-feature rows (budget-driven
+    simplification; every plan and price still shown, "View full pricing"
+    links through to the complete comparison). */}}
+  <section class="section" aria-labelledby="home-pricing-heading">
     <div class="container">
       <h2 id="home-pricing-heading" data-fade>{{ i18n "homePricingHeading" }}</h2>
-      <p class="home-pricing__caption">{{ .Params.pricing_extract.caption }}</p>
-      <div class="home-pricing__grid">
+      <p class="section__caption">{{ .Params.pricing_extract.caption }}</p>
+      <div class="grid grid--3 section__body">
         {{ range .Params.pricing_extract.plans }}
           {{ partial "card.html" (dict
             "title" .name
@@ -105,41 +94,38 @@
           ) }}
         {{ end }}
       </div>
-      <a class="button button--outlined button--medium" href="{{ "pricing/" | relLangURL }}">
+      <a class="button button--outlined button--medium section__cta" href="{{ "pricing/" | relLangURL }}">
         {{ i18n "homePricingCtaLabel" }}
       </a>
     </div>
   </section>
 
-  {{/* Degrades gracefully: no `news` section exists until Task 9 adds
-    content under `content/news/` — `.Site.GetPage` returns nil and this
-    whole block renders nothing (no heading, no empty grid), rather than an
-    empty shell. Task 9 lights it up with zero layout changes. */}}
+  {{/* Degrades gracefully: with no `news` section content, `.Site.GetPage`
+    returns nil and this whole block renders nothing (no heading, no empty
+    grid), rather than an empty shell. */}}
   {{ with .Site.GetPage "section" "news" }}
     {{ $newsCount := $.Params.news_count | default 3 }}
     {{ $latest := first $newsCount .RegularPages }}
     {{ if $latest }}
-      <section class="home-news" aria-labelledby="home-news-heading">
+      <section class="section" aria-labelledby="home-news-heading">
         <div class="container">
           <h2 id="home-news-heading" data-fade>{{ i18n "homeNewsHeading" }}</h2>
-          <div class="home-news__grid">
+          <div class="grid grid--3 section__body">
             {{ range $latest }}
-              <article class="home-news__item">
-                <h3 class="home-news__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <article class="news-card">
+                <h3 class="news-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
                 {{ with .Date }}
-                  <p class="home-news__date">{{ .Format "2 January 2006" }}</p>
+                  <p class="news-card__date">{{ .Format "2 January 2006" }}</p>
                 {{ end }}
                 {{/* `.Summary` is rendered HTML and may itself contain block-level
-                  tags (e.g. multiple `<p>`s, or — pre-Task-9-fix — a stray heading
-                  if a manual `<!--more-->` divider is missing from the source
-                  article); a `<div>` wrapper is HTML-valid either way, where a
-                  `<p>` wrapper is not once the content itself contains block
-                  elements. */}}
-                <div class="home-news__body">{{ .Summary }}</div>
+                  tags (e.g. multiple `<p>`s); a `<div>` wrapper is HTML-valid
+                  either way, where a `<p>` wrapper is not once the content
+                  itself contains block elements. */}}
+                <div class="news-card__body">{{ .Summary }}</div>
               </article>
             {{ end }}
           </div>
-          <a class="button button--outlined button--medium" href="{{ "news/" | relLangURL }}">
+          <a class="button button--outlined button--medium section__cta" href="{{ "news/" | relLangURL }}">
             {{ i18n "homeNewsCtaLabel" }}
           </a>
         </div>
@@ -147,7 +133,7 @@
     {{ end }}
   {{ end }}
 
-  <section class="home-cta">
+  <section class="section section--band">
     {{ partial "cta-band.html" (dict
       "title" .Params.cta_band.heading
       "body" .Params.cta_band.body

@@ -1,33 +1,26 @@
-{{/* Products index (Task 11) — card grid (per the design spec: "product
-  index (card grid)", unlike the services index's alternating-row layout).
+{{/* Products index — card grid (per the design spec: "product index (card
+  grid)", unlike the services index's alternating `.showcase` rows).
   Content model: `_index.{en,fr-fr}.md` carries only `title` + `lead` (same
   shape as `services/_index.md`); each card's content is the linked
-  product's own front matter (`icon`, `tagline` — see `archetypes/
-  product.md`), sorted by `weight`. Reuses `card.html` verbatim.
+  product's own front matter (`icon`, `tagline` — see
+  `archetypes/product.md`), sorted by `weight`. Reuses `card.html` verbatim.
 
-  New page block: `products-index` (`__intro|lead|heading|grid`).
-
-  Fix round (post-review): the grid used to sit directly under the `<h1>`,
-  with `card.html`'s hardcoded `<h3 class="card__title">` right below it —
-  an h1→h3 skip (axe's `heading-order`, a best-practice rule outside
-  WCAG2AA, so pa11y's WCAG2AA run never caught it). The `services-index`
-  comparison in the original header comment didn't hold: that page's own
-  row title IS an `<h2>`, unlike here where the heading-bearing element is
-  `card.html`'s h3. Fixed with a real, visible `<h2>` above the grid — same
-  pattern every other card-grid section in the theme already uses (home's
-  `home-services-heading`, careers' `careers-values-heading`, the product
-  single's `product-features-heading`) — not a visually-hidden label. */}}
+  The grouping `<h2>` above the grid is a real, visible heading: the
+  heading-bearing element inside the grid is `card.html`'s `<h3
+  class="card__title">`, so without it the page would skip h1→h3 (axe's
+  `heading-order`) — same pattern every other card-grid section in the
+  theme uses. */}}
 {{ define "main" }}
-  <article class="container products-index">
-    <header class="products-index__intro">
+  <article class="container">
+    <header class="hero hero--narrow hero--intro">
       <h1>{{ .Title }}</h1>
       {{ with .Params.lead }}
-        <p class="products-index__lead">{{ . }}</p>
+        <p class="hero__lead">{{ . }}</p>
       {{ end }}
     </header>
 
-    <h2 class="products-index__grid-heading" data-fade>{{ i18n "productsIndexGridHeading" }}</h2>
-    <div class="products-index__grid">
+    <h2 class="section__heading" data-fade>{{ i18n "productsIndexGridHeading" }}</h2>
+    <div class="grid grid--3 section section--flush-top">
       {{ range .RegularPages.ByWeight }}
         {{ partial "card.html" (dict
           "icon" .Params.icon
