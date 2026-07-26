@@ -26,7 +26,7 @@
       {{ end }}
     </header>
 
-    <h2 class="products-index__grid-heading">{{ i18n "productsIndexGridHeading" }}</h2>
+    <h2 class="products-index__grid-heading" data-fade>{{ i18n "productsIndexGridHeading" }}</h2>
     <div class="products-index__grid">
       {{ range .RegularPages.ByWeight }}
         {{ partial "card.html" (dict

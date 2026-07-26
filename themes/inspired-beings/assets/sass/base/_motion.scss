@@ -1,0 +1,37 @@
+// Motion layer: cross-document view transitions (pure CSS, works with JS
+// disabled — it's a native navigation feature) + scroll fade-ins (assisted
+// by `js/fade.js`, INERT without JS). Everything here is walled off behind
+// `prefers-reduced-motion: no-preference`, per the design spec.
+//
+// `@view-transition` is a conditional-group-rule-nestable at-rule (CSS View
+// Transitions Module Level 2) — nesting it in this `@media` block is the
+// documented way to make cross-document transitions accessible: unsupported
+// browsers and reduced-motion visitors alike just never get a transition.
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  // Named so the header persists across the cross-document transition
+  // instead of cross-fading with the rest of the page.
+  .top-bar {
+    view-transition-name: site-header;
+  }
+
+  // `[data-fade]` opt-in (layouts) starts hidden ONLY once `[data-js]` is
+  // stamped on <html> (see head.html's early inline script) — a no-JS
+  // visitor never gets `[data-js]`, so this rule never matches and content
+  // renders fully visible with zero animation, same as under reduced motion.
+  [data-js] [data-fade] {
+    opacity: 0;
+    transform: translateY(var(--sp-md));
+    transition:
+      opacity var(--transition-slow),
+      transform var(--transition-slow);
+  }
+
+  [data-js] [data-fade][data-visible] {
+    opacity: 1;
+    transform: none;
+  }
+}

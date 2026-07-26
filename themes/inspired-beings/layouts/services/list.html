@@ -16,7 +16,7 @@
 
     <div class="services-index__list">
       {{ range $i, $page := .RegularPages.ByWeight }}
-        <div class="services-index__row{{ if eq (mod $i 2) 1 }} services-index__row--reverse{{ end }}">
+        <div class="services-index__row{{ if eq (mod $i 2) 1 }} services-index__row--reverse{{ end }}" data-fade>
           <h2 class="services-index__title">
             <a class="services-index__title-link" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
           </h2>
