@@ -4,7 +4,10 @@
 //   (the site is adless and trackerless — that must stay provable, not claimed);
 // - per-page weight: the sum of all response bodies must stay under the budget file's
 //   `maxPageBytes` (or a page's own `overrides[route].maxPageBytes`, when justified —
-//   budget numbers are product-owner decisions — propose, don't self-serve).
+//   budget numbers are product-owner decisions — propose, don't self-serve);
+// - CSS bundle weight (only when the budget file sets `maxCssBundleBytes`): under a
+//   single-bundle architecture every CSS byte multiplies across all pages, so the
+//   built main.min.*.css is capped at its named cause, not just per-page symptoms.
 //
 // Args: [build-dir=public] [budget-file=tool/page-budget.json] — both default to the
 // live site's own values, so `node tool/check_page_budget.mjs` (no args) is
@@ -31,8 +34,10 @@ const server = createStaticServer(publicDir)
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
 const origin = `http://127.0.0.1:${server.address().port}`
 
+const entries = await fs.readdir(publicDir, { recursive: true })
+
 const routes = []
-for (const entry of await fs.readdir(publicDir, { recursive: true })) {
+for (const entry of entries) {
   if (path.basename(entry) !== 'index.html') continue
   const html = await fs.readFile(path.join(publicDir, entry), 'utf8')
   if (/http-equiv=.?refresh/i.test(html)) continue // Hugo alias stubs, not pages
@@ -46,8 +51,23 @@ if (routes.length < 2 || !routes.some(route => route.startsWith('/fr-fr/'))) {
   process.exit(1)
 }
 
-const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
 let failed = false
+
+if (budget.maxCssBundleBytes) {
+  const bundles = entries.filter(entry => /^main\.min\..+\.css$/.test(path.basename(entry)))
+  if (bundles.length === 0) {
+    console.error('maxCssBundleBytes is set but no built main.min.*.css bundle was found — build broken?')
+    failed = true
+  }
+  for (const bundle of bundles) {
+    const size = (await fs.stat(path.join(publicDir, bundle))).size
+    const over = size > budget.maxCssBundleBytes
+    if (over) failed = true
+    console.log(`${over ? 'OVER-BUDGET' : 'ok'} ${bundle} — ${size} bytes (bundle budget ${budget.maxCssBundleBytes})`)
+  }
+}
+
+const browser = await puppeteer.launch({ args: ['--no-sandbox'] })
 for (const route of routes) {
   const page = await browser.newPage()
   await page.setCacheEnabled(false)

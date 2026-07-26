@@ -1,13 +1,22 @@
 {
   "maxPageBytes": 123000,
-  "rules": "Same ratchet-down-only policy as the live site's tool/page-budget.json (see its 'rules' field): any PR that reduces exampleSite page weight must lower maxPageBytes (or a tightened override) in the same PR — reclaimed bytes are banked, never slack. Home has NO override — it must fit the default budget for real. Ratchet history: Task 13 first trimmed home from 137,669/138,334 B to under 135,000 B (pricing teaser simplified to a plans-only summary, redundant <title> fixed); a later fix round reverted an over-aggressive content-count cut (all 6 problems/6 services_extract items restored, both locales) and instead freed the needed bytes from fraunces-roman.woff2 (self-hosted display font, narrowed wght axis + opsz pinned per the typography owner's verdict — see tool/subset_fonts.sh), which dropped home to ~106,000 B and every other exampleSite page by the same ~29 KB, so maxPageBytes ratcheted down from 135,000 to 123,000 (~15% over the new heaviest regular page, same margin methodology as the live site's own baseline+15%). image-bearing pages below get a justified per-page override instead of a global raise. The former /styleguide/ and /fr-fr/styleguide/ overrides (119,000 B) were removed in the final fix wave: once the font-driven drop lowered the site-wide default to 123,000, that override had gone stale — it was now BELOW the default instead of above it, tightening the one page meant to get MORE room (a full component library, including the permanent contact-form demo added in the same wave) below what every other page already gets for free. The default already covers it.",
+  "maxCssBundleBytes": 35000,
+  "rules": "Same ratchet-down-only policy as the live site's tool/page-budget.json (see its 'rules' field): any PR that reduces exampleSite page weight must lower maxPageBytes (or a tightened override, or maxCssBundleBytes) in the same PR — reclaimed bytes are banked, never slack. Home has NO override — it must fit the default budget for real. Ratchet history: Task 13 first trimmed home from 137,669/138,334 B to under 135,000 B (pricing teaser simplified to a plans-only summary, redundant <title> fixed), then narrowing fraunces-roman.woff2 (wght axis + opsz pinned per the typography owner's verdict — see tool/subset_fonts.sh) dropped every page ~29 KB and funded the 135,000 → 123,000 ratchet (~15% over the heaviest regular page, same margin methodology as the live site's own baseline+15%). The per-page-kind CSS split was later removed as an architecture smell (page-oriented styling): the single cached main.css bundle costs every page ~7.7 KB more on FIRST load in exchange for zero per-navigation CSS and a page-agnostic section/component architecture. Product-owner ruling 2026-07-26: the default HOLDS at 123,000 (heaviest regular page 113,839 B, 8% headroom) — recalibrating it up would hand undetected drift to the 60 pages that pass; instead, exactly two structurally atypical page KINDS carry overrides (the one-page styleguide and the image-bearing product pages). Overrides are page-kind-scoped, never per-page escape hatches: a third candidate means the default is wrong or the page is doing too much — escalate to the product-owner, do not add a line. maxCssBundleBytes hard-caps the built sass/main.min.*.css: under single-bundle architecture every CSS byte multiplies across all 64 pages, so bundle growth is gated at its named cause instead of surfacing as scattered page-budget breaches (same hard-max pattern as the font gates in tool/subset_fonts.sh). Revisit triggers: the styleguide override dies if the component library is ever split across routes; the notably override is contingent on current image encoding — a screenshot re-encode tripping 125,000 is deliberate, not a flaky gate. All six numbers ratchet-down-only from the merge commit forward.",
   "overrides": {
+    "/styleguide/": {
+      "maxPageBytes": 130000,
+      "justification": "The template's deliberate kitchen-sink demo: the entire component library, including the permanent contact-form demo, on ONE page by design. Contingent on the styleguide staying a single page (product-owner ruling 2026-07-26)."
+    },
+    "/fr-fr/styleguide/": {
+      "maxPageBytes": 130000,
+      "justification": "Same as /styleguide/, FR copy — EN/FR delta is translation noise, never encoded in the numbers."
+    },
     "/products/notably/": {
-      "maxPageBytes": 120000,
-      "justification": "Product detail page renders a real product screenshot via the figure pipeline (AVIF/WebP/srcset) — image-bearing by design, per the ratchet policy. Ratcheted down from 150,000 alongside the font-driven site-wide drop."
+      "maxPageBytes": 125000,
+      "justification": "Product detail page renders a real product screenshot via the figure pipeline (AVIF/WebP/srcset) — image-bearing by design, per the ratchet policy. 120,000 → 125,000 with the single-bundle restructure (+~7.7 KB/page site-wide); relative headroom TIGHTENED versus mechanically preserving the old margin (product-owner ruling 2026-07-26)."
     },
     "/fr-fr/products/notably/": {
-      "maxPageBytes": 120000,
+      "maxPageBytes": 125000,
       "justification": "Same as /products/notably/, FR copy."
     }
   }
