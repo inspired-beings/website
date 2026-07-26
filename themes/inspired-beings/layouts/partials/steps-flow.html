@@ -1,0 +1,13 @@
+{{/* BEM block `steps` — real <ol> (`steps__item|number|title|body`). Dict
+  param: `steps` (list, required), each `{title, body}`. The number badge is
+  decorative (`aria-hidden`) — the `<ol>` itself already conveys order to
+  assistive tech. Usage: see the styleguide's "Steps" section. */}}
+<ol class="steps" role="list">
+  {{ range $i, $step := .steps }}
+    <li class="steps__item">
+      <span class="steps__number" aria-hidden="true">{{ add $i 1 }}</span>
+      <h3 class="steps__title">{{ $step.title }}</h3>
+      <p class="steps__body">{{ $step.body }}</p>
+    </li>
+  {{ end }}
+</ol>

@@ -128,3 +128,216 @@ other = "J'accepte la"
 
 [styleguideFormConsentLinkLabel]
 other = "Politique de confidentialité"
+
+[pricingTableFeatureColumnLabel]
+other = "Fonctionnalité"
+
+[pricingTableIncludedLabel]
+other = "Inclus"
+
+[pricingTableNotIncludedLabel]
+other = "Non inclus"
+
+[pricingTableActionColumnLabel]
+other = "Action"
+
+[paginationLabel]
+other = "Pagination"
+
+[paginationPreviousLabel]
+other = "Précédent"
+
+[paginationNextLabel]
+other = "Suivant"
+
+[styleguidePricingTableHeading]
+other = "Tableau tarifaire"
+
+[styleguidePricingTableCaption]
+other = "Comparer les offres"
+
+[styleguidePricingPlanStarterName]
+other = "Starter"
+
+[styleguidePricingPlanStarterPrice]
+other = "1 900 €"
+
+[styleguidePricingPlanStarterPeriod]
+other = "/mois"
+
+[styleguidePricingPlanGrowthName]
+other = "Growth"
+
+[styleguidePricingPlanGrowthPrice]
+other = "4 200 €"
+
+[styleguidePricingPlanGrowthPeriod]
+other = "/mois"
+
+[styleguidePricingPlanEnterpriseName]
+other = "Enterprise"
+
+[styleguidePricingPlanEnterprisePrice]
+other = "Sur devis"
+
+[styleguidePricingCtaStarterLabel]
+other = "Commencer"
+
+[styleguidePricingCtaGrowthLabel]
+other = "Commencer"
+
+[styleguidePricingCtaEnterpriseLabel]
+other = "Nous contacter"
+
+[styleguidePricingFeatureDedicatedEngineer]
+other = "Ingénieur dédié"
+
+[styleguidePricingFeatureUptimeSla]
+other = "SLA de disponibilité"
+
+[styleguidePricingFeatureSecurityAudits]
+other = "Audits de sécurité / an"
+
+[styleguidePricingFeatureAccessibilityAudit]
+other = "Audit d'accessibilité"
+
+[styleguidePricingFeaturePrioritySupport]
+other = "Support prioritaire"
+
+[styleguidePricingValueUptimeStarter]
+other = "99,5 %"
+
+[styleguidePricingValueUptimeGrowth]
+other = "99,9 %"
+
+[styleguidePricingValueUptimeEnterprise]
+other = "99,99 %"
+
+[styleguidePricingValueSecurityAuditsStarter]
+other = "1"
+
+[styleguidePricingValueSecurityAuditsGrowth]
+other = "2"
+
+[styleguidePricingValueSecurityAuditsEnterprise]
+other = "Illimité"
+
+[styleguideStatsBandHeading]
+other = "Bandeau de statistiques"
+
+[styleguideStatOneLabel]
+other = "Versions livrées"
+
+[styleguideStatOneUnit]
+other = "+"
+
+[styleguideStatTwoLabel]
+other = "Disponibilité médiane de la plateforme"
+
+[styleguideStatTwoUnit]
+other = "%"
+
+[styleguideStatThreeLabel]
+other = "Ancienneté moyenne des clients"
+
+[styleguideStatThreeUnit]
+other = "ans"
+
+[styleguideStatFourLabel]
+other = "Couverture de réponse aux incidents"
+
+[styleguideStatFourUnit]
+other = "/7"
+
+[styleguideStepsHeading]
+other = "Étapes"
+
+[styleguideStepOneTitle]
+other = "Appel de découverte"
+
+[styleguideStepOneBody]
+other = "Nous cadrons votre stack, vos contraintes et vos objectifs en 30 minutes."
+
+[styleguideStepTwoTitle]
+other = "Audit technique"
+
+[styleguideStepTwoBody]
+other = "Nous examinons votre code, votre infrastructure et votre niveau d'accessibilité."
+
+[styleguideStepThreeTitle]
+other = "Proposition & cadrage"
+
+[styleguideStepThreeBody]
+other = "Vous recevez une proposition à périmètre fixe, avec jalons et tarification."
+
+[styleguideStepFourTitle]
+other = "Livraison & transfert"
+
+[styleguideStepFourBody]
+other = "Nous livrons par itérations, avec documentation et transfert de compétences à chaque jalon."
+
+[styleguideTimelineHeading]
+other = "Chronologie"
+
+[styleguideTimelineEventOneTitle]
+other = "Fondation du studio"
+
+[styleguideTimelineEventOneBody]
+other = "Débuts en tant que cabinet de conseil Node.js de deux personnes à Paris."
+
+[styleguideTimelineEventTwoTitle]
+other = "Premier client grand compte"
+
+[styleguideTimelineEventTwoBody]
+other = "Réalisation d'une migration cloud complète pour un distributeur de taille intermédiaire."
+
+[styleguideTimelineEventThreeTitle]
+other = "Lancement du pôle sécurité"
+
+[styleguideTimelineEventThreeBody]
+other = "Ajout des audits indépendants de sécurité et d'accessibilité à notre offre."
+
+[styleguideTimelineEventFourTitle]
+other = "Équipe full remote"
+
+[styleguideTimelineEventFourBody]
+other = "Constitution d'une équipe distribuée sur trois pays."
+
+[styleguideTimelineEventFiveTitle]
+other = "Publication de la bibliothèque de composants"
+
+[styleguideTimelineEventFiveBody]
+other = "Publication de notre design system interne sous la forme de ce thème."
+
+[styleguideFactsTableHeading]
+other = "Tableau de synthèse"
+
+[styleguideFactsTableCaption]
+other = "En bref"
+
+[styleguideFactTermFounded]
+other = "Fondation"
+
+[styleguideFactValueFounded]
+other = "2018"
+
+[styleguideFactTermTeamSize]
+other = "Taille de l'équipe"
+
+[styleguideFactValueTeamSize]
+other = "14 ingénieurs"
+
+[styleguideFactTermHeadquarters]
+other = "Siège"
+
+[styleguideFactValueHeadquarters]
+other = "Paris, France"
+
+[styleguideFactTermFocus]
+other = "Spécialité"
+
+[styleguideFactValueFocus]
+other = "Web, cloud & sécurité"
+
+[styleguidePaginationHeading]
+other = "Pagination"

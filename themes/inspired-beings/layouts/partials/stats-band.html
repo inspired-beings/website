@@ -1,0 +1,14 @@
+{{/* BEM blocks `stats-band` (grid wrapper) + `stat` (`stat__value|unit|
+  label`). Dict param: `stats` (list, required), each `{value, unit
+  (optional, e.g. "%", "+", "yrs"), label}`. Usage: see the styleguide's
+  "Stats band" section. */}}
+<div class="stats-band">
+  {{ range .stats }}
+    <div class="stat">
+      <p class="stat__value">
+        {{ .value }}{{ with .unit }}<span class="stat__unit">{{ . }}</span>{{ end }}
+      </p>
+      <p class="stat__label">{{ .label }}</p>
+    </div>
+  {{ end }}
+</div>

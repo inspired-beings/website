@@ -1,10 +1,15 @@
-{{/* Living styleguide (Task 4) — instantiates every component variant/state
-  from Task 4's library so pa11y + visual QA has one page to check. Order
-  matches the brief's own component list: button, card, chip, accordion
-  (via `.Content`, the one component meant to be authored from Markdown),
-  form. Section copy is template-authored (i18n), not page content, since
-  it's fixed structural demo copy rather than authored prose — matching how
-  top-bar/footer do i18n for their own strings. */}}
+{{/* Living styleguide (Task 4-5) — instantiates every component variant/
+  state from the component library so pa11y + visual QA has one page to
+  check. Button, card, chip, accordion (via `.Content`, the one component
+  meant to be authored from Markdown), form, pricing table, stats band,
+  steps, timeline, facts table, pagination. CTA band and figure are also
+  shortcodes meant to be authored from Markdown, so their demo sections live
+  in `.Content` too, alongside accordion (see
+  `exampleSite/content/styleguide.{en,fr-fr}.md`), not as partial calls
+  here. Section copy for the partial-driven sections is template-authored
+  (i18n), not page content, since it's fixed structural demo copy rather
+  than authored prose — matching how top-bar/footer do i18n for their own
+  strings. */}}
 {{ define "main" }}
   <article class="container styleguide">
     <h1>{{ .Title }}</h1>
@@ -112,6 +117,110 @@
         "label" (i18n "styleguideFormConsentLabel")
         "linkHref" "/privacy/"
         "linkLabel" (i18n "styleguideFormConsentLinkLabel")
+      ) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-pricing-table">
+      <h2 id="styleguide-pricing-table">{{ i18n "styleguidePricingTableHeading" }}</h2>
+      {{ partial "pricing-table.html" (dict
+        "caption" (i18n "styleguidePricingTableCaption")
+        "plans" (slice
+          (dict
+            "name" (i18n "styleguidePricingPlanStarterName")
+            "price" (i18n "styleguidePricingPlanStarterPrice")
+            "period" (i18n "styleguidePricingPlanStarterPeriod")
+            "cta" (dict "href" "/contact/" "label" (i18n "styleguidePricingCtaStarterLabel"))
+          )
+          (dict
+            "name" (i18n "styleguidePricingPlanGrowthName")
+            "price" (i18n "styleguidePricingPlanGrowthPrice")
+            "period" (i18n "styleguidePricingPlanGrowthPeriod")
+            "highlighted" true
+            "cta" (dict "href" "/contact/" "label" (i18n "styleguidePricingCtaGrowthLabel"))
+          )
+          (dict
+            "name" (i18n "styleguidePricingPlanEnterpriseName")
+            "price" (i18n "styleguidePricingPlanEnterprisePrice")
+            "cta" (dict "href" "/contact/" "label" (i18n "styleguidePricingCtaEnterpriseLabel"))
+          )
+        )
+        "features" (slice
+          (dict "name" (i18n "styleguidePricingFeatureDedicatedEngineer") "values" (slice false true true))
+          (dict "name" (i18n "styleguidePricingFeatureUptimeSla") "values" (slice
+            (i18n "styleguidePricingValueUptimeStarter")
+            (i18n "styleguidePricingValueUptimeGrowth")
+            (i18n "styleguidePricingValueUptimeEnterprise")
+          ))
+          (dict "name" (i18n "styleguidePricingFeatureSecurityAudits") "values" (slice
+            (i18n "styleguidePricingValueSecurityAuditsStarter")
+            (i18n "styleguidePricingValueSecurityAuditsGrowth")
+            (i18n "styleguidePricingValueSecurityAuditsEnterprise")
+          ))
+          (dict "name" (i18n "styleguidePricingFeatureAccessibilityAudit") "values" (slice false true true))
+          (dict "name" (i18n "styleguidePricingFeaturePrioritySupport") "values" (slice false false true))
+        )
+      ) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-stats-band">
+      <h2 id="styleguide-stats-band">{{ i18n "styleguideStatsBandHeading" }}</h2>
+      {{ partial "stats-band.html" (dict "stats" (slice
+        (dict "value" "120" "unit" (i18n "styleguideStatOneUnit") "label" (i18n "styleguideStatOneLabel"))
+        (dict "value" "99.9" "unit" (i18n "styleguideStatTwoUnit") "label" (i18n "styleguideStatTwoLabel"))
+        (dict "value" "8" "unit" (i18n "styleguideStatThreeUnit") "label" (i18n "styleguideStatThreeLabel"))
+        (dict "value" "24" "unit" (i18n "styleguideStatFourUnit") "label" (i18n "styleguideStatFourLabel"))
+      )) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-steps">
+      <h2 id="styleguide-steps">{{ i18n "styleguideStepsHeading" }}</h2>
+      {{ partial "steps-flow.html" (dict "steps" (slice
+        (dict "title" (i18n "styleguideStepOneTitle") "body" (i18n "styleguideStepOneBody"))
+        (dict "title" (i18n "styleguideStepTwoTitle") "body" (i18n "styleguideStepTwoBody"))
+        (dict "title" (i18n "styleguideStepThreeTitle") "body" (i18n "styleguideStepThreeBody"))
+        (dict "title" (i18n "styleguideStepFourTitle") "body" (i18n "styleguideStepFourBody"))
+      )) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-timeline">
+      <h2 id="styleguide-timeline">{{ i18n "styleguideTimelineHeading" }}</h2>
+      {{ partial "timeline.html" (dict "events" (slice
+        (dict "date" "2018" "title" (i18n "styleguideTimelineEventOneTitle") "body" (i18n "styleguideTimelineEventOneBody"))
+        (dict "date" "2020" "title" (i18n "styleguideTimelineEventTwoTitle") "body" (i18n "styleguideTimelineEventTwoBody"))
+        (dict "date" "2022" "title" (i18n "styleguideTimelineEventThreeTitle") "body" (i18n "styleguideTimelineEventThreeBody"))
+        (dict "date" "2024" "title" (i18n "styleguideTimelineEventFourTitle") "body" (i18n "styleguideTimelineEventFourBody"))
+        (dict "date" "2026" "title" (i18n "styleguideTimelineEventFiveTitle") "body" (i18n "styleguideTimelineEventFiveBody"))
+      )) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-facts-table">
+      <h2 id="styleguide-facts-table">{{ i18n "styleguideFactsTableHeading" }}</h2>
+      {{ partial "facts-table.html" (dict
+        "caption" (i18n "styleguideFactsTableCaption")
+        "facts" (slice
+          (dict "term" (i18n "styleguideFactTermFounded") "value" (i18n "styleguideFactValueFounded"))
+          (dict "term" (i18n "styleguideFactTermTeamSize") "value" (i18n "styleguideFactValueTeamSize"))
+          (dict "term" (i18n "styleguideFactTermHeadquarters") "value" (i18n "styleguideFactValueHeadquarters"))
+          (dict "term" (i18n "styleguideFactTermFocus") "value" (i18n "styleguideFactValueFocus"))
+        )
+      ) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-pagination">
+      <h2 id="styleguide-pagination">{{ i18n "styleguidePaginationHeading" }}</h2>
+      {{/* No real pageable content on this single page — a fake Paginator-
+        shaped dict, per `partials/pagination.html`'s own doc comment. */}}
+      {{ partial "pagination.html" (dict
+        "PageNumber" 2
+        "HasPrev" true
+        "Prev" (dict "URL" "?page=1")
+        "HasNext" true
+        "Next" (dict "URL" "?page=3")
+        "Pagers" (slice
+          (dict "PageNumber" 1 "URL" "?page=1")
+          (dict "PageNumber" 2 "URL" "?page=2")
+          (dict "PageNumber" 3 "URL" "?page=3")
+        )
       ) }}
     </section>
   </article>

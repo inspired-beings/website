@@ -20,3 +20,19 @@ Yes — TMA (maintenance-in-operational-condition) contracts cover monitoring, s
 {{< /accordion >}}
 
 </section>
+
+<section class="styleguide__section" aria-labelledby="styleguide-cta-band">
+
+<h2 id="styleguide-cta-band">CTA band</h2>
+
+{{< cta title="Ready to modernize your stack?" body="Talk to our engineering team about your next release." href="/contact/" label="Request a quote" >}}
+
+</section>
+
+<section class="styleguide__section" aria-labelledby="styleguide-figure">
+
+<h2 id="styleguide-figure">Figure</h2>
+
+{{< figure src="images/studio-dashboard-placeholder.png" alt="Abstract illustration of a project dashboard, in the Inspired Beings interim palette" caption="Illustrative placeholder — not a real product screenshot." >}}
+
+</section>

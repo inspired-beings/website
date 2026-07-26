@@ -1,0 +1,51 @@
+// CTA band: an inverse band, exactly like the footer (see
+// `layout/_footer.scss` for the established pattern) — background is
+// `--color-inverse-band-bg` (still tracks the page's own light/dark scheme)
+// and content re-asserts dark-scheme tokens verbatim via `_dark.scss`'s
+// `inverse-band-semantics` mixin, so a light-scheme page still renders a
+// dark band with correctly-contrasted content, no primitive named here.
+@use "../abstracts";
+@use "../themes/dark";
+
+.cta-band {
+  @include dark.inverse-band-semantics;
+  background-color: var(--color-inverse-band-bg);
+  color: var(--color-text-default);
+  padding-block: var(--sp-2xl);
+  border-radius: var(--radius-lg);
+}
+
+.cta-band__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-md);
+
+  @include abstracts.mq-up("md") {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-xl);
+  }
+}
+
+.cta-band__content {
+  max-width: 40rem;
+}
+
+.cta-band__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+}
+
+.cta-band__body {
+  margin-block-start: var(--sp-xs);
+  color: var(--color-text-muted);
+}
+
+.cta-band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: var(--sp-sm);
+}

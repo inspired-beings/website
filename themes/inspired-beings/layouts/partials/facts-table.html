@@ -1,0 +1,21 @@
+{{/* BEM block `facts-table`. Implemented as a real <dl> rather than a 2-col
+  <table> (my call): a flat label/value list (e.g. "Founded", "Team size")
+  is semantically a description list, not tabular data — no column
+  headers, no row/column relationships to scope. HTML5 permits grouping
+  each <dt>/<dd> pair in its own <div> (a "name-value group"), which is
+  what gives `facts-table__row` a styling hook without breaking <dl>
+  semantics. Dict params: `caption` (optional), `facts` (list, required),
+  each `{term, value}`. Usage: see the styleguide's "Facts table" section. */}}
+<div class="facts-table">
+  {{ with .caption }}
+    <p class="facts-table__caption">{{ . }}</p>
+  {{ end }}
+  <dl class="facts-table__list">
+    {{ range .facts }}
+      <div class="facts-table__row">
+        <dt class="facts-table__term">{{ .term }}</dt>
+        <dd class="facts-table__value">{{ .value }}</dd>
+      </div>
+    {{ end }}
+  </dl>
+</div>

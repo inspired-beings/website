@@ -1,0 +1,17 @@
+// Figure: responsive, lazy image (see `partials/figure.html` for the Hugo
+// image-processing pipeline — this file is pure presentation).
+.figure {
+  margin: 0;
+}
+
+.figure__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.figure__caption {
+  margin-block-start: var(--sp-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}

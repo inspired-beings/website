@@ -1,0 +1,75 @@
+{{/* BEM block `pricing-table` — a real <table> + <caption> + scope'd <th>.
+  Dict params:
+  - `caption` (string, required) — real <caption>, not a heading.
+  - `plans` (list, required) — each `{name, price, period (optional),
+    highlighted (bool, optional), cta (optional dict {href, label})}`.
+    One `<th scope="col">` per plan; the highlighted one gets
+    `pricing-table__plan--highlighted` and its whole column (values + CTA
+    cell) also gets `pricing-table__value--highlighted`.
+  - `features` (list, required) — each `{name, values}`, `values` a list
+    with exactly one entry per plan, in the same order as `plans`. A value
+    is either a bool (renders a check/dash mark, `role="img"
+    aria-label="…"` for the accessible name) or a string (rendered
+    verbatim, e.g. "99.9%", "Unlimited"). The marks are drawn as pure CSS
+    shapes in `_pricing-table.scss` (`::before`), not Unicode ✓/– glyphs —
+    axe's color-contrast rule treats dingbat-range characters as
+    "emoji-like" and skips them as `needsFurtherReview` (reported as an
+    error by pa11y) instead of computing a real ratio, regardless of the
+    actual color; a borderless CSS shape has no text node to mis-flag.
+  Usage: see the styleguide's "Pricing table" section. */}}
+
+{{ $highlightedIndex := -1 }}
+{{ range $i, $plan := .plans }}
+  {{ if $plan.highlighted }}{{ $highlightedIndex = $i }}{{ end }}
+{{ end }}
+
+<table class="pricing-table">
+  <caption class="pricing-table__caption">{{ .caption }}</caption>
+  <thead>
+    <tr>
+      <th class="pricing-table__corner" scope="col">
+        <span class="pricing-table__sr-label">{{ i18n "pricingTableFeatureColumnLabel" }}</span>
+      </th>
+      {{ range .plans }}
+        <th class="pricing-table__plan{{ if .highlighted }} pricing-table__plan--highlighted{{ end }}" scope="col">
+          <span class="pricing-table__plan-name">{{ .name }}</span>
+          <span class="pricing-table__price">
+            {{ .price }}{{ with .period }}<span class="pricing-table__period">{{ . }}</span>{{ end }}
+          </span>
+        </th>
+      {{ end }}
+    </tr>
+  </thead>
+  <tbody>
+    {{ range .features }}
+      <tr>
+        <th class="pricing-table__feature" scope="row">{{ .name }}</th>
+        {{ range $i, $value := .values }}
+          <td class="pricing-table__value{{ if eq $i $highlightedIndex }} pricing-table__value--highlighted{{ end }}">
+            {{ if eq $value true }}
+              <span class="pricing-table__mark pricing-table__mark--yes" role="img" aria-label="{{ i18n "pricingTableIncludedLabel" }}"></span>
+            {{ else if eq $value false }}
+              <span class="pricing-table__mark pricing-table__mark--no" role="img" aria-label="{{ i18n "pricingTableNotIncludedLabel" }}"></span>
+            {{ else }}
+              {{ $value }}
+            {{ end }}
+          </td>
+        {{ end }}
+      </tr>
+    {{ end }}
+  </tbody>
+  <tfoot>
+    <tr>
+      <th class="pricing-table__corner" scope="row">
+        <span class="pricing-table__sr-label">{{ i18n "pricingTableActionColumnLabel" }}</span>
+      </th>
+      {{ range $i, $plan := .plans }}
+        <td class="pricing-table__cta-cell{{ if eq $i $highlightedIndex }} pricing-table__value--highlighted{{ end }}">
+          {{ with $plan.cta }}
+            <a class="button button--solid button--medium" href="{{ .href }}">{{ .label }}</a>
+          {{ end }}
+        </td>
+      {{ end }}
+    </tr>
+  </tfoot>
+</table>

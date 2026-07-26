@@ -20,3 +20,19 @@ Oui — les contrats de TMA (maintien en conditions opérationnelles) couvrent l
 {{< /accordion >}}
 
 </section>
+
+<section class="styleguide__section" aria-labelledby="styleguide-cta-band">
+
+<h2 id="styleguide-cta-band">Bandeau d'appel à l'action</h2>
+
+{{< cta title="Prêt à moderniser votre stack ?" body="Échangez avec notre équipe d'ingénierie sur votre prochaine mise en production." href="/contact/" label="Demander un devis" >}}
+
+</section>
+
+<section class="styleguide__section" aria-labelledby="styleguide-figure">
+
+<h2 id="styleguide-figure">Figure</h2>
+
+{{< figure src="images/studio-dashboard-placeholder.png" alt="Illustration abstraite d'un tableau de bord projet, dans la palette provisoire Inspired Beings" caption="Placeholder illustratif — pas une véritable capture d'écran produit." >}}
+
+</section>

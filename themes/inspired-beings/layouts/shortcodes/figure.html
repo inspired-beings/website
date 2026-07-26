@@ -1,0 +1,16 @@
+{{/* Shortcode: exposes `partial "figure.html"` to Markdown content. Named
+  params: `src` (required), `alt` (required — same "must be explicit, even
+  if empty" contract as the partial; forwarded via `isset .Params "alt"` so
+  a caller who forgets it entirely still hits the partial's `errorf`, rather
+  than silently collapsing to an empty string), `caption` (optional). Usage:
+  {{< figure src="images/studio-dashboard-placeholder.png" alt="Abstract
+  dashboard mockup in the Inspired Beings palette" caption="Illustrative
+  placeholder." >}} */}}
+{{ $args := dict "src" (.Get "src") }}
+{{ with .Get "caption" }}
+  {{ $args = merge $args (dict "caption" .) }}
+{{ end }}
+{{ if isset .Params "alt" }}
+  {{ $args = merge $args (dict "alt" (.Get "alt")) }}
+{{ end }}
+{{ partial "figure.html" $args }}
