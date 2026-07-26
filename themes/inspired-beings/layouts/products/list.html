@@ -1,0 +1,29 @@
+{{/* Products index (Task 11) — card grid (per the design spec: "product
+  index (card grid)", unlike the services index's alternating-row layout).
+  Content model: `_index.{en,fr-fr}.md` carries only `title` + `lead` (same
+  shape as `services/_index.md`); each card's content is the linked
+  product's own front matter (`icon`, `tagline` — see `archetypes/
+  product.md`), sorted by `weight`. Reuses `card.html` verbatim.
+
+  New page block: `products-index` (`__intro|lead|grid`). */}}
+{{ define "main" }}
+  <article class="container products-index">
+    <header class="products-index__intro">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}
+        <p class="products-index__lead">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="products-index__grid">
+      {{ range .RegularPages.ByWeight }}
+        {{ partial "card.html" (dict
+          "icon" .Params.icon
+          "title" .Title
+          "body" .Params.tagline
+          "link" (dict "href" .RelPermalink "label" (i18n "productsIndexLinkLabel"))
+        ) }}
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

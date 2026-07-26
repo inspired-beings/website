@@ -530,3 +530,63 @@ other = "Email us"
 
 [contactMailtoEmail]
 other = "hello@example.inspired-beings.com"
+
+[careersValuesHeading]
+other = "What we stand for as an employer"
+
+[careersOffersHeading]
+other = "Open roles"
+
+[careersOfferApplyLabel]
+other = "Apply for this role"
+
+[careersCtaHeading]
+other = "Don't see the right role?"
+
+[careersCtaBody]
+other = "Tell us what you're good at — we'll reach out when something fits."
+
+[careersCtaLabel]
+other = "Get in touch"
+
+[productsIndexLinkLabel]
+other = "View app"
+
+[productScreenshotsHeading]
+other = "Screenshots"
+
+[productFeaturesHeading]
+other = "Features"
+
+[productStoreHeading]
+other = "Availability"
+
+[productStoreIosLabel]
+other = "App Store"
+
+[productStoreAndroidLabel]
+other = "Google Play"
+
+[productPrivacyHeading]
+other = "Privacy"
+
+[productPrivacyLinkLabel]
+other = "Read the full privacy policy"
+
+[productCtaHeading]
+other = "Questions about this app?"
+
+[productCtaBody]
+other = "Tell us what you're trying to do — we'll reply within one business day."
+
+[productCtaLabel]
+other = "Get in touch"
+
+[notFoundTitle]
+other = "Page not found"
+
+[notFoundBody]
+other = "The page you're looking for doesn't exist, or has moved."
+
+[notFoundHomeLabel]
+other = "Back to the homepage"

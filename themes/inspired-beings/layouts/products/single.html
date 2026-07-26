@@ -1,0 +1,92 @@
+{{/* Product single (Task 11) — hero (icon+name+tagline, same idiom as
+  `service-hero`) → screenshots figure gallery → feature list (reuses
+  `card.html`, title/body only) → store-links placeholder block (reuses
+  `facts-table.html` — a plain text `<dl>`, which is exactly what a
+  "text-styled, no real store artwork" badge placeholder needs, no new
+  component) → privacy summary → CTA band. Content model (brief contract):
+  `tagline`, `screenshots[]{src,alt}`, `features[]{title,body}`,
+  `store_links{ios,android}`, `privacy_summary` — see `archetypes/
+  product.md`. Rehearses the future Fossling app-page shape.
+
+  `store_links` is the brief's named dict, but rendered through two
+  explicit `with` lookups (`ios`/`android`) rather than a generic range —
+  same reasoning as about/single.html's `history` → `timeline` conversion:
+  two known keys, no need for map-iteration-order handling.
+
+  New page blocks: `product-hero`, `product-screenshots`, `product-
+  features`, `product-store`, `product-privacy`. `product-cta` is a
+  page-scoped wrapper around the reused `cta-band` component. */}}
+{{ define "main" }}
+  <article class="product">
+    <section class="product-hero">
+      <div class="container product-hero__inner">
+        {{ with .Params.icon }}
+          <span class="product-hero__icon" aria-hidden="true">{{ . }}</span>
+        {{ end }}
+        <h1 class="product-hero__title">{{ .Title }}</h1>
+        {{ with .Params.tagline }}
+          <p class="product-hero__tagline">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="product-screenshots" aria-labelledby="product-screenshots-heading">
+      <div class="container">
+        <h2 id="product-screenshots-heading">{{ i18n "productScreenshotsHeading" }}</h2>
+        <div class="product-screenshots__grid">
+          {{ range .Params.screenshots }}
+            {{ partial "figure.html" (dict
+              "src" .src
+              "alt" .alt
+              "widths" (slice 200 400)
+              "sizes" "(min-width: 48em) 28vw, 45vw"
+            ) }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <section class="product-features" aria-labelledby="product-features-heading">
+      <div class="container">
+        <h2 id="product-features-heading">{{ i18n "productFeaturesHeading" }}</h2>
+        <div class="product-features__grid">
+          {{ range .Params.features }}
+            {{ partial "card.html" (dict "title" .title "body" .body) }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <section class="product-store" aria-labelledby="product-store-heading">
+      <div class="container">
+        <h2 id="product-store-heading">{{ i18n "productStoreHeading" }}</h2>
+        {{ $storeFacts := slice }}
+        {{ with .Params.store_links.ios }}
+          {{ $storeFacts = $storeFacts | append (dict "term" (i18n "productStoreIosLabel") "value" .) }}
+        {{ end }}
+        {{ with .Params.store_links.android }}
+          {{ $storeFacts = $storeFacts | append (dict "term" (i18n "productStoreAndroidLabel") "value" .) }}
+        {{ end }}
+        {{ partial "facts-table.html" (dict "facts" $storeFacts) }}
+      </div>
+    </section>
+
+    <section class="product-privacy" aria-labelledby="product-privacy-heading">
+      <div class="container">
+        <h2 id="product-privacy-heading">{{ i18n "productPrivacyHeading" }}</h2>
+        <p class="product-privacy__body">{{ .Params.privacy_summary }}</p>
+        <a class="product-privacy__link" href="{{ "legal/" | relLangURL }}">
+          {{ i18n "productPrivacyLinkLabel" }}
+        </a>
+      </div>
+    </section>
+
+    <section class="product-cta">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "productCtaHeading")
+        "body" (i18n "productCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "productCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}

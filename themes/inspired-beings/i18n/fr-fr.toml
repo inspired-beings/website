@@ -530,3 +530,63 @@ other = "Nous écrire"
 
 [contactMailtoEmail]
 other = "hello@example.inspired-beings.com"
+
+[careersValuesHeading]
+other = "Ce que nous défendons en tant qu'employeur"
+
+[careersOffersHeading]
+other = "Postes ouverts"
+
+[careersOfferApplyLabel]
+other = "Postuler à cette offre"
+
+[careersCtaHeading]
+other = "Aucun poste ne correspond ?"
+
+[careersCtaBody]
+other = "Dites-nous ce que vous savez faire — nous vous recontacterons si une opportunité correspond."
+
+[careersCtaLabel]
+other = "Nous contacter"
+
+[productsIndexLinkLabel]
+other = "Voir l'application"
+
+[productScreenshotsHeading]
+other = "Captures d'écran"
+
+[productFeaturesHeading]
+other = "Fonctionnalités"
+
+[productStoreHeading]
+other = "Disponibilité"
+
+[productStoreIosLabel]
+other = "App Store"
+
+[productStoreAndroidLabel]
+other = "Google Play"
+
+[productPrivacyHeading]
+other = "Confidentialité"
+
+[productPrivacyLinkLabel]
+other = "Lire la politique de confidentialité complète"
+
+[productCtaHeading]
+other = "Des questions sur cette application ?"
+
+[productCtaBody]
+other = "Dites-nous ce que vous cherchez à faire — nous répondrons sous un jour ouvré."
+
+[productCtaLabel]
+other = "Nous contacter"
+
+[notFoundTitle]
+other = "Page introuvable"
+
+[notFoundBody]
+other = "La page que vous cherchez n'existe pas, ou a été déplacée."
+
+[notFoundHomeLabel]
+other = "Retour à l'accueil"

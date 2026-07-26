@@ -37,6 +37,8 @@
   {{ $pageStyleKind = "home" }}
 {{ else if eq .Section "services" }}
   {{ $pageStyleKind = "services" }}
+{{ else if eq .Section "products" }}
+  {{ $pageStyleKind = "products" }}
 {{ else if eq .Type "styleguide" }}
   {{ $pageStyleKind = "styleguide" }}
 {{ else if or (eq .Section "news") (eq .Kind "term") }}
@@ -48,8 +50,13 @@
     second taxonomy would need this narrowed to also check the taxonomy
     name. */}}
   {{ $pageStyleKind = "news" }}
+{{ else if eq .Kind "404" }}
+  {{/* The 404 kind has no backing content file (no `.File`), so it can't
+    go through the `.File.TranslationBaseName` branch below — it reuses the
+    `legal` stylesheet directly (see `layouts/404.html`'s header comment). */}}
+  {{ $pageStyleKind = "legal" }}
 {{ else if .File }}
-  {{ if in (slice "about" "faq" "pricing" "contact") .File.TranslationBaseName }}
+  {{ if in (slice "about" "faq" "pricing" "contact" "careers" "legal") .File.TranslationBaseName }}
     {{ $pageStyleKind = .File.TranslationBaseName }}
   {{ end }}
 {{ end }}

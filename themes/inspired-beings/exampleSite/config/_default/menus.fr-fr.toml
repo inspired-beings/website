@@ -158,3 +158,9 @@
   name = "Produits"
   url = "/fr-fr/products/"
   weight = 30
+
+[[menus.footerresources]]
+  identifier = "footer-legal"
+  name = "Mentions légales"
+  url = "/fr-fr/legal/"
+  weight = 40

@@ -1,0 +1,43 @@
+// Legal (Task 11) — generic typographic single, per the design spec. Also
+// shared by 404 (`layouts/404.html` reuses `.legal`/`.legal-hero` verbatim
+// instead of a dedicated stylesheet — see that layout's header comment).
+@use "../abstracts";
+
+.legal-hero {
+  padding-block: var(--sp-2xl);
+  max-width: 44rem;
+}
+
+.legal-hero__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.legal-body {
+  padding-block-end: var(--sp-2xl);
+}
+
+.legal-body__content {
+  max-width: 48rem;
+}
+
+// h2/h3 already carry the right size/weight from `base/_typography.scss`;
+// only extra vertical rhythm between prose sections is page-scoped here.
+.legal-body__content h2 {
+  margin-block-start: var(--sp-xl);
+}
+
+.legal-body__content h2:first-child {
+  margin-block-start: 0;
+}
+
+.legal-body__content p,
+.legal-body__content ul,
+.legal-body__content ol {
+  margin-block-start: var(--sp-sm);
+}
+
+// 404-only: the "back home" CTA sits right under the shared `.legal-hero`.
+.not-found__actions {
+  padding-block-end: var(--sp-2xl);
+}
