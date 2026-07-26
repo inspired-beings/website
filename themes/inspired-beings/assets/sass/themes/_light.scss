@@ -4,9 +4,11 @@
 // (spacing, type, radii, shadows, z-index, transitions, container widths) —
 // they don't change between light/dark, so they live once here as the base
 // `:root`, and `_dark.scss` only ever overrides the color semantics below.
+// Color primitives live in `_primitives.scss` — the semantic mapping below
+// only ever `var()`-references them.
 //
-// Hex values are copied VERBATIM from the design spec's semantic table,
-// "Light" column (`.agents/docs/technical/website-template-design.md`).
+// Mapping copied VERBATIM from the design spec's semantic table, "Light"
+// column (`.agents/docs/technical/website-template-design.md`).
 
 @use "sass:map";
 
@@ -72,43 +74,29 @@ $container: (
   "padding-inline": 1rem,
 );
 
-// ---- Light color primitives (spec § Visual identity → Primitives) --------
+// ---- Light semantic mapping (spec § Visual identity → semantic table,
+// "Light" column) — every value is a `var()` reference into the shared
+// primitive layer (`_primitives.scss`), never a re-declared hex.
 
-$color-night: #091018; // TRUE
-$color-peri-600: #3E56CC;
-$color-peri-700: #3549B2;
-$color-peri-800: #2F40A0;
-$color-frost-0: #FAFBFD;
-$color-frost-1: #EFF2F7;
-$color-frost-2: #FFFFFF;
-$color-slate-1: #444B5E;
-$color-slate-2: #5C6377;
-$color-line-light: #7A8296;
-$color-line-light-subtle: #DDE1EA;
-$color-sun-deep: #7E6300;
-$color-spring-deep: #457800;
-$color-error-light: #B42318;
-
-// Semantic color custom properties — light column of the spec table.
 @mixin light-semantics {
-  --color-surface-default: #{$color-frost-0};
-  --color-surface-alt: #{$color-frost-1};
-  --color-surface-raised: #{$color-frost-2};
-  --color-text-default: #{$color-night};
-  --color-text-muted: #{$color-slate-1};
-  --color-text-subtle: #{$color-slate-2};
-  --color-accent-default: #{$color-peri-600};
-  --color-accent-hover: #{$color-peri-700};
-  --color-accent-active: #{$color-peri-800};
-  --color-on-accent: #{$color-frost-2};
-  --color-border-default: #{$color-line-light};
-  --color-border-subtle: #{$color-line-light-subtle};
-  --color-inverse-band-bg: #{$color-night};
-  --color-link: #{$color-peri-600};
-  --color-focus-ring: #{$color-night};
-  --color-error: #{$color-error-light};
-  --color-success: #{$color-spring-deep};
-  --color-warning: #{$color-sun-deep};
+  --color-surface-default: var(--color-primitive-frost-0);
+  --color-surface-alt: var(--color-primitive-frost-1);
+  --color-surface-raised: var(--color-primitive-frost-2);
+  --color-text-default: var(--color-primitive-night);
+  --color-text-muted: var(--color-primitive-slate-1);
+  --color-text-subtle: var(--color-primitive-slate-2);
+  --color-accent-default: var(--color-primitive-peri-600);
+  --color-accent-hover: var(--color-primitive-peri-700);
+  --color-accent-active: var(--color-primitive-peri-800);
+  --color-on-accent: var(--color-primitive-frost-2);
+  --color-border-default: var(--color-primitive-line-light);
+  --color-border-subtle: var(--color-primitive-line-light-subtle);
+  --color-inverse-band-bg: var(--color-primitive-night);
+  --color-link: var(--color-primitive-peri-600);
+  --color-focus-ring: var(--color-primitive-night);
+  --color-error: var(--color-primitive-error-light);
+  --color-success: var(--color-primitive-spring-deep);
+  --color-warning: var(--color-primitive-sun-deep);
 }
 
 :root {

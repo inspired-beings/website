@@ -1,0 +1,48 @@
+// Color primitives — single source of truth, scheme-independent.
+//
+// Emitted once as `:root` custom properties (naming rule:
+// `--color-primitive-<name>`), so a hue shared across schemes (e.g. night
+// is both light's `text-default` and dark's `surface-default`) is declared
+// exactly once. `_light.scss`/`_dark.scss` semantic mixins reference these
+// via `var(--color-primitive-<name>)` — they never re-declare a hex value.
+//
+// Hex values copied VERBATIM from the design spec's "Primitives" list
+// (`.agents/docs/technical/website-template-design.md`). `// TRUE` marks
+// the actual brand hues.
+
+$color-primitives: (
+  "night": #091018, // TRUE
+  "peri-300": #93ACFF,
+  "peri-400": #7898FF, // TRUE
+  "peri-500": #6584F5,
+  "peri-600": #3E56CC,
+  "peri-700": #3549B2,
+  "peri-800": #2F40A0,
+  "frost-0": #FAFBFD,
+  "frost-1": #EFF2F7,
+  "frost-2": #FFFFFF,
+  "slate-1": #444B5E,
+  "slate-2": #5C6377,
+  "night-1": #111927,
+  "night-2": #1A2436,
+  "night-deep": #04070D,
+  "frost-t0": #EDF0F7,
+  "frost-t1": #C0C7D9,
+  "frost-t2": #9AA3BA,
+  "line-light": #7A8296,
+  "line-light-subtle": #DDE1EA,
+  "line-dark": #6A7590,
+  "line-dark-subtle": #232E42,
+  "sun": #FED500, // TRUE
+  "sun-deep": #7E6300,
+  "spring": #ACD91D, // TRUE
+  "spring-deep": #457800,
+  "error-light": #B42318,
+  "error-dark": #FF8B80,
+);
+
+:root {
+  @each $name, $value in $color-primitives {
+    --color-primitive-#{$name}: #{$value};
+  }
+}
