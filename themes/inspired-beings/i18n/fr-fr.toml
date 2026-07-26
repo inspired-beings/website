@@ -461,3 +461,69 @@ other = "Dites-nous ce que vous construisez ou ce que vous aimeriez lire — nou
 
 [newsCtaLabel]
 other = "Nous contacter"
+
+[contactTypeLegend]
+other = "Sur quoi pouvons-nous vous aider ?"
+
+[contactTypeOptionProjectInquiry]
+other = "Nouveau projet"
+
+[contactTypeOptionQuoteRequest]
+other = "Demande de devis"
+
+[contactTypeOptionPartnership]
+other = "Partenariat"
+
+[contactTypeOptionOther]
+other = "Autre chose"
+
+[contactMessageLabel]
+other = "Votre message"
+
+[contactMessageHelp]
+other = "Stack technique, échéance approximative, tout ce qui nous aide à cadrer le travail."
+
+[contactNameLabel]
+other = "Nom complet"
+
+[contactCompanyLabel]
+other = "Entreprise"
+
+[contactEmailLabel]
+other = "Adresse e-mail"
+
+[contactPhoneLabel]
+other = "Numéro de téléphone"
+
+[contactPhoneHelp]
+other = "Facultatif — uniquement si vous préférez qu'on vous rappelle."
+
+[contactConsentLabel]
+other = "J'accepte les"
+
+[contactConsentLinkLabel]
+other = "Mentions légales et politique de confidentialité"
+
+[contactSubmitLabel]
+other = "Envoyer le message"
+
+[contactSuccessMessage]
+other = "Merci — votre message est en route. Nous répondrons sous un jour ouvré."
+
+[contactErrorMessage]
+other = "Une erreur est survenue lors de l'envoi. Réessayez, ou écrivez-nous directement."
+
+[contactErrorRequired]
+other = "Ce champ est obligatoire."
+
+[contactErrorEmail]
+other = "Saisissez une adresse e-mail valide."
+
+[contactMailtoBody]
+other = "Notre formulaire de contact est en cours de branchement pour cet aperçu — écrivez-nous directement, un·e ingénieur·e répondra sous un jour ouvré."
+
+[contactMailtoLabel]
+other = "Nous écrire"
+
+[contactMailtoEmail]
+other = "hello@example.inspired-beings.com"

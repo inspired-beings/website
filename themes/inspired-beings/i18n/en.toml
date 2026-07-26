@@ -461,3 +461,69 @@ other = "Tell us what you're building or what you'd like to hear about — we re
 
 [newsCtaLabel]
 other = "Get in touch"
+
+[contactTypeLegend]
+other = "What can we help with?"
+
+[contactTypeOptionProjectInquiry]
+other = "New project inquiry"
+
+[contactTypeOptionQuoteRequest]
+other = "Quote request"
+
+[contactTypeOptionPartnership]
+other = "Partnership"
+
+[contactTypeOptionOther]
+other = "Something else"
+
+[contactMessageLabel]
+other = "Your message"
+
+[contactMessageHelp]
+other = "Tech stack, rough timeline, anything that helps us scope the work."
+
+[contactNameLabel]
+other = "Full name"
+
+[contactCompanyLabel]
+other = "Company"
+
+[contactEmailLabel]
+other = "Email address"
+
+[contactPhoneLabel]
+other = "Phone number"
+
+[contactPhoneHelp]
+other = "Optional — only if you'd rather we call you back."
+
+[contactConsentLabel]
+other = "I agree to the"
+
+[contactConsentLinkLabel]
+other = "Legal Notice & Privacy Policy"
+
+[contactSubmitLabel]
+other = "Send message"
+
+[contactSuccessMessage]
+other = "Thanks — your message is on its way. We'll reply within one business day."
+
+[contactErrorMessage]
+other = "Something went wrong sending your message. Please try again, or email us directly."
+
+[contactErrorRequired]
+other = "This field is required."
+
+[contactErrorEmail]
+other = "Enter a valid email address."
+
+[contactMailtoBody]
+other = "Our contact form is being wired up for this preview — email us directly instead, and a real engineer will reply within one business day."
+
+[contactMailtoLabel]
+other = "Email us"
+
+[contactMailtoEmail]
+other = "hello@example.inspired-beings.com"

@@ -49,7 +49,7 @@
     name. */}}
   {{ $pageStyleKind = "news" }}
 {{ else if .File }}
-  {{ if in (slice "about" "faq" "pricing") .File.TranslationBaseName }}
+  {{ if in (slice "about" "faq" "pricing" "contact") .File.TranslationBaseName }}
     {{ $pageStyleKind = .File.TranslationBaseName }}
   {{ end }}
 {{ end }}

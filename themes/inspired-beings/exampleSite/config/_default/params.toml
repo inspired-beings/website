@@ -1,1 +1,11 @@
 # Theme-wide params. Populated as components/pages are built in later tasks.
+
+# Contact form endpoint (Task 10) — where `layouts/contact/single.html`
+# POSTs (native form action + `assets/js/form.js`'s fetch enhancement).
+# Left empty here: the contact page then renders a styled mailto CTA
+# instead of the form (see the layout's `{{ if $endpoint }}` switch), which
+# is what exampleSite/CI always see. Security invariant (design spec): this
+# value MUST stay either empty, a same-origin-relative path (e.g.
+# "/api/contact"), or an explicitly configured URL on a domain this site
+# actually controls — never a hardcoded third-party endpoint.
+contactFormEndpoint = ""

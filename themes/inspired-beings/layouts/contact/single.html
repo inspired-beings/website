@@ -1,0 +1,126 @@
+{{/* Contact (Task 10) — hero → full form OR mailto fallback, switched on
+  the site param `contactFormEndpoint` (exampleSite ships it empty, so CI
+  always sees the mailto path; set it locally to exercise the form path).
+  Content model: `lead` (string, hero intro — same pattern as about/faq).
+
+  Form fields are template-authored (i18n), not page content, same
+  reasoning as the styleguide's form section: fixed structural UI, not
+  authored prose. All four Task 4 field partials are reused verbatim
+  (field-radio-group/textarea/text/consent); none forked.
+
+  Endpoint-set state: real `action`/`method="post"` so the form still
+  works with JS disabled (native browser submission, urlencoded body) —
+  `assets/js/form.js` only prevents the default submit to enhance it with
+  fetch + inline validation/feedback, per the security rule (same-origin-
+  relative or explicitly configured endpoint, never a hardcoded
+  third-party one — enforced by this param staying empty in exampleSite's
+  committed config). `data-error-*`/`data-*-message` attributes hand the
+  JS its i18n strings, keeping the bundle itself locale-agnostic (same
+  idiom as `menu.js`/`theme.js`, which carry no translated text). */}}
+{{ define "main" }}
+  <article class="contact">
+    <section class="contact-hero">
+      <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}
+          <p class="contact-hero__lead">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    {{ $endpoint := .Site.Params.contactFormEndpoint }}
+    {{ if $endpoint }}
+      <section class="contact-form">
+        <div class="container">
+          <form
+            class="contact-form__form"
+            action="{{ $endpoint }}"
+            method="post"
+            data-contact-form
+            data-success-message="{{ i18n "contactSuccessMessage" }}"
+            data-error-message="{{ i18n "contactErrorMessage" }}"
+            data-error-required="{{ i18n "contactErrorRequired" }}"
+            data-error-email="{{ i18n "contactErrorEmail" }}"
+          >
+            {{ partial "form/field-radio-group.html" (dict
+              "name" "type"
+              "legend" (i18n "contactTypeLegend")
+              "required" true
+              "options" (slice
+                (dict "value" "project-inquiry" "label" (i18n "contactTypeOptionProjectInquiry"))
+                (dict "value" "quote-request" "label" (i18n "contactTypeOptionQuoteRequest"))
+                (dict "value" "partnership" "label" (i18n "contactTypeOptionPartnership"))
+                (dict "value" "other" "label" (i18n "contactTypeOptionOther"))
+              )
+            ) }}
+
+            {{ partial "form/field-textarea.html" (dict
+              "name" "message"
+              "label" (i18n "contactMessageLabel")
+              "required" true
+              "help" (i18n "contactMessageHelp")
+              "rows" 6
+            ) }}
+
+            {{ partial "form/field-text.html" (dict
+              "name" "name"
+              "label" (i18n "contactNameLabel")
+              "required" true
+              "autocomplete" "name"
+            ) }}
+
+            {{ partial "form/field-text.html" (dict
+              "name" "company"
+              "label" (i18n "contactCompanyLabel")
+              "required" true
+              "autocomplete" "organization"
+            ) }}
+
+            {{ partial "form/field-text.html" (dict
+              "name" "email"
+              "label" (i18n "contactEmailLabel")
+              "required" true
+              "type" "email"
+              "autocomplete" "email"
+            ) }}
+
+            {{ partial "form/field-text.html" (dict
+              "name" "phone"
+              "label" (i18n "contactPhoneLabel")
+              "type" "tel"
+              "autocomplete" "tel"
+              "help" (i18n "contactPhoneHelp")
+            ) }}
+
+            {{ partial "form/field-consent.html" (dict
+              "name" "consent"
+              "label" (i18n "contactConsentLabel")
+              "linkHref" ("legal/" | relLangURL)
+              "linkLabel" (i18n "contactConsentLinkLabel")
+            ) }}
+
+            <p class="contact-form__status" role="status" aria-live="polite" data-contact-status hidden></p>
+
+            <button type="submit" class="button button--solid button--large" data-contact-submit>
+              {{ i18n "contactSubmitLabel" }}
+            </button>
+          </form>
+        </div>
+      </section>
+    {{ else }}
+      <section class="contact-mailto">
+        <div class="container">
+          <div class="contact-mailto__box">
+            <p class="contact-mailto__body">{{ i18n "contactMailtoBody" }}</p>
+            <a class="contact-mailto__email" href="mailto:{{ i18n "contactMailtoEmail" }}">
+              {{ i18n "contactMailtoEmail" }}
+            </a>
+            <a class="button button--solid button--large" href="mailto:{{ i18n "contactMailtoEmail" }}">
+              {{ i18n "contactMailtoLabel" }}
+            </a>
+          </div>
+        </div>
+      </section>
+    {{ end }}
+  </article>
+{{ end }}
