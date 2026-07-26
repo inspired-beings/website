@@ -17,6 +17,14 @@
   font-size: var(--fs-lg);
 }
 
+// Fix round (post-review): the grouping heading a real `<h2>` needs above
+// the grid (see `layouts/products/list.html`'s header comment) — visually
+// unremarkable on purpose, same size/weight as any other h2, just spaced
+// off from the intro above and the grid below.
+.products-index__grid-heading {
+  margin-block-end: var(--sp-lg);
+}
+
 .products-index__grid {
   display: grid;
   grid-template-columns: 1fr;

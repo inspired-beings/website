@@ -552,6 +552,9 @@ other = "Nous contacter"
 [productsIndexLinkLabel]
 other = "Voir l'application"
 
+[productsIndexGridHeading]
+other = "Nos applications"
+
 [productScreenshotsHeading]
 other = "Captures d'écran"
 

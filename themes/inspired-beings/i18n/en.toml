@@ -552,6 +552,9 @@ other = "Get in touch"
 [productsIndexLinkLabel]
 other = "View app"
 
+[productsIndexGridHeading]
+other = "Our apps"
+
 [productScreenshotsHeading]
 other = "Screenshots"
 

@@ -5,7 +5,18 @@
   product's own front matter (`icon`, `tagline` — see `archetypes/
   product.md`), sorted by `weight`. Reuses `card.html` verbatim.
 
-  New page block: `products-index` (`__intro|lead|grid`). */}}
+  New page block: `products-index` (`__intro|lead|heading|grid`).
+
+  Fix round (post-review): the grid used to sit directly under the `<h1>`,
+  with `card.html`'s hardcoded `<h3 class="card__title">` right below it —
+  an h1→h3 skip (axe's `heading-order`, a best-practice rule outside
+  WCAG2AA, so pa11y's WCAG2AA run never caught it). The `services-index`
+  comparison in the original header comment didn't hold: that page's own
+  row title IS an `<h2>`, unlike here where the heading-bearing element is
+  `card.html`'s h3. Fixed with a real, visible `<h2>` above the grid — same
+  pattern every other card-grid section in the theme already uses (home's
+  `home-services-heading`, careers' `careers-values-heading`, the product
+  single's `product-features-heading`) — not a visually-hidden label. */}}
 {{ define "main" }}
   <article class="container products-index">
     <header class="products-index__intro">
@@ -15,6 +26,7 @@
       {{ end }}
     </header>
 
+    <h2 class="products-index__grid-heading">{{ i18n "productsIndexGridHeading" }}</h2>
     <div class="products-index__grid">
       {{ range .RegularPages.ByWeight }}
         {{ partial "card.html" (dict
