@@ -36,19 +36,14 @@
   gap: var(--sp-md);
 }
 
-// Phone-aspect screenshot gallery: always multi-column, capped figures so a
-// 2-up mobile row doesn't stretch them edge to edge.
+// Phone-aspect screenshot gallery: always multi-column (cell content caps
+// itself — e.g. `.figure--capped`).
 .grid--gallery {
   grid-template-columns: repeat(2, 1fr);
   gap: var(--sp-lg);
 
   @include abstracts.mq-up("md") {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .figure {
-    max-width: 16rem;
-    margin-inline: auto;
   }
 }
 

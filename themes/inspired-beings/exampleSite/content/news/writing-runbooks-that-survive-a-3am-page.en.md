@@ -89,6 +89,6 @@ JS. -->
 
 None of this replaces judgment — a runbook is a starting point, not a substitute for understanding the system[^1]. But it buys back the first ten minutes, and the first ten minutes are usually the ones that decide how bad the rest of the night gets.
 
-{{< figure src="images/studio-dashboard-placeholder.png" alt="Abstract illustration of a project dashboard, in the Inspired Beings interim palette" caption="Illustrative placeholder — not a real product screenshot." >}}
+{{< figure src="images/studio-dashboard-placeholder.png" alt="Abstract illustration of a project dashboard, in the Inspired Beings interim palette" caption="Illustrative placeholder — not a real product screenshot." class="figure--spaced" >}}
 
 [^1]: We keep a short, living list of judgment calls a runbook should never try to make for the reader — it lives in our internal engineering handbook, not in this post.

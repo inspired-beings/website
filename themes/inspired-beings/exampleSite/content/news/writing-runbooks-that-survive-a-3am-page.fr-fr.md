@@ -91,6 +91,6 @@ vraie paire `<label for>`/`id`, accessible sans JS. -->
 
 Rien de tout cela ne remplace le jugement — un runbook est un point de départ, pas un substitut à la compréhension du système[^1]. Mais il permet de regagner les dix premières minutes, et ce sont souvent elles qui déterminent à quel point le reste de la nuit sera difficile.
 
-{{< figure src="images/studio-dashboard-placeholder.png" alt="Illustration abstraite d'un tableau de bord de projet, dans la palette provisoire d'Inspired Beings" caption="Illustration provisoire — pas une capture d'écran réelle de produit." >}}
+{{< figure src="images/studio-dashboard-placeholder.png" alt="Illustration abstraite d'un tableau de bord de projet, dans la palette provisoire d'Inspired Beings" caption="Illustration provisoire — pas une capture d'écran réelle de produit." class="figure--spaced" >}}
 
 [^1]: Nous tenons une courte liste, vivante, des décisions qu'un runbook ne devrait jamais essayer de prendre à la place du lecteur — elle vit dans notre manuel d'ingénierie interne, pas dans cet article.

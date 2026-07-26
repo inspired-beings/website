@@ -25,7 +25,7 @@
     <section class="section" aria-labelledby="service-audience-heading">
       <div class="container">
         <h2 id="service-audience-heading">{{ i18n "serviceAudienceHeading" }}</h2>
-        <ul class="checklist grid grid--2 grid--gap-md section__body">
+        <ul class="checklist grid grid--2 grid--gap-md section__body" role="list">
           {{ range .Params.audience }}
             <li class="checklist__item">
               <span class="checklist__mark" aria-hidden="true"></span>
@@ -39,7 +39,7 @@
     <section class="section" aria-labelledby="service-coverage-heading">
       <div class="container">
         <h2 id="service-coverage-heading">{{ i18n "serviceCoverageHeading" }}</h2>
-        <ol class="numbered-list grid grid--2 section__body">
+        <ol class="numbered-list grid grid--2 section__body" role="list">
           {{ range $i, $item := .Params.coverage }}
             <li class="numbered-list__item">
               <span class="numbered-list__number" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>

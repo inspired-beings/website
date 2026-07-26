@@ -15,3 +15,20 @@
   color: var(--color-text-muted);
   font-size: var(--fs-sm);
 }
+
+// Caller-passed modifiers (via the partial/shortcode `class` param) —
+// context styling stays out of layout files.
+
+// Phone-aspect crop cap: keeps a 2-up mobile gallery row from stretching
+// screenshots edge to edge.
+.figure--capped {
+  max-width: 16rem;
+  margin-inline: auto;
+}
+
+// Figure sitting in article prose: more vertical air than the `.flow` owl
+// rhythm gives text blocks (declared after `.flow` in the bundle, so the
+// block-start margin wins the tie).
+.figure--spaced {
+  margin-block: var(--sp-lg);
+}

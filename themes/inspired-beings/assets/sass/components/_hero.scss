@@ -6,6 +6,14 @@
 // bottom padding when a list/grid follows directly), `--centered` (icon +
 // title + lead, centered, for detail pages), `--ruled` (bottom rule),
 // `--display` (the home staircase-title flagship variant).
+//
+// Two container arrangements exist: most templates put a `.container`
+// INSIDE the hero (so `--ruled` draws viewport-wide and `--narrow` caps the
+// block before the container), but services/list.html + products/list.html
+// put the hero inside an already-`.container` article (so `--ruled` there
+// would draw container-width and `--narrow` caps within the container).
+// Slated for normalization to the wrapping arrangement when the pixel-lock
+// lifts (visual rework upcoming).
 .hero {
   padding-block: var(--sp-2xl);
 }

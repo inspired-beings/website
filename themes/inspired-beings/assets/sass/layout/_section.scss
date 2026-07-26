@@ -2,6 +2,13 @@
 // (with grid/component mixes inside) instead of owning page-prefixed
 // wrappers. Elements cover the recurring intra-section chrome (body offset,
 // captions, trailing CTA) so no page needs child-combinator spacing hacks.
+//
+// Known second contract: three call sites mix `.section` INSIDE a
+// `.container` instead of wrapping one (news/single.html, services/list.html,
+// products/list.html) — only padding-block matters there; `--alt`/`--ruled`
+// on those sites would paint container-width, not full-bleed. Slated for
+// normalization to the wrapping arrangement when the pixel-lock lifts
+// (visual rework upcoming).
 
 .section {
   padding-block: var(--sp-2xl);
