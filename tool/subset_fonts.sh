@@ -1,7 +1,16 @@
 #!/usr/bin/env bash
 # Reproducible font pipeline: download pinned Fraunces + Karla variable TTFs,
-# instance Fraunces (SOFT=0 WONK=0 wght 300-600, opsz kept), subset both to
-# Latin + French coverage, emit self-hosted woff2 into the theme's assets.
+# instance Fraunces (SOFT=0 WONK=0 wght 340-600 — narrowed from 300, nothing
+# in the CSS ever requests Fraunces below weight 400 — opsz PINNED to 48, a
+# single static instance rather than a variable range) per the Task 13
+# typography-owner verdict: steps "narrow wght" and "narrow opsz to the used
+# range" alone didn't free enough bytes for the home page budget, so opsz
+# axis (which the browser would otherwise auto-vary per rendered size) is
+# frozen at one value in the middle of the ordered 40-60 band — verified by
+# screenshot (deviceScaleFactor 1) that an h3 at 20px (the smallest heading
+# size in the app, .card__title) weight 500 still renders with solid,
+# unbroken strokes at that fixed optical size. Subset both fonts to Latin +
+# French coverage, emit self-hosted woff2 into the theme's assets.
 #
 # Sources are pinned by immutable commit SHA (not a moving branch ref) and
 # verified by sha256 before any processing touches them — the only network
@@ -84,11 +93,11 @@ echo "== downloading pinned sources =="
 fetch_and_verify "$FRAUNCES_URL" "$FRAUNCES_SHA256" "${work_dir}/fraunces-vf.ttf"
 fetch_and_verify "$KARLA_URL" "$KARLA_SHA256" "${work_dir}/karla-vf.ttf"
 
-echo "== instancing Fraunces (SOFT=0 WONK=0 wght=300:600, opsz kept) =="
+echo "== instancing Fraunces (SOFT=0 WONK=0 wght=340:600, opsz=48 pinned) =="
 fonttools varLib.instancer \
   --output "${work_dir}/fraunces-instanced.ttf" \
   "${work_dir}/fraunces-vf.ttf" \
-  SOFT=0 WONK=0 wght=300:600
+  SOFT=0 WONK=0 wght=340:600 opsz=48
 
 echo "== subsetting (latin + french essentials) =="
 mkdir -p "$FONTS_OUT_DIR"
