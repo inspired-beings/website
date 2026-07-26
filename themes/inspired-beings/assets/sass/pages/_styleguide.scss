@@ -1,7 +1,9 @@
 // Page-specific scaffolding for the living styleguide (`/styleguide/`,
 // Task 4 deliverable — not deferred to the Task 6-11 `pages/` wave like the
-// rest of that folder, since the page ships now). Purely layout glue around
-// the component blocks above; introduces no new color/typography rules.
+// rest of that folder, since the page ships now). Layout glue around the
+// component blocks above (flex/grid, spacing) plus one semantic-token color
+// use (`.styleguide__caption`, a de-emphasized label) — no new typography
+// rules and no raw colors.
 
 .styleguide__section {
   margin-block-end: var(--sp-2xl);

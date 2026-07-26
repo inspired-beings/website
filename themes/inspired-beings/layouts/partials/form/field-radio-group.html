@@ -1,15 +1,22 @@
 {{/* `form-fieldset` — real <fieldset>/<legend> for a radio group. Dict
-  params: `name`, `legend`, `options` (list of `{value, label}`), `required`
-  (bool), `help`, `invalid` (bool), `errorText`. */}}
+  params: `name` (required — the submitted radio group's `name` attribute;
+  by default also the DOM id root for help/error ids, so it MUST be
+  page-unique unless `idPrefix` is given), `legend`, `options` (list of
+  `{value, label}`), `required` (bool), `help`, `invalid` (bool, also
+  renders `aria-invalid="true"` on every radio), `errorText`, `idPrefix`
+  (optional, defaults to `name` — set this to reuse the same logical group
+  twice on one page; only the help/error ids use it, the radios' shared
+  `name` attribute is untouched). */}}
+{{ $idPrefix := .idPrefix | default .name }}
 {{ $describedBy := "" }}
 {{ if .help }}
-  {{ $describedBy = printf "%s-help" .name }}
+  {{ $describedBy = printf "%s-help" $idPrefix }}
 {{ end }}
 {{ if .invalid }}
   {{ if $describedBy }}
-    {{ $describedBy = printf "%s %s-error" $describedBy .name }}
+    {{ $describedBy = printf "%s %s-error" $describedBy $idPrefix }}
   {{ else }}
-    {{ $describedBy = printf "%s-error" .name }}
+    {{ $describedBy = printf "%s-error" $idPrefix }}
   {{ end }}
 {{ end }}
 <fieldset class="form-fieldset{{ if .invalid }} form-fieldset--invalid{{ end }}">
@@ -17,7 +24,7 @@
     {{ .legend }}{{ if .required }} <span class="form-fieldset__required" aria-hidden="true">*</span>{{ end }}
   </legend>
   {{ with .help }}
-    <p class="form-fieldset__help" id="{{ $.name }}-help">{{ . }}</p>
+    <p class="form-fieldset__help" id="{{ $idPrefix }}-help">{{ . }}</p>
   {{ end }}
   <div class="form-fieldset__options">
     {{ range .options }}
@@ -27,6 +34,7 @@
           name="{{ $.name }}"
           value="{{ .value }}"
           {{ if $.required }}required aria-required="true"{{ end }}
+          {{ if $.invalid }}aria-invalid="true"{{ end }}
           {{ if $describedBy }}aria-describedby="{{ $describedBy }}"{{ end }}
         />
         {{ .label }}
@@ -34,6 +42,6 @@
     {{ end }}
   </div>
   {{ if .invalid }}
-    <p class="form-fieldset__error" id="{{ .name }}-error">{{ .errorText | default (i18n "formFieldDefaultError") }}</p>
+    <p class="form-fieldset__error" id="{{ $idPrefix }}-error">{{ .errorText | default (i18n "formFieldDefaultError") }}</p>
   {{ end }}
 </fieldset>

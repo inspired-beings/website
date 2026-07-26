@@ -30,6 +30,13 @@
     display: none;
   }
 
+  // Firefox renders `<summary>`'s marker via `::marker`, not the
+  // WebKit-only pseudo-element above — `list-style: none` alone doesn't
+  // suppress it there.
+  &::marker {
+    content: none;
+  }
+
   &::after {
     content: "";
     flex-shrink: 0;
