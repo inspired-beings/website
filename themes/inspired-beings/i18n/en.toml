@@ -341,3 +341,27 @@ other = "Web, cloud & security"
 
 [styleguidePaginationHeading]
 other = "Pagination"
+
+[homeProblemsHeading]
+other = "Sound familiar?"
+
+[homeServicesHeading]
+other = "What we do"
+
+[homeServicesCtaLabel]
+other = "View all services"
+
+[homeStatsHeading]
+other = "By the numbers"
+
+[homePricingHeading]
+other = "Simple, transparent pricing"
+
+[homePricingCtaLabel]
+other = "View full pricing"
+
+[homeNewsHeading]
+other = "Latest from the team"
+
+[homeNewsCtaLabel]
+other = "View all news"

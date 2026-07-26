@@ -29,11 +29,12 @@
 @use "components/pagination";
 @use "components/figure";
 @use "pages/styleguide";
+@use "pages/home";
 
 // @use "vendors"; — slot: third-party CSS overrides (empty at birth)
-// @use "components/..."; — slot: Task 6+ if any further components appear
+// @use "components/..."; — slot: Task 7+ if any further components appear
 //   (skip-link/language-switcher/theme-toggle in Task 3; button/card/chip/
 //   accordion/form in Task 4; pricing-table/stat/cta-band/steps/timeline/
 //   facts-table/pagination/figure in Task 5)
-// @use "pages/..."; — slot: Task 6-11 (styleguide's own layout scaffolding
-//   added in Task 4, since the page ships in this task)
+// @use "pages/..."; — slot: Task 7-11 (styleguide's own layout scaffolding
+//   added in Task 4; home added in Task 6)

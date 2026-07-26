@@ -11,6 +11,10 @@
   - `widths` (list of int, optional, default 400/800/1200) — srcset steps;
     any width above the source's native width is dropped (never upscaled).
   - `sizes` (string, optional, default "100vw").
+  - `eager` (bool, optional, default false) — the one above-the-fold
+    exception: renders `loading="eager"` + `fetchpriority="high"` instead of
+    the default `loading="lazy"`. Backward compatible — omitting it keeps
+    every existing call site lazy.
   Usage: see the styleguide's "Figure" section, or the `{{< figure >}}`
   shortcode for Markdown content. */}}
 
@@ -73,7 +77,12 @@
       width="{{ $lastFallback.Width }}"
       height="{{ $lastFallback.Height }}"
       alt="{{ .alt }}"
-      loading="lazy"
+      {{ if .eager }}
+        loading="eager"
+        fetchpriority="high"
+      {{ else }}
+        loading="lazy"
+      {{ end }}
       decoding="async"
     />
   </picture>

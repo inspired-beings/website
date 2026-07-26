@@ -1,3 +1,132 @@
+{{/* Home page (Task 6) — assembles chrome + component library into the
+  flagship layout. Content model: every word lives in front matter
+  (`exampleSite/content/_index.{en,fr-fr}.md`), this template only renders
+  structure — hero{title_lines[],cta{label,url},image{src,alt}} → intro
+  {body,cta} → problems[]{title,body} (6) → services_extract[]{icon,title,
+  body,link{href,label}} (6, reuses `card.html`) → stats[]{value,unit,label}
+  (reuses `stats-band.html`) → pricing_extract{caption,plans,features}
+  (reuses `pricing-table.html`, same shape as its own dict param) →
+  news_count (int; latest N posts from a real `news` section — absent
+  until Task 9, so this section renders nothing until then, not an empty
+  shell) → cta_band{heading,body,cta{label,url}} (reuses `cta-band.html`).
+  Section headings + "view all" link labels are template-owned i18n
+  strings (fixed structural chrome, same convention as top-bar/footer),
+  not front matter — only the per-item content is authored copy.
+
+  New page blocks: `home-hero` (`home-hero__title-line`, `--right` modifier
+  on every other line, alternating the "staircase" title from the visual
+  reference — mobile keeps every line left-aligned, see `_home.scss`),
+  `home-problems`, `home-services`, `home-stats`, `home-news`. `home-intro`,
+  `home-pricing` and the cta-band's own section wrapper are page-scoped
+  layout-only additions (spacing), not separate component blocks. */}}
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
+  <section class="home-hero">
+    <div class="container home-hero__inner">
+      <h1 class="home-hero__title">
+        {{ range $i, $line := .Params.hero.title_lines }}
+          <span class="home-hero__title-line{{ if eq (mod $i 2) 1 }} home-hero__title-line--right{{ end }}">{{ $line }}</span>
+        {{ end }}
+      </h1>
+      <a class="button button--solid button--large home-hero__cta" href="{{ .Params.hero.cta.url }}">
+        {{ .Params.hero.cta.label }}
+      </a>
+    </div>
+    {{ with .Params.hero.image }}
+      <div class="home-hero__image container">
+        {{ partial "figure.html" (dict "src" .src "alt" .alt "eager" true) }}
+      </div>
+    {{ end }}
+  </section>
+
+  <section class="home-intro">
+    <div class="container home-intro__inner">
+      <p class="home-intro__body">{{ .Params.intro.body }}</p>
+      {{ with .Params.intro.cta }}
+        <a class="home-intro__cta" href="{{ .url }}">{{ .label }}</a>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="home-problems" aria-labelledby="home-problems-heading">
+    <div class="container">
+      <h2 id="home-problems-heading">{{ i18n "homeProblemsHeading" }}</h2>
+      <div class="home-problems__grid">
+        {{ range .Params.problems }}
+          <div class="home-problems__item">
+            <h3 class="home-problems__title">{{ .title }}</h3>
+            <p class="home-problems__body">{{ .body }}</p>
+          </div>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-services" aria-labelledby="home-services-heading">
+    <div class="container">
+      <h2 id="home-services-heading">{{ i18n "homeServicesHeading" }}</h2>
+      <div class="home-services__grid">
+        {{ range .Params.services_extract }}
+          {{ partial "card.html" (dict "icon" .icon "title" .title "body" .body "link" .link) }}
+        {{ end }}
+      </div>
+      <a class="button button--outlined button--medium" href="{{ "services/" | relLangURL }}">
+        {{ i18n "homeServicesCtaLabel" }}
+      </a>
+    </div>
+  </section>
+
+  <section class="home-stats" aria-labelledby="home-stats-heading">
+    <div class="container">
+      <h2 id="home-stats-heading">{{ i18n "homeStatsHeading" }}</h2>
+      {{ partial "stats-band.html" (dict "stats" .Params.stats) }}
+    </div>
+  </section>
+
+  <section class="home-pricing" aria-labelledby="home-pricing-heading">
+    <div class="container">
+      <h2 id="home-pricing-heading">{{ i18n "homePricingHeading" }}</h2>
+      {{ partial "pricing-table.html" .Params.pricing_extract }}
+      <a class="button button--outlined button--medium" href="{{ "pricing/" | relLangURL }}">
+        {{ i18n "homePricingCtaLabel" }}
+      </a>
+    </div>
+  </section>
+
+  {{/* Degrades gracefully: no `news` section exists until Task 9 adds
+    content under `content/news/` — `.Site.GetPage` returns nil and this
+    whole block renders nothing (no heading, no empty grid), rather than an
+    empty shell. Task 9 lights it up with zero layout changes. */}}
+  {{ with .Site.GetPage "section" "news" }}
+    {{ $newsCount := $.Params.news_count | default 3 }}
+    {{ $latest := first $newsCount .RegularPages }}
+    {{ if $latest }}
+      <section class="home-news" aria-labelledby="home-news-heading">
+        <div class="container">
+          <h2 id="home-news-heading">{{ i18n "homeNewsHeading" }}</h2>
+          <div class="home-news__grid">
+            {{ range $latest }}
+              <article class="home-news__item">
+                <h3 class="home-news__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                {{ with .Date }}
+                  <p class="home-news__date">{{ .Format "2 January 2006" }}</p>
+                {{ end }}
+                <p class="home-news__body">{{ .Summary }}</p>
+              </article>
+            {{ end }}
+          </div>
+          <a class="button button--outlined button--medium" href="{{ "news/" | relLangURL }}">
+            {{ i18n "homeNewsCtaLabel" }}
+          </a>
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
+
+  <section class="home-cta">
+    {{ partial "cta-band.html" (dict
+      "title" .Params.cta_band.heading
+      "body" .Params.cta_band.body
+      "actions" (slice (dict "href" .Params.cta_band.cta.url "label" .Params.cta_band.cta.label))
+    ) }}
+  </section>
 {{ end }}

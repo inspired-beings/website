@@ -1,0 +1,119 @@
+// Home page (Task 6). Page-scoped blocks only — every component referenced
+// here (card, stats-band, pricing-table, cta-band, button) keeps its own
+// styling in components/; this file adds section spacing/grids around them.
+@use "../abstracts";
+
+.home-hero {
+  padding-block-start: var(--sp-3xl);
+}
+
+.home-hero__title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+  font-size: var(--fs-4xl);
+  max-width: 40rem;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-5xl);
+    max-width: 56rem;
+  }
+}
+
+// Mobile keeps every line left-aligned (readability); the staggered
+// "staircase" from the visual reference only appears from `md` up.
+.home-hero__title-line--right {
+  @include abstracts.mq-up("md") {
+    align-self: flex-end;
+    text-align: right;
+  }
+}
+
+.home-hero__cta {
+  display: inline-flex;
+  margin-block-start: var(--sp-xl);
+}
+
+.home-hero__image {
+  margin-block-start: var(--sp-2xl);
+}
+
+.home-intro {
+  padding-block: var(--sp-2xl);
+}
+
+.home-intro__inner {
+  max-width: 44rem;
+}
+
+.home-intro__body {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.home-intro__cta {
+  display: inline-block;
+  margin-block-start: var(--sp-sm);
+}
+
+.home-problems,
+.home-services,
+.home-stats,
+.home-pricing,
+.home-news {
+  padding-block: var(--sp-2xl);
+}
+
+.home-stats {
+  background-color: var(--color-surface-alt);
+}
+
+.home-problems__grid,
+.home-services__grid,
+.home-news__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-xl);
+  margin-block-start: var(--sp-lg);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include abstracts.mq-up("lg") {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.home-problems__item {
+  padding-block-start: var(--sp-md);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.home-problems__body {
+  color: var(--color-text-muted);
+}
+
+.home-stats > .container > .stats-band {
+  margin-block-start: var(--sp-lg);
+}
+
+.home-pricing > .container > .pricing-table {
+  margin-block-start: var(--sp-lg);
+}
+
+.home-services > .container > .button,
+.home-pricing > .container > .button,
+.home-news > .container > .button {
+  display: inline-flex;
+  margin-block-start: var(--sp-xl);
+}
+
+.home-news__date {
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.home-news__body {
+  color: var(--color-text-muted);
+}
