@@ -1,0 +1,13 @@
+@use "../abstracts";
+
+// Single BEM block: the page-level content container used by every layout.
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-inline);
+
+  @include abstracts.mq-up("md") {
+    padding-inline: var(--sp-xl);
+  }
+}

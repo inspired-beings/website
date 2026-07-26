@@ -55,7 +55,10 @@ jobs:
       - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
         run: pnpm install --frozen-lockfile
       - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
-        run: hugo -s themes/inspired-beings/exampleSite --themesDir ../.. --gc --minify
+        # Hugo's PostCSS step shells out to the `postcss` binary, which only
+        # resolves via node_modules/.bin (pnpm doesn't put it on PATH outside
+        # a package.json script).
+        run: PATH="$PWD/node_modules/.bin:$PATH" hugo -s themes/inspired-beings/exampleSite --themesDir ../.. --gc --minify
 
   # Same gate the deploy relies on, kept on every PR so a new alert surfaces here first.
   security-alerts:

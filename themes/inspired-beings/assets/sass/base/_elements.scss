@@ -1,0 +1,66 @@
+// Base styling for rich-text elements — exercised later by the MD-styleguide
+// article (Task 9) and every service/news body.
+
+ul,
+ol {
+  padding-inline-start: var(--sp-lg);
+}
+
+li + li {
+  margin-top: var(--sp-2xs);
+}
+
+blockquote {
+  margin-inline: 0;
+  padding-inline-start: var(--sp-md);
+  border-inline-start: 3px solid var(--color-border-default);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border-subtle);
+  margin-block: var(--sp-xl);
+}
+
+code,
+kbd,
+samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+code {
+  background-color: var(--color-surface-alt);
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.4em;
+}
+
+pre {
+  background-color: var(--color-surface-alt);
+  border-radius: var(--radius-md);
+  padding: var(--sp-md);
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: start;
+  padding: var(--sp-xs) var(--sp-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+th {
+  font-weight: 600;
+}

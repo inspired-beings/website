@@ -1,0 +1,152 @@
+// Light-scheme tokens.
+//
+// This partial also establishes the scheme-invariant primitive scales
+// (spacing, type, radii, shadows, z-index, transitions, container widths) —
+// they don't change between light/dark, so they live once here as the base
+// `:root`, and `_dark.scss` only ever overrides the color semantics below.
+//
+// Hex values are copied VERBATIM from the design spec's semantic table,
+// "Light" column (`.agents/docs/technical/website-template-design.md`).
+
+@use "sass:map";
+
+// ---- Non-color primitive scales (scheme-invariant) -----------------------
+
+$spacing: (
+  "2xs": 4px,
+  "xs": 8px,
+  "sm": 12px,
+  "md": 16px,
+  "lg": 24px,
+  "xl": 32px,
+  "2xl": 48px,
+  "3xl": 64px,
+  "4xl": 96px,
+  "5xl": 128px,
+);
+
+// Modular scale: base 1rem ("md"), ratio 1.25 (major third).
+$font-sizes: (
+  "xs": 0.64rem,
+  "sm": 0.8rem,
+  "md": 1rem,
+  "lg": 1.25rem,
+  "xl": 1.563rem,
+  "2xl": 1.953rem,
+  "3xl": 2.441rem,
+  "4xl": 3.052rem,
+  "5xl": 3.815rem,
+  "6xl": 4.768rem,
+);
+
+$radii: (
+  "sm": 4px,
+  "md": 8px,
+  "lg": 16px,
+  "full": 9999px,
+);
+
+$shadows: (
+  "sm": 0 1px 2px rgba(9, 16, 24, 0.08),
+  "md": 0 4px 12px rgba(9, 16, 24, 0.12),
+  "lg": 0 12px 32px rgba(9, 16, 24, 0.16),
+);
+
+$z-index: (
+  "dropdown": 10,
+  "sticky": 20,
+  "overlay": 30,
+  "modal": 40,
+  "toast": 50,
+  "skip-link": 100,
+);
+
+$transitions: (
+  "fast": 120ms ease,
+  "base": 200ms ease,
+  "slow": 320ms ease,
+);
+
+$container: (
+  "max-width": 80rem,
+  "padding-inline": 1rem,
+);
+
+// ---- Light color primitives (spec § Visual identity → Primitives) --------
+
+$color-night: #091018; // TRUE
+$color-peri-600: #3E56CC;
+$color-peri-700: #3549B2;
+$color-peri-800: #2F40A0;
+$color-frost-0: #FAFBFD;
+$color-frost-1: #EFF2F7;
+$color-frost-2: #FFFFFF;
+$color-slate-1: #444B5E;
+$color-slate-2: #5C6377;
+$color-line-light: #7A8296;
+$color-line-light-subtle: #DDE1EA;
+$color-sun-deep: #7E6300;
+$color-spring-deep: #457800;
+$color-error-light: #B42318;
+
+// Semantic color custom properties — light column of the spec table.
+@mixin light-semantics {
+  --color-surface-default: #{$color-frost-0};
+  --color-surface-alt: #{$color-frost-1};
+  --color-surface-raised: #{$color-frost-2};
+  --color-text-default: #{$color-night};
+  --color-text-muted: #{$color-slate-1};
+  --color-text-subtle: #{$color-slate-2};
+  --color-accent-default: #{$color-peri-600};
+  --color-accent-hover: #{$color-peri-700};
+  --color-accent-active: #{$color-peri-800};
+  --color-on-accent: #{$color-frost-2};
+  --color-border-default: #{$color-line-light};
+  --color-border-subtle: #{$color-line-light-subtle};
+  --color-inverse-band-bg: #{$color-night};
+  --color-link: #{$color-peri-600};
+  --color-focus-ring: #{$color-night};
+  --color-error: #{$color-error-light};
+  --color-success: #{$color-spring-deep};
+  --color-warning: #{$color-sun-deep};
+}
+
+:root {
+  @each $name, $value in $spacing {
+    --sp-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $font-sizes {
+    --fs-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $radii {
+    --radius-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $shadows {
+    --shadow-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $z-index {
+    --z-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $transitions {
+    --transition-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $container {
+    --container-#{$name}: #{$value};
+  }
+
+  @include light-semantics;
+}
+
+// Manual override: OS reports dark but the user picked light via the
+// theme toggle (Task 3). Same values as the :root default above — repeated
+// per the brief so the attribute selector always wins regardless of cascade
+// order between this file and `_dark.scss`.
+:root[data-theme="light"] {
+  @include light-semantics;
+}

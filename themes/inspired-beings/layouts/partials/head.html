@@ -1,3 +1,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{{ .Title }} · {{ .Site.Title }}</title>
+
+{{ $cssSassOptions := dict "transpiler" "dartsass" }}
+{{ $style := resources.Get "sass/main.scss" | css.Sass $cssSassOptions | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />

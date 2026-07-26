@@ -1,0 +1,59 @@
+// Dark-scheme tokens — semantic custom-property overrides ONLY.
+//
+// Non-color primitive scales (spacing, type, radii, shadows, z-index,
+// transitions, container widths) are scheme-invariant and already emitted
+// once by `_light.scss`'s `:root` — nothing to redo here.
+//
+// Hex values are copied VERBATIM from the design spec's semantic table,
+// "Dark" column.
+
+$color-night: #091018; // TRUE — dark surface-default, dark on-accent
+$color-night-1: #111927;
+$color-night-2: #1A2436;
+$color-night-deep: #04070D;
+$color-frost-t0: #EDF0F7;
+$color-frost-t1: #C0C7D9;
+$color-frost-t2: #9AA3BA;
+$color-peri-300: #93ACFF;
+$color-peri-400: #7898FF; // TRUE
+$color-peri-500: #6584F5;
+$color-line-dark: #6A7590;
+$color-line-dark-subtle: #232E42;
+$color-sun: #FED500; // TRUE
+$color-spring: #ACD91D; // TRUE
+$color-error-dark: #FF8B80;
+
+// Semantic color custom properties — dark column of the spec table.
+@mixin dark-semantics {
+  --color-surface-default: #{$color-night};
+  --color-surface-alt: #{$color-night-1};
+  --color-surface-raised: #{$color-night-2};
+  --color-text-default: #{$color-frost-t0};
+  --color-text-muted: #{$color-frost-t1};
+  --color-text-subtle: #{$color-frost-t2};
+  --color-accent-default: #{$color-peri-400};
+  --color-accent-hover: #{$color-peri-300};
+  --color-accent-active: #{$color-peri-500};
+  --color-on-accent: #{$color-night};
+  --color-border-default: #{$color-line-dark};
+  --color-border-subtle: #{$color-line-dark-subtle};
+  --color-inverse-band-bg: #{$color-night-deep};
+  --color-link: #{$color-peri-400};
+  --color-focus-ring: #{$color-frost-t0};
+  --color-error: #{$color-error-dark};
+  --color-success: #{$color-spring};
+  --color-warning: #{$color-sun};
+}
+
+// Automatic override: OS/browser reports a dark scheme preference.
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-semantics;
+  }
+}
+
+// Manual override: theme toggle (Task 3) sets `data-theme="dark"` on
+// `<html>` regardless of OS preference.
+:root[data-theme="dark"] {
+  @include dark-semantics;
+}

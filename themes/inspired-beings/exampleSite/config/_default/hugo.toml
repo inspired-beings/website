@@ -15,3 +15,12 @@ disableKinds = ["taxonomy", "term"]
 # https://gohugo.io/getting-started/configuration-markup/#goldmark
 [markup.goldmark.renderer]
   unsafe = true
+
+# Security — Node.js permission-model sandbox for PostCSS (Hugo 0.161+).
+# Default `allowRead = ['.']` only covers the working directory (this
+# exampleSite folder). pnpm's virtual store resolves transitive deps (e.g.
+# postcss-cli's `fs-extra`) via symlinks that point outside postcss-cli's
+# own package dir into sibling `.pnpm/<pkg>/node_modules` folders, so the
+# whole repo `node_modules` tree needs to be readable.
+[security.node.permissions]
+  allowRead = ['.', '../../../node_modules']

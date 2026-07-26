@@ -1,0 +1,65 @@
+// Type-scale application + link/focus rules. Font-family tokens
+// (`--font-display`/`--font-body`) and @font-face land in Task 2 — this
+// file only wires up sizing and the two baked-in a11y rules.
+
+body {
+  font-size: var(--fs-md);
+  color: var(--color-text-default);
+  background-color: var(--color-surface-default);
+}
+
+h1 {
+  font-size: var(--fs-4xl);
+}
+
+h2 {
+  font-size: var(--fs-3xl);
+}
+
+h3 {
+  font-size: var(--fs-2xl);
+}
+
+h4 {
+  font-size: var(--fs-xl);
+}
+
+h5 {
+  font-size: var(--fs-lg);
+}
+
+h6 {
+  font-size: var(--fs-md);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+small {
+  font-size: var(--fs-sm);
+}
+
+// Running-text links are always underlined (WCAG 1.4.1 — no color-only cue).
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-accent-hover);
+}
+
+// Focus ring: 2px + 2px offset, text-default of the active context.
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
