@@ -1,8 +1,14 @@
 # EN menu entries. Populated once the top-bar/footer layouts are built.
 #
+# Internal entries use `pageRef` (not `url`) — `top-bar.html`'s
+# `HasMenuCurrent`/`IsMenuCurrent` calls (for `aria-current="page"` and the
+# services dropdown's active state) only resolve against a menu entry's
+# backing Page, which only `pageRef` gives Hugo; a bare `url` string never
+# matches. `url` stays reserved for actual external links (none here).
+#
 # `main` drives the top-bar (Task 3); the six `services-*` entries share
 # `parent = "services"`, making "Services" the APG-disclosure dropdown
-# trigger — it has no `url` of its own (button-only, not a page link).
+# trigger — it has no `pageRef` of its own (button-only, not a page link).
 # `main` deliberately stays to primary sections only (home/services/pricing/
 # about/news/contact); faq/careers/products/legal (all shipped by Task 11)
 # are secondary pages, reachable via the footer columns below only — same
@@ -11,7 +17,7 @@
 [[menus.main]]
   identifier = "home"
   name = "Home"
-  url = "/"
+  pageRef = "/"
   weight = 10
 
 [[menus.main]]
@@ -22,67 +28,67 @@
 [[menus.main]]
   identifier = "services-web-development"
   name = "Web & App Development"
-  url = "/services/web-development/"
+  pageRef = "/services/web-development/"
   parent = "services"
   weight = 10
 
 [[menus.main]]
   identifier = "services-cloud-devops"
   name = "Cloud & DevOps"
-  url = "/services/cloud-devops/"
+  pageRef = "/services/cloud-devops/"
   parent = "services"
   weight = 20
 
 [[menus.main]]
   identifier = "services-security-audits"
   name = "Security Audits"
-  url = "/services/security-audits/"
+  pageRef = "/services/security-audits/"
   parent = "services"
   weight = 30
 
 [[menus.main]]
   identifier = "services-accessibility-audits"
   name = "Accessibility Audits"
-  url = "/services/accessibility-audits/"
+  pageRef = "/services/accessibility-audits/"
   parent = "services"
   weight = 40
 
 [[menus.main]]
   identifier = "services-technical-consulting"
   name = "Technical Consulting"
-  url = "/services/technical-consulting/"
+  pageRef = "/services/technical-consulting/"
   parent = "services"
   weight = 50
 
 [[menus.main]]
   identifier = "services-maintenance-tma"
   name = "Maintenance & TMA"
-  url = "/services/maintenance-tma/"
+  pageRef = "/services/maintenance-tma/"
   parent = "services"
   weight = 60
 
 [[menus.main]]
   identifier = "pricing"
   name = "Pricing"
-  url = "/pricing/"
+  pageRef = "/pricing/"
   weight = 30
 
 [[menus.main]]
   identifier = "about"
   name = "About"
-  url = "/about/"
+  pageRef = "/about/"
   weight = 40
 
 [[menus.main]]
   identifier = "news"
   name = "News"
-  url = "/news/"
+  pageRef = "/news/"
   weight = 50
 
 [[menus.main]]
   identifier = "contact"
   name = "Contact"
-  url = "/contact/"
+  pageRef = "/contact/"
   weight = 60
 
 # `footercompany` / `footerservices` / `footerresources` drive the footer's
@@ -94,83 +100,83 @@
 [[menus.footercompany]]
   identifier = "footer-about"
   name = "About"
-  url = "/about/"
+  pageRef = "/about/"
   weight = 10
 
 [[menus.footercompany]]
   identifier = "footer-careers"
   name = "Careers"
-  url = "/careers/"
+  pageRef = "/careers/"
   weight = 20
 
 [[menus.footercompany]]
   identifier = "footer-news"
   name = "News"
-  url = "/news/"
+  pageRef = "/news/"
   weight = 30
 
 [[menus.footercompany]]
   identifier = "footer-contact"
   name = "Contact"
-  url = "/contact/"
+  pageRef = "/contact/"
   weight = 40
 
 [[menus.footerservices]]
   identifier = "footer-services-web-development"
   name = "Web & App Development"
-  url = "/services/web-development/"
+  pageRef = "/services/web-development/"
   weight = 10
 
 [[menus.footerservices]]
   identifier = "footer-services-cloud-devops"
   name = "Cloud & DevOps"
-  url = "/services/cloud-devops/"
+  pageRef = "/services/cloud-devops/"
   weight = 20
 
 [[menus.footerservices]]
   identifier = "footer-services-security-audits"
   name = "Security Audits"
-  url = "/services/security-audits/"
+  pageRef = "/services/security-audits/"
   weight = 30
 
 [[menus.footerservices]]
   identifier = "footer-services-accessibility-audits"
   name = "Accessibility Audits"
-  url = "/services/accessibility-audits/"
+  pageRef = "/services/accessibility-audits/"
   weight = 40
 
 [[menus.footerservices]]
   identifier = "footer-services-technical-consulting"
   name = "Technical Consulting"
-  url = "/services/technical-consulting/"
+  pageRef = "/services/technical-consulting/"
   weight = 50
 
 [[menus.footerservices]]
   identifier = "footer-services-maintenance-tma"
   name = "Maintenance & TMA"
-  url = "/services/maintenance-tma/"
+  pageRef = "/services/maintenance-tma/"
   weight = 60
 
 [[menus.footerresources]]
   identifier = "footer-pricing"
   name = "Pricing"
-  url = "/pricing/"
+  pageRef = "/pricing/"
   weight = 10
 
 [[menus.footerresources]]
   identifier = "footer-faq"
   name = "FAQ"
-  url = "/faq/"
+  pageRef = "/faq/"
   weight = 20
 
 [[menus.footerresources]]
   identifier = "footer-products"
   name = "Products"
-  url = "/products/"
+  pageRef = "/products/"
   weight = 30
 
 [[menus.footerresources]]
   identifier = "footer-legal"
   name = "Legal Notice"
-  url = "/legal/"
+  pageRef = "/legal/"
   weight = 40

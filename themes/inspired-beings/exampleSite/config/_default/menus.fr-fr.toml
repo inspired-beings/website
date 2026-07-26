@@ -1,13 +1,17 @@
 # Entrées de menu FR. Renseignées une fois les gabarits top-bar/footer construits.
 #
 # Mêmes identifiants/poids que menus.en.toml (voir ce fichier pour le
-# commentaire d'ensemble) ; les URLs portent le préfixe `/fr-fr/`
+# commentaire d'ensemble, notamment sur `pageRef` vs `url`). Les `pageRef`
+# ci-dessous ne portent PAS le préfixe `/fr-fr/` : dans un fichier de menu
+# par langue, Hugo résout `pageRef` dans le contexte de CETTE langue, donc
+# le chemin logique du contenu suffit (ex. "/pricing/" trouve
+# `pricing.fr-fr.md`) — l'URL générée porte bien le préfixe
 # (`defaultContentLanguageInSubdir = false` place l'anglais à la racine).
 
 [[menus.main]]
   identifier = "home"
   name = "Accueil"
-  url = "/fr-fr/"
+  pageRef = "/"
   weight = 10
 
 [[menus.main]]
@@ -18,149 +22,149 @@
 [[menus.main]]
   identifier = "services-web-development"
   name = "Développement web & mobile"
-  url = "/fr-fr/services/web-development/"
+  pageRef = "/services/web-development/"
   parent = "services"
   weight = 10
 
 [[menus.main]]
   identifier = "services-cloud-devops"
   name = "Cloud & DevOps"
-  url = "/fr-fr/services/cloud-devops/"
+  pageRef = "/services/cloud-devops/"
   parent = "services"
   weight = 20
 
 [[menus.main]]
   identifier = "services-security-audits"
   name = "Audits de sécurité"
-  url = "/fr-fr/services/security-audits/"
+  pageRef = "/services/security-audits/"
   parent = "services"
   weight = 30
 
 [[menus.main]]
   identifier = "services-accessibility-audits"
   name = "Audits d'accessibilité"
-  url = "/fr-fr/services/accessibility-audits/"
+  pageRef = "/services/accessibility-audits/"
   parent = "services"
   weight = 40
 
 [[menus.main]]
   identifier = "services-technical-consulting"
   name = "Conseil technique"
-  url = "/fr-fr/services/technical-consulting/"
+  pageRef = "/services/technical-consulting/"
   parent = "services"
   weight = 50
 
 [[menus.main]]
   identifier = "services-maintenance-tma"
   name = "Maintenance & TMA"
-  url = "/fr-fr/services/maintenance-tma/"
+  pageRef = "/services/maintenance-tma/"
   parent = "services"
   weight = 60
 
 [[menus.main]]
   identifier = "pricing"
   name = "Tarifs"
-  url = "/fr-fr/pricing/"
+  pageRef = "/pricing/"
   weight = 30
 
 [[menus.main]]
   identifier = "about"
   name = "À propos"
-  url = "/fr-fr/about/"
+  pageRef = "/about/"
   weight = 40
 
 [[menus.main]]
   identifier = "news"
   name = "Actualités"
-  url = "/fr-fr/news/"
+  pageRef = "/news/"
   weight = 50
 
 [[menus.main]]
   identifier = "contact"
   name = "Contact"
-  url = "/fr-fr/contact/"
+  pageRef = "/contact/"
   weight = 60
 
 [[menus.footercompany]]
   identifier = "footer-about"
   name = "À propos"
-  url = "/fr-fr/about/"
+  pageRef = "/about/"
   weight = 10
 
 [[menus.footercompany]]
   identifier = "footer-careers"
   name = "Carrières"
-  url = "/fr-fr/careers/"
+  pageRef = "/careers/"
   weight = 20
 
 [[menus.footercompany]]
   identifier = "footer-news"
   name = "Actualités"
-  url = "/fr-fr/news/"
+  pageRef = "/news/"
   weight = 30
 
 [[menus.footercompany]]
   identifier = "footer-contact"
   name = "Contact"
-  url = "/fr-fr/contact/"
+  pageRef = "/contact/"
   weight = 40
 
 [[menus.footerservices]]
   identifier = "footer-services-web-development"
   name = "Développement web & mobile"
-  url = "/fr-fr/services/web-development/"
+  pageRef = "/services/web-development/"
   weight = 10
 
 [[menus.footerservices]]
   identifier = "footer-services-cloud-devops"
   name = "Cloud & DevOps"
-  url = "/fr-fr/services/cloud-devops/"
+  pageRef = "/services/cloud-devops/"
   weight = 20
 
 [[menus.footerservices]]
   identifier = "footer-services-security-audits"
   name = "Audits de sécurité"
-  url = "/fr-fr/services/security-audits/"
+  pageRef = "/services/security-audits/"
   weight = 30
 
 [[menus.footerservices]]
   identifier = "footer-services-accessibility-audits"
   name = "Audits d'accessibilité"
-  url = "/fr-fr/services/accessibility-audits/"
+  pageRef = "/services/accessibility-audits/"
   weight = 40
 
 [[menus.footerservices]]
   identifier = "footer-services-technical-consulting"
   name = "Conseil technique"
-  url = "/fr-fr/services/technical-consulting/"
+  pageRef = "/services/technical-consulting/"
   weight = 50
 
 [[menus.footerservices]]
   identifier = "footer-services-maintenance-tma"
   name = "Maintenance & TMA"
-  url = "/fr-fr/services/maintenance-tma/"
+  pageRef = "/services/maintenance-tma/"
   weight = 60
 
 [[menus.footerresources]]
   identifier = "footer-pricing"
   name = "Tarifs"
-  url = "/fr-fr/pricing/"
+  pageRef = "/pricing/"
   weight = 10
 
 [[menus.footerresources]]
   identifier = "footer-faq"
   name = "FAQ"
-  url = "/fr-fr/faq/"
+  pageRef = "/faq/"
   weight = 20
 
 [[menus.footerresources]]
   identifier = "footer-products"
   name = "Produits"
-  url = "/fr-fr/products/"
+  pageRef = "/products/"
   weight = 30
 
 [[menus.footerresources]]
   identifier = "footer-legal"
   name = "Mentions légales"
-  url = "/fr-fr/legal/"
+  pageRef = "/legal/"
   weight = 40
