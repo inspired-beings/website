@@ -40,9 +40,10 @@ jobs:
   # Full pillar gate for the inspired-beings theme's exampleSite: build → serve →
   # pa11y-ci (light + dark) over every page, both locales → per-page weight budget +
   # zero third-party requests (tool/page-budget.template.json — its own budget file,
-  # separate from the live site's, with justified per-page overrides for the
-  # image-bearing /styleguide/ and /products/notably/ pages).
-  # Runs only when theme files or this workflow changed, or always on the theme branch.
+  # separate from the live site's, with a justified per-page override for the
+  # image-bearing /products/notably/ page).
+  # Runs only when theme files or one of the gate scripts/configs below changed
+  # (see the paths-filter), or always on the theme branch.
   template:
     runs-on: ubuntu-latest
     steps:
@@ -54,6 +55,13 @@ jobs:
             template:
               - 'themes/**'
               - '.github/workflows/ci.yml'
+              - 'tool/check_a11y.sh'
+              - 'tool/check_page_budget.mjs'
+              - 'tool/page-budget.template.json'
+              - '.pa11yci.template.json'
+              - '.pa11yci.template.dark.json'
+              - 'mise.toml'
+              - 'pnpm-lock.yaml'
       - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
         uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
       - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
