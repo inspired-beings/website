@@ -1,9 +1,14 @@
 #!/usr/bin/env node
-// Pillar gates over the built site, loaded in a real browser:
+// Pillar gates over a built site, loaded in a real browser:
 // - zero third-party requests: every request a page fires must stay on the local origin
 //   (the site is adless and trackerless — that must stay provable, not claimed);
-// - per-page weight: the sum of all response bodies must stay under tool/page-budget.json
-//   (budget numbers are product-owner decisions — propose, don't self-serve).
+// - per-page weight: the sum of all response bodies must stay under the budget file's
+//   `maxPageBytes` (or a page's own `overrides[route].maxPageBytes`, when justified —
+//   budget numbers are product-owner decisions — propose, don't self-serve).
+//
+// Args: [build-dir=public] [budget-file=tool/page-budget.json] — both default to the
+// live site's own values, so `node tool/check_page_budget.mjs` (no args) is
+// byte-identical to the pre-Task-13 behaviour.
 import { promises as fs } from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -13,8 +18,14 @@ import puppeteer from 'puppeteer'
 import { createStaticServer } from './serve.mjs'
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)))
-const publicDir = path.join(root, 'public')
-const budget = JSON.parse(await fs.readFile(path.join(root, 'tool', 'page-budget.json'), 'utf8'))
+const publicDir = path.resolve(root, process.argv[2] || 'public')
+const budgetPath = path.resolve(root, process.argv[3] || 'tool/page-budget.json')
+const budget = JSON.parse(await fs.readFile(budgetPath, 'utf8'))
+const overrides = budget.overrides || {}
+
+function maxBytesFor(route) {
+  return overrides[route]?.maxPageBytes ?? budget.maxPageBytes
+}
 
 const server = createStaticServer(publicDir)
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
@@ -53,9 +64,10 @@ for (const route of routes) {
   const total = (await Promise.all(bodies)).reduce((sum, size) => sum + size, 0)
   await page.close()
 
-  const over = total > budget.maxPageBytes
+  const maxBytes = maxBytesFor(route)
+  const over = total > maxBytes
   if (over || external.length > 0) failed = true
-  console.log(`${over ? 'OVER-BUDGET' : 'ok'} ${route} — ${total} bytes (budget ${budget.maxPageBytes})`)
+  console.log(`${over ? 'OVER-BUDGET' : 'ok'} ${route} — ${total} bytes (budget ${maxBytes})`)
   for (const url of external) console.error(`  THIRD-PARTY REQUEST: ${route} → ${url}`)
 }
 

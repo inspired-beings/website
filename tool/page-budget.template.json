@@ -1,0 +1,22 @@
+{
+  "maxPageBytes": 135000,
+  "rules": "Same ratchet-down-only policy as the live site's tool/page-budget.json (see its 'rules' field): any PR that reduces exampleSite page weight must lower maxPageBytes (or a tightened override) in the same PR — reclaimed bytes are banked, never slack. Home has NO override — it must fit the default budget for real (Task 13 trimmed it from 137,669/138,334 B to under 135,000 B for both locales: dropped the home pricing teaser's feature-comparison rows in favour of a plans-only summary, trimmed one problems/services item each, tightened copy, and fixed a redundant home <title> duplicate). image-bearing pages below get a justified per-page override instead of a global raise.",
+  "overrides": {
+    "/styleguide/": {
+      "maxPageBytes": 148000,
+      "justification": "Unlisted internal demo/reference page — every component in one place, including a full Figure section with a real image; not a page a template consumer ships, so a wider budget doesn't cost real visitors anything."
+    },
+    "/fr-fr/styleguide/": {
+      "maxPageBytes": 148000,
+      "justification": "Same as /styleguide/, FR copy."
+    },
+    "/products/notably/": {
+      "maxPageBytes": 150000,
+      "justification": "Product detail page renders a real product screenshot via the figure pipeline (AVIF/WebP/srcset) — image-bearing by design, per the ratchet policy."
+    },
+    "/fr-fr/products/notably/": {
+      "maxPageBytes": 150000,
+      "justification": "Same as /products/notably/, FR copy."
+    }
+  }
+}
