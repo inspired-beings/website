@@ -15,6 +15,10 @@ export function initMenu() {
     })
   }
 
+  // One dropdown today (Services), but wired for N: each toggle/panel pair
+  // is tracked in `dropdowns`, and the Esc/click-outside listeners below
+  // are attached once (delegated), not once per dropdown.
+  const dropdowns = []
   document.querySelectorAll('[data-menu="dropdown-toggle"]').forEach(toggle => {
     const panel = document.getElementById(toggle.getAttribute('aria-controls') ?? '')
     if (!panel) return
@@ -34,15 +38,23 @@ export function initMenu() {
       panel.querySelector('a')?.focus()
     })
 
+    dropdowns.push({ toggle, panel, close })
+  })
+
+  if (dropdowns.length > 0) {
     document.addEventListener('keydown', event => {
-      if (event.key !== 'Escape' || toggle.getAttribute('aria-expanded') !== 'true') return
-      close()
-      toggle.focus()
+      if (event.key !== 'Escape') return
+      const open = dropdowns.find(d => d.toggle.getAttribute('aria-expanded') === 'true')
+      if (!open) return
+      open.close()
+      open.toggle.focus()
     })
 
     document.addEventListener('click', event => {
-      if (toggle.contains(event.target) || panel.contains(event.target)) return
-      close()
+      for (const { toggle, panel, close } of dropdowns) {
+        if (toggle.contains(event.target) || panel.contains(event.target)) continue
+        close()
+      }
     })
-  })
+  }
 }

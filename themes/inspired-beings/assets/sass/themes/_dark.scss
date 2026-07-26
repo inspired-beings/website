@@ -9,10 +9,19 @@
 // Mapping copied VERBATIM from the design spec's semantic table, "Dark"
 // column.
 
-@mixin dark-semantics {
-  --color-surface-default: var(--color-primitive-night);
-  --color-surface-alt: var(--color-primitive-night-1);
-  --color-surface-raised: var(--color-primitive-night-2);
+// Subset of the dark-scheme semantic tokens (text/border/accent/link/focus)
+// that a permanently-dark content context needs — used directly by the
+// site :root override below, and re-included as-is by `layout/_footer.scss`
+// to force the footer's inverse band into dark-scheme content colors
+// regardless of the page's own scheme. Deliberately excludes
+// `--color-surface-*` (an inverse band isn't a "surface", it has its own
+// `--color-inverse-band-bg`) and `--color-inverse-band-bg` itself — that
+// property must keep tracking whichever scheme is actually active (light
+// page → light's own #091018 band, dark page → dark's #04070D), so a
+// consumer that always wants "dark" must never touch it. Also excludes
+// error/success/warning (not needed by any inverse-band context yet —
+// add if one ever needs it, don't speculate).
+@mixin inverse-band-semantics {
   --color-text-default: var(--color-primitive-frost-t0);
   --color-text-muted: var(--color-primitive-frost-t1);
   --color-text-subtle: var(--color-primitive-frost-t2);
@@ -22,9 +31,16 @@
   --color-on-accent: var(--color-primitive-night);
   --color-border-default: var(--color-primitive-line-dark);
   --color-border-subtle: var(--color-primitive-line-dark-subtle);
-  --color-inverse-band-bg: var(--color-primitive-night-deep);
   --color-link: var(--color-primitive-peri-400);
   --color-focus-ring: var(--color-primitive-frost-t0);
+}
+
+@mixin dark-semantics {
+  --color-surface-default: var(--color-primitive-night);
+  --color-surface-alt: var(--color-primitive-night-1);
+  --color-surface-raised: var(--color-primitive-night-2);
+  @include inverse-band-semantics;
+  --color-inverse-band-bg: var(--color-primitive-night-deep);
   --color-error: var(--color-primitive-error-dark);
   --color-success: var(--color-primitive-spring);
   --color-warning: var(--color-primitive-sun);

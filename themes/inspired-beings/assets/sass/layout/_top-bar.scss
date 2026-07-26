@@ -91,6 +91,7 @@
   &:hover,
   &:focus-visible {
     color: var(--color-accent-default);
+    text-decoration: underline;
   }
 
   &[aria-current="page"] {

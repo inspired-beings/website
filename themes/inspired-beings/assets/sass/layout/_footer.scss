@@ -1,41 +1,19 @@
 // Site footer: inverse band (spec rule) — background is
-// `--color-inverse-band-bg` and everything inside re-asserts the
-// dark-scheme semantic tokens verbatim, regardless of the page's own
-// light/dark scheme, by re-including the same `dark-semantics` mixin
-// `_dark.scss` already defines (never hardcoded hexes).
-
+// `--color-inverse-band-bg` (still tracking the page's own light/dark
+// scheme — #091018 in light, #04070D in dark) and everything inside
+// re-asserts the dark-scheme *content* tokens verbatim via
+// `_dark.scss`'s purpose-built `inverse-band-semantics` mixin. That mixin
+// deliberately never touches `--color-inverse-band-bg` itself, so
+// `background-color: var(--color-inverse-band-bg)` below still resolves
+// through the normal light/dark cascade — no primitive named here.
 @use "../abstracts";
 @use "../themes/dark";
 
-// Content tokens forced to dark-scheme values verbatim (spec rule) — this
-// necessarily re-overrides `--color-inverse-band-bg` itself too (the mixin
-// sets every semantic token), so the background can't be read back via
-// var(--color-inverse-band-bg) inside this same rule. Restored below by
-// mirroring the light/dark primitive directly, per spec: "Light-scheme
-// inverse band is literally #091018 (night) … in dark scheme the band
-// drops to #04070D (night-deep)".
 .footer {
-  @include dark.dark-semantics;
+  @include dark.inverse-band-semantics;
+  background-color: var(--color-inverse-band-bg);
   color: var(--color-text-default);
   padding-block: var(--sp-2xl);
-}
-
-.footer {
-  background-color: var(--color-primitive-night);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root .footer {
-    background-color: var(--color-primitive-night-deep);
-  }
-}
-
-:root[data-theme="dark"] .footer {
-  background-color: var(--color-primitive-night-deep);
-}
-
-:root[data-theme="light"] .footer {
-  background-color: var(--color-primitive-night);
 }
 
 .footer__columns {
@@ -68,6 +46,7 @@
   &:hover,
   &:focus-visible {
     color: var(--color-accent-default);
+    text-decoration: underline;
   }
 }
 
