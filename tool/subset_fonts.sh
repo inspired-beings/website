@@ -38,11 +38,33 @@ command -v python3 >/dev/null || {
   exit 1
 }
 
+# Never build the venv off a system python3: mise not activated (or a PATH
+# shadowing mise's shim) must fail loudly here, not silently produce a venv
+# nobody can reproduce.
+python3 -c 'import sys; sys.exit(0 if "mise" in sys.executable else 1)' || {
+  echo "python3 resolves to $(command -v python3), not a mise-managed interpreter." >&2
+  echo 'Run: eval "$(mise activate bash)" (this repo pins python in mise.toml) — then re-run.' >&2
+  exit 1
+}
+
 echo "== venv (${VENV_DIR}) =="
+mise_python_version="$(python3 -c 'import platform; print(platform.python_version())')"
+if [[ -d "$VENV_DIR" ]]; then
+  venv_python_version="$("${VENV_DIR}/bin/python3" -c 'import platform; print(platform.python_version())' 2>/dev/null || echo "")"
+  if [[ "$venv_python_version" != "$mise_python_version" ]]; then
+    echo "venv python (${venv_python_version:-none}) != mise python (${mise_python_version}) — recreating ${VENV_DIR}"
+    rm -rf "$VENV_DIR"
+  fi
+fi
 [[ -d "$VENV_DIR" ]] || python3 -m venv "$VENV_DIR"
 # shellcheck disable=SC1091
 source "${VENV_DIR}/bin/activate"
-pip install --quiet "fonttools==${FONTTOOLS_VERSION}" "brotli==${BROTLI_VERSION}"
+
+pinned_versions_satisfied() {
+  [[ "$(pip show fonttools 2>/dev/null | awk -F': ' '/^Version:/{print $2}')" == "$FONTTOOLS_VERSION" ]] &&
+    [[ "$(pip show brotli 2>/dev/null | awk -F': ' '/^Version:/{print $2}')" == "$BROTLI_VERSION" ]]
+}
+pinned_versions_satisfied || pip install --quiet "fonttools==${FONTTOOLS_VERSION}" "brotli==${BROTLI_VERSION}"
 
 work_dir="$(mktemp -d)"
 trap 'rm -rf "$work_dir"' EXIT
