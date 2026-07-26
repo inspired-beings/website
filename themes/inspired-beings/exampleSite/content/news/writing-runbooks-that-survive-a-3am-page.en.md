@@ -4,9 +4,7 @@ date: 2026-07-20
 categories: ["information"]
 ---
 
-Our on-call rotation used to dread one thing above almost everything else: a runbook that assumed the reader was awake, caffeinated, and already fluent in the system it described. Most incidents happen at neither of those.
-
-This is what we now require of every runbook before it ships.
+No more runbooks written for an alert reader.
 
 <!--more-->
 
@@ -61,10 +59,31 @@ We track three numbers across every incident:
 
 Not every incident type has a mature runbook yet. Our rollout checklist for a new service:
 
-- [x] Alert rule has a named owner
-- [x] Runbook drafted and linked from the alert
-- [x] Runbook rehearsed in a game day
-- [ ] Runbook translated for the on-call rotation covering the Paris and Lisbon time zones
+<!-- Hand-authored as raw HTML rather than GFM `- [ ]` task-list syntax:
+Goldmark's task-list extension renders a bare `<input disabled type=
+"checkbox">` with no accessible name (a documented upstream gap), and no
+Hugo render hook exists for list items to patch it at template level.
+`unsafe = true` (site config) allows raw HTML blocks in Markdown, so each
+item gets a real `<label for>`/`id` pair instead — accessible with zero
+JS. -->
+<ul class="task-list">
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-alert-owner" checked disabled>
+    <label class="task-list__label" for="task-alert-owner">Alert rule has a named owner</label>
+  </li>
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-runbook-drafted" checked disabled>
+    <label class="task-list__label" for="task-runbook-drafted">Runbook drafted and linked from the alert</label>
+  </li>
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-game-day" checked disabled>
+    <label class="task-list__label" for="task-game-day">Runbook rehearsed in a game day</label>
+  </li>
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-translation" disabled>
+    <label class="task-list__label" for="task-translation">Runbook translated for the on-call rotation covering the Paris and Lisbon time zones</label>
+  </li>
+</ul>
 
 ---
 

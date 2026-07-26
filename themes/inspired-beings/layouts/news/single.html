@@ -8,7 +8,15 @@
   (headings, lists incl. nested, table, blockquote, code fence + inline
   code, hr, footnote, task list) plus the `{{< figure >}}` shortcode — this
   layout adds no per-element CSS itself, only the header chrome + the
-  `.news-article__body` scope hook named in the plan. */}}
+  `.news-article__body` scope hook named in the plan.
+
+  Task list note: Goldmark's GFM task-list extension renders bare
+  `<input disabled type="checkbox">` with no accessible name (a documented
+  upstream Goldmark gap, no Hugo render hook exists for list items). Fixed
+  at the content layer instead of here — the styleguide article hand-authors
+  its task list as raw HTML (`unsafe = true` allows this) with real
+  `<label for>`/`id` pairs, so no JS is needed and no template-level
+  workaround lives in this layout. */}}
 {{ define "main" }}
   <article class="news-article">
     <header class="news-article__header">
@@ -30,23 +38,5 @@
     <div class="news-article__body container">
       {{ .Content }}
     </div>
-
-    {{/* Goldmark's GFM task-list extension renders bare `<input disabled
-      type="checkbox">` with no accessible name (a documented upstream
-      Goldmark gap — no Hugo render hook exists for list items to fix this
-      at template level). Page-scoped inline enhancement (not the shared
-      `js/main.js` bundle, so pages without a task list pay nothing):
-      names each checkbox from its own list item's text, exactly what a
-      sighted reader already sees next to it. Purely additive — the
-      checked/unchecked state itself doesn't depend on this script; without
-      JS the checkbox is still present and still conveys state, just
-      without a formal accessible name. */}}
-    {{ if in .Content `type="checkbox"` }}
-      <script>
-        document.querySelectorAll('.news-article__body input[type="checkbox"]').forEach(function (checkbox) {
-          checkbox.setAttribute('aria-label', checkbox.parentElement.textContent.trim())
-        })
-      </script>
-    {{ end }}
   </article>
 {{ end }}

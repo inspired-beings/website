@@ -1,10 +1,10 @@
 ---
-title: "Nous recrutons : ingénieur·e backend senior"
+title: "Recrutement backend"
 date: 2026-04-18
 categories: ["careers"]
 ---
 
-Nous ouvrons un poste d'ingénieur·e backend senior, en remote d'abord, sur des services Node.js et TypeScript pour nos projets clients comme pour nos outils internes.
+En remote, Node.js.
 
 <!--more-->
 

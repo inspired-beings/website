@@ -1,12 +1,10 @@
 ---
-title: "Rédiger des runbooks qui survivent à un réveil à 3 h du matin"
+title: "Runbooks de nuit"
 date: 2026-07-20
 categories: ["information"]
 ---
 
-Notre rotation d'astreinte redoutait une chose par-dessus presque tout le reste : un runbook qui suppose que le lecteur est réveillé, caféiné, et déjà à l'aise avec le système qu'il décrit. La plupart des incidents ne cochent ni l'une ni l'autre de ces cases.
-
-Voici ce que nous exigeons désormais de tout runbook avant sa mise en service.
+Écrit pour un lecteur fatigué.
 
 <!--more-->
 
@@ -61,10 +59,31 @@ Nous suivons trois chiffres sur chaque incident :
 
 Tous les types d'incidents n'ont pas encore un runbook mature. Notre checklist de mise en service pour un nouveau service :
 
-- [x] La règle d'alerte a un propriétaire nommé
-- [x] Le runbook est rédigé et lié depuis l'alerte
-- [x] Le runbook a été répété lors d'un game day
-- [ ] Le runbook est traduit pour l'astreinte couvrant les fuseaux de Paris et Lisbonne
+<!-- Rédigé en HTML brut plutôt qu'en syntaxe de liste de tâches GFM
+`- [ ]` : l'extension task-list de Goldmark génère un `<input disabled
+type="checkbox">` nu, sans nom accessible (limitation connue en amont),
+et aucun hook de rendu Hugo n'existe pour les éléments de liste afin de
+corriger cela au niveau du gabarit. `unsafe = true` (config du site)
+autorise les blocs HTML bruts en Markdown : chaque élément reçoit donc une
+vraie paire `<label for>`/`id`, accessible sans JS. -->
+<ul class="task-list">
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-alert-owner" checked disabled>
+    <label class="task-list__label" for="task-alert-owner">La règle d'alerte a un propriétaire nommé</label>
+  </li>
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-runbook-drafted" checked disabled>
+    <label class="task-list__label" for="task-runbook-drafted">Le runbook est rédigé et lié depuis l'alerte</label>
+  </li>
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-game-day" checked disabled>
+    <label class="task-list__label" for="task-game-day">Le runbook a été répété lors d'un game day</label>
+  </li>
+  <li class="task-list__item">
+    <input class="task-list__checkbox" type="checkbox" id="task-translation" disabled>
+    <label class="task-list__label" for="task-translation">Le runbook est traduit pour l'astreinte couvrant les fuseaux de Paris et Lisbonne</label>
+  </li>
+</ul>
 
 ---
 

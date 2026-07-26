@@ -4,7 +4,7 @@ date: 2026-06-02
 categories: ["column"]
 ---
 
-Every quarter we publish the same three numbers, whether they flatter us or not: uptime, median incident resolution time, and the count of incidents that reached a customer before we noticed them ourselves.
+Every quarter, the same three reliability numbers.
 
 <!--more-->
 

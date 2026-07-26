@@ -4,7 +4,7 @@ date: 2026-04-18
 categories: ["careers"]
 ---
 
-We're opening a senior backend engineer role, remote-first, working across Node.js and TypeScript services for our client projects and our own internal tooling.
+We're hiring a senior backend engineer.
 
 <!--more-->
 
