@@ -110,7 +110,13 @@
                 {{ with .Date }}
                   <p class="home-news__date">{{ .Format "2 January 2006" }}</p>
                 {{ end }}
-                <p class="home-news__body">{{ .Summary }}</p>
+                {{/* `.Summary` is rendered HTML and may itself contain block-level
+                  tags (e.g. multiple `<p>`s, or — pre-Task-9-fix — a stray heading
+                  if a manual `<!--more-->` divider is missing from the source
+                  article); a `<div>` wrapper is HTML-valid either way, where a
+                  `<p>` wrapper is not once the content itself contains block
+                  elements. */}}
+                <div class="home-news__body">{{ .Summary }}</div>
               </article>
             {{ end }}
           </div>

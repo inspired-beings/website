@@ -446,3 +446,18 @@ other = "Dites-nous ce qui vous bloque — nous répondrons sous un jour ouvré.
 
 [faqCtaLabel]
 other = "Nous poser la question"
+
+[newsCategoriesLabel]
+other = "Catégories"
+
+[newsAllCategoriesLabel]
+other = "Toutes"
+
+[newsCtaHeading]
+other = "Une actualité que vous aimeriez nous voir couvrir ?"
+
+[newsCtaBody]
+other = "Dites-nous ce que vous construisez ou ce que vous aimeriez lire — nous lisons chaque message."
+
+[newsCtaLabel]
+other = "Nous contacter"

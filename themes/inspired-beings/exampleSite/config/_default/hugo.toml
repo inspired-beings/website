@@ -8,13 +8,40 @@ theme = "inspired-beings"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 
-# Taxonomies
-disableKinds = ["taxonomy", "term"]
+# Taxonomies — Task 9 enables `categories` (term pages only: content-adorned
+# term bundles under `content/categories/<term>/_index.<lang>.md` give each
+# category page a real bilingual title). The auto "all terms" index page
+# (kind `taxonomy`, would live at /categories/) isn't linked from anywhere in
+# the design and stays disabled. Defining `[taxonomies]` below replaces
+# Hugo's default taxonomies map entirely, so the default `tags` taxonomy (and
+# its own /tags/ index) never exists — only `categories` does.
+disableKinds = ["taxonomy"]
+
+[taxonomies]
+  category = "categories"
+
+# News list pagination (Task 9) — 9 per page, so the 10-article dummy set
+# exercises the pagination partial for real (page 1: 9, page 2: 1). The
+# brief names the legacy top-level `paginate` key, but Hugo 0.162 has fully
+# dropped it (confirmed via `hugo config`: it's carried as a dead unused
+# string, no warning, default `pagersize` of 10 silently wins instead) — the
+# supported equivalent is `[pagination] pagerSize`.
+[pagination]
+  pagerSize = 9
 
 # Markup
 # https://gohugo.io/getting-started/configuration-markup/#goldmark
 [markup.goldmark.renderer]
   unsafe = true
+
+# Chroma syntax highlighting emits inline `style="color:#…"` on every token
+# span, in a fixed dark theme (monokai) that ignores our light/dark tokens
+# and adds real weight per code fence (Task 9's MD-styleguide article has
+# one). Disabled so fenced code blocks fall back to Goldmark's plain
+# `<pre><code class="language-…">` — styled by `base/_elements.scss`'s
+# existing token-driven `pre`/`code` rules, consistent in both schemes.
+[markup.highlight]
+  codeFences = false
 
 # Security — Node.js permission-model sandbox for PostCSS (Hugo 0.161+).
 # Default `allowRead = ['.']` only covers the working directory (this

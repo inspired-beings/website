@@ -1,0 +1,133 @@
+// News list + category (term) pages + article (Task 9). Two page-scoped
+// blocks in one file, same precedent as `_services.scss` (`services-index`
+// + `service-*`): `news-list` (shared by `layouts/news/list.html` and
+// `layouts/categories/term.html` via `partials/news-list-content.html`) and
+// `news-article` (`layouts/news/single.html`). Category chip filter links
+// reuse the `.chip` component; the current-category state is a real ARIA
+// attribute (`[aria-current="page"]`), same idiom as `.pagination__link
+// --current`/`.language-switcher__current`. Rich-text element styling
+// (headings, lists, table, blockquote, code, hr) already lives in
+// `base/_elements.scss`/`base/_typography.scss` as bare element selectors —
+// `.news-article__body` doesn't need to repeat any of it, only spacing.
+@use "../abstracts";
+
+// --- News list / category page ----------------------------------------
+
+.news-list__intro {
+  padding-block: var(--sp-2xl) var(--sp-xl);
+}
+
+.news-list__intro .container {
+  max-width: 44rem;
+}
+
+.news-list__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.news-list__body {
+  padding-block-end: var(--sp-2xl);
+}
+
+.news-list__categories {
+  padding-block-end: var(--sp-lg);
+}
+
+.news-list__categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs);
+}
+
+.news-list__categories-link {
+  text-decoration: none;
+}
+
+.news-list__categories-link:hover,
+.news-list__categories-link:focus-visible {
+  border-color: var(--color-accent-default);
+  color: var(--color-accent-default);
+}
+
+.news-list__categories-link[aria-current="page"] {
+  background-color: var(--color-accent-default);
+  border-color: var(--color-accent-default);
+  color: var(--color-on-accent);
+  font-weight: 700;
+}
+
+.news-list__item {
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.news-list__item-link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding-block: var(--sp-md);
+  color: var(--color-text-default);
+  text-decoration: none;
+}
+
+.news-list__item-link:hover .news-list__item-title,
+.news-list__item-link:focus-visible .news-list__item-title {
+  text-decoration: underline;
+}
+
+.news-list__item-date {
+  flex: 0 0 auto;
+  min-width: 9rem;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.news-list__item-title {
+  flex: 1 1 20rem;
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.news-list .pagination {
+  margin-block-start: var(--sp-lg);
+}
+
+// --- Article -------------------------------------------------------------
+
+.news-article__header {
+  padding-block: var(--sp-2xl);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.news-article__header .container {
+  max-width: 44rem;
+}
+
+.news-article__date {
+  display: block;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.news-article__chip {
+  display: inline-flex;
+  margin-block-start: var(--sp-xs);
+}
+
+.news-article__title {
+  margin-block-start: var(--sp-sm);
+}
+
+.news-article__body {
+  max-width: 44rem;
+  padding-block: var(--sp-2xl);
+}
+
+.news-article__body > * + * {
+  margin-block-start: var(--sp-md);
+}
+
+.news-article__body .figure {
+  margin-block: var(--sp-lg);
+}

@@ -39,6 +39,15 @@
   {{ $pageStyleKind = "services" }}
 {{ else if eq .Type "styleguide" }}
   {{ $pageStyleKind = "styleguide" }}
+{{ else if or (eq .Section "news") (eq .Kind "term") }}
+  {{/* `.Section == "news"` covers the news list + every article
+    (`content/news/`); `.Kind == "term"` covers category pages
+    (`content/categories/<term>/`, kind `term`, `.Section` is their own
+    "categories" section, not "news"). Safe as a bare `.Kind == "term"`
+    check only because `categories` is the theme's one taxonomy — a future
+    second taxonomy would need this narrowed to also check the taxonomy
+    name. */}}
+  {{ $pageStyleKind = "news" }}
 {{ else if .File }}
   {{ if in (slice "about" "faq" "pricing") .File.TranslationBaseName }}
     {{ $pageStyleKind = .File.TranslationBaseName }}

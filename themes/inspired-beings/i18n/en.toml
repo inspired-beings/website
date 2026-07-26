@@ -446,3 +446,18 @@ other = "Tell us what you're trying to figure out — we'll reply within one bus
 
 [faqCtaLabel]
 other = "Ask us directly"
+
+[newsCategoriesLabel]
+other = "Categories"
+
+[newsAllCategoriesLabel]
+other = "All"
+
+[newsCtaHeading]
+other = "Have a story you'd like us to cover?"
+
+[newsCtaBody]
+other = "Tell us what you're building or what you'd like to hear about — we read every message."
+
+[newsCtaLabel]
+other = "Get in touch"

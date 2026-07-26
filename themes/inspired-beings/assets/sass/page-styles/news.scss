@@ -1,0 +1,7 @@
+// Per-page-kind entrypoint (Task 8b split) — compiled + linked for the news
+// list, every category (term) page, and every article (see `partials/
+// head.html`'s page-kind switch, matched on `.Section == "news"` or
+// `.Kind == "term"`). Selects the `pages/_news.scss` partial; shared/
+// abstracts/themes/base/layout/components already ship in `main.scss` and
+// must NOT be re-`@use`d here or their rules would emit twice.
+@use "../pages/news";

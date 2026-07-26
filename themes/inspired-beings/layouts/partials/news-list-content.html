@@ -1,0 +1,60 @@
+{{/* Shared news list body (Task 9) — category-chips filter row + date/chip/
+  title item rows + pagination. Used identically by `news/list.html` and
+  `categories/term.html` so both pages render the same structure; only the
+  data differs (the term page's `.Paginator` is already scoped to that
+  term's pages by Hugo). Dict params:
+  - `paginator` — a real Hugo Paginator (`.Paginator` on the calling list/
+    term page).
+  - `current` — the term Page currently being viewed (a category page), or
+    nil on the plain /news/ list. Drives which chip gets
+    `aria-current="page"` — a real interactive/navigational state, same
+    idiom as `.pagination__link--current`/`.language-switcher__current`.
+  Uses the global `site`/`i18n` template funcs rather than `.Site`, since
+  this partial's own context is a plain dict, not a Page. Category names
+  come from each term's own content bundle (`content/categories/<term>/
+  _index.<lang>.md`) via `site.GetPage`, so the chip label is the real
+  localized title, not a humanized slug. */}}
+<nav class="news-list__categories" aria-label="{{ i18n "newsCategoriesLabel" }}">
+  <ul class="news-list__categories-list" role="list">
+    <li class="news-list__categories-item">
+      <a
+        class="chip news-list__categories-link"
+        href="{{ "news/" | relLangURL }}"
+        {{ if not .current }}aria-current="page"{{ end }}
+      >
+        {{ i18n "newsAllCategoriesLabel" }}
+      </a>
+    </li>
+    {{ range site.Taxonomies.categories.Alphabetical }}
+      <li class="news-list__categories-item">
+        <a
+          class="chip news-list__categories-link"
+          href="{{ .Page.RelPermalink }}"
+          {{ if eq $.current .Page }}aria-current="page"{{ end }}
+        >
+          {{ .Page.Title }}
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>
+
+<ul class="news-list__items" role="list">
+  {{ range .paginator.Pages }}
+    <li class="news-list__item">
+      <a class="news-list__item-link" href="{{ .RelPermalink }}">
+        <time class="news-list__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ .Date | time.Format ":date_long" }}
+        </time>
+        {{ with .Params.categories }}
+          {{ with site.GetPage (printf "categories/%s" (index . 0)) }}
+            <span class="chip news-list__item-chip">{{ .Title }}</span>
+          {{ end }}
+        {{ end }}
+        <span class="news-list__item-title">{{ .Title }}</span>
+      </a>
+    </li>
+  {{ end }}
+</ul>
+
+{{ partial "pagination.html" .paginator }}
