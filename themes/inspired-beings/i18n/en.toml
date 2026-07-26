@@ -29,3 +29,102 @@ other = "Resources"
 
 [footerCopyright]
 other = "© {{ .year }} {{ .name }}. All rights reserved."
+
+[formFieldDefaultError]
+other = "This field is invalid."
+
+[styleguideButtonsHeading]
+other = "Buttons"
+
+[styleguideSizeLargeLabel]
+other = "Large"
+
+[styleguideSizeMediumLabel]
+other = "Medium"
+
+[styleguideButtonSolidLabel]
+other = "Request a quote"
+
+[styleguideButtonOutlinedLabel]
+other = "Learn more"
+
+[styleguideButtonDisabledLabel]
+other = "Unavailable"
+
+[styleguideCardsHeading]
+other = "Cards"
+
+[styleguideCardOneTitle]
+other = "Web & App Development"
+
+[styleguideCardOneBody]
+other = "Full-stack builds across Node.js, TypeScript and modern frontend frameworks, from first commit to production."
+
+[styleguideCardLinkLabel]
+other = "Learn more"
+
+[styleguideCardTwoTitle]
+other = "Security Audits"
+
+[styleguideCardTwoBody]
+other = "Independent review of your codebase, infrastructure and dependency chain against current threat models."
+
+[styleguideChipsHeading]
+other = "Chips"
+
+[styleguideChipNeutralLabel]
+other = "Node.js"
+
+[styleguideChipAccentLabel]
+other = "Featured"
+
+[styleguideChipSuccessLabel]
+other = "Completed"
+
+[styleguideChipWarningLabel]
+other = "In review"
+
+[styleguideChipErrorLabel]
+other = "Deprecated"
+
+[styleguideFormsHeading]
+other = "Forms"
+
+[styleguideFormNameLabel]
+other = "Full name"
+
+[styleguideFormNameHelp]
+other = "As it should appear on the quote."
+
+[styleguideFormEmailLabel]
+other = "Email address"
+
+[styleguideFormEmailErrorText]
+other = "Enter a valid email address."
+
+[styleguideFormTextareaLabel]
+other = "Project details"
+
+[styleguideFormTextareaHelp]
+other = "Tech stack, rough timeline, anything that helps us scope the work."
+
+[styleguideFormRadioLegend]
+other = "Preferred contact method"
+
+[styleguideFormRadioOptionEmail]
+other = "Email"
+
+[styleguideFormRadioOptionPhone]
+other = "Phone"
+
+[styleguideFormRadioOptionEither]
+other = "Either works"
+
+[styleguideFormNewsletterLabel]
+other = "Subscribe to our engineering newsletter"
+
+[styleguideFormConsentLabel]
+other = "I agree to the"
+
+[styleguideFormConsentLinkLabel]
+other = "Privacy Policy"

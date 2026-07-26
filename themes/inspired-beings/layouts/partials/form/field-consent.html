@@ -1,0 +1,39 @@
+{{/* form-field (`--checkbox` layout): the legal-consent checkbox — always
+  `required`. Dict params: `name`, `label` (the sentence lead-in), `linkHref`
+  + `linkLabel` (optional, appends a real link — e.g. to the privacy page),
+  `help`, `invalid` (bool), `errorText`. Kept as its own partial (rather than
+  field-checkbox.html + params) per the brief's exact deliverable list. */}}
+{{ $describedBy := "" }}
+{{ if .help }}
+  {{ $describedBy = printf "%s-help" .name }}
+{{ end }}
+{{ if .invalid }}
+  {{ if $describedBy }}
+    {{ $describedBy = printf "%s %s-error" $describedBy .name }}
+  {{ else }}
+    {{ $describedBy = printf "%s-error" .name }}
+  {{ end }}
+{{ end }}
+<div class="form-field form-field--checkbox{{ if .invalid }} form-field--invalid{{ end }}">
+  <input
+    class="form-field__input"
+    type="checkbox"
+    id="{{ .name }}"
+    name="{{ .name }}"
+    required
+    aria-required="true"
+    {{ if .invalid }}aria-invalid="true"{{ end }}
+    {{ if $describedBy }}aria-describedby="{{ $describedBy }}"{{ end }}
+  />
+  <label class="form-field__label" for="{{ .name }}">
+    {{ .label }}
+    {{ with .linkHref }} <a href="{{ . }}">{{ $.linkLabel }}</a>{{ end }}
+    <span class="form-field__required" aria-hidden="true">*</span>
+  </label>
+  {{ with .help }}
+    <p class="form-field__help" id="{{ $.name }}-help">{{ . }}</p>
+  {{ end }}
+  {{ if .invalid }}
+    <p class="form-field__error" id="{{ .name }}-error">{{ .errorText | default (i18n "formFieldDefaultError") }}</p>
+  {{ end }}
+</div>

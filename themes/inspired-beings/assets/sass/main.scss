@@ -15,8 +15,15 @@
 @use "components/skip-link";
 @use "components/language-switcher";
 @use "components/theme-toggle";
+@use "components/button";
+@use "components/card";
+@use "components/chip";
+@use "components/accordion";
+@use "components/form";
+@use "pages/styleguide";
 
 // @use "vendors"; — slot: third-party CSS overrides (empty at birth)
-// @use "components/..."; — slot: Task 4-5 (skip-link/language-switcher/
-//   theme-toggle added in Task 3, above)
-// @use "pages/..."; — slot: Task 6-11
+// @use "components/..."; — slot: Task 5+ (skip-link/language-switcher/
+//   theme-toggle added in Task 3; button/card/chip/accordion/form in Task 4)
+// @use "pages/..."; — slot: Task 6-11 (styleguide's own layout scaffolding
+//   added in Task 4, since the page ships in this task)

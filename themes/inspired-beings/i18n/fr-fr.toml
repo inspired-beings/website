@@ -29,3 +29,102 @@ other = "Ressources"
 
 [footerCopyright]
 other = "© {{ .year }} {{ .name }}. Tous droits réservés."
+
+[formFieldDefaultError]
+other = "Ce champ est invalide."
+
+[styleguideButtonsHeading]
+other = "Boutons"
+
+[styleguideSizeLargeLabel]
+other = "Grand"
+
+[styleguideSizeMediumLabel]
+other = "Moyen"
+
+[styleguideButtonSolidLabel]
+other = "Demander un devis"
+
+[styleguideButtonOutlinedLabel]
+other = "En savoir plus"
+
+[styleguideButtonDisabledLabel]
+other = "Indisponible"
+
+[styleguideCardsHeading]
+other = "Cartes"
+
+[styleguideCardOneTitle]
+other = "Développement web & applicatif"
+
+[styleguideCardOneBody]
+other = "Réalisation complète sur Node.js, TypeScript et les frameworks frontend modernes, du premier commit à la production."
+
+[styleguideCardLinkLabel]
+other = "En savoir plus"
+
+[styleguideCardTwoTitle]
+other = "Audits de sécurité"
+
+[styleguideCardTwoBody]
+other = "Revue indépendante de votre code, de votre infrastructure et de votre chaîne de dépendances face aux menaces actuelles."
+
+[styleguideChipsHeading]
+other = "Puces"
+
+[styleguideChipNeutralLabel]
+other = "Node.js"
+
+[styleguideChipAccentLabel]
+other = "En vedette"
+
+[styleguideChipSuccessLabel]
+other = "Terminé"
+
+[styleguideChipWarningLabel]
+other = "En relecture"
+
+[styleguideChipErrorLabel]
+other = "Obsolète"
+
+[styleguideFormsHeading]
+other = "Formulaires"
+
+[styleguideFormNameLabel]
+other = "Nom complet"
+
+[styleguideFormNameHelp]
+other = "Tel qu'il doit apparaître sur le devis."
+
+[styleguideFormEmailLabel]
+other = "Adresse e-mail"
+
+[styleguideFormEmailErrorText]
+other = "Saisissez une adresse e-mail valide."
+
+[styleguideFormTextareaLabel]
+other = "Détails du projet"
+
+[styleguideFormTextareaHelp]
+other = "Stack technique, échéance approximative, tout ce qui nous aide à cadrer le travail."
+
+[styleguideFormRadioLegend]
+other = "Moyen de contact préféré"
+
+[styleguideFormRadioOptionEmail]
+other = "E-mail"
+
+[styleguideFormRadioOptionPhone]
+other = "Téléphone"
+
+[styleguideFormRadioOptionEither]
+other = "Peu importe"
+
+[styleguideFormNewsletterLabel]
+other = "S'abonner à notre newsletter technique"
+
+[styleguideFormConsentLabel]
+other = "J'accepte la"
+
+[styleguideFormConsentLinkLabel]
+other = "Politique de confidentialité"

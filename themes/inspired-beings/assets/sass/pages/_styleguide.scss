@@ -1,0 +1,26 @@
+// Page-specific scaffolding for the living styleguide (`/styleguide/`,
+// Task 4 deliverable — not deferred to the Task 6-11 `pages/` wave like the
+// rest of that folder, since the page ships now). Purely layout glue around
+// the component blocks above; introduces no new color/typography rules.
+
+.styleguide__section {
+  margin-block-end: var(--sp-2xl);
+}
+
+.styleguide__group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--sp-md);
+}
+
+.styleguide__card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--sp-lg);
+}
+
+.styleguide__caption {
+  margin-block-end: var(--sp-2xs);
+  color: var(--color-text-subtle);
+}

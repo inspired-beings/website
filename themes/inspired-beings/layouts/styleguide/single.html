@@ -1,0 +1,118 @@
+{{/* Living styleguide (Task 4) — instantiates every component variant/state
+  from Task 4's library so pa11y + visual QA has one page to check. Order
+  matches the brief's own component list: button, card, chip, accordion
+  (via `.Content`, the one component meant to be authored from Markdown),
+  form. Section copy is template-authored (i18n), not page content, since
+  it's fixed structural demo copy rather than authored prose — matching how
+  top-bar/footer do i18n for their own strings. */}}
+{{ define "main" }}
+  <article class="container styleguide">
+    <h1>{{ .Title }}</h1>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-buttons">
+      <h2 id="styleguide-buttons">{{ i18n "styleguideButtonsHeading" }}</h2>
+      <div class="styleguide__group">
+        <div>
+          <p class="styleguide__caption">{{ i18n "styleguideSizeLargeLabel" }}</p>
+          <button type="button" class="button button--solid button--large">{{ i18n "styleguideButtonSolidLabel" }}</button>
+        </div>
+        <div>
+          <p class="styleguide__caption">{{ i18n "styleguideSizeMediumLabel" }}</p>
+          <button type="button" class="button button--solid button--medium">{{ i18n "styleguideButtonSolidLabel" }}</button>
+        </div>
+        <div>
+          <p class="styleguide__caption">{{ i18n "styleguideSizeLargeLabel" }}</p>
+          <button type="button" class="button button--outlined button--large">{{ i18n "styleguideButtonOutlinedLabel" }}</button>
+        </div>
+        <div>
+          <p class="styleguide__caption">{{ i18n "styleguideSizeMediumLabel" }}</p>
+          <button type="button" class="button button--outlined button--medium">{{ i18n "styleguideButtonOutlinedLabel" }}</button>
+        </div>
+        <div>
+          <p class="styleguide__caption">{{ i18n "styleguideSizeLargeLabel" }}</p>
+          <button type="button" class="button button--solid button--large" disabled>{{ i18n "styleguideButtonDisabledLabel" }}</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-cards">
+      <h2 id="styleguide-cards">{{ i18n "styleguideCardsHeading" }}</h2>
+      <div class="styleguide__card-grid">
+        {{ partial "card.html" (dict
+          "icon" "🛠"
+          "title" (i18n "styleguideCardOneTitle")
+          "body" (i18n "styleguideCardOneBody")
+          "link" (dict "href" "/services/" "label" (i18n "styleguideCardLinkLabel"))
+        ) }}
+        {{ partial "card.html" (dict
+          "title" (i18n "styleguideCardTwoTitle")
+          "body" (i18n "styleguideCardTwoBody")
+        ) }}
+      </div>
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-chips">
+      <h2 id="styleguide-chips">{{ i18n "styleguideChipsHeading" }}</h2>
+      <div class="styleguide__group">
+        <span class="chip">{{ i18n "styleguideChipNeutralLabel" }}</span>
+        <span class="chip chip--accent">{{ i18n "styleguideChipAccentLabel" }}</span>
+        <span class="chip chip--success">{{ i18n "styleguideChipSuccessLabel" }}</span>
+        <span class="chip chip--warning">{{ i18n "styleguideChipWarningLabel" }}</span>
+        <span class="chip chip--error">{{ i18n "styleguideChipErrorLabel" }}</span>
+      </div>
+    </section>
+
+    {{ .Content }}
+
+    <section class="styleguide__section" aria-labelledby="styleguide-forms">
+      <h2 id="styleguide-forms">{{ i18n "styleguideFormsHeading" }}</h2>
+
+      {{ partial "form/field-text.html" (dict
+        "name" "styleguide-name"
+        "label" (i18n "styleguideFormNameLabel")
+        "required" true
+        "help" (i18n "styleguideFormNameHelp")
+        "autocomplete" "name"
+      ) }}
+
+      {{ partial "form/field-text.html" (dict
+        "name" "styleguide-email"
+        "label" (i18n "styleguideFormEmailLabel")
+        "required" true
+        "type" "email"
+        "autocomplete" "email"
+        "invalid" true
+        "errorText" (i18n "styleguideFormEmailErrorText")
+      ) }}
+
+      {{ partial "form/field-textarea.html" (dict
+        "name" "styleguide-details"
+        "label" (i18n "styleguideFormTextareaLabel")
+        "help" (i18n "styleguideFormTextareaHelp")
+      ) }}
+
+      {{ partial "form/field-radio-group.html" (dict
+        "name" "styleguide-contact-method"
+        "legend" (i18n "styleguideFormRadioLegend")
+        "required" true
+        "options" (slice
+          (dict "value" "email" "label" (i18n "styleguideFormRadioOptionEmail"))
+          (dict "value" "phone" "label" (i18n "styleguideFormRadioOptionPhone"))
+          (dict "value" "either" "label" (i18n "styleguideFormRadioOptionEither"))
+        )
+      ) }}
+
+      {{ partial "form/field-checkbox.html" (dict
+        "name" "styleguide-newsletter"
+        "label" (i18n "styleguideFormNewsletterLabel")
+      ) }}
+
+      {{ partial "form/field-consent.html" (dict
+        "name" "styleguide-consent"
+        "label" (i18n "styleguideFormConsentLabel")
+        "linkHref" "/privacy/"
+        "linkLabel" (i18n "styleguideFormConsentLinkLabel")
+      ) }}
+    </section>
+  </article>
+{{ end }}

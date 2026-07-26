@@ -1,0 +1,39 @@
+{{/* form-field: single-line text-like input (text/email/tel/…). Dict
+  params: `name`, `label`, `required` (bool), `help`, `autocomplete`,
+  `type` (default "text"), `value`, `invalid` (bool, demos the
+  `form-field--invalid` state), `errorText` (falls back to a generic
+  i18n string). Wires `aria-describedby` to the help/error ids. */}}
+{{ $type := .type | default "text" }}
+{{ $describedBy := "" }}
+{{ if .help }}
+  {{ $describedBy = printf "%s-help" .name }}
+{{ end }}
+{{ if .invalid }}
+  {{ if $describedBy }}
+    {{ $describedBy = printf "%s %s-error" $describedBy .name }}
+  {{ else }}
+    {{ $describedBy = printf "%s-error" .name }}
+  {{ end }}
+{{ end }}
+<div class="form-field{{ if .invalid }} form-field--invalid{{ end }}">
+  <label class="form-field__label" for="{{ .name }}">
+    {{ .label }}{{ if .required }} <span class="form-field__required" aria-hidden="true">*</span>{{ end }}
+  </label>
+  <input
+    class="form-field__input"
+    type="{{ $type }}"
+    id="{{ .name }}"
+    name="{{ .name }}"
+    {{ with .autocomplete }}autocomplete="{{ . }}"{{ end }}
+    {{ with .value }}value="{{ . }}"{{ end }}
+    {{ if .required }}required aria-required="true"{{ end }}
+    {{ if .invalid }}aria-invalid="true"{{ end }}
+    {{ if $describedBy }}aria-describedby="{{ $describedBy }}"{{ end }}
+  />
+  {{ with .help }}
+    <p class="form-field__help" id="{{ $.name }}-help">{{ . }}</p>
+  {{ end }}
+  {{ if .invalid }}
+    <p class="form-field__error" id="{{ .name }}-error">{{ .errorText | default (i18n "formFieldDefaultError") }}</p>
+  {{ end }}
+</div>

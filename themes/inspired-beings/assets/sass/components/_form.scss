@@ -1,0 +1,128 @@
+// Two tightly-coupled form blocks share this one file, per the brief's own
+// file list (a single `_form.scss` producing both `form-field` and
+// `form-fieldset`) rather than the usual one-block-per-partial rule:
+// `form-field` (`form-field__label|input|help|error`, `form-field--invalid`)
+// backs every `partials/form/field-*.html` partial except the radio group;
+// `form-fieldset` wraps a real `<fieldset>/<legend>` for
+// `partials/form/field-radio-group.html`. Cross-block combinator rules are
+// written as flat selectors (matching `_top-bar.scss`'s
+// `.top-bar__burger[aria-expanded="false"] + .top-bar__nav`), never nested
+// via `&`.
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+  margin-block-end: var(--sp-md);
+}
+
+.form-field__label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.form-field__required {
+  color: var(--color-error);
+}
+
+.form-field__input {
+  padding: var(--sp-xs) var(--sp-sm);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-default);
+  color: var(--color-text-default);
+
+  &:focus-visible {
+    border-color: var(--color-accent-default);
+  }
+}
+
+textarea.form-field__input {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.form-field__help {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.form-field__error {
+  color: var(--color-error);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
+
+.form-field--invalid > .form-field__input {
+  border-color: var(--color-error);
+}
+
+.form-field--checkbox {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  gap: var(--sp-2xs) var(--sp-xs);
+}
+
+.form-field--checkbox > .form-field__input {
+  grid-row: 1;
+  grid-column: 1;
+  margin-block-start: 0.2em;
+}
+
+.form-field--checkbox > .form-field__label {
+  grid-row: 1;
+  grid-column: 2;
+  font-weight: 400;
+}
+
+.form-field--checkbox > .form-field__help,
+.form-field--checkbox > .form-field__error {
+  grid-column: 2;
+}
+
+.form-fieldset {
+  padding: var(--sp-md);
+  margin-block-end: var(--sp-md);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-sm);
+}
+
+.form-fieldset--invalid {
+  border-color: var(--color-error);
+}
+
+.form-fieldset__legend {
+  padding-inline: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.form-fieldset__required {
+  color: var(--color-error);
+}
+
+.form-fieldset__help {
+  margin-block: var(--sp-2xs) var(--sp-sm);
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.form-fieldset__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.form-fieldset__option {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2xs);
+}
+
+.form-fieldset__error {
+  margin-block-start: var(--sp-xs);
+  color: var(--color-error);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+}
