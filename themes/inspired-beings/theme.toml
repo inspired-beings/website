@@ -1,8 +1,8 @@
 name = "inspired-beings"
 license = "AGPL-3.0"
-licenselink = "https://github.com/inspiredbeings/website/blob/main/LICENSE"
+licenselink = "https://github.com/inspired-beings/website/blob/main/LICENSE"
 description = "Inspired Beings corporate website theme (bilingual EN/FR, accessibility- and sustainability-first)."
-homepage = "https://github.com/inspiredbeings/website"
+homepage = "https://github.com/inspired-beings/website"
 min_version = "0.162.1"
 
 [author]
