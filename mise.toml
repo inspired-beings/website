@@ -3,3 +3,5 @@
 hugo-extended = "0.162.1"
 node = "22.23.1"
 pnpm = "11.16.0"
+# dart-sass: required by the inspired-beings theme (transpiler: dartsass, @use/@forward)
+"npm:sass" = "1.102.0"

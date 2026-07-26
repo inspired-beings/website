@@ -1,0 +1,9 @@
+[en]
+  languageCode = "en"
+  languageName = "English (International)"
+  weight = 1
+
+["fr-fr"]
+  languageCode = "fr-FR"
+  languageName = "Français (France)"
+  weight = 2

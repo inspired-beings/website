@@ -37,6 +37,26 @@ jobs:
       - run: pnpm build
       - run: node tool/check_page_budget.mjs
 
+  # Buildable exampleSite gate for the inspired-beings theme (checks attach in later tasks).
+  # Runs only when theme files or this workflow changed, or always on the theme branch.
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4.0.2
+        id: changes
+        with:
+          filters: |
+            template:
+              - 'themes/**'
+              - '.github/workflows/ci.yml'
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        run: pnpm install --frozen-lockfile
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        run: hugo -s themes/inspired-beings/exampleSite --themesDir ../.. --gc --minify
+
   # Same gate the deploy relies on, kept on every PR so a new alert surfaces here first.
   security-alerts:
     runs-on: ubuntu-latest

@@ -1,0 +1,3 @@
+---
+title: Inspired Beings
+---

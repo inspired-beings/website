@@ -1,0 +1,17 @@
+baseURL = "https://example.inspired-beings.com/"
+languageCode = "en"
+title = "Inspired Beings — Theme Example Site"
+theme = "inspired-beings"
+
+# Internationalization
+# https://gohugo.io/content-management/multilingual/
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+# Taxonomies
+disableKinds = ["taxonomy", "term"]
+
+# Markup
+# https://gohugo.io/getting-started/configuration-markup/#goldmark
+[markup.goldmark.renderer]
+  unsafe = true
