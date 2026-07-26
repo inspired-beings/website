@@ -1,10 +1,10 @@
 ---
-title: "Fiabilité T3"
+title: "Rapport de fiabilité de la plateforme — T3"
 date: 2026-06-02
 categories: ["column"]
 ---
 
-Nos chiffres du trimestre.
+Chaque trimestre, nous publions les trois mêmes chiffres, qu'ils nous soient favorables ou non : disponibilité, temps médian de résolution des incidents, et nombre d'incidents remontés par un client avant que nous les remarquions nous-mêmes.
 
 <!--more-->
 

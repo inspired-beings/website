@@ -1,10 +1,12 @@
 ---
-title: "Runbooks de nuit"
+title: "Rédiger des runbooks qui survivent à un réveil à 3 h du matin"
 date: 2026-07-20
 categories: ["information"]
 ---
 
-Écrit pour un lecteur fatigué.
+Notre rotation d'astreinte redoutait une chose par-dessus presque tout le reste : un runbook qui suppose que le lecteur est réveillé, caféiné, et déjà à l'aise avec le système qu'il décrit. La plupart des incidents ne cochent ni l'une ni l'autre de ces cases.
+
+Voici ce que nous exigeons désormais de tout runbook avant sa mise en service.
 
 <!--more-->
 
