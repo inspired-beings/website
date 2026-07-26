@@ -9,3 +9,5 @@ pnpm = "11.16.0"
 # unavailable in pure JS mode"). `sass-embedded` bundles the native compiler
 # under the same `sass` command and is the version Hugo actually needs.
 "npm:sass-embedded" = "1.100.0"
+# python: only used by tool/subset_fonts.sh (fonttools venv) — not part of the build.
+python = "3.14.5"

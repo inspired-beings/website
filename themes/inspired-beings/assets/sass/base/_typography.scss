@@ -1,8 +1,37 @@
-// Type-scale application + link/focus rules. Font-family tokens
-// (`--font-display`/`--font-body`) and @font-face land in Task 2 — this
-// file only wires up sizing and the two baked-in a11y rules.
+// Type-scale application + link/focus rules, plus the self-hosted font
+// pipeline (Task 2): @font-face for the two subset woff2 files and the
+// `--font-display`/`--font-body` tokens components consume.
+//
+// The woff2 URLs are injected by `partials/head.html` via Hugo's
+// `hugo:vars` bridge (fingerprinted `resources.Get` output) so the CSS
+// `url()` and the `<link rel="preload">` in head.html resolve to the exact
+// same fingerprinted path — no double download.
+@use "hugo:vars" as fonts;
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("#{fonts.$fraunces-url}") format("woff2");
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("#{fonts.$karla-url}") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  // Fallback stacks verbatim from the design spec's Typography section.
+  --font-display: Fraunces, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-body: Karla, ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+}
 
 body {
+  font-family: var(--font-body);
   font-size: var(--fs-md);
   color: var(--color-text-default);
   background-color: var(--color-surface-default);
@@ -38,6 +67,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-display);
   line-height: 1.2;
   font-weight: 600;
 }
