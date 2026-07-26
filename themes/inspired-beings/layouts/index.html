@@ -43,7 +43,7 @@
 
   <section class="section" aria-labelledby="home-problems-heading">
     <div class="container">
-      <h2 id="home-problems-heading" data-fade>{{ i18n "homeProblemsHeading" }}</h2>
+      <h2 id="home-problems-heading">{{ i18n "homeProblemsHeading" }}</h2>
       <div class="grid grid--3 section__body">
         {{ range .Params.problems }}
           <div class="feature">
@@ -57,7 +57,7 @@
 
   <section class="section" aria-labelledby="home-services-heading">
     <div class="container">
-      <h2 id="home-services-heading" data-fade>{{ i18n "homeServicesHeading" }}</h2>
+      <h2 id="home-services-heading">{{ i18n "homeServicesHeading" }}</h2>
       <div class="grid grid--3 section__body">
         {{ range .Params.services_extract }}
           {{ partial "card.html" (dict "icon" .icon "title" .title "body" .body "link" .link) }}
@@ -71,7 +71,7 @@
 
   <section class="section section--alt" aria-labelledby="home-stats-heading">
     <div class="container">
-      <h2 id="home-stats-heading" data-fade>{{ i18n "homeStatsHeading" }}</h2>
+      <h2 id="home-stats-heading">{{ i18n "homeStatsHeading" }}</h2>
       {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "section__body") }}
     </div>
   </section>
@@ -83,7 +83,7 @@
     links through to the complete comparison). */}}
   <section class="section" aria-labelledby="home-pricing-heading">
     <div class="container">
-      <h2 id="home-pricing-heading" data-fade>{{ i18n "homePricingHeading" }}</h2>
+      <h2 id="home-pricing-heading">{{ i18n "homePricingHeading" }}</h2>
       <p class="section__caption">{{ .Params.pricing_extract.caption }}</p>
       <div class="grid grid--3 section__body">
         {{ range .Params.pricing_extract.plans }}
@@ -109,7 +109,7 @@
     {{ if $latest }}
       <section class="section" aria-labelledby="home-news-heading">
         <div class="container">
-          <h2 id="home-news-heading" data-fade>{{ i18n "homeNewsHeading" }}</h2>
+          <h2 id="home-news-heading">{{ i18n "homeNewsHeading" }}</h2>
           <div class="grid grid--3 section__body">
             {{ range $latest }}
               <article class="news-card">

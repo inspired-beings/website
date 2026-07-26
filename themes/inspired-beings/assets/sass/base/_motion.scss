@@ -1,6 +1,5 @@
 // Motion layer: cross-document view transitions (pure CSS, works with JS
-// disabled — it's a native navigation feature) + scroll fade-ins (assisted
-// by `js/fade.js`, INERT without JS). Everything here is walled off behind
+// disabled — it's a native navigation feature), walled off behind
 // `prefers-reduced-motion: no-preference`, per the design spec.
 //
 // `@view-transition` is a conditional-group-rule-nestable at-rule (CSS View
@@ -16,44 +15,5 @@
   // instead of cross-fading with the rest of the page.
   .top-bar {
     view-transition-name: site-header;
-  }
-
-  // `[data-fade]` opt-in (layouts) starts hidden ONLY once `[data-js]` is
-  // stamped on <html> (see head.html's early inline script) — a no-JS
-  // visitor never gets `[data-js]`, so this rule never matches and content
-  // renders fully visible with zero animation, same as under reduced motion.
-  [data-js] [data-fade] {
-    opacity: 0;
-    transform: translateY(var(--sp-md));
-    transition:
-      opacity var(--transition-slow),
-      transform var(--transition-slow);
-  }
-
-  [data-js] [data-fade][data-visible] {
-    opacity: 1;
-    transform: none;
-  }
-
-  // CSS failsafe: `[data-fade]` depends on TWO JS steps (head.html's inline
-  // script stamping `[data-js]`, then `fade.js`'s `IntersectionObserver`
-  // adding `data-visible`) — if the second one never runs (a bug earlier in
-  // `main.js`'s init chain throwing before `initFade`, the bundle failing to
-  // load, an ad/privacy blocker, …) content styled by the rule above would
-  // stay invisible forever with no other recourse. This keyframe reveals it
-  // unconditionally after a short delay, entirely independent of `fade.js`;
-  // once the observer DOES flip `data-visible` (the normal case), the
-  // element stops matching `:not([data-visible])` so the animation never
-  // even starts. Kept inside the same reduced-motion media query as the
-  // rest of this file.
-  [data-js] [data-fade]:not([data-visible]) {
-    animation: fade-in-failsafe 0.01s 2.5s forwards;
-  }
-
-  @keyframes fade-in-failsafe {
-    to {
-      opacity: 1;
-      transform: none;
-    }
   }
 }

@@ -14,7 +14,7 @@
 
     <div class="showcase section section--flush-top">
       {{ range $i, $page := .RegularPages.ByWeight }}
-        <div class="showcase__row{{ if eq (mod $i 2) 1 }} showcase__row--reverse{{ end }}" data-fade>
+        <div class="showcase__row{{ if eq (mod $i 2) 1 }} showcase__row--reverse{{ end }}">
           <h2 class="showcase__title">
             <a class="standalone-link" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
           </h2>

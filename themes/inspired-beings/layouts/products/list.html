@@ -19,7 +19,7 @@
       {{ end }}
     </header>
 
-    <h2 class="section__heading" data-fade>{{ i18n "productsIndexGridHeading" }}</h2>
+    <h2 class="section__heading">{{ i18n "productsIndexGridHeading" }}</h2>
     <div class="grid grid--3 section section--flush-top">
       {{ range .RegularPages.ByWeight }}
         {{ partial "card.html" (dict

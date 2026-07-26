@@ -4,7 +4,7 @@
   `link` (optional dict `{href, label}`). Usage:
   {{ partial "card.html" (dict "icon" "🛠" "title" "…" "body" "…"
     "link" (dict "href" "/services/" "label" "Learn more")) }} */}}
-<div class="card" data-fade>
+<div class="card">
   {{ with .icon }}
     <span class="card__icon" aria-hidden="true">{{ . }}</span>
   {{ end }}

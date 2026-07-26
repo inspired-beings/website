@@ -5,18 +5,12 @@
   the home page only. */}}
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} · {{ .Site.Title }}{{ end }}</title>
 
-{{/* Two early, synchronous flags stamped on <html> before any CSS paints —
-  deliberately not bundled via js.Build, both must run inline before the
-  stylesheet link below:
-  - `data-js`: lets `_motion.scss` hide `[data-fade]` elements ONLY when JS
-    is actually running (a no-JS visitor never gets this attribute, so that
-    CSS rule never matches and every `[data-fade]` element just renders
-    visible — see base/_motion.scss).
-  - anti-flash: read the manual theme choice from localStorage and stamp
-    `data-theme` so the dark/light override in themes/_dark.scss and
-    _light.scss (`[data-theme="…"]`) is already correct on first paint. */}}
+{{/* Anti-flash, stamped on <html> before any CSS paints — deliberately not
+  bundled via js.Build, must run inline before the stylesheet link below:
+  read the manual theme choice from localStorage and stamp `data-theme` so
+  the dark/light override in themes/_dark.scss and _light.scss
+  (`[data-theme="…"]`) is already correct on first paint. */}}
 <script>
-  document.documentElement.setAttribute('data-js', '')
   try {
     var storedTheme = localStorage.getItem('theme')
     if (storedTheme === 'light' || storedTheme === 'dark') document.documentElement.setAttribute('data-theme', storedTheme)
