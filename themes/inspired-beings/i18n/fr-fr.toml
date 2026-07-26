@@ -519,6 +519,9 @@ other = "Ce champ est obligatoire."
 [contactErrorEmail]
 other = "Saisissez une adresse e-mail valide."
 
+[contactErrorInvalid]
+other = "Saisissez une valeur valide."
+
 [contactMailtoBody]
 other = "Notre formulaire de contact est en cours de branchement pour cet aperçu — écrivez-nous directement, un·e ingénieur·e répondra sous un jour ouvré."
 

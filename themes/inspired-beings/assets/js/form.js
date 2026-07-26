@@ -20,18 +20,32 @@ function fieldContainer(field) {
   return field.closest('.form-field, .form-fieldset')
 }
 
+// Strips only the *error* id from `aria-describedby` (preserving a help
+// id, exactly like the server-rendered valid state would) before removing
+// the injected `<p>`s themselves — otherwise a corrected field keeps
+// `aria-describedby` pointing at an id that no longer exists in the DOM.
 function clearErrors(form) {
+  const errorIds = new Set([...form.querySelectorAll('[data-contact-injected-error]')].map(el => el.id))
+
   form.querySelectorAll('.form-field--invalid, .form-fieldset--invalid').forEach(el => {
     el.classList.remove('form-field--invalid', 'form-fieldset--invalid')
   })
-  form.querySelectorAll('[data-contact-injected-error]').forEach(el => el.remove())
   form.querySelectorAll('[aria-invalid="true"]').forEach(el => el.removeAttribute('aria-invalid'))
+  form.querySelectorAll('[aria-describedby]').forEach(el => {
+    const remaining = el
+      .getAttribute('aria-describedby')
+      .split(' ')
+      .filter(id => id && !errorIds.has(id))
+    if (remaining.length) el.setAttribute('aria-describedby', remaining.join(' '))
+    else el.removeAttribute('aria-describedby')
+  })
+  form.querySelectorAll('[data-contact-injected-error]').forEach(el => el.remove())
 }
 
 function messageFor(form, field) {
   if (field.validity.valueMissing) return form.dataset.errorRequired
   if (field.validity.typeMismatch) return form.dataset.errorEmail
-  return form.dataset.errorRequired
+  return form.dataset.errorInvalid
 }
 
 // Idempotent: the browser fires one native `invalid` event per invalid
@@ -114,9 +128,21 @@ export function initContactForm() {
     true,
   )
 
+  // `aria-disabled` + `pointer-events: none` (CSS) blocks a second mouse
+  // click while a submit is in flight, but NOT keyboard re-activation
+  // (Enter/Space on a focused button still fires `click` regardless of
+  // `aria-disabled` — it's not the native `disabled` attribute). This flag
+  // is the real guard against overlapping POSTs from repeated Enter.
+  let submitInFlight = false
+
   form.addEventListener('submit', event => {
     event.preventDefault()
-    clearErrors(form) // stale errors from an earlier failed attempt, now fixed
+    if (submitInFlight) return
+    submitInFlight = true
+    // No `clearErrors(form)` here: the submit button's `click` listener
+    // above already cleared this attempt's stale state, and `submit` only
+    // fires after native validation passed, so nothing re-added errors
+    // since — a second call here was a redundant no-op.
 
     submitButton?.setAttribute('aria-disabled', 'true')
     fetch(form.action, {
@@ -134,6 +160,7 @@ export function initContactForm() {
       })
       .finally(() => {
         submitButton?.removeAttribute('aria-disabled')
+        submitInFlight = false
       })
   })
 }
