@@ -5,6 +5,7 @@
     "chromeLaunchConfig": {
       "args": ["--no-sandbox"]
     },
-    "actions": ["click element [data-theme-toggle]"]
+    "actions": ["click element [data-theme-toggle]"],
+    "wait": 300
   }
 }
