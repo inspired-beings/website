@@ -1,43 +1,60 @@
-// Timeline: an `<ol>` (see `partials/timeline.html`) — a connecting rail
-// drawn with pseudo-elements on each item, real list semantics carry the
-// chronological order (no numbers needed, unlike `.steps`).
+@use "../abstracts";
+
+// Timeline: an `<ol>` (see `partials/timeline.html`) of ruled year rows —
+// year column beside the entry, real list semantics carry the
+// chronological order.
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-lg);
 }
 
 .timeline__item {
-  position: relative;
-  padding-inline-start: var(--sp-xl);
-  border-inline-start: 2px solid var(--color-border-subtle);
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: var(--sp-lg);
+  padding-block: var(--sp-lg);
+  border-block-end: 1px solid var(--color-border-subtle);
+
+  @include abstracts.mq-up("lg") {
+    grid-template-columns: 6.25rem 1fr;
+    gap: var(--sp-xl);
+    padding-block: var(--sp-xl);
+  }
 }
 
-.timeline__item::before {
-  content: "";
-  position: absolute;
-  top: 0.35em;
-  left: -0.4em;
-  width: 0.7em;
-  height: 0.7em;
-  border-radius: var(--radius-full);
-  background-color: var(--color-accent-default);
+.timeline__item:first-child {
+  padding-block-start: 0;
+}
+
+.timeline__item:last-child {
+  padding-block-end: 0;
+  border-block-end: none;
 }
 
 .timeline__date {
-  display: block;
-  color: var(--color-text-subtle);
-  font-size: var(--fs-sm);
-  font-weight: 500;
+  font-size: var(--fs-md);
+  line-height: 1.625;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-lg);
+  }
 }
 
 .timeline__title {
-  font-family: var(--font-display);
-  font-size: var(--fs-lg);
-  margin-block-start: var(--sp-2xs);
+  font-size: var(--fs-sm);
+  line-height: 1.625;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+  }
 }
 
 .timeline__body {
   margin-block-start: var(--sp-2xs);
   color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+  }
 }

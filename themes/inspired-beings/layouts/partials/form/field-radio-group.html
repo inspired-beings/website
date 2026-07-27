@@ -21,7 +21,7 @@
 {{ end }}
 <fieldset class="form-fieldset{{ if .invalid }} form-fieldset--invalid{{ end }}">
   <legend class="form-fieldset__legend">
-    {{ .legend }}{{ if .required }} <span class="form-fieldset__required" aria-hidden="true">*</span>{{ end }}
+    {{ .legend }}{{ if .required }} <span class="form-fieldset__required" aria-hidden="true">{{ i18n "formRequiredBadge" }}</span>{{ end }}
   </legend>
   {{ with .help }}
     <p class="form-fieldset__help" id="{{ $idPrefix }}-help">{{ . }}</p>

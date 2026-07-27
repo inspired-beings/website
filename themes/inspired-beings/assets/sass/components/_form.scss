@@ -12,34 +12,66 @@
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2xs);
-  margin-block-end: var(--sp-md);
+  gap: var(--sp-md);
 }
 
 .form-field__label {
-  font-size: var(--fs-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: var(--fs-md);
   font-weight: 500;
 }
 
+// Requirement badges: small filled pills beside the label text. The badge
+// is decorative (`aria-hidden`) — the input's own `required`/absence of it
+// carries the state programmatically.
+.form-field__required,
+.form-field__optional {
+  display: inline-block;
+  padding: 2px var(--sp-xs);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--color-on-accent);
+}
+
 .form-field__required {
-  color: var(--color-error);
+  background-color: var(--color-accent-default);
+}
+
+.form-field__optional {
+  background-color: var(--color-text-subtle);
 }
 
 .form-field__input {
-  padding: var(--sp-xs) var(--sp-sm);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-sm);
+  padding: var(--sp-md);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
   background-color: var(--color-surface-default);
   color: var(--color-text-default);
+  font-size: var(--fs-md);
+
+  &::placeholder {
+    color: var(--color-text-subtle);
+  }
 
   &:focus-visible {
     border-color: var(--color-accent-default);
   }
 }
 
+// Native control tinting (radios, checkboxes).
+.form-field__input[type="checkbox"],
+.form-fieldset input[type="radio"] {
+  accent-color: var(--color-accent-default);
+}
+
 textarea.form-field__input {
-  min-height: 6rem;
+  min-height: 12.5rem;
   resize: vertical;
+  line-height: 1.625;
 }
 
 .form-field__help {
@@ -61,19 +93,24 @@ textarea.form-field__input {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: start;
-  gap: var(--sp-2xs) var(--sp-xs);
+  gap: var(--sp-2xs) var(--sp-md);
 }
 
 .form-field--checkbox > .form-field__input {
   grid-row: 1;
   grid-column: 1;
+  width: 1.25rem;
+  height: 1.25rem;
   margin-block-start: 0.2em;
+  padding: 0;
 }
 
 .form-field--checkbox > .form-field__label {
   grid-row: 1;
   grid-column: 2;
+  font-size: var(--fs-md);
   font-weight: 400;
+  line-height: 1.625;
 }
 
 .form-field--checkbox > .form-field__help,
@@ -81,25 +118,30 @@ textarea.form-field__input {
   grid-column: 2;
 }
 
+// Borderless: the legend + option list reads as one field group; the
+// invalid state speaks through the error line, not a box.
 .form-fieldset {
-  padding: var(--sp-md);
-  margin-block-end: var(--sp-md);
-  border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-sm);
-}
-
-.form-fieldset--invalid {
-  border-color: var(--color-error);
+  padding: 0;
+  border: 0;
 }
 
 .form-fieldset__legend {
-  padding-inline: var(--sp-2xs);
-  font-size: var(--fs-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: var(--fs-md);
   font-weight: 500;
 }
 
 .form-fieldset__required {
-  color: var(--color-error);
+  display: inline-block;
+  padding: 2px var(--sp-xs);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-default);
+  color: var(--color-on-accent);
+  font-size: var(--fs-sm);
+  font-weight: 400;
+  line-height: 1.25;
 }
 
 .form-fieldset__help {
@@ -111,13 +153,22 @@ textarea.form-field__input {
 .form-fieldset__options {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-xs);
+  gap: var(--sp-md);
+  margin-block-start: var(--sp-md);
 }
 
 .form-fieldset__option {
   display: flex;
   align-items: center;
-  gap: var(--sp-2xs);
+  gap: var(--sp-md);
+  font-size: var(--fs-md);
+  cursor: pointer;
+}
+
+.form-fieldset__option input[type="radio"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
 }
 
 .form-fieldset__error {

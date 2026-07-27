@@ -1,0 +1,28 @@
+@use "../abstracts";
+
+// Attribution stack under a statement or message: small muted role line
+// above the name.
+.signature {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+}
+
+.signature__role {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-sm);
+  }
+}
+
+.signature__name {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+  line-height: 1.25;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-xl);
+  }
+}

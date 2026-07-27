@@ -1,39 +1,39 @@
-{{/* Contact — hero → full form OR mailto fallback (`.callout`), switched on
-  the site param `contactFormEndpoint` (exampleSite ships it empty, so CI
-  always sees the mailto path; set it locally to exercise the form path).
-  Content model: `lead` (string, hero intro).
+{{/* Contact — page-hero (eyebrow = page title, display headline) → narrow
+  column: intro line + the full form (`partials/contact-form.html`).
+  Content model: `headline` (display title), `lead` (the intro line).
 
-  The form itself lives in `partials/contact-form.html`, shared verbatim
-  with the styleguide's permanent demo instance — see that partial's own doc
-  comment for why. */}}
+  Submission target is an OPEN DECISION: when `contactFormEndpoint` (site
+  param) is unset — the exampleSite default — the form renders action-less
+  and un-enhanced (a native POST to the page itself, which is a no-op on a
+  static host); setting the param wires the real endpoint + the JS
+  enhancement. Never point it at a third-party collector — the zero
+  third-party pillar applies to where visitor data goes, doubly so.
+  `privacyPagePath` (site param, per-language) points the consent link at
+  the site's privacy policy; the exampleSite falls back to its legal
+  page. */}}
 {{ define "main" }}
   <article>
-    <section class="hero hero--narrow">
+    <section class="section">
       <div class="container">
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.lead }}
-          <p class="hero__lead">{{ . }}</p>
-        {{ end }}
+        <div class="page-hero">
+          <p class="page-hero__eyebrow">{{ .Title }}</p>
+          <div class="page-hero__heading">
+            <h1 class="page-hero__title">{{ .Params.headline | default .Title }}</h1>
+          </div>
+        </div>
       </div>
     </section>
 
-    {{ $endpoint := .Site.Params.contactFormEndpoint }}
-    {{ if $endpoint }}
-      {{ partial "contact-form.html" (dict "endpoint" $endpoint) }}
-    {{ else }}
-      <section class="section section--flush-top">
-        <div class="container">
-          <div class="callout">
-            <p class="callout__body">{{ i18n "contactMailtoBody" }}</p>
-            <a class="callout__emphasis" href="mailto:{{ i18n "contactMailtoEmail" }}">
-              {{ i18n "contactMailtoEmail" }}
-            </a>
-            <a class="button button--solid button--large" href="mailto:{{ i18n "contactMailtoEmail" }}">
-              {{ i18n "contactMailtoLabel" }}
-            </a>
-          </div>
-        </div>
-      </section>
-    {{ end }}
+    <section class="section section--flush-top">
+      <div class="container container--narrow">
+        {{ with .Params.lead }}
+          <p class="section__intro">{{ . }}</p>
+        {{ end }}
+        {{ partial "contact-form.html" (dict
+          "endpoint" .Site.Params.contactFormEndpoint
+          "privacyHref" ((.Site.Params.privacyPagePath | default "legal/") | relLangURL)
+        ) }}
+      </div>
+    </section>
   </article>
 {{ end }}

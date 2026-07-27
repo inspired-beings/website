@@ -1,0 +1,69 @@
+@use "../abstracts";
+
+// Open-roles listing: ruled rows, each row one link — role name left,
+// meta (date + arrow) right.
+.job-list {
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.job-list__item {
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+
+.job-list__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding-block: var(--sp-lg);
+  color: var(--color-text-default);
+  text-decoration: none;
+
+  @include abstracts.mq-up("sm") {
+    justify-content: space-between;
+  }
+}
+
+.job-list__name {
+  font-size: var(--fs-md);
+  line-height: 1.375;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-lg);
+  }
+}
+
+.job-list__link:hover .job-list__name,
+.job-list__link:focus-visible .job-list__name {
+  color: var(--color-accent-default);
+}
+
+.job-list__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-sm);
+
+  @include abstracts.mq-up("sm") {
+    gap: var(--sp-md);
+  }
+}
+
+.job-list__date {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+
+  @include abstracts.mq-up("sm") {
+    font-size: var(--fs-md);
+  }
+}
+
+.job-list__arrow {
+  flex-shrink: 0;
+  width: 0.5em;
+  height: 0.5em;
+  border-block-start: 2px solid var(--color-text-muted);
+  border-inline-end: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+}

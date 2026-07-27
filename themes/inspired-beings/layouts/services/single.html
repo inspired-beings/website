@@ -128,21 +128,12 @@
     </section>
 
     <section class="section section--alt" aria-labelledby="service-contact-heading">
-      <div class="container">
-        <div class="rail">
-          <div class="rail__aside">
-            {{ partial "section-title.html" (dict
-              "id" "service-contact-heading"
-              "label" (i18n "serviceContactLabel")
-              "tagline" (i18n "serviceCtaHeading")
-            ) }}
-          </div>
-          <div class="rail__main rail__main--end">
-            <p class="section__prose">{{ i18n "serviceCtaBody" }}</p>
-            <a class="button button--solid button--medium" href="{{ "contact/" | relLangURL }}">{{ i18n "serviceCtaLabel" }}</a>
-          </div>
-        </div>
-      </div>
+      {{ partial "contact-rail.html" (dict
+        "id" "service-contact-heading"
+        "tagline" (i18n "serviceCtaHeading")
+        "body" (i18n "serviceCtaBody")
+        "actionLabel" (i18n "serviceCtaLabel")
+      ) }}
     </section>
   </article>
 {{ end }}

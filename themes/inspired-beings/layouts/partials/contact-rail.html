@@ -1,0 +1,23 @@
+{{/* Contact rail — the closing contact section shared by interior pages
+  (label + display tagline in the aside, body + solid CTA in the main
+  column), same arrangement as the home contact section. Dict params:
+  `id` (required — heading id for `aria-labelledby`), `tagline` (required),
+  `body` (required), `actionLabel` (required), `actionHref` (optional,
+  defaults to the localized contact page), `label` (optional, defaults to
+  the shared "Contact" label). Callers wrap it in
+  `<section class="section section--alt" aria-labelledby="...">`. */}}
+<div class="container">
+  <div class="rail">
+    <div class="rail__aside">
+      {{ partial "section-title.html" (dict
+        "id" .id
+        "label" (.label | default (i18n "contactRailLabel"))
+        "tagline" .tagline
+      ) }}
+    </div>
+    <div class="rail__main rail__main--end">
+      <p class="section__prose">{{ .body }}</p>
+      <a class="button button--solid button--medium" href="{{ .actionHref | default ("contact/" | relLangURL) }}">{{ .actionLabel }}</a>
+    </div>
+  </div>
+</div>

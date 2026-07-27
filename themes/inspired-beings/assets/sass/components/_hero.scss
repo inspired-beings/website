@@ -54,25 +54,6 @@
   margin-inline: auto;
 }
 
-// Article-header variant elements: date and/or category chip stacked above
-// the title. The sibling rule spaces the title only when such meta precedes
-// it, so plain heroes stay untouched.
-.hero__date {
-  display: block;
-  color: var(--color-text-subtle);
-  font-size: var(--fs-sm);
-}
-
-.hero__chip {
-  display: inline-flex;
-  margin-block-start: var(--sp-xs);
-}
-
-.hero__date + .hero__title,
-.hero__chip + .hero__title {
-  margin-block-start: var(--sp-sm);
-}
-
 // --- Display (home flagship) variant -----------------------------------
 
 .hero--display {

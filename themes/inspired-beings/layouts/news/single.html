@@ -1,14 +1,12 @@
-{{/* News article — ruled hero header (date via `<time datetime>`, category
-  chip, title) + a full-width `.flow` typographic scope for the Markdown
-  content itself. Standard site container width (CRITICAL WIDTH RULE — the
-  inspiration's narrower article column was explicitly rejected; nothing
-  here sets a max-width). One of the ten dummy articles
+{{/* News article — narrow reading column (`.container--medium`, per the
+  current design decisions doc): breadcrumb → title → meta row (date +
+  category chip link) → `.flow` typographic scope for the Markdown body →
+  ruled centered return link → contact rail. One of the ten dummy articles
   (`writing-runbooks-that-survive-a-3am-page`) is the canonical Markdown
   styleguide: it exercises every element `base/_elements.scss`/
-  `base/_typography.scss` style generically (headings, lists incl. nested,
-  table, blockquote, code fence + inline code, hr, footnote, task list)
-  plus the `{{< figure >}}` shortcode — this layout adds no per-element CSS,
-  only the hero chrome + the `.flow` rhythm scope.
+  `base/_typography.scss` style generically plus the `{{< figure >}}`
+  shortcode — this layout adds no per-element CSS, only the header chrome
+  + the `.flow` rhythm scope.
 
   Task list note: Goldmark's GFM task-list extension renders bare
   `<input disabled type="checkbox">` with no accessible name (a documented
@@ -18,24 +16,48 @@
   `<label for>`/`id` pairs (`components/_task-list.scss`). */}}
 {{ define "main" }}
   <article>
-    <header class="hero hero--ruled">
-      <div class="container">
-        {{ with .Date }}
-          <time class="hero__date" datetime="{{ .Format "2006-01-02" }}">
-            {{ . | time.Format ":date_long" }}
-          </time>
-        {{ end }}
-        {{ with .Params.categories }}
-          {{ with site.GetPage (printf "categories/%s" (index . 0)) }}
-            <span class="chip hero__chip">{{ .Title }}</span>
-          {{ end }}
-        {{ end }}
-        <h1 class="hero__title">{{ .Title }}</h1>
-      </div>
-    </header>
+    <section class="section">
+      <div class="container container--medium">
+        <header class="article-header">
+          <nav class="breadcrumb" aria-label="{{ i18n "breadcrumbLabel" }}">
+            <a class="breadcrumb__link" href="{{ "news/" | relLangURL }}">{{ i18n "newsBreadcrumbRootLabel" }}</a>
+            <span class="breadcrumb__separator" aria-hidden="true"></span>
+            <span class="breadcrumb__current">{{ .Title }}</span>
+          </nav>
+          <h1 class="article-header__title">{{ .Title }}</h1>
+          <div class="article-header__meta">
+            {{ with .Date }}
+              <time class="article-header__date" datetime="{{ .Format "2006-01-02" }}">
+                {{ . | time.Format ":date_long" }}
+              </time>
+            {{ end }}
+            {{ with .Params.categories }}
+              {{ with site.GetPage (printf "categories/%s" (index . 0)) }}
+                <a class="chip chip--flat" href="{{ .RelPermalink }}">{{ .Title }}</a>
+              {{ end }}
+            {{ end }}
+          </div>
+        </header>
 
-    <div class="container section flow">
-      {{ .Content }}
-    </div>
+        <div class="flow article-body">
+          {{ .Content }}
+        </div>
+
+        <div class="section__footer">
+          <a class="button button--solid button--large" href="{{ "news/" | relLangURL }}">
+            {{ i18n "newsBackToListLabel" }}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="news-article-contact-heading">
+      {{ partial "contact-rail.html" (dict
+        "id" "news-article-contact-heading"
+        "tagline" (i18n "newsCtaHeading")
+        "body" (i18n "newsCtaBody")
+        "actionLabel" (i18n "newsCtaLabel")
+      ) }}
+    </section>
   </article>
 {{ end }}

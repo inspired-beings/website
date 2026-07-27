@@ -63,5 +63,9 @@
 
 // Pagination directly following a listing sits off it by a step.
 .article-list + .pagination {
-  margin-block-start: var(--sp-2xl);
+  margin-block-start: var(--sp-3xl);
+
+  @include abstracts.mq-up("lg") {
+    margin-block-start: var(--sp-4xl);
+  }
 }

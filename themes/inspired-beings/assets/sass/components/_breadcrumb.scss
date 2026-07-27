@@ -1,0 +1,41 @@
+@use "../abstracts";
+
+// Single-level breadcrumb over an article title: parent link, chevron,
+// clamped current-page label.
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.breadcrumb__link {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-default);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.breadcrumb__separator {
+  flex-shrink: 0;
+  width: 0.4em;
+  height: 0.4em;
+  border-block-start: 1.5px solid currentColor;
+  border-inline-end: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.breadcrumb__current {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: var(--color-text-subtle);
+}
