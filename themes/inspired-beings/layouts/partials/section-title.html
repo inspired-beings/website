@@ -1,0 +1,14 @@
+{{/* BEM block `section-title` — ONE h2 carrying a small uppercase label
+  followed by the big display tagline (single heading stop; the concise
+  label leads the accessible name). Dict params:
+  - `tagline` (string, required) — the display line; may contain `\n`
+    (rendered via `white-space: pre-line`).
+  - `label` (string, optional) — the small eyebrow line; omit for a
+    tagline-only title (e.g. a centered closing band).
+  - `id` (string, optional) — heading id for `aria-labelledby` wiring.
+  - `class` (string, optional) — extra classes mixed onto the root
+    (e.g. `section-title--centered`, `feature-grid__header`). */}}
+<h2 class="section-title{{ with .class }} {{ . }}{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>
+  {{ with .label }}<span class="section-title__label">{{ . }}</span>{{ end }}
+  <span class="section-title__tagline">{{ .tagline }}</span>
+</h2>

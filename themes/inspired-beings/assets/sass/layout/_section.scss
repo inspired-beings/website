@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 // Page-agnostic section scaffolding: every page assembles `.section` bands
 // (with grid/component mixes inside) instead of owning page-prefixed
 // wrappers. Elements cover the recurring intra-section chrome (body offset,
@@ -11,7 +13,32 @@
 // (visual rework upcoming).
 
 .section {
-  padding-block: var(--sp-2xl);
+  padding-block: var(--sp-3xl);
+
+  @include abstracts.mq-up("md") {
+    padding-block: var(--sp-4xl);
+  }
+
+  @include abstracts.mq-up("lg") {
+    padding-block: var(--sp-5xl);
+  }
+}
+
+// Muted supporting copy inside a section band (multi-line via `\n`).
+.section__prose {
+  color: var(--color-text-muted);
+  font-size: var(--fs-md);
+  line-height: 1.625;
+  white-space: pre-line;
+}
+
+// Vertically centered stack (join/recruit-style closing bands).
+.section__centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-xl);
+  text-align: center;
 }
 
 .section--alt {
@@ -60,19 +87,9 @@
   max-width: 48rem;
 }
 
-.section__body--spaced {
-  margin-block-end: var(--sp-xl);
-}
-
 // Emphasized lead paragraph inside a section.
 .section__lede {
   font-size: var(--fs-lg);
-}
-
-// De-emphasized line right under the section heading.
-.section__caption {
-  margin-block-start: var(--sp-xs);
-  color: var(--color-text-muted);
 }
 
 // Fine-print block under a section's body.
@@ -88,8 +105,3 @@
   margin-block-end: var(--sp-lg);
 }
 
-// Trailing "view all"-style action after a section body.
-.section__cta {
-  display: inline-flex;
-  margin-block-start: var(--sp-xl);
-}

@@ -8,6 +8,6 @@
   padding-inline: var(--container-padding-inline);
 
   @include abstracts.mq-up("md") {
-    padding-inline: var(--sp-xl);
+    padding-inline: var(--sp-2xl);
   }
 }

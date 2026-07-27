@@ -11,6 +11,7 @@ hero:
     src: "images/home-hero-placeholder.png"
     alt: "Abstract illustration of a product dashboard"
 intro:
+  heading: "Good software, made approachable."
   body: "A small team building and hardening web and mobile products — accessibility, performance and security built in from day one."
   cta:
     label: "See how we work"
@@ -79,27 +80,15 @@ stats:
     unit: "/7"
     label: "Incident response"
 pricing_extract:
-  caption: "Plans that grow with you"
-  plans:
-    - name: "Starter"
-      price: "$1,900"
-      period: "/mo"
-      cta:
-        href: "/pricing/"
-        label: "Get started"
-    - name: "Growth"
-      price: "$4,200"
-      period: "/mo"
-      cta:
-        href: "/pricing/"
-        label: "Get started"
-    - name: "Enterprise"
-      price: "Custom"
-      cta:
-        href: "/pricing/"
-        label: "Talk to us"
-news_count: 3
-cta_band:
+  caption: "Plans that flex with your team's size and stage — start small, scale when the roadmap does."
+news_count: 4
+join:
+  heading: "Join our team"
+  body: "Come build accessible, sustainable software with a team that cares about craft.\nWe welcome people who enjoy owning hard problems end to end."
+  cta:
+    label: "See open positions"
+    url: "/careers/"
+contact:
   heading: "Ready to ship with confidence?"
   body: "Tell us about your product — we'll reply within a business day."
   cta:

@@ -45,6 +45,7 @@ $radii: (
   "sm": 4px,
   "md": 8px,
   "lg": 16px,
+  "xl": 32px,
   "full": 9999px,
 );
 
@@ -89,6 +90,13 @@ $container: (
   --color-surface-default: var(--color-primitive-cmp-white);
   --color-surface-alt: var(--color-primitive-cmp-paper);
   --color-surface-raised: var(--color-primitive-cmp-white);
+  // TEMP(comparison-skin): three tokens born during the comparison period —
+  // brand values to be assigned at the skin revert (owner: typography/brand
+  // pass). tertiary = filled chip/icon squares; accent-surface = highlighted
+  // tint; accent-soft = badge fill.
+  --color-surface-tertiary: var(--color-primitive-cmp-stone-tint);
+  --color-accent-surface: var(--color-primitive-cmp-green-tint);
+  --color-accent-soft: var(--color-primitive-cmp-green-soft);
   --color-text-default: var(--color-primitive-cmp-ink);
   --color-text-muted: var(--color-primitive-cmp-gray);
   --color-text-subtle: var(--color-primitive-cmp-gray-soft);

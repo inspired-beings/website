@@ -44,11 +44,11 @@
     <li class="article-list__item">
       <a class="article-list__item-link" href="{{ .RelPermalink }}">
         <time class="article-list__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
-          {{ .Date | time.Format ":date_long" }}
+          {{ .Date.Format "2006.1.2" }}
         </time>
         {{ with .Params.categories }}
           {{ with site.GetPage (printf "categories/%s" (index . 0)) }}
-            <span class="chip">{{ .Title }}</span>
+            <span class="chip chip--flat article-list__item-category">{{ .Title }}</span>
           {{ end }}
         {{ end }}
         <span class="article-list__item-title">{{ .Title }}</span>

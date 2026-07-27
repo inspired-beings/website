@@ -3,16 +3,16 @@
   model: every word lives in front matter
   (`exampleSite/content/_index.{en,fr-fr}.md`), this template only renders
   structure — hero{title_lines[],cta{label,url},image{src,alt}} → intro
-  {body,cta} → problems[]{title,body} (6) → services_extract[]{icon,title,
-  body,link{href,label}} (6, reuses `card.html`) → stats[]{value,unit,label}
-  (reuses `stats-band.html`) → pricing_extract{caption,plans[]{name,price,
-  period,cta}} (each plan rendered via `card.html` — a plans-only summary;
-  the dedicated `/pricing/` page renders the full comparison table) →
-  news_count (int; latest N posts from the `news` section) → cta_band
-  {heading,body,cta{label,url}} (reuses `cta-band.html`). Section headings +
-  "view all" link labels are template-owned i18n strings (fixed structural
-  chrome, same convention as top-bar/footer), not front matter — only the
-  per-item content is authored copy. */}}
+  {heading,body,cta} → problems[]{title,body} (6) → services_extract[]
+  {icon,title,body,link{href}} (6) → stats[]{value,unit,label} → pricing
+  (full comparison table, plans pulled from the `/pricing/` page's own
+  front matter so the matrix lives once; `pricing_extract.caption` is the
+  section description) → news_count (int; latest N posts from the `news`
+  section) → join{heading,body,cta} → contact{heading,body,cta}. Section
+  labels/taglines + "view all" link labels are template-owned i18n strings
+  (fixed structural chrome, same convention as top-bar/footer), not front
+  matter — only the per-item content is authored copy. Sections alternate
+  default/`--alt` backgrounds. */}}
 {{ define "main" }}
   <section class="hero hero--display">
     <div class="container">
@@ -21,32 +21,44 @@
           <span class="hero__title-line{{ if eq (mod $i 2) 1 }} hero__title-line--right{{ end }}">{{ $line }}</span>
         {{ end }}
       </h1>
-      <a class="button button--solid button--large hero__cta" href="{{ .Params.hero.cta.url }}">
-        {{ .Params.hero.cta.label }}
-      </a>
+      <div class="hero__cta-row">
+        <a class="button button--solid button--large hero__cta" href="{{ .Params.hero.cta.url }}">
+          {{ .Params.hero.cta.label }}
+        </a>
+      </div>
     </div>
     {{ with .Params.hero.image }}
       <div class="hero__image container">
-        {{ partial "figure.html" (dict "src" .src "alt" .alt "eager" true) }}
+        {{ partial "figure.html" (dict "src" .src "alt" .alt "eager" true "class" "figure--panorama") }}
       </div>
     {{ end }}
   </section>
 
-  <section class="section">
-    <div class="container lede">
-      <p class="lede__body">{{ .Params.intro.body }}</p>
-      {{ with .Params.intro.cta }}
-        <a class="lede__cta" href="{{ .url }}">{{ .label }}</a>
-      {{ end }}
+  <section class="section" aria-labelledby="home-intro-heading">
+    <div class="container">
+      <div class="lede">
+        <h2 class="lede__heading" id="home-intro-heading">{{ .Params.intro.heading }}</h2>
+        <p class="lede__body">{{ .Params.intro.body }}</p>
+        {{ with .Params.intro.cta }}
+          <div class="lede__cta">
+            <a class="button button--outlined button--medium" href="{{ .url }}">{{ .label }}</a>
+          </div>
+        {{ end }}
+      </div>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="home-problems-heading">
+  <section class="section section--alt" aria-labelledby="home-problems-heading">
     <div class="container">
-      <h2 id="home-problems-heading">{{ i18n "homeProblemsHeading" }}</h2>
-      <div class="grid grid--3 section__body">
+      <div class="feature-grid">
+        {{ partial "section-title.html" (dict
+          "id" "home-problems-heading"
+          "label" (i18n "homeProblemsLabel")
+          "tagline" (i18n "homeProblemsHeading")
+          "class" "feature-grid__header"
+        ) }}
         {{ range .Params.problems }}
-          <div class="feature">
+          <div class="feature feature-grid__cell">
             <h3 class="feature__title">{{ .title }}</h3>
             <p class="feature__body">{{ .body }}</p>
           </div>
@@ -57,87 +69,181 @@
 
   <section class="section" aria-labelledby="home-services-heading">
     <div class="container">
-      <h2 id="home-services-heading">{{ i18n "homeServicesHeading" }}</h2>
-      <div class="grid grid--3 section__body">
-        {{ range .Params.services_extract }}
-          {{ partial "card.html" (dict "icon" .icon "title" .title "body" .body "link" .link) }}
-        {{ end }}
+      <div class="rail">
+        <div class="rail__aside rail__aside--sticky">
+          {{ partial "section-title.html" (dict
+            "id" "home-services-heading"
+            "label" (i18n "homeServicesLabel")
+            "tagline" (i18n "homeServicesHeading")
+          ) }}
+          <a class="button button--outlined button--medium" href="{{ "services/" | relLangURL }}">
+            {{ i18n "homeServicesCtaLabel" }}
+          </a>
+        </div>
+        <div class="rail__main">
+          <div class="grid grid--feed">
+            {{ range .Params.services_extract }}
+              <article class="service-card">
+                <a class="service-card__link" href="{{ .link.href }}">
+                  <span class="service-card__header">
+                    <span class="service-card__icon" aria-hidden="true">{{ .icon }}</span>
+                    <svg class="service-card__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M7 17 17 7" />
+                      <path d="M9 7h8v8" />
+                    </svg>
+                  </span>
+                  <h3 class="service-card__title">{{ .title }}</h3>
+                  <p class="service-card__body">{{ .body }}</p>
+                </a>
+              </article>
+            {{ end }}
+          </div>
+        </div>
       </div>
-      <a class="button button--outlined button--medium section__cta" href="{{ "services/" | relLangURL }}">
-        {{ i18n "homeServicesCtaLabel" }}
-      </a>
     </div>
   </section>
 
   <section class="section section--alt" aria-labelledby="home-stats-heading">
     <div class="container">
-      <h2 id="home-stats-heading">{{ i18n "homeStatsHeading" }}</h2>
+      {{ partial "section-title.html" (dict
+        "id" "home-stats-heading"
+        "label" (i18n "homeStatsLabel")
+        "tagline" (i18n "homeStatsHeading")
+      ) }}
       {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "section__body") }}
     </div>
   </section>
 
-  {{/* Home shows a lightweight plan summary — cards, not the full
-    `pricing-table.html` comparison grid the dedicated /pricing/ page uses —
-    same names/prices/CTAs, no feature-by-feature rows (budget-driven
-    simplification; every plan and price still shown, "View full pricing"
-    links through to the complete comparison). */}}
-  <section class="section" aria-labelledby="home-pricing-heading">
-    <div class="container">
-      <h2 id="home-pricing-heading">{{ i18n "homePricingHeading" }}</h2>
-      <p class="section__caption">{{ .Params.pricing_extract.caption }}</p>
-      <div class="grid grid--3 section__body">
-        {{ range .Params.pricing_extract.plans }}
-          {{ partial "card.html" (dict
-            "title" .name
-            "body" (printf "%s%s" .price (.period | default ""))
-            "link" .cta
+  {{/* Full comparison table on home — the matrix is authored once, in the
+    `/pricing/` page's front matter, and read from here. */}}
+  {{ with .Site.GetPage "/pricing" }}
+    {{ $plans := .Params.plans }}
+    <section class="section" aria-labelledby="home-pricing-heading">
+      <div class="container">
+        <div class="section-head">
+          {{ partial "section-title.html" (dict
+            "id" "home-pricing-heading"
+            "label" (i18n "homePricingLabel")
+            "tagline" (i18n "homePricingHeading")
+            "class" "section-head__title"
           ) }}
+          <p class="section-head__description">{{ $.Params.pricing_extract.caption }}</p>
+          <a class="button button--outlined button--medium section-head__action" href="{{ "pricing/" | relLangURL }}">
+            {{ i18n "homePricingCtaLabel" }}
+          </a>
+        </div>
+
+        {{ $planList := slice }}
+        {{ range $plans }}
+          {{ $planList = $planList | append (dict "name" .name "price" .price "sub" .audience "highlighted" .highlighted) }}
         {{ end }}
+        {{ $features := slice }}
+        {{ $firstPlan := index $plans 0 }}
+        {{ range $key, $val := $firstPlan.features }}
+          {{ $values := slice }}
+          {{ range $plans }}
+            {{ $values = $values | append (index .features $key) }}
+          {{ end }}
+          {{ $features = $features | append (dict "name" $key "values" $values) }}
+        {{ end }}
+        {{ partial "pricing-table.html" (dict
+          "caption" (i18n "pricingComparisonCaption")
+          "plans" $planList
+          "features" $features
+        ) }}
+
+        <div class="pricing-table-notes">
+          <p class="pricing-table-notes__line">
+            <span class="pricing-table__mark pricing-table__mark--yes" aria-hidden="true"></span>{{ i18n "pricingTableIncludedLabel" }}
+            <span class="pricing-table__mark pricing-table__mark--partial" aria-hidden="true"></span>{{ i18n "pricingTablePartialLabel" }}
+            <span class="pricing-table__mark pricing-table__mark--no" aria-hidden="true"></span>{{ i18n "pricingTableNotIncludedLabel" }}
+          </p>
+          {{ with .Params.notes }}
+            <p class="pricing-table-notes__line">{{ . }}</p>
+          {{ end }}
+        </div>
       </div>
-      <a class="button button--outlined button--medium section__cta" href="{{ "pricing/" | relLangURL }}">
-        {{ i18n "homePricingCtaLabel" }}
-      </a>
-    </div>
-  </section>
+    </section>
+  {{ end }}
 
   {{/* Degrades gracefully: with no `news` section content, `.Site.GetPage`
     returns nil and this whole block renders nothing (no heading, no empty
-    grid), rather than an empty shell. */}}
+    list), rather than an empty shell. */}}
   {{ with .Site.GetPage "section" "news" }}
-    {{ $newsCount := $.Params.news_count | default 3 }}
+    {{ $newsCount := $.Params.news_count | default 4 }}
     {{ $latest := first $newsCount .RegularPages }}
     {{ if $latest }}
-      <section class="section" aria-labelledby="home-news-heading">
+      <section class="section section--alt" aria-labelledby="home-news-heading">
         <div class="container">
-          <h2 id="home-news-heading">{{ i18n "homeNewsHeading" }}</h2>
-          <div class="grid grid--3 section__body">
-            {{ range $latest }}
-              <article class="news-card">
-                <h3 class="news-card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-                {{ with .Date }}
-                  <p class="news-card__date">{{ .Format "2 January 2006" }}</p>
+          <div class="rail rail--wide-main">
+            <div class="rail__aside">
+              {{ partial "section-title.html" (dict
+                "id" "home-news-heading"
+                "label" (i18n "homeNewsLabel")
+                "tagline" (i18n "homeNewsHeading")
+              ) }}
+              <a class="button button--outlined button--medium" href="{{ "news/" | relLangURL }}">
+                {{ i18n "homeNewsCtaLabel" }}
+              </a>
+            </div>
+            <div class="rail__main">
+              <ul class="article-list" role="list">
+                {{ range $latest }}
+                  <li class="article-list__item">
+                    <a class="article-list__item-link" href="{{ .RelPermalink }}">
+                      <time class="article-list__item-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                        {{ .Date.Format "2006.1.2" }}
+                      </time>
+                      {{ with .Params.categories }}
+                        {{ with site.GetPage (printf "categories/%s" (index . 0)) }}
+                          <span class="chip chip--flat article-list__item-category">{{ .Title }}</span>
+                        {{ end }}
+                      {{ end }}
+                      <span class="article-list__item-title">{{ .Title }}</span>
+                    </a>
+                  </li>
                 {{ end }}
-                {{/* `.Summary` is rendered HTML and may itself contain block-level
-                  tags (e.g. multiple `<p>`s); a `<div>` wrapper is HTML-valid
-                  either way, where a `<p>` wrapper is not once the content
-                  itself contains block elements. */}}
-                <div class="news-card__body">{{ .Summary }}</div>
-              </article>
-            {{ end }}
+              </ul>
+            </div>
           </div>
-          <a class="button button--outlined button--medium section__cta" href="{{ "news/" | relLangURL }}">
-            {{ i18n "homeNewsCtaLabel" }}
-          </a>
         </div>
       </section>
     {{ end }}
   {{ end }}
 
-  <section class="section section--band">
-    {{ partial "cta-band.html" (dict
-      "title" .Params.cta_band.heading
-      "body" .Params.cta_band.body
-      "actions" (slice (dict "href" .Params.cta_band.cta.url "label" .Params.cta_band.cta.label))
-    ) }}
-  </section>
+  {{ with .Params.join }}
+    <section class="section" aria-labelledby="home-join-heading">
+      <div class="container">
+        <div class="section__centered">
+          {{ partial "section-title.html" (dict
+            "id" "home-join-heading"
+            "tagline" .heading
+            "class" "section-title--centered"
+          ) }}
+          <p class="section__prose">{{ .body }}</p>
+          <a class="button button--outlined button--medium" href="{{ .cta.url }}">{{ .cta.label }}</a>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ with .Params.contact }}
+    <section class="section section--alt" aria-labelledby="home-contact-heading">
+      <div class="container">
+        <div class="rail">
+          <div class="rail__aside">
+            {{ partial "section-title.html" (dict
+              "id" "home-contact-heading"
+              "label" (i18n "homeContactLabel")
+              "tagline" .heading
+            ) }}
+          </div>
+          <div class="rail__main rail__main--end">
+            <p class="section__prose">{{ .body }}</p>
+            <a class="button button--solid button--medium" href="{{ .cta.url }}">{{ .cta.label }}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  {{ end }}
 {{ end }}

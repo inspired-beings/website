@@ -141,6 +141,15 @@ other = "Included"
 [pricingTableNotIncludedLabel]
 other = "Not included"
 
+[pricingTableRecommendedLabel]
+other = "Recommended"
+
+[pricingTablePriceRowLabel]
+other = "Monthly price"
+
+[pricingTablePartialLabel]
+other = "Basic coverage"
+
 [pricingTableActionColumnLabel]
 other = "Action"
 
@@ -344,6 +353,24 @@ other = "Web, cloud & security"
 
 [styleguidePaginationHeading]
 other = "Pagination"
+
+[homeProblemsLabel]
+other = "Challenges"
+
+[homeServicesLabel]
+other = "Services"
+
+[homeStatsLabel]
+other = "Why choose us"
+
+[homePricingLabel]
+other = "Pricing"
+
+[homeNewsLabel]
+other = "News"
+
+[homeContactLabel]
+other = "Contact"
 
 [homeProblemsHeading]
 other = "Sound familiar?"

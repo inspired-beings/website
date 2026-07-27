@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 // Figure: responsive, lazy image (see `partials/figure.html` for the Hugo
 // image-processing pipeline — this file is pure presentation).
 .figure {
@@ -31,4 +33,16 @@
 // block-start margin wins the tie).
 .figure--spaced {
   margin-block: var(--sp-lg);
+}
+
+// Wide rounded banner crop (hero imagery).
+.figure--panorama .figure__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+
+  @include abstracts.mq-up("md") {
+    aspect-ratio: 16 / 7;
+  }
 }

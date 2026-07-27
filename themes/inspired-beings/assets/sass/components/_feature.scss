@@ -1,10 +1,29 @@
-// Ruled text item (title + body under a top rule) — grid-cell scale,
-// lighter than `.card` (no box, no icon slot).
+@use "../abstracts";
+
+// Plain text item (title + body) — grid-cell scale, lighter than `.card`
+// (no box, no rule, no icon slot).
 .feature {
-  padding-block-start: var(--sp-md);
-  border-block-start: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.feature__title {
+  font-size: var(--fs-md);
+  line-height: 1.375;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-lg);
+  }
 }
 
 .feature__body {
   color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.625;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+    line-height: 2;
+  }
 }

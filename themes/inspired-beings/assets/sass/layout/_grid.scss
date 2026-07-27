@@ -47,6 +47,21 @@
   }
 }
 
+// Editorial feed: generous single column on wide screens, two-up on
+// mid-size ones.
+.grid--feed {
+  gap: var(--sp-2xl);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include abstracts.mq-up("lg") {
+    grid-template-columns: 1fr;
+    gap: var(--sp-4xl);
+  }
+}
+
 // Self-packing card shelf (styleguide demos and the like).
 .grid--auto {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

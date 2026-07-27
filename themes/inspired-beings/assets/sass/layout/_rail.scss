@@ -1,0 +1,67 @@
+@use "../abstracts";
+
+// Two-column section scaffolding: an aside rail (usually a `.section-title`
+// + action) beside a main column, stacking on small screens.
+.rail {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-xl) var(--sp-md);
+
+  @include abstracts.mq-up("lg") {
+    align-items: start;
+    column-gap: var(--sp-xl);
+  }
+}
+
+.rail__aside {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-xl);
+
+  @include abstracts.mq-up("lg") {
+    grid-column: 1 / 6;
+  }
+}
+
+// Clears the sticky top-bar plus breathing room.
+.rail__aside--sticky {
+  @include abstracts.mq-up("lg") {
+    position: sticky;
+    top: calc(var(--sp-3xl) + var(--sp-2xl));
+  }
+}
+
+.rail__main {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("lg") {
+    grid-column: 7 / -1;
+  }
+}
+
+// Wider main column (list-heavy sections).
+.rail--wide-main .rail__aside {
+  @include abstracts.mq-up("lg") {
+    grid-column: 1 / 5;
+  }
+}
+
+.rail--wide-main .rail__main {
+  @include abstracts.mq-up("lg") {
+    grid-column: 5 / -1;
+  }
+}
+
+// Bottom-aligns the main column against a taller aside.
+.rail__main--end {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-lg);
+
+  @include abstracts.mq-up("lg") {
+    align-self: end;
+  }
+}

@@ -10,10 +10,11 @@
   align-items: center;
   justify-content: center;
   gap: var(--sp-2xs);
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: var(--radius-full);
   font-family: var(--font-body);
-  font-weight: 700;
+  font-weight: 400;
+  letter-spacing: 0.05em;
   text-decoration: none;
   white-space: nowrap;
 
@@ -38,38 +39,39 @@
 }
 
 .button--medium {
-  padding: var(--sp-2xs) var(--sp-lg);
-  font-size: var(--fs-sm);
+  padding: var(--sp-xs) var(--sp-lg);
+  font-size: var(--fs-md);
 }
 
 .button--solid {
   background-color: var(--color-accent-default);
+  border-color: var(--color-accent-default);
   color: var(--color-on-accent);
 
   &:hover,
   &:focus-visible {
     background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
   }
 
   &:active {
     background-color: var(--color-accent-active);
+    border-color: var(--color-accent-active);
   }
 }
 
+// Neutral outlined action: quiet border + text, tinted fill on hover.
 .button--outlined {
   background-color: transparent;
-  border-color: var(--color-accent-default);
-  color: var(--color-accent-default);
+  border-color: var(--color-border-default);
+  color: var(--color-text-default);
 
   &:hover,
   &:focus-visible {
     background-color: var(--color-surface-alt);
-    border-color: var(--color-accent-hover);
-    color: var(--color-accent-hover);
   }
 
   &:active {
-    border-color: var(--color-accent-active);
-    color: var(--color-accent-active);
+    background-color: var(--color-surface-tertiary);
   }
 }

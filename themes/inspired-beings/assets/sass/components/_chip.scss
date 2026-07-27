@@ -19,6 +19,19 @@
   font-weight: 500;
 }
 
+// Flat tag (category markers in article rows): tinted fill, square-ish,
+// no border.
+.chip--flat {
+  padding: var(--sp-2xs) var(--sp-xs);
+  border: 0;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-tertiary);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .chip--accent {
   border-color: var(--color-accent-default);
   color: var(--color-accent-default);

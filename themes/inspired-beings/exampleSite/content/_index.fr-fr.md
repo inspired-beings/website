@@ -11,6 +11,7 @@ hero:
     src: "images/home-hero-placeholder.png"
     alt: "Illustration abstraite d'un tableau de bord"
 intro:
+  heading: "Le bon logiciel, rendu accessible."
   body: "Une équipe qui conçoit et fiabilise des produits web et mobiles — accessibilité, sobriété et sécurité dès le premier sprint."
   cta:
     label: "Découvrir notre méthode"
@@ -79,27 +80,15 @@ stats:
     unit: "/7"
     label: "Incidents"
 pricing_extract:
-  caption: "Des offres qui évoluent"
-  plans:
-    - name: "Starter"
-      price: "1 900 $"
-      period: "/mois"
-      cta:
-        href: "/fr-fr/pricing/"
-        label: "Démarrer"
-    - name: "Growth"
-      price: "4 200 $"
-      period: "/mois"
-      cta:
-        href: "/fr-fr/pricing/"
-        label: "Démarrer"
-    - name: "Enterprise"
-      price: "Sur devis"
-      cta:
-        href: "/fr-fr/pricing/"
-        label: "Contact"
-news_count: 3
-cta_band:
+  caption: "Des offres qui s'adaptent à la taille et au stade de votre équipe — commencez petit, évoluez avec la feuille de route."
+news_count: 4
+join:
+  heading: "Rejoignez l'équipe"
+  body: "Venez concevoir des logiciels accessibles et sobres avec une équipe attachée au travail bien fait.\nNous accueillons celles et ceux qui aiment porter des sujets exigeants de bout en bout."
+  cta:
+    label: "Voir les postes ouverts"
+    url: "/fr-fr/careers/"
+contact:
   heading: "Prêt·e à déployer en confiance ?"
   body: "Parlez-nous de votre produit, réponse sous un jour ouvré."
   cta:

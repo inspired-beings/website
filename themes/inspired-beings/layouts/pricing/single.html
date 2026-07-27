@@ -3,17 +3,14 @@
   `plans[]{name,audience,price,features{key:bool|"Partial"}}`, `notes`.
 
   The reused `pricing-table.html` partial expects its own shape — a `plans`
-  list {name,price,highlighted,cta} plus a shared `features` list
+  list {name,price,sub,highlighted,cta} plus a shared `features` list
   {name,values[]}, one entry per plan in `plans` order — not a per-plan
   feature map. This template transforms the per-plan `features` map into
   that shape by walking the *first* plan's feature keys: Go html/template
   sorts map-key ranges alphabetically, so as long as every plan's front
   matter uses the exact same feature-name keys, each plan yields the
-  identical column order on every render.
-
-  `audience` isn't part of `pricing-table.html`'s own dict contract, so it's
-  rendered in the `.plan-summary` strip just above the table instead of
-  being smuggled into the shared component. */}}
+  identical column order on every render. `audience` maps to the partial's
+  `sub` line under each plan name. */}}
 {{ define "main" }}
   <article>
     <section class="hero hero--narrow">
@@ -37,15 +34,9 @@
       <div class="container">
         <h2 id="pricing-plans-heading">{{ i18n "pricingPlansHeading" }}</h2>
 
-        <div class="plan-summary grid grid--3-md grid--gap-md section__body section__body--spaced">
-          {{ range $plans }}
-            <p class="plan-summary__item"><strong>{{ .name }}</strong> — {{ .audience }}</p>
-          {{ end }}
-        </div>
-
         {{ $planList := slice }}
         {{ range $plans }}
-          {{ $planList = $planList | append (dict "name" .name "price" .price "highlighted" .highlighted "cta" .cta) }}
+          {{ $planList = $planList | append (dict "name" .name "price" .price "sub" .audience "highlighted" .highlighted "cta" .cta) }}
         {{ end }}
 
         {{ $features := slice }}

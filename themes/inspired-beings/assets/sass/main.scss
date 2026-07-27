@@ -17,6 +17,9 @@
 @use "layout/grid";
 @use "layout/flow";
 @use "layout/cluster";
+@use "layout/rail";
+@use "layout/feature-grid";
+@use "layout/section-head";
 @use "layout/top-bar";
 @use "layout/footer";
 @use "components/skip-link";
@@ -39,6 +42,8 @@
 @use "components/hero";
 @use "components/lede";
 @use "components/feature";
+@use "components/section-title";
+@use "components/service-card";
 @use "components/quote";
 @use "components/job-offer";
 @use "components/showcase";
@@ -46,11 +51,9 @@
 @use "components/numbered-list";
 @use "components/article-list";
 @use "components/chip-filter";
-@use "components/news-card";
 @use "components/callout";
 @use "components/prose";
 @use "components/task-list";
-@use "components/plan-summary";
 @use "components/standalone-link";
 @use "components/demo-caption";
 @use "pages/styleguide";

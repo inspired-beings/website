@@ -1,0 +1,41 @@
+@use "../abstracts";
+
+// Staggered feature arrangement: a half-width header (`.section-title`)
+// shares the 12-col grid with quarter-width `.feature` cells; alternate
+// cells drop by a step for the staggered rhythm.
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-xl) var(--sp-md);
+
+  @include abstracts.mq-up("lg") {
+    align-items: start;
+    column-gap: var(--sp-xl);
+  }
+}
+
+.feature-grid__header {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("lg") {
+    grid-column: span 6;
+    padding-inline-end: var(--sp-2xl);
+  }
+}
+
+.feature-grid__cell {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("md") {
+    grid-column: span 6;
+  }
+
+  @include abstracts.mq-up("lg") {
+    grid-column: span 3;
+
+    // Header occupies child slot 1, so odd children are cells 2, 4, 6.
+    &:nth-child(odd) {
+      margin-block-start: var(--sp-2xl);
+    }
+  }
+}

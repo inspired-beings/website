@@ -76,20 +76,28 @@
 // --- Display (home flagship) variant -----------------------------------
 
 .hero--display {
-  padding-block: var(--sp-3xl) 0;
+  padding-block: var(--sp-3xl) var(--sp-lg);
+
+  @include abstracts.mq-up("md") {
+    padding-block-start: var(--sp-4xl);
+  }
+
+  @include abstracts.mq-up("lg") {
+    padding-block-start: var(--sp-5xl);
+  }
 }
 
+// The staircase block shrink-wraps to its longest line and centers as a
+// whole; lines keep their left/right offsets inside it.
 .hero--display .hero__title {
   display: flex;
   flex-direction: column;
   gap: var(--sp-2xs);
-  font-size: var(--fs-4xl);
-  max-width: 40rem;
-
-  @include abstracts.mq-up("lg") {
-    font-size: var(--fs-5xl);
-    max-width: 56rem;
-  }
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  font-size: clamp(var(--fs-3xl), 6vw, var(--fs-6xl));
+  line-height: 1.25;
 }
 
 // Mobile keeps every line left-aligned (readability); the staggered
@@ -104,6 +112,12 @@
 .hero__cta {
   display: inline-flex;
   margin-block-start: var(--sp-xl);
+}
+
+// Centered under the centered staircase title.
+.hero--display .hero__cta-row {
+  display: flex;
+  justify-content: center;
 }
 
 .hero__image {

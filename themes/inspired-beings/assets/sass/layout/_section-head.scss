@@ -1,0 +1,46 @@
+@use "../abstracts";
+
+// Section opener row: title left, action right, full-width description
+// under both.
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  margin-block-end: var(--sp-2xl);
+
+  @include abstracts.mq-up("md") {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title action"
+      "description description";
+    align-items: start;
+    column-gap: var(--sp-xl);
+    row-gap: var(--sp-lg);
+  }
+}
+
+.section-head__title {
+  @include abstracts.mq-up("md") {
+    grid-area: title;
+  }
+}
+
+.section-head__description {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 2;
+
+  @include abstracts.mq-up("md") {
+    grid-area: description;
+    font-size: var(--fs-md);
+  }
+}
+
+.section-head__action {
+  align-self: flex-start;
+
+  @include abstracts.mq-up("md") {
+    grid-area: action;
+  }
+}
