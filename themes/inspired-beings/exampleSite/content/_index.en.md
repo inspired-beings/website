@@ -60,6 +60,7 @@ services_extract:
     body: "Monitoring, security patching and incremental feature work once you're live."
     link:
       href: "/services/maintenance-tma/"
+stats_description: "Nine years of shipping and running production software for small teams — accessible by default, lean on resources, and honest about what it costs to keep systems healthy."
 stats:
   - value: "140"
     unit: "+"

@@ -27,6 +27,21 @@ other = "Services"
 [footerResourcesHeading]
 other = "Resources"
 
+[footerHours]
+other = "Open Monday to Friday, 9:00 – 18:00 (CET)"
+
+[footerHoursNote]
+other = "(closed on weekends and public holidays)"
+
+[footerSocialLinkedinLabel]
+other = "LinkedIn"
+
+[footerSocialXLabel]
+other = "X"
+
+[footerSocialInstagramLabel]
+other = "Instagram"
+
 [footerCopyright]
 other = "© {{ .year }} {{ .name }}. All rights reserved."
 

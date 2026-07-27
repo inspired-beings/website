@@ -60,6 +60,7 @@ services_extract:
     body: "Supervision, correctifs de sécurité et évolutions incrémentales une fois votre produit en production."
     link:
       href: "/fr-fr/services/maintenance-tma/"
+stats_description: "Neuf ans à livrer et exploiter des logiciels en production pour de petites équipes — accessibles par défaut, sobres en ressources, et honnêtes sur ce que coûte la bonne santé d'un système."
 stats:
   - value: "140"
     unit: "+"

@@ -87,25 +87,37 @@
   }
 }
 
-// The staircase block shrink-wraps to its longest line and centers as a
-// whole; lines keep their left/right offsets inside it.
+// The staircase spans the whole container on a 12-col grid: each line is
+// inset one column from the left, and the right-aligned line stops one
+// column short of the right edge — the block reads centered as a whole
+// while sitting close to the container edges.
 .hero--display .hero__title {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-2xs);
-  width: fit-content;
-  max-width: 100%;
-  margin-inline: auto;
-  font-size: clamp(var(--fs-3xl), 6vw, var(--fs-6xl));
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  font-size: clamp(var(--fs-2xl), 6vw, calc(var(--fs-4xl) * 2));
   line-height: 1.25;
 }
 
+.hero--display .hero__title-line {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("md") {
+    grid-column: 2 / -1;
+  }
+}
+
 // Mobile keeps every line left-aligned (readability); the staggered
-// "staircase" from the visual reference only appears from `md` up.
+// "staircase" only appears from `md` up.
 .hero__title-line--right {
   @include abstracts.mq-up("md") {
     align-self: flex-end;
     text-align: right;
+  }
+}
+
+.hero--display .hero__title-line--right {
+  @include abstracts.mq-up("md") {
+    grid-column: 2 / 12;
   }
 }
 

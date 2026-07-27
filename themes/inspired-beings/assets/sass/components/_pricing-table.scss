@@ -20,8 +20,11 @@
     border-spacing: var(--sp-md);
   }
 
-  th,
-  td {
+  // `:where()` zeroes the inner selector's specificity so this compiles to
+  // (0,1,0) — tied with the cell classes below, which then win by source
+  // order. A plain `.pricing-table th` (0,1,1) would silently beat them
+  // and zero out every cell padding (that was a live bug).
+  :where(th, td) {
     border: 0;
     padding: 0;
   }

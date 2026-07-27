@@ -110,7 +110,7 @@
         "label" (i18n "homeStatsLabel")
         "tagline" (i18n "homeStatsHeading")
       ) }}
-      {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "section__body") }}
+      {{ partial "stats-band.html" (dict "stats" .Params.stats "description" .Params.stats_description "class" "section__body") }}
     </div>
   </section>
 
