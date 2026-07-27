@@ -288,6 +288,45 @@ other = "Incident response coverage"
 [styleguideStatFourUnit]
 other = "/7"
 
+[styleguideStatsColumnHeading]
+other = "Stats band — column variant"
+
+[styleguideChecklistHeading]
+other = "Checklist — boxed variant"
+
+[styleguideChecklistItemOne]
+other = "Ships with accessible defaults out of the box."
+
+[styleguideChecklistItemTwo]
+other = "Works in both color schemes without extra wiring."
+
+[styleguideChecklistItemThree]
+other = "Documented here so every page can reuse it."
+
+[styleguideNumberedListHeading]
+other = "Numbered list"
+
+[styleguideNumberedItemOneTitle]
+other = "Scope the work"
+
+[styleguideNumberedItemOneBody]
+other = "Each item pairs an accent number with a title row and a muted body."
+
+[styleguideNumberedItemTwoTitle]
+other = "Ship the work"
+
+[styleguideNumberedItemTwoBody]
+other = "The ordered list carries the sequence; the numbers stay decorative."
+
+[styleguidePageHeroHeading]
+other = "Page hero"
+
+[styleguidePageHeroEyebrow]
+other = "Sample 01"
+
+[styleguidePageHeroTitle]
+other = "A page opener"
+
 [styleguideStepsHeading]
 other = "Steps"
 

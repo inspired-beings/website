@@ -92,9 +92,9 @@
 // column short of the right edge — the block reads centered as a whole
 // while sitting close to the container edges.
 .hero--display .hero__title {
+  @include abstracts.display-title-size;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  font-size: clamp(var(--fs-2xl), 6vw, calc(var(--fs-4xl) * 2));
   line-height: 1.25;
 }
 

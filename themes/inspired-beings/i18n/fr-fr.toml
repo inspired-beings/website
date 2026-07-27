@@ -288,6 +288,45 @@ other = "Couverture de réponse aux incidents"
 [styleguideStatFourUnit]
 other = "/7"
 
+[styleguideStatsColumnHeading]
+other = "Bande de statistiques — variante colonne"
+
+[styleguideChecklistHeading]
+other = "Liste à coches — variante encadrée"
+
+[styleguideChecklistItemOne]
+other = "Des réglages accessibles par défaut, sans configuration."
+
+[styleguideChecklistItemTwo]
+other = "Fonctionne dans les deux schémas de couleurs sans câblage."
+
+[styleguideChecklistItemThree]
+other = "Documentée ici pour que chaque page puisse la réutiliser."
+
+[styleguideNumberedListHeading]
+other = "Liste numérotée"
+
+[styleguideNumberedItemOneTitle]
+other = "Cadrer le travail"
+
+[styleguideNumberedItemOneBody]
+other = "Chaque élément associe un numéro accentué, une ligne de titre et un corps discret."
+
+[styleguideNumberedItemTwoTitle]
+other = "Livrer le travail"
+
+[styleguideNumberedItemTwoBody]
+other = "La liste ordonnée porte la séquence ; les numéros restent décoratifs."
+
+[styleguidePageHeroHeading]
+other = "En-tête de page"
+
+[styleguidePageHeroEyebrow]
+other = "Exemple 01"
+
+[styleguidePageHeroTitle]
+other = "Une ouverture de page"
+
 [styleguideStepsHeading]
 other = "Étapes"
 

@@ -91,6 +91,13 @@
   }
 }
 
+// Pointer/keyboard affordance: the indicator takes the accent color (the
+// summary text itself stays put).
+.accordion__summary:hover .accordion__icon,
+.accordion__summary:focus-visible .accordion__icon {
+  color: var(--color-accent-default);
+}
+
 .accordion[open] .accordion__icon {
   transform: rotate(180deg);
 

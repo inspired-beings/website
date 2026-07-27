@@ -195,6 +195,68 @@
       )) }}
     </section>
 
+    <section class="styleguide__section" aria-labelledby="styleguide-stats-band-column">
+      <h2 id="styleguide-stats-band-column">{{ i18n "styleguideStatsColumnHeading" }}</h2>
+      {{ partial "stats-band.html" (dict "class" "stats-band--column" "stats" (slice
+        (dict "value" "120" "unit" (i18n "styleguideStatOneUnit") "label" (i18n "styleguideStatOneLabel"))
+        (dict "value" "99.9" "unit" (i18n "styleguideStatTwoUnit") "label" (i18n "styleguideStatTwoLabel"))
+        (dict "value" "8" "unit" (i18n "styleguideStatThreeUnit") "label" (i18n "styleguideStatThreeLabel"))
+      )) }}
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-checklist">
+      <h2 id="styleguide-checklist">{{ i18n "styleguideChecklistHeading" }}</h2>
+      <div class="styleguide__surface">
+        <ul class="checklist checklist--boxed" role="list">
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true"></span>
+            {{ i18n "styleguideChecklistItemOne" }}
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true"></span>
+            {{ i18n "styleguideChecklistItemTwo" }}
+          </li>
+          <li class="checklist__item">
+            <span class="checklist__mark" aria-hidden="true"></span>
+            {{ i18n "styleguideChecklistItemThree" }}
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-numbered-list">
+      <h2 id="styleguide-numbered-list">{{ i18n "styleguideNumberedListHeading" }}</h2>
+      <ol class="numbered-list" role="list">
+        <li class="numbered-list__item">
+          <h3 class="numbered-list__title">
+            <span class="numbered-list__number" aria-hidden="true">01</span>
+            {{ i18n "styleguideNumberedItemOneTitle" }}
+          </h3>
+          <p class="numbered-list__body">{{ i18n "styleguideNumberedItemOneBody" }}</p>
+        </li>
+        <li class="numbered-list__item">
+          <h3 class="numbered-list__title">
+            <span class="numbered-list__number" aria-hidden="true">02</span>
+            {{ i18n "styleguideNumberedItemTwoTitle" }}
+          </h3>
+          <p class="numbered-list__body">{{ i18n "styleguideNumberedItemTwoBody" }}</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="styleguide__section" aria-labelledby="styleguide-page-hero">
+      <h2 id="styleguide-page-hero">{{ i18n "styleguidePageHeroHeading" }}</h2>
+      {{/* Demo only: the real block carries the page's h1 — a paragraph here
+        keeps the styleguide's own heading outline intact. */}}
+      <div class="page-hero">
+        <p class="page-hero__eyebrow">{{ i18n "styleguidePageHeroEyebrow" }}</p>
+        <div class="page-hero__heading">
+          <span class="page-hero__icon" aria-hidden="true">&#129513;</span>
+          <p class="page-hero__title">{{ i18n "styleguidePageHeroTitle" }}</p>
+        </div>
+      </div>
+    </section>
+
     <section class="styleguide__section" aria-labelledby="styleguide-steps">
       <h2 id="styleguide-steps">{{ i18n "styleguideStepsHeading" }}</h2>
       {{ partial "steps-flow.html" (dict "steps" (slice

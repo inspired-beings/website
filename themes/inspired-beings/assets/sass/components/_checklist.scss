@@ -5,6 +5,11 @@
 // of computing a real ratio (same reasoning as `pricing-table__mark--yes`).
 // Purely decorative (the item's own text conveys the meaning), so callers
 // keep `aria-hidden` on the mark span.
+.checklist {
+  display: grid;
+  gap: var(--sp-xl);
+}
+
 .checklist__item {
   display: flex;
   align-items: flex-start;
@@ -31,13 +36,8 @@
   transform: rotate(45deg);
 }
 
-// Boxed variant: single-column list whose marks sit in raised square tiles
-// (the check centers inside the tile); item text vertically centers against
-// the tile.
-.checklist--boxed {
-  display: grid;
-  gap: var(--sp-xl);
-}
+// Boxed variant: the marks sit in raised square tiles (glyph centered in
+// the tile; the tile top-aligns against text that wraps past one line).
 
 .checklist--boxed .checklist__item {
   align-items: center;
@@ -62,7 +62,8 @@
 .checklist--boxed .checklist__mark::before {
   top: 50%;
   left: 50%;
-  width: 0.35em;
-  height: 0.65em;
+  // rem, like the tile: the glyph tracks the tile, not the item font.
+  width: 0.45rem;
+  height: 0.8rem;
   transform: translate(-50%, -60%) rotate(45deg);
 }

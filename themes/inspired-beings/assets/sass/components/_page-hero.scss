@@ -42,7 +42,7 @@
   }
 }
 
-.page-hero__subtitle {
+.page-hero__eyebrow {
   color: var(--color-text-muted);
   font-size: var(--fs-sm);
   letter-spacing: 0.1em;
@@ -58,8 +58,7 @@
 }
 
 .page-hero__title {
-  font-size: clamp(var(--fs-2xl), 6vw, calc(var(--fs-4xl) * 2));
+  @include abstracts.display-title-size;
   line-height: 1.25;
   letter-spacing: 0.05em;
-  white-space: pre-line;
 }

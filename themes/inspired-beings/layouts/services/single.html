@@ -22,7 +22,7 @@
       <div class="container">
         <div class="page-hero">
           {{ if gt $ordinal 0 }}
-            <p class="page-hero__subtitle">{{ i18n "serviceIndexLabel" (dict "Index" (printf "%02d" $ordinal)) }}</p>
+            <p class="page-hero__eyebrow">{{ i18n "serviceIndexLabel" (dict "Index" (printf "%02d" $ordinal)) }}</p>
           {{ end }}
           <div class="page-hero__heading">
             {{ with .Params.icon }}
