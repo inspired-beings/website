@@ -1,3 +1,5 @@
+@use "../abstracts";
+
 // Checkmarked bullet list. The mark is a pure CSS shape, not a Unicode
 // glyph — axe's color-contrast rule skips dingbat-range characters instead
 // of computing a real ratio (same reasoning as `pricing-table__mark--yes`).
@@ -27,4 +29,40 @@
   border-bottom: 2px solid var(--color-accent-default);
   border-right: 2px solid var(--color-accent-default);
   transform: rotate(45deg);
+}
+
+// Boxed variant: single-column list whose marks sit in raised square tiles
+// (the check centers inside the tile); item text vertically centers against
+// the tile.
+.checklist--boxed {
+  display: grid;
+  gap: var(--sp-xl);
+}
+
+.checklist--boxed .checklist__item {
+  align-items: center;
+  gap: var(--sp-md);
+  line-height: 1.625;
+
+  @include abstracts.mq-up("sm") {
+    font-size: var(--fs-lg);
+  }
+}
+
+.checklist--boxed .checklist__mark {
+  align-self: flex-start;
+  // rem, not em: the tile must not grow with the item's own font size.
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-block-start: 0;
+  background-color: var(--color-surface-raised);
+  border-radius: var(--radius-md);
+}
+
+.checklist--boxed .checklist__mark::before {
+  top: 50%;
+  left: 50%;
+  width: 0.35em;
+  height: 0.65em;
+  transform: translate(-50%, -60%) rotate(45deg);
 }

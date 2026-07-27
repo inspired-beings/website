@@ -4,7 +4,10 @@
   content is Markdown, rendered through the calling page's own renderer so
   it gets the same Goldmark treatment as the surrounding content. */}}
 <details class="accordion"{{ if .Get "open" }} open{{ end }}>
-  <summary class="accordion__summary">{{ .Get "title" }}</summary>
+  <summary class="accordion__summary">
+    {{ .Get "title" }}
+    <span class="accordion__icon" aria-hidden="true"></span>
+  </summary>
   <div class="accordion__content">
     {{ .Inner | .Page.RenderString }}
   </div>

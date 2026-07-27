@@ -1,0 +1,65 @@
+@use "../abstracts";
+
+// Interior-page opener: small uppercase eyebrow above an icon-box + h1 row,
+// left-anchored inside a plain `.section` band. Distinct from `.hero` (the
+// centered/display page opener): this block's anatomy is the eyebrow +
+// boxed-icon heading pair. Box/icon sizes are em-based so the block scales
+// with user font size.
+.page-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-md);
+}
+
+.page-hero__heading {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+
+  @include abstracts.mq-up("sm") {
+    gap: var(--sp-lg);
+  }
+}
+
+.page-hero__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  flex-shrink: 0;
+  width: 2.4em;
+  height: 2.4em;
+  background-color: var(--color-surface-tertiary);
+  border-radius: var(--radius-sm);
+  font-size: var(--fs-lg);
+  line-height: 1;
+
+  @include abstracts.mq-up("sm") {
+    align-self: center;
+    width: 2.8em;
+    height: 2.8em;
+  }
+}
+
+.page-hero__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @include abstracts.mq-up("sm") {
+    font-size: var(--fs-md);
+  }
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-lg);
+  }
+}
+
+.page-hero__title {
+  font-size: clamp(var(--fs-2xl), 6vw, calc(var(--fs-4xl) * 2));
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  white-space: pre-line;
+}

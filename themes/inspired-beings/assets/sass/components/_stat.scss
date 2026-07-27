@@ -52,3 +52,44 @@
   font-size: var(--fs-sm);
   letter-spacing: 0.05em;
 }
+
+// Column variant (narrow rail columns): stacks the stats vertically on
+// desktop, flows them as a wrapping row on mid-size screens. Values take
+// the accent color and a tighter type cap than the 4-across band.
+.stats-band--column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xl);
+
+  @include abstracts.mq-up("sm") {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @include abstracts.mq-up("lg") {
+    flex-direction: column;
+    gap: var(--sp-2xl);
+  }
+}
+
+.stats-band--column .stat {
+  gap: var(--sp-xs);
+
+  @include abstracts.mq-up("sm") {
+    flex: 1 1 calc(33.333% - var(--sp-xl));
+  }
+
+  @include abstracts.mq-up("lg") {
+    flex: none;
+    gap: var(--sp-md);
+  }
+}
+
+.stats-band--column .stat__value {
+  color: var(--color-accent-default);
+  font-size: clamp(var(--fs-3xl), 6vw, var(--fs-5xl));
+}
+
+.stats-band--column .stat__unit {
+  font-size: clamp(var(--fs-md), 3vw, var(--fs-xl));
+}
