@@ -1,0 +1,40 @@
+// Facts table: implemented as a real `<dl>`, not a 2-col `<table>` (my call
+// — see `partials/facts-table.html`'s doc comment for the reasoning: a flat
+// label/value list is semantically a description list, not tabular data).
+// `.facts-table` is a thin wrapper `<div>` around the optional caption +
+// the `<dl>` itself (`facts-table__list`) — axe's `definition-list` rule
+// requires a `<dl>`'s direct children to be only `<dt>`/`<dd>` groups,
+// `<div>`, `<script>` or `<template>`; a `<p>` caption can't live inside it.
+@use "../abstracts";
+
+.facts-table__caption {
+  margin-block-end: var(--sp-sm);
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+}
+
+.facts-table__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-sm) var(--sp-lg);
+
+  @include abstracts.mq-up("sm") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.facts-table__row {
+  padding-block-end: var(--sp-sm);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.facts-table__term {
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.facts-table__value {
+  margin-block-start: var(--sp-2xs);
+  font-weight: 600;
+}

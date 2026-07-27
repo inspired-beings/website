@@ -1,0 +1,43 @@
+---
+title: "Cloud & DevOps"
+weight: 20
+icon: "☁️"
+tagline: "Infrastructure that scales with you, not against you."
+summary: "Infrastructure as code, cost-aware cloud architecture and deployment pipelines your team can actually operate once we're gone."
+audience:
+  - "Teams whose infrastructure lives in one engineer's head and nowhere else."
+  - "Companies facing a surprise cloud bill with no clear owner or explanation."
+  - "Startups preparing for a traffic spike, funding round or compliance review."
+  - "Engineering teams shipping manually who want a real CI/CD pipeline."
+coverage:
+  - title: "Infrastructure audit"
+    body: "A clear map of what's running, what it costs, and what would break first under load."
+  - title: "Infrastructure as code"
+    body: "Your environments defined in version-controlled code, reproducible from scratch instead of hand-tuned by memory."
+  - title: "CI/CD pipelines"
+    body: "Automated build, test and deploy pipelines with real rollback paths, so a bad release is a five-minute fix, not a weekend."
+  - title: "Cost & capacity planning"
+    body: "Right-sized infrastructure with monitoring that flags waste before it shows up on the invoice."
+  - title: "Incident readiness"
+    body: "Alerting, runbooks and on-call rotations your team can run without us on speed dial."
+stats:
+  - value: "65"
+    unit: "%"
+    label: "Average cloud cost reduction"
+  - value: "99.95"
+    unit: "%"
+    label: "Platform uptime SLA"
+  - value: "12"
+    unit: "min"
+    label: "Median deployment time"
+  - value: "24"
+    unit: "/7"
+    label: "Incident response coverage"
+faq:
+  - q: "Which cloud providers do you work with?"
+    a: "AWS, GCP and Azure — we choose based on your existing footprint and constraints, not a fixed preference."
+  - q: "Can you take over infrastructure someone else built?"
+    a: "Yes — most engagements start exactly there. We audit before we touch anything, so nothing changes until we understand why it's built that way."
+  - q: "Do you offer ongoing infrastructure support after the initial project?"
+    a: "Yes, through our Maintenance & TMA service — monitoring, patching and capacity reviews on a retainer, not a one-off."
+---

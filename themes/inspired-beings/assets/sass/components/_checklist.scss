@@ -1,0 +1,30 @@
+// Checkmarked bullet list. The mark is a pure CSS shape, not a Unicode
+// glyph — axe's color-contrast rule skips dingbat-range characters instead
+// of computing a real ratio (same reasoning as `pricing-table__mark--yes`).
+// Purely decorative (the item's own text conveys the meaning), so callers
+// keep `aria-hidden` on the mark span.
+.checklist__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-sm);
+}
+
+.checklist__mark {
+  flex-shrink: 0;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  margin-block-start: 0.2em;
+}
+
+.checklist__mark::before {
+  content: "";
+  position: absolute;
+  top: 0.05em;
+  left: 0.2em;
+  width: 0.4em;
+  height: 0.7em;
+  border-bottom: 2px solid var(--color-accent-default);
+  border-right: 2px solid var(--color-accent-default);
+  transform: rotate(45deg);
+}

@@ -1,0 +1,28 @@
+{{/* BEM block `cta-band` — inverse band, exactly like the footer (see
+  `_cta-band.scss`). Dict params:
+  - `title` (string, required)
+  - `body` (string, optional)
+  - `actions` (list, required) — each `{href, label, variant (optional,
+    "solid"|"outlined", default "solid")}`, rendered as `.button`s.
+  Usage: see the styleguide's "CTA band" section, or the `{{< cta >}}`
+  shortcode for a single-action inline version from Markdown. */}}
+<div class="cta-band">
+  <div class="cta-band__inner container">
+    <div class="cta-band__content">
+      <h2 class="cta-band__title">{{ .title }}</h2>
+      {{ with .body }}
+        <p class="cta-band__body">{{ . }}</p>
+      {{ end }}
+    </div>
+    <div class="cta-band__actions">
+      {{ range .actions }}
+        <a
+          class="button button--{{ .variant | default "solid" }} button--large"
+          href="{{ .href }}"
+        >
+          {{ .label }}
+        </a>
+      {{ end }}
+    </div>
+  </div>
+</div>

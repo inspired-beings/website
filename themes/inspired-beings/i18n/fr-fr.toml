@@ -1,0 +1,652 @@
+# Chaînes d'interface (FR). Renseignées au fil des tâches suivantes.
+
+[skipLink]
+other = "Aller au contenu principal"
+
+[topBarNavLabel]
+other = "Navigation principale"
+
+[topBarMenuToggleLabel]
+other = "Menu"
+
+[languageSwitcherLabel]
+other = "Langue"
+
+[languageSwitcherCurrentSuffix]
+other = "(actuel)"
+
+[themeToggleLabel]
+other = "Mode sombre"
+
+[footerCompanyHeading]
+other = "Entreprise"
+
+[footerServicesHeading]
+other = "Services"
+
+[footerResourcesHeading]
+other = "Ressources"
+
+[footerHours]
+other = "Du lundi au vendredi, 9 h – 18 h (CET)"
+
+[footerHoursNote]
+other = "(fermé les week-ends et jours fériés)"
+
+[footerSocialLinkedinLabel]
+other = "LinkedIn"
+
+[footerSocialXLabel]
+other = "X"
+
+[footerSocialInstagramLabel]
+other = "Instagram"
+
+[footerCopyright]
+other = "© {{ .year }} {{ .name }}. Tous droits réservés."
+
+[formFieldDefaultError]
+other = "Ce champ est invalide."
+
+[styleguideButtonsHeading]
+other = "Boutons"
+
+[styleguideSizeLargeLabel]
+other = "Grand"
+
+[styleguideSizeMediumLabel]
+other = "Moyen"
+
+[styleguideButtonSolidLabel]
+other = "Demander un devis"
+
+[styleguideButtonOutlinedLabel]
+other = "En savoir plus"
+
+[styleguideButtonDisabledLabel]
+other = "Indisponible"
+
+[styleguideCardsHeading]
+other = "Cartes"
+
+[styleguideCardOneTitle]
+other = "Développement web & applicatif"
+
+[styleguideCardOneBody]
+other = "Réalisation complète sur Node.js, TypeScript et les frameworks frontend modernes, du premier commit à la production."
+
+[styleguideCardLinkLabel]
+other = "En savoir plus"
+
+[styleguideCardTwoTitle]
+other = "Audits de sécurité"
+
+[styleguideCardTwoBody]
+other = "Revue indépendante de votre code, de votre infrastructure et de votre chaîne de dépendances face aux menaces actuelles."
+
+[styleguideChipsHeading]
+other = "Puces"
+
+[styleguideChipNeutralLabel]
+other = "Node.js"
+
+[styleguideChipAccentLabel]
+other = "En vedette"
+
+[styleguideChipSuccessLabel]
+other = "Terminé"
+
+[styleguideChipWarningLabel]
+other = "En relecture"
+
+[styleguideChipErrorLabel]
+other = "Obsolète"
+
+[styleguideFormsHeading]
+other = "Formulaires"
+
+[styleguideContactFormHeading]
+other = "Formulaire de contact"
+
+[styleguideFormNameLabel]
+other = "Nom complet"
+
+[styleguideFormNameHelp]
+other = "Tel qu'il doit apparaître sur le devis."
+
+[styleguideFormEmailLabel]
+other = "Adresse e-mail"
+
+[styleguideFormEmailErrorText]
+other = "Saisissez une adresse e-mail valide."
+
+[styleguideFormTextareaLabel]
+other = "Détails du projet"
+
+[styleguideFormTextareaHelp]
+other = "Stack technique, échéance approximative, tout ce qui nous aide à cadrer le travail."
+
+[styleguideFormRadioLegend]
+other = "Moyen de contact préféré"
+
+[styleguideFormRadioOptionEmail]
+other = "E-mail"
+
+[styleguideFormRadioOptionPhone]
+other = "Téléphone"
+
+[styleguideFormRadioOptionEither]
+other = "Peu importe"
+
+[styleguideFormNewsletterLabel]
+other = "S'abonner à notre newsletter technique"
+
+[styleguideFormConsentLabel]
+other = "J'accepte la"
+
+[styleguideFormConsentLinkLabel]
+other = "Politique de confidentialité"
+
+[pricingTableFeatureColumnLabel]
+other = "Fonctionnalité"
+
+[pricingTableIncludedLabel]
+other = "Inclus"
+
+[pricingTableNotIncludedLabel]
+other = "Non inclus"
+
+[pricingTableRecommendedLabel]
+other = "Recommandé"
+
+[pricingTablePriceRowLabel]
+other = "Tarif mensuel"
+
+[pricingTablePartialLabel]
+other = "Couverture de base"
+
+[pricingTableActionColumnLabel]
+other = "Action"
+
+[paginationLabel]
+other = "Pagination"
+
+[paginationPreviousLabel]
+other = "Précédent"
+
+[paginationNextLabel]
+other = "Suivant"
+
+[styleguidePricingTableHeading]
+other = "Tableau tarifaire"
+
+[styleguidePricingTableCaption]
+other = "Comparer les offres"
+
+[styleguidePricingPlanStarterName]
+other = "Starter"
+
+[styleguidePricingPlanStarterPrice]
+other = "1 900 €"
+
+[styleguidePricingPlanStarterPeriod]
+other = "/mois"
+
+[styleguidePricingPlanGrowthName]
+other = "Growth"
+
+[styleguidePricingPlanGrowthPrice]
+other = "4 200 €"
+
+[styleguidePricingPlanGrowthPeriod]
+other = "/mois"
+
+[styleguidePricingPlanEnterpriseName]
+other = "Enterprise"
+
+[styleguidePricingPlanEnterprisePrice]
+other = "Sur devis"
+
+[styleguidePricingPlanStarterSub]
+other = "Jeunes équipes"
+
+[styleguidePricingPlanGrowthSub]
+other = "Équipes en croissance"
+
+[styleguidePricingPlanEnterpriseSub]
+other = "Systèmes critiques"
+
+[styleguidePricingValuePartial]
+other = "Partiel"
+
+[styleguidePricingCtaStarterLabel]
+other = "Commencer"
+
+[styleguidePricingCtaGrowthLabel]
+other = "Commencer"
+
+[styleguidePricingCtaEnterpriseLabel]
+other = "Nous contacter"
+
+[styleguidePricingFeatureDedicatedEngineer]
+other = "Ingénieur dédié"
+
+[styleguidePricingFeatureUptimeSla]
+other = "SLA de disponibilité"
+
+[styleguidePricingFeatureSecurityAudits]
+other = "Audits de sécurité / an"
+
+[styleguidePricingFeatureAccessibilityAudit]
+other = "Audit d'accessibilité"
+
+[styleguidePricingFeaturePrioritySupport]
+other = "Support prioritaire"
+
+[styleguidePricingValueUptimeStarter]
+other = "99,5 %"
+
+[styleguidePricingValueUptimeGrowth]
+other = "99,9 %"
+
+[styleguidePricingValueUptimeEnterprise]
+other = "99,99 %"
+
+[styleguidePricingValueSecurityAuditsStarter]
+other = "1"
+
+[styleguidePricingValueSecurityAuditsGrowth]
+other = "2"
+
+[styleguidePricingValueSecurityAuditsEnterprise]
+other = "Illimité"
+
+[styleguideStatsBandHeading]
+other = "Bandeau de statistiques"
+
+[styleguideStatOneLabel]
+other = "Versions livrées"
+
+[styleguideStatOneUnit]
+other = "+"
+
+[styleguideStatTwoLabel]
+other = "Disponibilité médiane de la plateforme"
+
+[styleguideStatTwoUnit]
+other = "%"
+
+[styleguideStatThreeLabel]
+other = "Ancienneté moyenne des clients"
+
+[styleguideStatThreeUnit]
+other = "ans"
+
+[styleguideStatFourLabel]
+other = "Couverture de réponse aux incidents"
+
+[styleguideStatFourUnit]
+other = "/7"
+
+[styleguideStepsHeading]
+other = "Étapes"
+
+[styleguideStepOneTitle]
+other = "Appel de découverte"
+
+[styleguideStepOneBody]
+other = "Nous cadrons votre stack, vos contraintes et vos objectifs en 30 minutes."
+
+[styleguideStepTwoTitle]
+other = "Audit technique"
+
+[styleguideStepTwoBody]
+other = "Nous examinons votre code, votre infrastructure et votre niveau d'accessibilité."
+
+[styleguideStepThreeTitle]
+other = "Proposition & cadrage"
+
+[styleguideStepThreeBody]
+other = "Vous recevez une proposition à périmètre fixe, avec jalons et tarification."
+
+[styleguideStepFourTitle]
+other = "Livraison & transfert"
+
+[styleguideStepFourBody]
+other = "Nous livrons par itérations, avec documentation et transfert de compétences à chaque jalon."
+
+[styleguideTimelineHeading]
+other = "Chronologie"
+
+[styleguideTimelineEventOneTitle]
+other = "Fondation du studio"
+
+[styleguideTimelineEventOneBody]
+other = "Débuts en tant que cabinet de conseil Node.js de deux personnes à Paris."
+
+[styleguideTimelineEventTwoTitle]
+other = "Premier client grand compte"
+
+[styleguideTimelineEventTwoBody]
+other = "Réalisation d'une migration cloud complète pour un distributeur de taille intermédiaire."
+
+[styleguideTimelineEventThreeTitle]
+other = "Lancement du pôle sécurité"
+
+[styleguideTimelineEventThreeBody]
+other = "Ajout des audits indépendants de sécurité et d'accessibilité à notre offre."
+
+[styleguideTimelineEventFourTitle]
+other = "Équipe full remote"
+
+[styleguideTimelineEventFourBody]
+other = "Constitution d'une équipe distribuée sur trois pays."
+
+[styleguideTimelineEventFiveTitle]
+other = "Publication de la bibliothèque de composants"
+
+[styleguideTimelineEventFiveBody]
+other = "Publication de notre design system interne sous la forme de ce thème."
+
+[styleguideFactsTableHeading]
+other = "Tableau de synthèse"
+
+[styleguideFactsTableCaption]
+other = "En bref"
+
+[styleguideFactTermFounded]
+other = "Fondation"
+
+[styleguideFactValueFounded]
+other = "2018"
+
+[styleguideFactTermTeamSize]
+other = "Taille de l'équipe"
+
+[styleguideFactValueTeamSize]
+other = "14 ingénieurs"
+
+[styleguideFactTermHeadquarters]
+other = "Siège"
+
+[styleguideFactValueHeadquarters]
+other = "Paris, France"
+
+[styleguideFactTermFocus]
+other = "Spécialité"
+
+[styleguideFactValueFocus]
+other = "Web, cloud & sécurité"
+
+[styleguidePaginationHeading]
+other = "Pagination"
+
+[homeProblemsLabel]
+other = "Défis"
+
+[homeServicesLabel]
+other = "Services"
+
+[homeStatsLabel]
+other = "Pourquoi nous choisir"
+
+[homePricingLabel]
+other = "Tarifs"
+
+[homeNewsLabel]
+other = "Actualités"
+
+[homeContactLabel]
+other = "Contact"
+
+[homeProblemsHeading]
+other = "Ça vous parle ?"
+
+[homeServicesHeading]
+other = "Ce que nous faisons"
+
+[homeServicesCtaLabel]
+other = "Voir tous les services"
+
+[homeStatsHeading]
+other = "En quelques chiffres"
+
+[homePricingHeading]
+other = "Des tarifs simples et transparents"
+
+[homePricingCtaLabel]
+other = "Voir tous les tarifs"
+
+[homeNewsHeading]
+other = "Les dernières actualités"
+
+[homeNewsCtaLabel]
+other = "Voir toutes les actualités"
+
+[servicesIndexLinkLabel]
+other = "En savoir plus"
+
+[serviceAudienceHeading]
+other = "Pour qui"
+
+[serviceCoverageHeading]
+other = "Ce que couvre cette offre"
+
+[serviceStatsHeading]
+other = "L'impact, en chiffres"
+
+[serviceFaqHeading]
+other = "Questions fréquentes"
+
+[serviceCtaHeading]
+other = "Prêt·e à parler de votre projet ?"
+
+[serviceCtaBody]
+other = "Dites-nous où vous bloquez — nous répondrons sous un jour ouvré, avec des étapes concrètes, pas un argumentaire commercial."
+
+[serviceCtaLabel]
+other = "Démarrer la conversation"
+
+[pricingStepsHeading]
+other = "Comment se déroule une mission"
+
+[pricingPlansHeading]
+other = "Offres & tarifs"
+
+[pricingComparisonCaption]
+other = "Comparer les trois offres"
+
+[pricingCtaHeading]
+other = "Vous hésitez entre deux offres ?"
+
+[pricingCtaBody]
+other = "Dites-nous ce que vous construisez — nous recommandons une offre."
+
+[pricingCtaLabel]
+other = "Nous contacter"
+
+[aboutPhilosophyHeading]
+other = "Ce en quoi nous croyons"
+
+[aboutFounderHeading]
+other = "Le mot de notre fondateur"
+
+[aboutFactsHeading]
+other = "En bref"
+
+[aboutHistoryHeading]
+other = "Notre histoire jusqu'ici"
+
+[aboutJoinHeading]
+other = "Nous recherchons toujours des personnes seniors qui partagent ces convictions"
+
+[aboutJoinBody]
+other = "Si l'accessibilité, une ingénierie durable et la sécurité ne sont pas de simples cases à cocher pour vous non plus, nous aimerions vous rencontrer."
+
+[aboutJoinLabel]
+other = "Voir les postes ouverts"
+
+[aboutCtaHeading]
+other = "Prêt·e à travailler avec nous ?"
+
+[aboutCtaBody]
+other = "Parlez-nous de votre produit — nous répondrons sous un jour ouvré, avec des étapes concrètes, pas un argumentaire commercial."
+
+[aboutCtaLabel]
+other = "Démarrer la conversation"
+
+[faqCtaHeading]
+other = "Une question sans réponse ici ?"
+
+[faqCtaBody]
+other = "Dites-nous ce qui vous bloque — nous répondrons sous un jour ouvré."
+
+[faqCtaLabel]
+other = "Nous poser la question"
+
+[newsCategoriesLabel]
+other = "Catégories"
+
+[newsAllCategoriesLabel]
+other = "Toutes"
+
+[newsCtaHeading]
+other = "Une actualité que vous aimeriez nous voir couvrir ?"
+
+[newsCtaBody]
+other = "Dites-nous ce que vous construisez ou ce que vous aimeriez lire — nous lisons chaque message."
+
+[newsCtaLabel]
+other = "Nous contacter"
+
+[contactTypeLegend]
+other = "Sur quoi pouvons-nous vous aider ?"
+
+[contactTypeOptionProjectInquiry]
+other = "Nouveau projet"
+
+[contactTypeOptionQuoteRequest]
+other = "Demande de devis"
+
+[contactTypeOptionPartnership]
+other = "Partenariat"
+
+[contactTypeOptionOther]
+other = "Autre chose"
+
+[contactMessageLabel]
+other = "Votre message"
+
+[contactMessageHelp]
+other = "Stack technique, échéance approximative, tout ce qui nous aide à cadrer le travail."
+
+[contactNameLabel]
+other = "Nom complet"
+
+[contactCompanyLabel]
+other = "Entreprise"
+
+[contactEmailLabel]
+other = "Adresse e-mail"
+
+[contactPhoneLabel]
+other = "Numéro de téléphone"
+
+[contactPhoneHelp]
+other = "Facultatif — uniquement si vous préférez qu'on vous rappelle."
+
+[contactConsentLabel]
+other = "J'accepte les"
+
+[contactConsentLinkLabel]
+other = "Mentions légales et politique de confidentialité"
+
+[contactSubmitLabel]
+other = "Envoyer le message"
+
+[contactSuccessMessage]
+other = "Merci — votre message est en route. Nous répondrons sous un jour ouvré."
+
+[contactErrorMessage]
+other = "Une erreur est survenue lors de l'envoi. Réessayez, ou écrivez-nous directement."
+
+[contactErrorRequired]
+other = "Ce champ est obligatoire."
+
+[contactErrorEmail]
+other = "Saisissez une adresse e-mail valide."
+
+[contactErrorInvalid]
+other = "Saisissez une valeur valide."
+
+[contactMailtoBody]
+other = "Notre formulaire de contact est en cours de branchement pour cet aperçu — écrivez-nous directement, un·e ingénieur·e répondra sous un jour ouvré."
+
+[contactMailtoLabel]
+other = "Nous écrire"
+
+[contactMailtoEmail]
+other = "hello@example.inspired-beings.com"
+
+[careersValuesHeading]
+other = "Ce que nous défendons en tant qu'employeur"
+
+[careersOffersHeading]
+other = "Postes ouverts"
+
+[careersOfferApplyLabel]
+other = "Postuler à cette offre"
+
+[careersCtaHeading]
+other = "Aucun poste ne correspond ?"
+
+[careersCtaBody]
+other = "Dites-nous ce que vous savez faire — nous vous recontacterons si une opportunité correspond."
+
+[careersCtaLabel]
+other = "Nous contacter"
+
+[productsIndexLinkLabel]
+other = "Voir l'application"
+
+[productsIndexGridHeading]
+other = "Nos applications"
+
+[productScreenshotsHeading]
+other = "Captures d'écran"
+
+[productFeaturesHeading]
+other = "Fonctionnalités"
+
+[productStoreHeading]
+other = "Disponibilité"
+
+[productStoreIosLabel]
+other = "App Store"
+
+[productStoreAndroidLabel]
+other = "Google Play"
+
+[productPrivacyHeading]
+other = "Confidentialité"
+
+[productPrivacyLinkLabel]
+other = "Lire la politique de confidentialité complète"
+
+[productCtaHeading]
+other = "Des questions sur cette application ?"
+
+[productCtaBody]
+other = "Dites-nous ce que vous cherchez à faire — nous répondrons sous un jour ouvré."
+
+[productCtaLabel]
+other = "Nous contacter"
+
+[notFoundTitle]
+other = "Page introuvable"
+
+[notFoundBody]
+other = "La page que vous cherchez n'existe pas, ou a été déplacée."
+
+[notFoundHomeLabel]
+other = "Retour à l'accueil"

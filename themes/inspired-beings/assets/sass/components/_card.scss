@@ -1,0 +1,44 @@
+// Card: `card__icon|title|body|link`, `icon` and `link` both optional (see
+// `partials/card.html`). `card__link` follows the same "underline regains
+// on hover/focus" idiom as `.footer__link`/`.top-bar__link` — it's a
+// standalone CTA, not running text, so WCAG 1.4.1's color-only ban doesn't
+// require a permanent underline here.
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  padding: var(--sp-lg);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.card__icon {
+  font-size: var(--fs-2xl);
+  line-height: 1;
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.card__body {
+  flex-grow: 1;
+  color: var(--color-text-muted);
+}
+
+.card__link {
+  align-self: flex-start;
+  color: var(--color-accent-default);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+  }
+}

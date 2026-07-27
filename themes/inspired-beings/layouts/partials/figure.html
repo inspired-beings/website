@@ -1,0 +1,94 @@
+{{/* Responsive, lazy `<picture>` (AVIF + WebP + original-format fallback),
+  built from Hugo image processing — the pipeline itself is the deliverable,
+  not any specific image. Dict params:
+  - `src` (string, required) — path resolved via `resources.Get`, e.g.
+    "images/studio-dashboard-placeholder.png".
+  - `alt` (string, required) — empty string ("") is allowed (decorative
+    image) but MUST be passed explicitly; omitting the key entirely fails
+    the build via `errorf`, since a silently-missing alt is worse than a
+    loud build error.
+  - `caption` (string, optional) — wraps a `<figcaption>`.
+  - `widths` (list of int, optional, default 400/800/1200) — srcset steps;
+    any width above the source's native width is dropped (never upscaled).
+  - `sizes` (string, optional, default "100vw").
+  - `eager` (bool, optional, default false) — the one above-the-fold
+    exception: renders `loading="eager"` + `fetchpriority="high"` instead of
+    the default `loading="lazy"`. Backward compatible — omitting it keeps
+    every existing call site lazy.
+  - `class` (string, optional) — extra classes mixed onto the root, e.g.
+    the `.figure--capped`/`.figure--spaced` modifiers.
+  Usage: see the styleguide's "Figure" section, or the `{{< figure >}}`
+  shortcode for Markdown content. */}}
+
+{{ if not (isset . "alt") }}
+  {{ errorf "partials/figure.html: 'alt' param is required (pass an empty string explicitly for a decorative image) — caller: %q" .src }}
+{{ end }}
+
+{{ $src := .src }}
+{{ if not $src }}
+  {{ errorf "partials/figure.html: 'src' param is required" }}
+{{ end }}
+
+{{ $img := resources.Get $src }}
+{{ if not $img }}
+  {{ errorf "partials/figure.html: no image resource found at %q" $src }}
+{{ end }}
+
+{{ $widths := .widths | default (slice 400 800 1200) }}
+{{ $sizes := .sizes | default "100vw" }}
+
+{{ $avifSet := slice }}
+{{ $webpSet := slice }}
+{{ $fallbackSet := slice }}
+{{ $lastFallback := $img }}
+
+{{ range $widths }}
+  {{ if le . $img.Width }}
+    {{ $w := . }}
+    {{ $avif := $img.Resize (printf "%dx avif" $w) }}
+    {{ $webp := $img.Resize (printf "%dx webp" $w) }}
+    {{ $fallback := $img.Resize (printf "%dx" $w) }}
+    {{ $avifSet = $avifSet | append (printf "%s %dw" $avif.RelPermalink $w) }}
+    {{ $webpSet = $webpSet | append (printf "%s %dw" $webp.RelPermalink $w) }}
+    {{ $fallbackSet = $fallbackSet | append (printf "%s %dw" $fallback.RelPermalink $w) }}
+    {{ $lastFallback = $fallback }}
+  {{ end }}
+{{ end }}
+
+{{/* Nothing in `widths` fit under the source's native width (a tiny source
+  image) — fall back to the original at its own size so the pipeline never
+  produces an empty srcset. */}}
+{{ if eq (len $fallbackSet) 0 }}
+  {{ $avif := $img.Resize (printf "%dx avif" $img.Width) }}
+  {{ $webp := $img.Resize (printf "%dx webp" $img.Width) }}
+  {{ $avifSet = $avifSet | append (printf "%s %dw" $avif.RelPermalink $img.Width) }}
+  {{ $webpSet = $webpSet | append (printf "%s %dw" $webp.RelPermalink $img.Width) }}
+  {{ $fallbackSet = $fallbackSet | append (printf "%s %dw" $img.RelPermalink $img.Width) }}
+  {{ $lastFallback = $img }}
+{{ end }}
+
+<figure class="figure{{ with .class }} {{ . }}{{ end }}">
+  <picture>
+    <source type="image/avif" srcset="{{ delimit $avifSet ", " }}" sizes="{{ $sizes }}" />
+    <source type="image/webp" srcset="{{ delimit $webpSet ", " }}" sizes="{{ $sizes }}" />
+    <img
+      class="figure__image"
+      src="{{ $lastFallback.RelPermalink }}"
+      srcset="{{ delimit $fallbackSet ", " }}"
+      sizes="{{ $sizes }}"
+      width="{{ $lastFallback.Width }}"
+      height="{{ $lastFallback.Height }}"
+      alt="{{ .alt }}"
+      {{ if .eager }}
+        loading="eager"
+        fetchpriority="high"
+      {{ else }}
+        loading="lazy"
+      {{ end }}
+      decoding="async"
+    />
+  </picture>
+  {{ with .caption }}
+    <figcaption class="figure__caption">{{ . }}</figcaption>
+  {{ end }}
+</figure>

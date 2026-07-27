@@ -1,0 +1,240 @@
+@use "../abstracts";
+
+// Pricing table: a real `<table>` (see `partials/pricing-table.html` for the
+// full markup/param contract). Overrides the base table rules from
+// `base/_elements.scss` (collapse + bottom rules) — this comparison grid
+// works with spaced cells: pill row labels, rounded plan headers, and a
+// tinted highlighted column.
+
+.pricing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: var(--sp-2xs);
+  table-layout: fixed;
+
+  @include abstracts.mq-up("md") {
+    border-spacing: var(--sp-xs);
+  }
+
+  @include abstracts.mq-up("lg") {
+    border-spacing: var(--sp-md);
+  }
+
+  // `:where()` zeroes the inner selector's specificity so this compiles to
+  // (0,1,0) — tied with the cell classes below, which then win by source
+  // order. A plain `.pricing-table th` (0,1,1) would silently beat them
+  // and zero out every cell padding (that was a live bug).
+  :where(th, td) {
+    border: 0;
+    padding: 0;
+  }
+}
+
+// Caption kept for AT users only — the visible section title already
+// announces the table (same sr pattern as `__sr-label`).
+.pricing-table__caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pricing-table__corner {
+  @include abstracts.mq-up("lg") {
+    width: 32%;
+  }
+}
+
+.pricing-table__plan {
+  padding: var(--sp-md) var(--sp-sm) var(--sp-sm);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--color-surface-tertiary);
+  text-align: center;
+  vertical-align: middle;
+
+  @include abstracts.mq-up("md") {
+    padding: var(--sp-md);
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  }
+}
+
+.pricing-table__plan--highlighted {
+  background-color: var(--color-accent-surface);
+}
+
+.pricing-table__badge {
+  display: inline-block;
+  margin-block-end: var(--sp-2xs);
+  padding: 0 var(--sp-xs);
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+  font-size: var(--fs-xs);
+
+  @include abstracts.mq-up("md") {
+    padding: 2px var(--sp-md);
+    font-size: var(--fs-sm);
+  }
+}
+
+.pricing-table__plan-name {
+  display: block;
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  line-height: 1.25;
+
+  @include abstracts.mq-up("md") {
+    font-size: var(--fs-md);
+  }
+}
+
+.pricing-table__plan--highlighted .pricing-table__plan-name {
+  color: var(--color-accent-default);
+}
+
+.pricing-table__plan-sub {
+  display: none;
+
+  @include abstracts.mq-up("md") {
+    display: block;
+    margin-block-start: var(--sp-2xs);
+    color: var(--color-text-muted);
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    line-height: 1.375;
+  }
+}
+
+.pricing-table__feature {
+  padding: var(--sp-xs) var(--sp-xs) var(--sp-xs) var(--sp-md);
+  border-radius: var(--radius-full) 0 0 var(--radius-full);
+  background-color: var(--color-surface-tertiary);
+  color: var(--color-text-default);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  text-align: start;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+
+  @include abstracts.mq-up("md") {
+    padding: var(--sp-lg) var(--sp-md) var(--sp-lg) var(--sp-lg);
+    font-size: var(--fs-sm);
+  }
+
+  @include abstracts.mq-up("lg") {
+    padding: var(--sp-md) var(--sp-xl);
+    font-size: var(--fs-md);
+    white-space: nowrap;
+  }
+}
+
+.pricing-table__value {
+  padding: var(--sp-xs) var(--sp-2xs);
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.375;
+
+  @include abstracts.mq-up("md") {
+    padding: var(--sp-md) var(--sp-xl);
+  }
+}
+
+.pricing-table__value--highlighted {
+  background-color: var(--color-accent-surface);
+}
+
+.pricing-table__value--last {
+  border-radius: 0 var(--radius-full) var(--radius-full) 0;
+}
+
+.pricing-table__price-text {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+  }
+}
+
+.pricing-table__value--highlighted .pricing-table__price-text {
+  color: var(--color-accent-default);
+}
+
+// Drawn as pure CSS shapes, not Unicode ●/◻/– glyphs: axe's color-contrast
+// check treats dingbat-range characters as "emoji-like" and skips them
+// (`needsFurtherReview`, reported as an error by pa11y) rather than
+// computing a real ratio. `role="img" aria-label="…"` on the element (see
+// the partial) carries the accessible name.
+.pricing-table__mark {
+  display: inline-block;
+  position: relative;
+  width: 0.625em;
+  height: 0.625em;
+  vertical-align: middle;
+}
+
+.pricing-table__mark--yes {
+  border-radius: 50%;
+  background-color: var(--color-accent-default);
+}
+
+.pricing-table__mark--partial {
+  border: 0.09em solid var(--color-text-muted);
+}
+
+.pricing-table__mark--no::before {
+  content: "";
+  position: absolute;
+  top: 0.27em;
+  left: 0;
+  width: 0.625em;
+  height: 0.09em;
+  background-color: var(--color-text-muted);
+}
+
+// Legend + fine print under the table, tucked to the reading end.
+.pricing-table-notes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-xs);
+  width: fit-content;
+  margin: var(--sp-lg) 0 0 auto;
+}
+
+.pricing-table-notes__line {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+// Screen-reader-only label next to a decorative mark/corner cell — scoped to
+// this block, not a general-purpose utility class (same idiom as
+// `.language-switcher__current-suffix`).
+.pricing-table__sr-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pricing-table__cta-cell {
+  padding-block-start: var(--sp-sm);
+  text-align: center;
+}
+
+// Narrow columns (table-layout: fixed) can't fit a nowrap pill button —
+// let it wrap and slim down below md.
+.pricing-table__cta-cell .button {
+  @include abstracts.mq-down("md") {
+    white-space: normal;
+    padding-inline: var(--sp-xs);
+    font-size: var(--fs-sm);
+  }
+}

@@ -1,0 +1,90 @@
+{{/* BEM block `footer` — inverse band (see _footer.scss): background is
+  --color-inverse-band-bg and content re-asserts dark-scheme tokens
+  verbatim regardless of the page's own scheme. Info column (brand +
+  opening-hours line + social links, all dummy exampleSite identity) beside
+  three nav columns driven by the footercompany/footerservices/
+  footerresources menus (Hugo lowercases menu config keys — dotted template
+  field access must match) + copyright. Social hrefs are placeholders
+  (https://example.com) — anchors fire no requests, so the zero-third-party
+  gate is untouched; icons are hand-drawn inline SVGs, aria-hidden, with
+  the accessible name on the link. */}}
+<footer class="footer">
+  <div class="footer__inner container">
+    <div class="footer__grid">
+      <div class="footer__info">
+        <p class="footer__brand">{{ .Site.Title }}</p>
+        <p class="footer__meta">
+          {{ i18n "footerHours" }}
+          <span class="footer__meta-note">{{ i18n "footerHoursNote" }}</span>
+        </p>
+        <ul class="footer__social" role="list">
+          <li class="footer__social-item">
+            <a class="footer__social-link" href="https://example.com/" aria-label="{{ i18n "footerSocialLinkedinLabel" }}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="2.5" />
+                <path d="M8 11.5V16" />
+                <path d="M8 8v.01" />
+                <path d="M12 16v-4.5" />
+                <path d="M12 13.5a2.5 2.5 0 0 1 5 0V16" />
+              </svg>
+            </a>
+          </li>
+          <li class="footer__social-item">
+            <a class="footer__social-link" href="https://example.com/" aria-label="{{ i18n "footerSocialXLabel" }}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="m5 4.5 14 15" />
+                <path d="M18.5 4.5 5.5 19.5" />
+              </svg>
+            </a>
+          </li>
+          <li class="footer__social-item">
+            <a class="footer__social-link" href="https://example.com/" aria-label="{{ i18n "footerSocialInstagramLabel" }}">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="4.5" />
+                <circle cx="12" cy="12" r="4" />
+                <path d="M17 7v.01" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer__nav">
+        <nav class="footer__column" aria-label="{{ i18n "footerCompanyHeading" }}">
+          <h2 class="footer__heading">{{ i18n "footerCompanyHeading" }}</h2>
+          <ul class="footer__list" role="list">
+            {{ range .Site.Menus.footercompany }}
+              <li class="footer__item">
+                <a class="footer__link" href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </nav>
+
+        <nav class="footer__column" aria-label="{{ i18n "footerServicesHeading" }}">
+          <h2 class="footer__heading">{{ i18n "footerServicesHeading" }}</h2>
+          <ul class="footer__list" role="list">
+            {{ range .Site.Menus.footerservices }}
+              <li class="footer__item">
+                <a class="footer__link" href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </nav>
+
+        <nav class="footer__column" aria-label="{{ i18n "footerResourcesHeading" }}">
+          <h2 class="footer__heading">{{ i18n "footerResourcesHeading" }}</h2>
+          <ul class="footer__list" role="list">
+            {{ range .Site.Menus.footerresources }}
+              <li class="footer__item">
+                <a class="footer__link" href="{{ .URL }}">{{ .Name }}</a>
+              </li>
+            {{ end }}
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <p class="footer__copyright">{{ i18n "footerCopyright" (dict "year" now.Year "name" .Site.Title) }}</p>
+  </div>
+</footer>

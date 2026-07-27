@@ -37,6 +37,50 @@ jobs:
       - run: pnpm build
       - run: node tool/check_page_budget.mjs
 
+  # Full pillar gate for the inspired-beings theme's exampleSite: build → serve →
+  # pa11y-ci (light + dark) over every page, both locales → per-page weight budget +
+  # zero third-party requests (tool/page-budget.template.json — its own budget file,
+  # separate from the live site's, with a justified per-page override for the
+  # image-bearing /products/notably/ page).
+  # Runs only when theme files or one of the gate scripts/configs below changed
+  # (see the paths-filter), or always on the theme branch.
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@7b450fff21473bca461d4b92ce414b9d0420d706 # v4.0.2
+        id: changes
+        with:
+          filters: |
+            template:
+              - 'themes/**'
+              - '.github/workflows/ci.yml'
+              - 'tool/check_a11y.sh'
+              - 'tool/check_page_budget.mjs'
+              - 'tool/page-budget.template.json'
+              - '.pa11yci.template.json'
+              - '.pa11yci.template.dark.json'
+              - 'mise.toml'
+              - 'pnpm-lock.yaml'
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        uses: jdx/mise-action@c37c93293d6b742fc901e1406b8f764f6fb19dac # v2
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        run: pnpm install --frozen-lockfile
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        # Hugo's PostCSS step shells out to the `postcss` binary, which only
+        # resolves via node_modules/.bin (pnpm doesn't put it on PATH outside
+        # a package.json script).
+        run: PATH="$PWD/node_modules/.bin:$PATH" hugo -s themes/inspired-beings/exampleSite --themesDir ../.. --gc --minify
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        name: a11y — light
+        run: ./tool/check_a11y.sh themes/inspired-beings/exampleSite/public .pa11yci.template.json
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        name: a11y — dark
+        run: ./tool/check_a11y.sh themes/inspired-beings/exampleSite/public .pa11yci.template.dark.json
+      - if: steps.changes.outputs.template == 'true' || github.ref == 'refs/heads/feat/theme-inspired-beings'
+        name: page budget + zero third-party
+        run: node tool/check_page_budget.mjs themes/inspired-beings/exampleSite/public tool/page-budget.template.json
+
   # Same gate the deploy relies on, kept on every PR so a new alert surfaces here first.
   security-alerts:
     runs-on: ubuntu-latest

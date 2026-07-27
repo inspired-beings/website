@@ -1,0 +1,43 @@
+---
+title: "Cloud & DevOps"
+weight: 20
+icon: "☁️"
+tagline: "Une infrastructure qui grandit avec vous, pas contre vous."
+summary: "Infrastructure as code, architecture cloud maîtrisée en coût et pipelines de déploiement que votre équipe peut réellement exploiter une fois que nous sommes partis."
+audience:
+  - "Équipes dont l'infrastructure ne vit que dans la tête d'un seul ingénieur."
+  - "Entreprises confrontées à une facture cloud surprise, sans responsable ni explication claire."
+  - "Startups qui anticipent un pic de trafic, une levée de fonds ou un audit de conformité."
+  - "Équipes qui déploient manuellement et veulent un vrai pipeline CI/CD."
+coverage:
+  - title: "Audit d'infrastructure"
+    body: "Une cartographie claire de ce qui tourne, ce que ça coûte, et ce qui casserait en premier sous charge."
+  - title: "Infrastructure as code"
+    body: "Vos environnements définis en code versionné, reproductibles depuis zéro plutôt qu'ajustés à la main de mémoire."
+  - title: "Pipelines CI/CD"
+    body: "Des pipelines de build, test et déploiement automatisés avec de vrais chemins de retour arrière, pour qu'une mauvaise mise en production se corrige en cinq minutes, pas en un week-end."
+  - title: "Coûts & dimensionnement"
+    body: "Une infrastructure dimensionnée au juste besoin, avec une supervision qui signale le gaspillage avant qu'il n'apparaisse sur la facture."
+  - title: "Préparation aux incidents"
+    body: "Alerting, runbooks et astreintes que votre équipe peut faire tourner sans nous avoir en numéro d'urgence."
+stats:
+  - value: "65"
+    unit: "%"
+    label: "Réduction moyenne des coûts cloud"
+  - value: "99,95"
+    unit: "%"
+    label: "SLA de disponibilité"
+  - value: "12"
+    unit: "min"
+    label: "Durée médiane de déploiement"
+  - value: "24"
+    unit: "/7"
+    label: "Couverture de réponse aux incidents"
+faq:
+  - q: "Avec quels fournisseurs cloud travaillez-vous ?"
+    a: "AWS, GCP et Azure — le choix dépend de votre existant et de vos contraintes, pas d'une préférence figée."
+  - q: "Pouvez-vous reprendre une infrastructure construite par quelqu'un d'autre ?"
+    a: "Oui — c'est le cas de la plupart de nos missions. Nous auditons avant de toucher à quoi que ce soit, pour comprendre pourquoi les choses sont construites ainsi avant d'y changer quoi que ce soit."
+  - q: "Proposez-vous un accompagnement infrastructure au-delà du projet initial ?"
+    a: "Oui, via notre offre Maintenance & TMA — supervision, correctifs et revues de capacité en forfait récurrent, pas en one-shot."
+---

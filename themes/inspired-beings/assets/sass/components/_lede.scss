@@ -1,0 +1,42 @@
+@use "../abstracts";
+
+// Indented lead statement: heading + large paragraph + action, inset from
+// the container's left edge on wide screens (12-col placement).
+.lede {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-xl) var(--sp-md);
+}
+
+.lede__heading,
+.lede__body {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("lg") {
+    grid-column: 3 / 11;
+  }
+}
+
+.lede__heading {
+  font-size: clamp(var(--fs-xl), 1.5vw + 1rem, var(--fs-3xl));
+  line-height: 1.625;
+  white-space: pre-line;
+}
+
+.lede__body {
+  color: var(--color-text-default);
+  font-size: var(--fs-sm);
+  line-height: 2;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+  }
+}
+
+.lede__cta {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("lg") {
+    grid-column: 3 / -1;
+  }
+}

@@ -1,0 +1,45 @@
+{{/* FAQ — hero → grouped accordions → CTA band. Content model:
+  `groups[]{title,items[]{q,a}}`. Each item reuses the `.accordion`/
+  `.accordion__summary`/`.accordion__content` markup directly (data-driven
+  from front matter) — not the `{{< accordion >}}` shortcode, which is for
+  Markdown-authored content. */}}
+{{ define "main" }}
+  <article>
+    <section class="hero hero--narrow">
+      <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}
+          <p class="hero__lead">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    {{ range $gi, $group := .Params.groups }}
+      <section class="section section--tight section--ruled" aria-labelledby="faq-group-heading-{{ $gi }}">
+        <div class="container">
+          <h2 id="faq-group-heading-{{ $gi }}">{{ $group.title }}</h2>
+          {{/* No grid `gap` here: `.accordion + .accordion` (component-owned)
+            already spaces consecutive items. */}}
+          <div class="section__body section__body--measure">
+            {{ range $group.items }}
+              <details class="accordion">
+                <summary class="accordion__summary">{{ .q }}</summary>
+                <div class="accordion__content">
+                  <p>{{ .a }}</p>
+                </div>
+              </details>
+            {{ end }}
+          </div>
+        </div>
+      </section>
+    {{ end }}
+
+    <section class="section section--band section--gap-top section--gap-bottom">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "faqCtaHeading")
+        "body" (i18n "faqCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "faqCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}

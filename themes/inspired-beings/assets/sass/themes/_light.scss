@@ -1,0 +1,163 @@
+// Light-scheme tokens.
+//
+// This partial also establishes the scheme-invariant primitive scales
+// (spacing, type, radii, shadows, z-index, transitions, container widths) —
+// they don't change between light/dark, so they live once here as the base
+// `:root`, and `_dark.scss` only ever overrides the color semantics below.
+// Color primitives live in `_primitives.scss` — the semantic mapping below
+// only ever `var()`-references them.
+//
+// Mapping copied VERBATIM from the design spec's semantic table, "Light"
+// column (`.agents/docs/technical/website-template-design.md`).
+
+@use "sass:map";
+
+// ---- Non-color primitive scales (scheme-invariant) -----------------------
+
+$spacing: (
+  "2xs": 4px,
+  "xs": 8px,
+  "sm": 12px,
+  "md": 16px,
+  "lg": 24px,
+  "xl": 32px,
+  "2xl": 48px,
+  "3xl": 64px,
+  "4xl": 96px,
+  "5xl": 128px,
+);
+
+// Modular scale: base 1rem ("md"), ratio 1.25 (major third).
+$font-sizes: (
+  "xs": 0.64rem,
+  "sm": 0.8rem,
+  "md": 1rem,
+  "lg": 1.25rem,
+  "xl": 1.563rem,
+  "2xl": 1.953rem,
+  "3xl": 2.441rem,
+  "4xl": 3.052rem,
+  "5xl": 3.815rem,
+  "6xl": 4.768rem,
+);
+
+$radii: (
+  "sm": 4px,
+  "md": 8px,
+  "lg": 16px,
+  "xl": 32px,
+  "full": 9999px,
+);
+
+$shadows: (
+  "sm": 0 1px 2px rgba(9, 16, 24, 0.08),
+  "md": 0 4px 12px rgba(9, 16, 24, 0.12),
+  "lg": 0 12px 32px rgba(9, 16, 24, 0.16),
+);
+
+$z-index: (
+  "dropdown": 10,
+  "sticky": 20,
+  "overlay": 30,
+  "modal": 40,
+  "toast": 50,
+  "skip-link": 100,
+);
+
+$transitions: (
+  "fast": 120ms ease,
+  "base": 200ms ease,
+  "slow": 320ms ease,
+);
+
+$container: (
+  "max-width": 80rem,
+  "padding-inline": 1rem,
+);
+
+// ---- Light semantic mapping (spec § Visual identity → semantic table,
+// "Light" column) — every value is a `var()` reference into the shared
+// primitive layer (`_primitives.scss`), never a re-declared hex.
+
+// TEMP(comparison-skin): brand mapping parked for the design-review
+// comparison period — restore with the revert:
+//   surface-default frost-0 · surface-alt frost-1 · surface-raised frost-2 ·
+//   text-default night · text-muted slate-1 · text-subtle slate-2 ·
+//   accent peri-600/700/800 · on-accent frost-2 · border line-light/
+//   line-light-subtle · inverse-band-bg night · link peri-600 · focus night ·
+//   error error-light · success spring-deep · warning sun-deep ·
+//   surface-tertiary TBD — brand pass · accent-surface TBD — brand pass ·
+//   accent-soft TBD — brand pass
+// The three TBD tokens were born during the comparison period and back
+// PERMANENT components (chip--flat, service-card icon, button--outlined
+// active, pricing-table fills) — the revert must assign real brand values
+// (light AND dark), and the `--color-primitive-cmp-*` primitives they
+// resolve through must survive until then or be replaced in the same
+// change.
+@mixin light-semantics {
+  --color-surface-default: var(--color-primitive-cmp-white);
+  --color-surface-alt: var(--color-primitive-cmp-paper);
+  --color-surface-raised: var(--color-primitive-cmp-white);
+  // TEMP(comparison-skin): three tokens born during the comparison period —
+  // brand values to be assigned at the skin revert (owner: typography/brand
+  // pass). tertiary = filled chip/icon squares; accent-surface = highlighted
+  // tint; accent-soft = badge fill.
+  --color-surface-tertiary: var(--color-primitive-cmp-stone-tint);
+  --color-accent-surface: var(--color-primitive-cmp-green-tint);
+  --color-accent-soft: var(--color-primitive-cmp-green-soft);
+  --color-text-default: var(--color-primitive-cmp-ink);
+  --color-text-muted: var(--color-primitive-cmp-gray);
+  --color-text-subtle: var(--color-primitive-cmp-gray-soft);
+  --color-accent-default: var(--color-primitive-cmp-green);
+  --color-accent-hover: var(--color-primitive-cmp-green-deep);
+  --color-accent-active: var(--color-primitive-cmp-green-deep);
+  --color-on-accent: var(--color-primitive-cmp-white);
+  --color-border-default: var(--color-primitive-cmp-stone);
+  --color-border-subtle: var(--color-primitive-cmp-stone-soft);
+  --color-inverse-band-bg: var(--color-primitive-cmp-coal);
+  --color-link: var(--color-primitive-cmp-green);
+  --color-focus-ring: var(--color-primitive-cmp-ink);
+  --color-error: var(--color-primitive-cmp-error);
+  --color-success: var(--color-primitive-cmp-success);
+  --color-warning: var(--color-primitive-cmp-warning);
+}
+
+:root {
+  @each $name, $value in $spacing {
+    --sp-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $font-sizes {
+    --fs-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $radii {
+    --radius-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $shadows {
+    --shadow-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $z-index {
+    --z-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $transitions {
+    --transition-#{$name}: #{$value};
+  }
+
+  @each $name, $value in $container {
+    --container-#{$name}: #{$value};
+  }
+
+  @include light-semantics;
+}
+
+// Manual override: OS reports dark but the user picked light via the
+// theme toggle (Task 3). Same values as the :root default above — repeated
+// per the brief so the attribute selector always wins regardless of cascade
+// order between this file and `_dark.scss`.
+:root[data-theme="light"] {
+  @include light-semantics;
+}

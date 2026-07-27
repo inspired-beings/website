@@ -1,0 +1,11 @@
+{{/* Accordion — native <details>/<summary>, zero JS. Params: `title`
+  (required, becomes `.accordion__summary`), `open` (optional, any truthy
+  string renders the `open` attribute so the panel starts expanded). Inner
+  content is Markdown, rendered through the calling page's own renderer so
+  it gets the same Goldmark treatment as the surrounding content. */}}
+<details class="accordion"{{ if .Get "open" }} open{{ end }}>
+  <summary class="accordion__summary">{{ .Get "title" }}</summary>
+  <div class="accordion__content">
+    {{ .Inner | .Page.RenderString }}
+  </div>
+</details>

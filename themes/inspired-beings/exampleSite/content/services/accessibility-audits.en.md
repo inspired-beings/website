@@ -1,0 +1,43 @@
+---
+title: "Accessibility Audits"
+weight: 40
+icon: "♿"
+tagline: "WCAG 2.2 AA compliance that actually ships."
+summary: "Audits with concrete, prioritised fixes rather than a report that gathers dust — accessibility built into the workflow, not bolted on at the end."
+audience:
+  - "Public-sector or regulated organisations needing a defensible WCAG 2.2 AA audit."
+  - "Product teams that have never run an audit with real assistive-technology users."
+  - "Companies retrofitting accessibility into a product built without it."
+  - "Design and engineering teams who want accessibility built into their process going forward."
+coverage:
+  - title: "Automated & manual audit"
+    body: "Axe and htmlcs catch the mechanical issues; manual review catches everything a scanner can't, like focus order and meaning."
+  - title: "Assistive technology testing"
+    body: "Real testing with screen readers and keyboard-only navigation, not just automated tooling's best guess."
+  - title: "Prioritised fix list"
+    body: "Findings ranked by user impact and effort, so your team fixes what matters first, not what's easiest."
+  - title: "Design system remediation"
+    body: "Fixes applied at the component level so one correction closes the gap across every page that uses it."
+  - title: "Process & training"
+    body: "Lightweight checks your team can run themselves, so accessibility debt stops accumulating after we leave."
+stats:
+  - value: "60"
+    unit: "+"
+    label: "Accessibility audits delivered"
+  - value: "100"
+    unit: "%"
+    label: "AA-level fixes verified with real assistive tech"
+  - value: "15"
+    unit: "d"
+    label: "Median audit-to-fix-list turnaround"
+  - value: "8"
+    unit: "yrs"
+    label: "Accessibility practice experience"
+faq:
+  - q: "Do you test with real assistive technology, or only automated tools?"
+    a: "Both — automated tools like axe and htmlcs catch mechanical issues fast, but every audit includes manual testing with screen readers and keyboard-only navigation."
+  - q: "Can you audit a product that hasn't launched yet?"
+    a: "Yes — auditing designs and staging builds before launch is far cheaper than retrofitting compliance afterwards."
+  - q: "Do you provide a compliance statement we can publish?"
+    a: "Yes — a WCAG 2.2 AA conformance statement summarising scope, results and any remaining exceptions with a remediation timeline."
+---

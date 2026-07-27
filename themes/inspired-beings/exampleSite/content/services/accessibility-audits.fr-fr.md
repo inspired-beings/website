@@ -1,0 +1,43 @@
+---
+title: "Audits d'accessibilité"
+weight: 40
+icon: "♿"
+tagline: "Une conformité WCAG 2.2 AA qui se traduit vraiment en production."
+summary: "Des audits avec des correctifs concrets et priorisés, pas un rapport qui prend la poussière — l'accessibilité intégrée au flux de travail, pas ajoutée à la fin."
+audience:
+  - "Organismes publics ou secteurs réglementés ayant besoin d'un audit WCAG 2.2 AA opposable."
+  - "Équipes produit n'ayant jamais fait tester leur produit par de vrais utilisateurs de technologies d'assistance."
+  - "Entreprises qui rattrapent l'accessibilité sur un produit conçu sans elle."
+  - "Équipes design et engineering qui veulent intégrer l'accessibilité à leur process pour la suite."
+coverage:
+  - title: "Audit automatisé & manuel"
+    body: "Axe et htmlcs détectent les problèmes mécaniques ; la revue manuelle détecte tout ce qu'un scanner ne peut pas voir, comme l'ordre de focus ou le sens."
+  - title: "Tests avec technologies d'assistance"
+    body: "De vrais tests avec lecteurs d'écran et navigation au clavier seul, pas seulement la meilleure estimation d'un outil automatisé."
+  - title: "Liste de correctifs priorisée"
+    body: "Des constats classés par impact utilisateur et effort, pour que votre équipe corrige d'abord ce qui compte, pas ce qui est le plus simple."
+  - title: "Remédiation du design system"
+    body: "Des correctifs appliqués au niveau du composant, pour qu'une seule correction referme l'écart sur toutes les pages qui l'utilisent."
+  - title: "Process & formation"
+    body: "Des vérifications légères que votre équipe peut faire elle-même, pour que la dette d'accessibilité cesse de s'accumuler après notre départ."
+stats:
+  - value: "60"
+    unit: "+"
+    label: "Audits d'accessibilité réalisés"
+  - value: "100"
+    unit: "%"
+    label: "Correctifs AA vérifiés avec de vraies technologies d'assistance"
+  - value: "15"
+    unit: "j"
+    label: "Délai médian audit → liste de correctifs"
+  - value: "8"
+    unit: "ans"
+    label: "Expérience de la pratique accessibilité"
+faq:
+  - q: "Testez-vous avec de vraies technologies d'assistance, ou seulement des outils automatisés ?"
+    a: "Les deux — les outils automatisés comme axe et htmlcs détectent vite les problèmes mécaniques, mais chaque audit inclut des tests manuels avec lecteurs d'écran et navigation au clavier seul."
+  - q: "Pouvez-vous auditer un produit qui n'est pas encore lancé ?"
+    a: "Oui — auditer des maquettes et des environnements de recette avant le lancement coûte bien moins cher que de rattraper la conformité après coup."
+  - q: "Fournissez-vous une déclaration de conformité publiable ?"
+    a: "Oui — une déclaration de conformité WCAG 2.2 AA résumant le périmètre, les résultats et les éventuelles dérogations restantes avec un calendrier de remédiation."
+---

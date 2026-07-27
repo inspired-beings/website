@@ -1,0 +1,19 @@
+{{/* BEM blocks `stats-band` (grid wrapper) + `stat` (`stat__value|unit|
+  label`). Dict params: `stats` (list, required), each `{value, unit
+  (optional, e.g. "%", "+", "yrs"), label}`; `description` (optional,
+  muted paragraph occupying the band's first cells); `class` (optional,
+  extra classes mixed onto the root — e.g. `section__body`). Usage: see
+  the styleguide's "Stats band" section. */}}
+<div class="stats-band{{ with .class }} {{ . }}{{ end }}">
+  {{ with .description }}
+    <p class="stats-band__description">{{ . }}</p>
+  {{ end }}
+  {{ range .stats }}
+    <div class="stat">
+      <p class="stat__value">
+        {{ .value }}{{ with .unit }}<span class="stat__unit">{{ . }}</span>{{ end }}
+      </p>
+      <p class="stat__label">{{ .label }}</p>
+    </div>
+  {{ end }}
+</div>

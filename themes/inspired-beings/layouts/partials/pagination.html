@@ -1,0 +1,39 @@
+{{/* BEM block `pagination` — `<nav aria-label>` + `[aria-current="page"]`.
+  Takes a Hugo Paginator object directly (not wrapped in a dict): call as
+  `{{ partial "pagination.html" .Paginator }}` from any list/section/
+  taxonomy template (Task 6-11: news list, category pages, product index).
+  Reads exactly the fields Hugo's real Paginator exposes: `.PageNumber`
+  (current page), `.Pagers` (list of `{PageNumber, URL}`), `.HasPrev`/
+  `.Prev.URL`, `.HasNext`/`.Next.URL`.
+
+  Single pages (e.g. this styleguide) have no real pageable content, so
+  there's no genuine `.Paginator` to pass — per the brief, a fake context is
+  fine there as long as it's documented: build a plain `dict` with the exact
+  same field names (`PageNumber`, `Pagers`, `HasPrev`, `HasNext`, `Prev`,
+  `Next`) so this same template code runs unmodified against either. Go
+  templates resolve `.Field` identically against a map key or a struct
+  field/method, so the fake and the real object are interchangeable from
+  this partial's point of view. */}}
+<nav class="pagination" aria-label="{{ i18n "paginationLabel" }}">
+  <ul class="pagination__list" role="list">
+    {{ if .HasPrev }}
+      <li class="pagination__item">
+        <a class="pagination__link pagination__link--prev" href="{{ .Prev.URL }}">{{ i18n "paginationPreviousLabel" }}</a>
+      </li>
+    {{ end }}
+    {{ range .Pagers }}
+      <li class="pagination__item">
+        {{ if eq .PageNumber $.PageNumber }}
+          <span class="pagination__link pagination__link--current" aria-current="page">{{ .PageNumber }}</span>
+        {{ else }}
+          <a class="pagination__link" href="{{ .URL }}">{{ .PageNumber }}</a>
+        {{ end }}
+      </li>
+    {{ end }}
+    {{ if .HasNext }}
+      <li class="pagination__item">
+        <a class="pagination__link pagination__link--next" href="{{ .Next.URL }}">{{ i18n "paginationNextLabel" }}</a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

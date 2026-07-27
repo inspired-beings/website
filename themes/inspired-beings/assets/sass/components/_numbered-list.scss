@@ -1,0 +1,23 @@
+// Big-numbered feature list (01, 02, …) — the `<ol>` conveys order to
+// assistive tech, the number span is decorative (callers keep aria-hidden).
+.numbered-list__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xs);
+}
+
+.numbered-list__number {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--color-accent-default);
+}
+
+.numbered-list__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.numbered-list__body {
+  color: var(--color-text-muted);
+}

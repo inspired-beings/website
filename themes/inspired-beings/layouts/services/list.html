@@ -1,0 +1,35 @@
+{{/* Services index — alternating `.showcase` rows per the visual reference:
+  title left / icon+tagline+summary right, flipped on every other row.
+  Content model: `_index.{en,fr-fr}.md` carries only `title` + `lead`; each
+  row's content is the linked service page's own front matter (`icon`,
+  `tagline`, `summary` — see `archetypes/service.md`), sorted by `weight`. */}}
+{{ define "main" }}
+  <article class="container">
+    <header class="hero hero--narrow hero--intro">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}
+        <p class="hero__lead">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <div class="showcase section section--flush-top">
+      {{ range $i, $page := .RegularPages.ByWeight }}
+        <div class="showcase__row{{ if eq (mod $i 2) 1 }} showcase__row--reverse{{ end }}">
+          <h2 class="showcase__title">
+            <a class="standalone-link" href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+          </h2>
+          <div class="showcase__detail">
+            {{ with $page.Params.icon }}
+              <span class="showcase__icon" aria-hidden="true">{{ . }}</span>
+            {{ end }}
+            <p class="showcase__tagline">{{ $page.Params.tagline }}</p>
+            <p class="showcase__summary">{{ $page.Params.summary }}</p>
+            <a class="standalone-link standalone-link--offset" href="{{ $page.RelPermalink }}">
+              {{ i18n "servicesIndexLinkLabel" }}
+            </a>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

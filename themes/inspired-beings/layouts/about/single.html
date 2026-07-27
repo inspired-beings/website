@@ -1,0 +1,78 @@
+{{/* About — hero → philosophy → founder message (`.quote`) → facts table →
+  history timeline → join-team CTA (links `/careers/`) → closing CTA band.
+  Assembled entirely from shared primitives/components; no page-scoped CSS.
+  Content model: `philosophy` (string), `founder_message{body,name,role}`,
+  `facts[]{term,value}` (reused verbatim by `facts-table.html`),
+  `history[]{year,event}`.
+
+  `history[]` uses its own 2-field shape; the reused `timeline.html` partial
+  wants `{date,title,body}`, so `year`→`date`, `event`→`title`, and `body`
+  is passed as an explicit empty string (no 3rd field invented) — an empty
+  `<p>` is not an accessibility violation, just an unused slot in a
+  component built for a richer caller. */}}
+{{ define "main" }}
+  <article>
+    <section class="hero hero--narrow">
+      <div class="container">
+        <h1>{{ .Title }}</h1>
+        {{ with .Params.lead }}
+          <p class="hero__lead">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="about-philosophy-heading">
+      <div class="container">
+        <h2 id="about-philosophy-heading">{{ i18n "aboutPhilosophyHeading" }}</h2>
+        <p class="section__body section__body--measure section__lede">{{ .Params.philosophy }}</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-founder-heading">
+      <div class="container">
+        <h2 id="about-founder-heading">{{ i18n "aboutFounderHeading" }}</h2>
+        <blockquote class="quote section__body">
+          <p class="quote__body">{{ .Params.founder_message.body }}</p>
+          <footer class="quote__attribution">
+            <cite class="quote__name">{{ .Params.founder_message.name }}</cite>
+            <span class="quote__role">{{ .Params.founder_message.role }}</span>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-facts-heading">
+      <div class="container">
+        <h2 id="about-facts-heading">{{ i18n "aboutFactsHeading" }}</h2>
+        {{ partial "facts-table.html" (dict "facts" .Params.facts "class" "section__body") }}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="about-history-heading">
+      <div class="container">
+        <h2 id="about-history-heading">{{ i18n "aboutHistoryHeading" }}</h2>
+        {{ $events := slice }}
+        {{ range .Params.history }}
+          {{ $events = $events | append (dict "date" .year "title" .event "body" "") }}
+        {{ end }}
+        {{ partial "timeline.html" (dict "events" $events "class" "section__body") }}
+      </div>
+    </section>
+
+    <section class="section section--band section--gap-top">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "aboutJoinHeading")
+        "body" (i18n "aboutJoinBody")
+        "actions" (slice (dict "href" ("careers/" | relLangURL) "label" (i18n "aboutJoinLabel") "variant" "outlined"))
+      ) }}
+    </section>
+
+    <section class="section section--band section--gap-top-sm section--gap-bottom">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "aboutCtaHeading")
+        "body" (i18n "aboutCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "aboutCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}

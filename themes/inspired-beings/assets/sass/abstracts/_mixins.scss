@@ -1,0 +1,16 @@
+@use "functions";
+
+/// Apply @content from `$bp` and up. `$bp` is a quoted breakpoint-map key,
+/// e.g. `mq-up("md")` (unquoted `2xl` is not a valid Sass identifier).
+@mixin mq-up($bp) {
+  @media (min-width: functions.breakpoint($bp)) {
+    @content;
+  }
+}
+
+/// Apply @content strictly below `$bp`.
+@mixin mq-down($bp) {
+  @media (max-width: functions.breakpoint($bp) - 0.01em) {
+    @content;
+  }
+}

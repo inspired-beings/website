@@ -1,0 +1,59 @@
+{{/* BEM block `top-bar`. Desktop nav (>= lg) shows the "Services" entry as
+  an APG Disclosure trigger (real button + aria-expanded, real <a> links in
+  the panel — not an ARIA menu, since the children are genuine navigation
+  targets). Burger (< lg) toggles `.top-bar__nav`; see _top-bar.scss for the
+  no-JS fallback rationale. */}}
+<header class="top-bar">
+  <div class="top-bar__inner container">
+    <a class="top-bar__logo" href="{{ "/" | relLangURL }}">{{ .Site.Title }}</a>
+
+    <button type="button" class="top-bar__burger" data-menu="burger" aria-controls="top-bar-nav">
+      {{ i18n "topBarMenuToggleLabel" }}
+    </button>
+
+    <nav class="top-bar__nav" id="top-bar-nav" data-menu="nav" aria-label="{{ i18n "topBarNavLabel" }}">
+      <ul class="top-bar__list" role="list">
+        {{ range .Site.Menus.main }}
+          {{ if .HasChildren }}
+            {{ $isActiveGroup := $.HasMenuCurrent .Menu . }}
+            <li class="top-bar__item top-bar__dropdown{{ if $isActiveGroup }} top-bar__dropdown--active{{ end }}">
+              <button
+                type="button"
+                class="top-bar__link top-bar__dropdown-toggle"
+                data-menu="dropdown-toggle"
+                aria-expanded="false"
+                aria-controls="top-bar-dropdown-{{ .Identifier }}"
+              >
+                {{ .Name }}
+              </button>
+              <ul class="top-bar__dropdown-panel" id="top-bar-dropdown-{{ .Identifier }}" role="list">
+                {{ range .Children }}
+                  <li class="top-bar__dropdown-item">
+                    <a
+                      class="top-bar__link"
+                      href="{{ .URL }}"
+                      {{ if $.IsMenuCurrent .Menu . }}aria-current="page"{{ end }}
+                    >
+                      {{ .Name }}
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
+            </li>
+          {{ else }}
+            <li class="top-bar__item">
+              <a class="top-bar__link" href="{{ .URL }}" {{ if $.IsMenuCurrent .Menu . }}aria-current="page"{{ end }}>
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </nav>
+
+    <div class="top-bar__actions">
+      {{ partial "theme-toggle.html" . }}
+      {{ partial "language-switcher.html" . }}
+    </div>
+  </div>
+</header>

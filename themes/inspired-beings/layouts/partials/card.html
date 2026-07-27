@@ -1,0 +1,16 @@
+{{/* BEM block `card` (`card__icon|title|body|link`). Dict params:
+  `icon` (optional, a short glyph/emoji — no icon-font dependency),
+  `title` (required), `body` (required),
+  `link` (optional dict `{href, label}`). Usage:
+  {{ partial "card.html" (dict "icon" "🛠" "title" "…" "body" "…"
+    "link" (dict "href" "/services/" "label" "Learn more")) }} */}}
+<div class="card">
+  {{ with .icon }}
+    <span class="card__icon" aria-hidden="true">{{ . }}</span>
+  {{ end }}
+  <h3 class="card__title">{{ .title }}</h3>
+  <p class="card__body">{{ .body }}</p>
+  {{ with .link }}
+    <a class="card__link" href="{{ .href }}">{{ .label }}</a>
+  {{ end }}
+</div>

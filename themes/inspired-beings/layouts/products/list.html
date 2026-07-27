@@ -1,0 +1,34 @@
+{{/* Products index — card grid (per the design spec: "product index (card
+  grid)", unlike the services index's alternating `.showcase` rows).
+  Content model: `_index.{en,fr-fr}.md` carries only `title` + `lead` (same
+  shape as `services/_index.md`); each card's content is the linked
+  product's own front matter (`icon`, `tagline` — see
+  `archetypes/product.md`), sorted by `weight`. Reuses `card.html` verbatim.
+
+  The grouping `<h2>` above the grid is a real, visible heading: the
+  heading-bearing element inside the grid is `card.html`'s `<h3
+  class="card__title">`, so without it the page would skip h1→h3 (axe's
+  `heading-order`) — same pattern every other card-grid section in the
+  theme uses. */}}
+{{ define "main" }}
+  <article class="container">
+    <header class="hero hero--narrow hero--intro">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lead }}
+        <p class="hero__lead">{{ . }}</p>
+      {{ end }}
+    </header>
+
+    <h2 class="section__heading">{{ i18n "productsIndexGridHeading" }}</h2>
+    <div class="grid grid--3 section section--flush-top">
+      {{ range .RegularPages.ByWeight }}
+        {{ partial "card.html" (dict
+          "icon" .Params.icon
+          "title" .Title
+          "body" .Params.tagline
+          "link" (dict "href" .RelPermalink "label" (i18n "productsIndexLinkLabel"))
+        ) }}
+      {{ end }}
+    </div>
+  </article>
+{{ end }}

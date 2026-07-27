@@ -1,0 +1,48 @@
+@use "../abstracts";
+
+// Figure: responsive, lazy image (see `partials/figure.html` for the Hugo
+// image-processing pipeline — this file is pure presentation).
+.figure {
+  margin: 0;
+}
+
+.figure__image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.figure__caption {
+  margin-block-start: var(--sp-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+// Caller-passed modifiers (via the partial/shortcode `class` param) —
+// context styling stays out of layout files.
+
+// Phone-aspect crop cap: keeps a 2-up mobile gallery row from stretching
+// screenshots edge to edge.
+.figure--capped {
+  max-width: 16rem;
+  margin-inline: auto;
+}
+
+// Figure sitting in article prose: more vertical air than the `.flow` owl
+// rhythm gives text blocks (declared after `.flow` in the bundle, so the
+// block-start margin wins the tie).
+.figure--spaced {
+  margin-block: var(--sp-lg);
+}
+
+// Wide rounded banner crop (hero imagery).
+.figure--panorama .figure__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+
+  @include abstracts.mq-up("md") {
+    aspect-ratio: 16 / 7;
+  }
+}

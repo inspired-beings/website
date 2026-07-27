@@ -1,0 +1,102 @@
+// Type-scale application + link/focus rules, plus the self-hosted font
+// pipeline (Task 2): @font-face for the two subset woff2 files and the
+// `--font-display`/`--font-body` tokens components consume.
+//
+// The woff2 URLs are injected by `partials/head.html` via Hugo's
+// `hugo:vars` bridge (fingerprinted `resources.Get` output) so the CSS
+// `url()` and the `<link rel="preload">` in head.html resolve to the exact
+// same fingerprinted path — no double download.
+@use "hugo:vars" as fonts;
+
+// TEMP(comparison-skin): brand @font-face blocks (Fraunces display + Karla
+// body) parked for the design-review comparison period — one single-weight
+// face carries ALL text, faithful to the comparison reference. Restore with
+// the revert:
+//   @font-face { font-family: "Fraunces"; src: url("#{fonts.$fraunces-url}") format("woff2"); font-weight: 340 600; font-style: normal; font-display: swap; }
+//   @font-face { font-family: "Karla"; src: url("#{fonts.$karla-url}") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+//   --font-display: Fraunces, Georgia, "Iowan Old Style", "Times New Roman", serif;
+//   --font-body: Karla, ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+@font-face {
+  font-family: "Bellefair";
+  src: url("#{fonts.$bellefair-url}") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  // TEMP(comparison-skin): one face for display AND body.
+  --font-display: Bellefair, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-body: Bellefair, Georgia, "Iowan Old Style", "Times New Roman", serif;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  color: var(--color-text-default);
+  background-color: var(--color-surface-default);
+
+  // TEMP(comparison-skin): the comparison face ships a single 400 weight —
+  // kill synthetic bolding so every weight renders as the true 400, exactly
+  // as the reference does. Inherited; remove with the revert.
+  font-synthesis: none;
+}
+
+h1 {
+  font-size: var(--fs-4xl);
+}
+
+h2 {
+  font-size: var(--fs-3xl);
+}
+
+h3 {
+  font-size: var(--fs-2xl);
+}
+
+h4 {
+  font-size: var(--fs-xl);
+}
+
+h5 {
+  font-size: var(--fs-lg);
+}
+
+h6 {
+  font-size: var(--fs-md);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  // TEMP(comparison-skin): 400 for the single-weight comparison face
+  // (brand value: 600 — restore with the revert).
+  font-weight: 400;
+}
+
+small {
+  font-size: var(--fs-sm);
+}
+
+// Running-text links are always underlined (WCAG 1.4.1 — no color-only cue).
+a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-accent-hover);
+}
+
+// Focus ring: 2px + 2px offset, text-default of the active context.
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

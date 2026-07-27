@@ -1,0 +1,32 @@
+{{/* Category page — the `categories` taxonomy's term page (kind `term`).
+  Content-adorned via `content/categories/<term>/_index.<lang>.md` (real
+  bilingual title, e.g. "Column"/"Chronique"), so `.Title` below is
+  authored copy, not a humanized slug. Renders the exact same body as
+  `news/list.html` (`partials/news-list-content.html`), scoped to this
+  term's own `.Paginator` (Hugo paginates term pages the same way as any
+  other list page) and with the current chip highlighted via `current` =
+  `.` (this term's own Page). Standard site container width, same as the
+  plain news list. */}}
+{{ define "main" }}
+  <article>
+    <section class="hero hero--intro">
+      <div class="container">
+        <h1>{{ .Title }}</h1>
+      </div>
+    </section>
+
+    <section class="section section--flush-top">
+      <div class="container">
+        {{ partial "news-list-content.html" (dict "paginator" .Paginator "current" .) }}
+      </div>
+    </section>
+
+    <section class="section section--band">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "newsCtaHeading")
+        "body" (i18n "newsCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "newsCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}

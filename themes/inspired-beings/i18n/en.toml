@@ -1,0 +1,652 @@
+# UI strings (EN). Populated as layouts/components are built in later tasks.
+
+[skipLink]
+other = "Skip to main content"
+
+[topBarNavLabel]
+other = "Primary navigation"
+
+[topBarMenuToggleLabel]
+other = "Menu"
+
+[languageSwitcherLabel]
+other = "Language"
+
+[languageSwitcherCurrentSuffix]
+other = "(current)"
+
+[themeToggleLabel]
+other = "Dark mode"
+
+[footerCompanyHeading]
+other = "Company"
+
+[footerServicesHeading]
+other = "Services"
+
+[footerResourcesHeading]
+other = "Resources"
+
+[footerHours]
+other = "Open Monday to Friday, 9:00 – 18:00 (CET)"
+
+[footerHoursNote]
+other = "(closed on weekends and public holidays)"
+
+[footerSocialLinkedinLabel]
+other = "LinkedIn"
+
+[footerSocialXLabel]
+other = "X"
+
+[footerSocialInstagramLabel]
+other = "Instagram"
+
+[footerCopyright]
+other = "© {{ .year }} {{ .name }}. All rights reserved."
+
+[formFieldDefaultError]
+other = "This field is invalid."
+
+[styleguideButtonsHeading]
+other = "Buttons"
+
+[styleguideSizeLargeLabel]
+other = "Large"
+
+[styleguideSizeMediumLabel]
+other = "Medium"
+
+[styleguideButtonSolidLabel]
+other = "Request a quote"
+
+[styleguideButtonOutlinedLabel]
+other = "Learn more"
+
+[styleguideButtonDisabledLabel]
+other = "Unavailable"
+
+[styleguideCardsHeading]
+other = "Cards"
+
+[styleguideCardOneTitle]
+other = "Web & App Development"
+
+[styleguideCardOneBody]
+other = "Full-stack builds across Node.js, TypeScript and modern frontend frameworks, from first commit to production."
+
+[styleguideCardLinkLabel]
+other = "Learn more"
+
+[styleguideCardTwoTitle]
+other = "Security Audits"
+
+[styleguideCardTwoBody]
+other = "Independent review of your codebase, infrastructure and dependency chain against current threat models."
+
+[styleguideChipsHeading]
+other = "Chips"
+
+[styleguideChipNeutralLabel]
+other = "Node.js"
+
+[styleguideChipAccentLabel]
+other = "Featured"
+
+[styleguideChipSuccessLabel]
+other = "Completed"
+
+[styleguideChipWarningLabel]
+other = "In review"
+
+[styleguideChipErrorLabel]
+other = "Deprecated"
+
+[styleguideFormsHeading]
+other = "Forms"
+
+[styleguideContactFormHeading]
+other = "Contact form"
+
+[styleguideFormNameLabel]
+other = "Full name"
+
+[styleguideFormNameHelp]
+other = "As it should appear on the quote."
+
+[styleguideFormEmailLabel]
+other = "Email address"
+
+[styleguideFormEmailErrorText]
+other = "Enter a valid email address."
+
+[styleguideFormTextareaLabel]
+other = "Project details"
+
+[styleguideFormTextareaHelp]
+other = "Tech stack, rough timeline, anything that helps us scope the work."
+
+[styleguideFormRadioLegend]
+other = "Preferred contact method"
+
+[styleguideFormRadioOptionEmail]
+other = "Email"
+
+[styleguideFormRadioOptionPhone]
+other = "Phone"
+
+[styleguideFormRadioOptionEither]
+other = "Either works"
+
+[styleguideFormNewsletterLabel]
+other = "Subscribe to our engineering newsletter"
+
+[styleguideFormConsentLabel]
+other = "I agree to the"
+
+[styleguideFormConsentLinkLabel]
+other = "Privacy Policy"
+
+[pricingTableFeatureColumnLabel]
+other = "Feature"
+
+[pricingTableIncludedLabel]
+other = "Included"
+
+[pricingTableNotIncludedLabel]
+other = "Not included"
+
+[pricingTableRecommendedLabel]
+other = "Recommended"
+
+[pricingTablePriceRowLabel]
+other = "Monthly price"
+
+[pricingTablePartialLabel]
+other = "Basic coverage"
+
+[pricingTableActionColumnLabel]
+other = "Action"
+
+[paginationLabel]
+other = "Pagination"
+
+[paginationPreviousLabel]
+other = "Previous"
+
+[paginationNextLabel]
+other = "Next"
+
+[styleguidePricingTableHeading]
+other = "Pricing table"
+
+[styleguidePricingTableCaption]
+other = "Compare plans"
+
+[styleguidePricingPlanStarterName]
+other = "Starter"
+
+[styleguidePricingPlanStarterPrice]
+other = "$1,900"
+
+[styleguidePricingPlanStarterPeriod]
+other = "/mo"
+
+[styleguidePricingPlanGrowthName]
+other = "Growth"
+
+[styleguidePricingPlanGrowthPrice]
+other = "$4,200"
+
+[styleguidePricingPlanGrowthPeriod]
+other = "/mo"
+
+[styleguidePricingPlanEnterpriseName]
+other = "Enterprise"
+
+[styleguidePricingPlanEnterprisePrice]
+other = "Custom"
+
+[styleguidePricingPlanStarterSub]
+other = "Early-stage teams"
+
+[styleguidePricingPlanGrowthSub]
+other = "Growing teams"
+
+[styleguidePricingPlanEnterpriseSub]
+other = "Critical systems"
+
+[styleguidePricingValuePartial]
+other = "Partial"
+
+[styleguidePricingCtaStarterLabel]
+other = "Get started"
+
+[styleguidePricingCtaGrowthLabel]
+other = "Get started"
+
+[styleguidePricingCtaEnterpriseLabel]
+other = "Talk to us"
+
+[styleguidePricingFeatureDedicatedEngineer]
+other = "Dedicated engineer"
+
+[styleguidePricingFeatureUptimeSla]
+other = "Uptime SLA"
+
+[styleguidePricingFeatureSecurityAudits]
+other = "Security audits / year"
+
+[styleguidePricingFeatureAccessibilityAudit]
+other = "Accessibility audit"
+
+[styleguidePricingFeaturePrioritySupport]
+other = "Priority support"
+
+[styleguidePricingValueUptimeStarter]
+other = "99.5%"
+
+[styleguidePricingValueUptimeGrowth]
+other = "99.9%"
+
+[styleguidePricingValueUptimeEnterprise]
+other = "99.99%"
+
+[styleguidePricingValueSecurityAuditsStarter]
+other = "1"
+
+[styleguidePricingValueSecurityAuditsGrowth]
+other = "2"
+
+[styleguidePricingValueSecurityAuditsEnterprise]
+other = "Unlimited"
+
+[styleguideStatsBandHeading]
+other = "Stats band"
+
+[styleguideStatOneLabel]
+other = "Shipped releases"
+
+[styleguideStatOneUnit]
+other = "+"
+
+[styleguideStatTwoLabel]
+other = "Median platform uptime"
+
+[styleguideStatTwoUnit]
+other = "%"
+
+[styleguideStatThreeLabel]
+other = "Average client tenure"
+
+[styleguideStatThreeUnit]
+other = "yrs"
+
+[styleguideStatFourLabel]
+other = "Incident response coverage"
+
+[styleguideStatFourUnit]
+other = "/7"
+
+[styleguideStepsHeading]
+other = "Steps"
+
+[styleguideStepOneTitle]
+other = "Discovery call"
+
+[styleguideStepOneBody]
+other = "We map your stack, constraints and goals in a 30-minute call."
+
+[styleguideStepTwoTitle]
+other = "Technical audit"
+
+[styleguideStepTwoBody]
+other = "We review your codebase, infrastructure and accessibility posture."
+
+[styleguideStepThreeTitle]
+other = "Proposal & scope"
+
+[styleguideStepThreeBody]
+other = "You get a fixed-scope proposal with milestones and pricing."
+
+[styleguideStepFourTitle]
+other = "Delivery & handover"
+
+[styleguideStepFourBody]
+other = "We ship in iterations, with documentation and knowledge transfer at each milestone."
+
+[styleguideTimelineHeading]
+other = "Timeline"
+
+[styleguideTimelineEventOneTitle]
+other = "Studio founded"
+
+[styleguideTimelineEventOneBody]
+other = "Started as a two-person Node.js consultancy in Paris."
+
+[styleguideTimelineEventTwoTitle]
+other = "First enterprise client"
+
+[styleguideTimelineEventTwoBody]
+other = "Delivered a full cloud migration for a mid-size retailer."
+
+[styleguideTimelineEventThreeTitle]
+other = "Security practice launched"
+
+[styleguideTimelineEventThreeBody]
+other = "Added independent security and accessibility audits to our services."
+
+[styleguideTimelineEventFourTitle]
+other = "Remote-first team"
+
+[styleguideTimelineEventFourBody]
+other = "Grew into a distributed team across three countries."
+
+[styleguideTimelineEventFiveTitle]
+other = "Component library published"
+
+[styleguideTimelineEventFiveBody]
+other = "Published our internal design system as this very theme."
+
+[styleguideFactsTableHeading]
+other = "Facts table"
+
+[styleguideFactsTableCaption]
+other = "At a glance"
+
+[styleguideFactTermFounded]
+other = "Founded"
+
+[styleguideFactValueFounded]
+other = "2018"
+
+[styleguideFactTermTeamSize]
+other = "Team size"
+
+[styleguideFactValueTeamSize]
+other = "14 engineers"
+
+[styleguideFactTermHeadquarters]
+other = "Headquarters"
+
+[styleguideFactValueHeadquarters]
+other = "Paris, France"
+
+[styleguideFactTermFocus]
+other = "Focus"
+
+[styleguideFactValueFocus]
+other = "Web, cloud & security"
+
+[styleguidePaginationHeading]
+other = "Pagination"
+
+[homeProblemsLabel]
+other = "Challenges"
+
+[homeServicesLabel]
+other = "Services"
+
+[homeStatsLabel]
+other = "Why choose us"
+
+[homePricingLabel]
+other = "Pricing"
+
+[homeNewsLabel]
+other = "News"
+
+[homeContactLabel]
+other = "Contact"
+
+[homeProblemsHeading]
+other = "Sound familiar?"
+
+[homeServicesHeading]
+other = "What we do"
+
+[homeServicesCtaLabel]
+other = "View all services"
+
+[homeStatsHeading]
+other = "By the numbers"
+
+[homePricingHeading]
+other = "Simple, transparent pricing"
+
+[homePricingCtaLabel]
+other = "View full pricing"
+
+[homeNewsHeading]
+other = "Latest from the team"
+
+[homeNewsCtaLabel]
+other = "View all news"
+
+[servicesIndexLinkLabel]
+other = "Learn more"
+
+[serviceAudienceHeading]
+other = "Who this is for"
+
+[serviceCoverageHeading]
+other = "What's covered"
+
+[serviceStatsHeading]
+other = "The impact, in numbers"
+
+[serviceFaqHeading]
+other = "Frequently asked questions"
+
+[serviceCtaHeading]
+other = "Ready to talk about your project?"
+
+[serviceCtaBody]
+other = "Tell us where you're stuck — we'll reply within one business day with next steps, not a sales script."
+
+[serviceCtaLabel]
+other = "Start the conversation"
+
+[pricingStepsHeading]
+other = "How an engagement works"
+
+[pricingPlansHeading]
+other = "Plans & pricing"
+
+[pricingComparisonCaption]
+other = "Compare the three plans"
+
+[pricingCtaHeading]
+other = "Not sure which plan fits?"
+
+[pricingCtaBody]
+other = "Tell us what you're building — we'll recommend a plan."
+
+[pricingCtaLabel]
+other = "Talk to us"
+
+[aboutPhilosophyHeading]
+other = "What we believe"
+
+[aboutFounderHeading]
+other = "From our founder"
+
+[aboutFactsHeading]
+other = "At a glance"
+
+[aboutHistoryHeading]
+other = "Our story so far"
+
+[aboutJoinHeading]
+other = "We're always looking for senior people who care"
+
+[aboutJoinBody]
+other = "If accessibility, sustainable engineering and security aren't check-boxes to you either, we'd like to meet you."
+
+[aboutJoinLabel]
+other = "View open roles"
+
+[aboutCtaHeading]
+other = "Ready to work with us?"
+
+[aboutCtaBody]
+other = "Tell us about your product — we'll reply within one business day with next steps, not a sales script."
+
+[aboutCtaLabel]
+other = "Start the conversation"
+
+[faqCtaHeading]
+other = "Still have a question?"
+
+[faqCtaBody]
+other = "Tell us what you're trying to figure out — we'll reply within one business day."
+
+[faqCtaLabel]
+other = "Ask us directly"
+
+[newsCategoriesLabel]
+other = "Categories"
+
+[newsAllCategoriesLabel]
+other = "All"
+
+[newsCtaHeading]
+other = "Have a story you'd like us to cover?"
+
+[newsCtaBody]
+other = "Tell us what you're building or what you'd like to hear about — we read every message."
+
+[newsCtaLabel]
+other = "Get in touch"
+
+[contactTypeLegend]
+other = "What can we help with?"
+
+[contactTypeOptionProjectInquiry]
+other = "New project inquiry"
+
+[contactTypeOptionQuoteRequest]
+other = "Quote request"
+
+[contactTypeOptionPartnership]
+other = "Partnership"
+
+[contactTypeOptionOther]
+other = "Something else"
+
+[contactMessageLabel]
+other = "Your message"
+
+[contactMessageHelp]
+other = "Tech stack, rough timeline, anything that helps us scope the work."
+
+[contactNameLabel]
+other = "Full name"
+
+[contactCompanyLabel]
+other = "Company"
+
+[contactEmailLabel]
+other = "Email address"
+
+[contactPhoneLabel]
+other = "Phone number"
+
+[contactPhoneHelp]
+other = "Optional — only if you'd rather we call you back."
+
+[contactConsentLabel]
+other = "I agree to the"
+
+[contactConsentLinkLabel]
+other = "Legal Notice & Privacy Policy"
+
+[contactSubmitLabel]
+other = "Send message"
+
+[contactSuccessMessage]
+other = "Thanks — your message is on its way. We'll reply within one business day."
+
+[contactErrorMessage]
+other = "Something went wrong sending your message. Please try again, or email us directly."
+
+[contactErrorRequired]
+other = "This field is required."
+
+[contactErrorEmail]
+other = "Enter a valid email address."
+
+[contactErrorInvalid]
+other = "Enter a valid value."
+
+[contactMailtoBody]
+other = "Our contact form is being wired up for this preview — email us directly instead, and a real engineer will reply within one business day."
+
+[contactMailtoLabel]
+other = "Email us"
+
+[contactMailtoEmail]
+other = "hello@example.inspired-beings.com"
+
+[careersValuesHeading]
+other = "What we stand for as an employer"
+
+[careersOffersHeading]
+other = "Open roles"
+
+[careersOfferApplyLabel]
+other = "Apply for this role"
+
+[careersCtaHeading]
+other = "Don't see the right role?"
+
+[careersCtaBody]
+other = "Tell us what you're good at — we'll reach out when something fits."
+
+[careersCtaLabel]
+other = "Get in touch"
+
+[productsIndexLinkLabel]
+other = "View app"
+
+[productsIndexGridHeading]
+other = "Our apps"
+
+[productScreenshotsHeading]
+other = "Screenshots"
+
+[productFeaturesHeading]
+other = "Features"
+
+[productStoreHeading]
+other = "Availability"
+
+[productStoreIosLabel]
+other = "App Store"
+
+[productStoreAndroidLabel]
+other = "Google Play"
+
+[productPrivacyHeading]
+other = "Privacy"
+
+[productPrivacyLinkLabel]
+other = "Read the full privacy policy"
+
+[productCtaHeading]
+other = "Questions about this app?"
+
+[productCtaBody]
+other = "Tell us what you're trying to do — we'll reply within one business day."
+
+[productCtaLabel]
+other = "Get in touch"
+
+[notFoundTitle]
+other = "Page not found"
+
+[notFoundBody]
+other = "The page you're looking for doesn't exist, or has moved."
+
+[notFoundHomeLabel]
+other = "Back to the homepage"

@@ -1,0 +1,45 @@
+{{/* form-field: single-line text-like input (text/email/tel/…). Dict
+  params: `name` (required — the submitted field name; by default also the
+  DOM id root, so it MUST be page-unique unless `idPrefix` is given),
+  `label`, `required` (bool), `help`, `autocomplete`, `type` (default
+  "text"), `value`, `invalid` (bool, demos the `form-field--invalid`
+  state), `errorText` (falls back to a generic i18n string), `idPrefix`
+  (optional, defaults to `name` — set this to reuse the same logical field
+  twice on one page without renaming the submitted `name`; only
+  id/for/aria-describedby use it, the `name` attribute itself is untouched).
+  Wires `aria-describedby` to the help/error ids. */}}
+{{ $type := .type | default "text" }}
+{{ $idPrefix := .idPrefix | default .name }}
+{{ $describedBy := "" }}
+{{ if .help }}
+  {{ $describedBy = printf "%s-help" $idPrefix }}
+{{ end }}
+{{ if .invalid }}
+  {{ if $describedBy }}
+    {{ $describedBy = printf "%s %s-error" $describedBy $idPrefix }}
+  {{ else }}
+    {{ $describedBy = printf "%s-error" $idPrefix }}
+  {{ end }}
+{{ end }}
+<div class="form-field{{ if .invalid }} form-field--invalid{{ end }}">
+  <label class="form-field__label" for="{{ $idPrefix }}">
+    {{ .label }}{{ if .required }} <span class="form-field__required" aria-hidden="true">*</span>{{ end }}
+  </label>
+  <input
+    class="form-field__input"
+    type="{{ $type }}"
+    id="{{ $idPrefix }}"
+    name="{{ .name }}"
+    {{ with .autocomplete }}autocomplete="{{ . }}"{{ end }}
+    {{ with .value }}value="{{ . }}"{{ end }}
+    {{ if .required }}required aria-required="true"{{ end }}
+    {{ if .invalid }}aria-invalid="true"{{ end }}
+    {{ if $describedBy }}aria-describedby="{{ $describedBy }}"{{ end }}
+  />
+  {{ with .help }}
+    <p class="form-field__help" id="{{ $idPrefix }}-help">{{ . }}</p>
+  {{ end }}
+  {{ if .invalid }}
+    <p class="form-field__error" id="{{ $idPrefix }}-error">{{ .errorText | default (i18n "formFieldDefaultError") }}</p>
+  {{ end }}
+</div>

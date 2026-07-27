@@ -1,0 +1,42 @@
+// Steps flow: an `<ol>` (see `partials/steps-flow.html`) — order is real
+// list semantics, so the visual number badge is decorative (`aria-hidden`)
+// rather than the only indicator of sequence.
+@use "../abstracts";
+
+.steps {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-xl);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+.steps__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.steps__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--sp-xl);
+  height: var(--sp-xl);
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-default);
+  color: var(--color-on-accent);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.steps__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+}
+
+.steps__body {
+  color: var(--color-text-muted);
+}

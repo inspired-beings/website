@@ -1,0 +1,67 @@
+// Accordion: styled native `<details>/<summary>` — zero JS (see
+// `shortcodes/accordion.html`). Expanded state is the real `[open]`
+// attribute on the `<details>` element itself (not a class), same idiom as
+// `[aria-expanded]`/`[aria-current]` elsewhere in this tree. The chevron
+// swap is a flat attribute-selector rule (`.accordion[open] > …`), matching
+// the existing `.top-bar__burger[aria-expanded="false"] + .top-bar__nav`
+// pattern rather than nesting BEM elements under the block.
+
+.accordion {
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.accordion + .accordion {
+  margin-block-start: var(--sp-xs);
+}
+
+.accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-sm);
+  padding: var(--sp-sm) var(--sp-md);
+  list-style: none;
+  font-weight: 500;
+  cursor: pointer;
+
+  &::-webkit-details-marker {
+    display: none;
+  }
+
+  // Firefox renders `<summary>`'s marker via `::marker`, not the
+  // WebKit-only pseudo-element above — `list-style: none` alone doesn't
+  // suppress it there.
+  &::marker {
+    content: none;
+  }
+
+  &::after {
+    content: "";
+    flex-shrink: 0;
+    width: 0.5em;
+    height: 0.5em;
+    border-inline-end: 2px solid currentColor;
+    border-block-end: 2px solid currentColor;
+    transform: rotate(45deg);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: transform var(--transition-fast);
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-default);
+  }
+}
+
+.accordion[open] > .accordion__summary::after {
+  transform: rotate(-135deg);
+}
+
+.accordion__content {
+  padding: 0 var(--sp-md) var(--sp-md);
+  color: var(--color-text-muted);
+}

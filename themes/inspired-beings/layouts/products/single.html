@@ -1,0 +1,87 @@
+{{/* Product single — centered hero (icon+name+lead) → screenshots figure
+  gallery → feature list (reuses `card.html`, title/body only) →
+  store-links placeholder block (reuses `facts-table.html` — a plain text
+  `<dl>`, which is exactly what a "text-styled, no real store artwork"
+  badge placeholder needs, no new component) → privacy summary → CTA band.
+  Content model: `tagline`, `screenshots[]{src,alt}`,
+  `features[]{title,body}`, `store_links{ios,android}`, `privacy_summary` —
+  see `archetypes/product.md`. Rehearses the future Fossling app-page shape.
+
+  `store_links` is a named dict rendered through two explicit `with`
+  lookups (`ios`/`android`) rather than a generic range — two known keys,
+  no need for map-iteration-order handling. */}}
+{{ define "main" }}
+  <article>
+    <section class="hero hero--centered hero--ruled">
+      <div class="container">
+        {{ with .Params.icon }}
+          <span class="hero__icon" aria-hidden="true">{{ . }}</span>
+        {{ end }}
+        <h1 class="hero__title">{{ .Title }}</h1>
+        {{ with .Params.tagline }}
+          <p class="hero__lead">{{ . }}</p>
+        {{ end }}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="product-screenshots-heading">
+      <div class="container">
+        <h2 id="product-screenshots-heading">{{ i18n "productScreenshotsHeading" }}</h2>
+        <div class="grid grid--gallery section__body">
+          {{ range .Params.screenshots }}
+            {{ partial "figure.html" (dict
+              "src" .src
+              "alt" .alt
+              "widths" (slice 200 400)
+              "sizes" "(min-width: 48em) 28vw, 45vw"
+              "class" "figure--capped"
+            ) }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="product-features-heading">
+      <div class="container">
+        <h2 id="product-features-heading">{{ i18n "productFeaturesHeading" }}</h2>
+        <div class="grid grid--2 section__body">
+          {{ range .Params.features }}
+            {{ partial "card.html" (dict "title" .title "body" .body) }}
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="product-store-heading">
+      <div class="container">
+        <h2 id="product-store-heading">{{ i18n "productStoreHeading" }}</h2>
+        {{ $storeFacts := slice }}
+        {{ with .Params.store_links.ios }}
+          {{ $storeFacts = $storeFacts | append (dict "term" (i18n "productStoreIosLabel") "value" .) }}
+        {{ end }}
+        {{ with .Params.store_links.android }}
+          {{ $storeFacts = $storeFacts | append (dict "term" (i18n "productStoreAndroidLabel") "value" .) }}
+        {{ end }}
+        {{ partial "facts-table.html" (dict "facts" $storeFacts "class" "section__body") }}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="product-privacy-heading">
+      <div class="container">
+        <h2 id="product-privacy-heading">{{ i18n "productPrivacyHeading" }}</h2>
+        <p class="section__body section__body--measure">{{ .Params.privacy_summary }}</p>
+        <a class="standalone-link standalone-link--offset" href="{{ "legal/" | relLangURL }}">
+          {{ i18n "productPrivacyLinkLabel" }}
+        </a>
+      </div>
+    </section>
+
+    <section class="section section--band">
+      {{ partial "cta-band.html" (dict
+        "title" (i18n "productCtaHeading")
+        "body" (i18n "productCtaBody")
+        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "productCtaLabel")))
+      ) }}
+    </section>
+  </article>
+{{ end }}

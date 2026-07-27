@@ -1,0 +1,43 @@
+---
+title: "Maintenance & TMA"
+weight: 60
+icon: "🔧"
+tagline: "Real SLAs after launch, not a vague promise."
+summary: "Monitoring, security patching and incremental feature work once you're live — a maintenance partner with contracts you can hold us to."
+audience:
+  - "Teams whose previous agency disappeared once the invoice was paid."
+  - "Companies running production software with no formal support contract."
+  - "Engineering teams that need predictable capacity for small features and fixes."
+  - "Founders who want monitoring and incident response without hiring in-house."
+coverage:
+  - title: "Proactive monitoring"
+    body: "Uptime, performance and error monitoring with alerts routed to a real on-call rotation, not a dashboard nobody watches."
+  - title: "Security patching"
+    body: "Dependency and platform updates applied on a predictable schedule, not whenever someone remembers."
+  - title: "Incident response"
+    body: "A defined SLA for response and resolution, with a clear escalation path — in writing, not implied."
+  - title: "Incremental feature work"
+    body: "A standing capacity allocation for small features and improvements, without re-opening a new project each time."
+  - title: "Knowledge continuity"
+    body: "Documentation kept current as the system evolves, so the next engineer — ours or yours — isn't starting from zero."
+stats:
+  - value: "99.95"
+    unit: "%"
+    label: "Average uptime across TMA contracts"
+  - value: "30"
+    unit: "min"
+    label: "Median critical-incident response"
+  - value: "60"
+    unit: "+"
+    label: "Products under active maintenance"
+  - value: "5"
+    unit: "yrs"
+    label: "Average TMA contract length"
+faq:
+  - q: "What does 'TMA' cover exactly?"
+    a: "Tierce Maintenance Applicative — the ongoing operation of software after launch: monitoring, patching, incident response and small evolutions, under a formal contract."
+  - q: "What happens if there's a critical incident outside business hours?"
+    a: "Our on-call rotation covers critical severities 24/7, with response times defined in the contract, not left to good faith."
+  - q: "Can you take over maintenance for a product you didn't build?"
+    a: "Yes, after an onboarding audit — we need to understand the system before we're on the hook for its uptime."
+---

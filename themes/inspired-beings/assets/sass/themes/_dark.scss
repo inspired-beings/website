@@ -1,0 +1,70 @@
+// Dark-scheme tokens — semantic custom-property overrides ONLY.
+//
+// Non-color primitive scales (spacing, type, radii, shadows, z-index,
+// transitions, container widths) are scheme-invariant and already emitted
+// once by `_light.scss`'s `:root` — nothing to redo here. Color primitives
+// live in `_primitives.scss` (shared with `_light.scss`) — every value
+// below is a `var()` reference into that layer, never a re-declared hex.
+//
+// Mapping copied VERBATIM from the design spec's semantic table, "Dark"
+// column.
+
+// TEMP(comparison-skin): needed while dark-semantics mirrors the light
+// mapping below.
+@use "light";
+
+// Subset of the dark-scheme semantic tokens (text/border/accent/link/focus)
+// that a permanently-dark content context needs — used directly by the
+// site :root override below, and re-included as-is by `layout/_footer.scss`
+// to force the footer's inverse band into dark-scheme content colors
+// regardless of the page's own scheme. Deliberately excludes
+// `--color-surface-*` (an inverse band isn't a "surface", it has its own
+// `--color-inverse-band-bg`) and `--color-inverse-band-bg` itself — that
+// property must keep tracking whichever scheme is actually active (light
+// page → light's own #091018 band, dark page → dark's #04070D), so a
+// consumer that always wants "dark" must never touch it. Also excludes
+// error/success/warning (not needed by any inverse-band context yet —
+// add if one ever needs it, don't speculate).
+// TEMP(comparison-skin): brand band ramp parked for the design-review
+// comparison period — restore with the revert:
+//   text frost-t0/t1/t2 · accent peri-400/300/500 · on-accent night ·
+//   border line-dark/line-dark-subtle · link peri-400 · focus frost-t0
+@mixin inverse-band-semantics {
+  --color-text-default: var(--color-primitive-cmp-white);
+  --color-text-muted: var(--color-primitive-cmp-stone-tint);
+  --color-text-subtle: var(--color-primitive-cmp-stone-tint);
+  --color-accent-default: var(--color-primitive-cmp-green-soft);
+  --color-accent-hover: var(--color-primitive-cmp-white);
+  --color-accent-active: var(--color-primitive-cmp-green-tint);
+  --color-on-accent: var(--color-primitive-cmp-green-deep);
+  --color-border-default: var(--color-primitive-cmp-stone-soft);
+  --color-border-subtle: var(--color-primitive-cmp-gray);
+  --color-link: var(--color-primitive-cmp-stone-tint);
+  --color-focus-ring: var(--color-primitive-cmp-white);
+}
+
+// TEMP(comparison-skin): the comparison reference has a single scheme, so
+// dark mirrors light for the review period — the toggle stays functional
+// but visually inert. Restore with the revert:
+//   surfaces night/night-1/night-2 · @include inverse-band-semantics ·
+//   inverse-band-bg night-deep · error error-dark · success spring ·
+//   warning sun · PLUS dark values for the three comparison-born tokens
+//   (surface-tertiary / accent-surface / accent-soft — currently inherited
+//   from the light mirror; they have NO brand dark values yet and need
+//   real ones at the brand pass, see `_light.scss`'s TBD note)
+@mixin dark-semantics {
+  @include light.light-semantics;
+}
+
+// Automatic override: OS/browser reports a dark scheme preference.
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-semantics;
+  }
+}
+
+// Manual override: theme toggle (Task 3) sets `data-theme="dark"` on
+// `<html>` regardless of OS preference.
+:root[data-theme="dark"] {
+  @include dark-semantics;
+}

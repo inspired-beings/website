@@ -1,0 +1,43 @@
+---
+title: "Web & App Development"
+weight: 10
+icon: "🧩"
+tagline: "Full-stack products built to launch — and to last."
+summary: "We design, build and ship web and mobile products end to end, from the first architecture decision to the production incident three years later."
+audience:
+  - "Founders launching a first product who need senior engineering from commit one."
+  - "Product teams replacing a fragile MVP with something built to scale."
+  - "Companies whose in-house team needs extra senior capacity for a release."
+  - "Teams merging or migrating a legacy stack onto modern foundations."
+coverage:
+  - title: "Product discovery & architecture"
+    body: "We map the domain, the constraints and the trade-offs before a single line ships, so the stack you get is the stack you actually need."
+  - title: "Frontend engineering"
+    body: "Accessible, performant interfaces in modern frameworks, built against real devices and real connection speeds — not just a laptop on office wifi."
+  - title: "Backend & API design"
+    body: "Node.js and TypeScript services designed for the load you'll have in a year, not just the demo you need next week."
+  - title: "Mobile delivery"
+    body: "Native-feeling apps for iOS and Android from a single codebase, wired into your existing backend rather than a parallel one."
+  - title: "Launch & handover"
+    body: "Documented, tested and handed to your team with a runbook — not a black box only we understand."
+stats:
+  - value: "140"
+    unit: "+"
+    label: "Products shipped to production"
+  - value: "98"
+    unit: "%"
+    label: "Projects delivered within scope"
+  - value: "30"
+    unit: "d"
+    label: "Median time to first release"
+  - value: "9"
+    unit: "yrs"
+    label: "Average client relationship"
+faq:
+  - q: "Which frameworks and languages do you work in?"
+    a: "Node.js and TypeScript for the backend by default, with React, Vue or native mobile frameworks chosen per project — we pick the right tool rather than a house framework."
+  - q: "Do you work with an existing codebase, or only greenfield builds?"
+    a: "Both — most engagements start with a codebase we didn't write. We audit it first, then build on what's solid and replace what isn't."
+  - q: "Who owns the code once the project ships?"
+    a: "You do, entirely — source, infrastructure and documentation transfer to your team at handover, with no vendor lock-in."
+---

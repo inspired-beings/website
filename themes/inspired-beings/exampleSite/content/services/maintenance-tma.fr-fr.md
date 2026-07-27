@@ -1,0 +1,43 @@
+---
+title: "Maintenance & TMA"
+weight: 60
+icon: "🔧"
+tagline: "De vraies SLA après le lancement, pas une promesse vague."
+summary: "Supervision, correctifs de sécurité et évolutions incrémentales une fois votre produit en production — un partenaire de maintenance avec des engagements contractuels, pas des paroles en l'air."
+audience:
+  - "Équipes dont la précédente agence a disparu une fois la facture réglée."
+  - "Entreprises exploitant un logiciel en production sans contrat de support formel."
+  - "Équipes techniques ayant besoin d'une capacité prévisible pour de petites évolutions et correctifs."
+  - "Fondateurs qui veulent de la supervision et une réponse aux incidents sans recruter en interne."
+coverage:
+  - title: "Supervision proactive"
+    body: "Disponibilité, performance et suivi des erreurs, avec des alertes routées vers une véritable astreinte — pas un tableau de bord que personne ne regarde."
+  - title: "Correctifs de sécurité"
+    body: "Mises à jour des dépendances et de la plateforme appliquées selon un calendrier prévisible, pas au gré de la mémoire de chacun."
+  - title: "Réponse aux incidents"
+    body: "Une SLA définie pour la réponse et la résolution, avec un chemin d'escalade clair — écrit noir sur blanc, pas implicite."
+  - title: "Évolutions incrémentales"
+    body: "Une capacité récurrente allouée aux petites évolutions et améliorations, sans rouvrir un nouveau projet à chaque fois."
+  - title: "Continuité de connaissance"
+    body: "Une documentation tenue à jour à mesure que le système évolue, pour que le prochain ingénieur — le nôtre ou le vôtre — ne reparte pas de zéro."
+stats:
+  - value: "99,95"
+    unit: "%"
+    label: "Disponibilité moyenne sur les contrats de TMA"
+  - value: "30"
+    unit: "min"
+    label: "Délai médian de réponse aux incidents critiques"
+  - value: "60"
+    unit: "+"
+    label: "Produits sous maintenance active"
+  - value: "5"
+    unit: "ans"
+    label: "Durée moyenne d'un contrat de TMA"
+faq:
+  - q: "Que couvre exactement la « TMA » ?"
+    a: "La Tierce Maintenance Applicative — l'exploitation continue d'un logiciel après son lancement : supervision, correctifs, réponse aux incidents et petites évolutions, sous contrat formel."
+  - q: "Que se passe-t-il en cas d'incident critique en dehors des heures ouvrées ?"
+    a: "Notre astreinte couvre les incidents critiques 24 h/24 et 7 j/7, avec des délais de réponse définis au contrat, pas laissés à la bonne foi."
+  - q: "Pouvez-vous reprendre la maintenance d'un produit que vous n'avez pas développé ?"
+    a: "Oui, après un audit de prise en charge — nous devons comprendre le système avant d'engager notre responsabilité sur sa disponibilité."
+---

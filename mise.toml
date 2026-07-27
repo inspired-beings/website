@@ -3,3 +3,11 @@
 hugo-extended = "0.162.1"
 node = "22.23.1"
 pnpm = "11.16.0"
+# dart-sass: required by the inspired-beings theme (transpiler: dartsass, @use/@forward).
+# `npm:sass` is the pure-JS/dart2js build — it lacks the embedded-protocol
+# binary Hugo's `dartsass` transpiler shells out to ("sass --embedded is
+# unavailable in pure JS mode"). `sass-embedded` bundles the native compiler
+# under the same `sass` command and is the version Hugo actually needs.
+"npm:sass-embedded" = "1.100.0"
+# python: only used by tool/subset_fonts.sh (fonttools venv) — not part of the build.
+python = "3.14.5"

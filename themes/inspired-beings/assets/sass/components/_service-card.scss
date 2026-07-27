@@ -1,0 +1,70 @@
+@use "../abstracts";
+
+// Linked service teaser: tinted icon square + wayfinding arrow header,
+// title, body — the whole card is one link.
+.service-card__link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  color: var(--color-text-default);
+  text-decoration: none;
+
+  @include abstracts.mq-up("md") {
+    gap: var(--sp-lg);
+  }
+
+  @include abstracts.mq-up("lg") {
+    gap: var(--sp-xl);
+  }
+}
+
+.service-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.service-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-tertiary);
+  font-size: var(--fs-xl);
+}
+
+.service-card__arrow {
+  display: block;
+  stroke: var(--color-text-subtle);
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition: stroke var(--transition-slow);
+  }
+}
+
+.service-card__link:hover .service-card__arrow,
+.service-card__link:focus-visible .service-card__arrow {
+  stroke: var(--color-accent-default);
+}
+
+.service-card__title {
+  font-size: var(--fs-lg);
+  line-height: 1.375;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-xl);
+  }
+}
+
+.service-card__body {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 2;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+  }
+}

@@ -1,0 +1,15 @@
+{{/* Shortcode: a single-action CTA band inline in Markdown content — thin
+  wrapper over `partial "cta-band.html"` with exactly one action. Named
+  params: `title` (required), `body` (optional), `href` (required), `label`
+  (required), `variant` (optional, "solid"|"outlined", default "solid").
+  Usage: {{< cta title="Ready to ship?" body="Talk to us." href="/contact/"
+  label="Get in touch" >}} */}}
+{{ partial "cta-band.html" (dict
+  "title" (.Get "title")
+  "body" (.Get "body")
+  "actions" (slice (dict
+    "href" (.Get "href")
+    "label" (.Get "label")
+    "variant" (.Get "variant" | default "solid")
+  ))
+) }}

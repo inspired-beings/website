@@ -1,0 +1,43 @@
+---
+title: "Conseil technique"
+weight: 50
+icon: "🧭"
+tagline: "Un second avis senior avant la décision qui compte."
+summary: "Revues d'architecture et accompagnement CTO à temps partagé pour les équipes qui prennent une décision dont elles vivront les conséquences pendant des années."
+audience:
+  - "Fondateurs sur le point de prendre une décision d'architecture ou de fournisseur engageante sur le long terme."
+  - "Équipes techniques bloquées entre deux approches, sans arbitre clair."
+  - "Entreprises sans CTO ayant besoin d'un jugement technique senior à temps partiel."
+  - "Conseils d'administration ou investisseurs souhaitant une revue technique indépendante avant de financer un projet."
+coverage:
+  - title: "Revue d'architecture"
+    body: "Un regard indépendant sur votre architecture existante ou envisagée, éprouvé face à vos projections de croissance réelles."
+  - title: "Analyse construire vs. acheter"
+    body: "Une comparaison sans complaisance entre développement interne et intégration d'une plateforme existante, coût total de possession détaillé."
+  - title: "Accompagnement CTO à temps partagé"
+    body: "Un leadership technique continu — avis sur les recrutements, revue de la feuille de route, évaluation de fournisseurs — sans embauche de dirigeant à temps plein."
+  - title: "Due diligence technique"
+    body: "Revue indépendante du code et de l'infrastructure d'une société cible avant une acquisition ou un investissement."
+  - title: "Revue d'équipe & de process"
+    body: "Un regard honnête sur la façon dont votre équipe technique livre réellement, avec des recommandations à la taille de votre équipe, pas un guide générique."
+stats:
+  - value: "50"
+    unit: "+"
+    label: "Revues d'architecture réalisées"
+  - value: "12"
+    unit: "M€"
+    label: "Décisions d'investissement éclairées"
+  - value: "20"
+    unit: "+"
+    label: "Missions de due diligence"
+  - value: "15"
+    unit: "ans"
+    label: "Expérience moyenne des consultants"
+faq:
+  - q: "S'agit-il d'une mission ponctuelle ou d'un accompagnement continu ?"
+    a: "Les deux existent — une revue d'architecture isolée, ou un forfait CTO à temps partagé avec un volume d'heures fixe par mois."
+  - q: "Intervenez-vous dans les décisions de recrutement ?"
+    a: "Sur demande — évaluer les tests techniques des candidats ou participer à des entretiens techniques senior fait partie des missions courantes du CTO à temps partagé."
+  - q: "Recommanderez-vous votre propre équipe de développement pour la suite ?"
+    a: "Seulement si c'est réellement le meilleur choix — nos recommandations vous laissent une option honnête, y compris rester en interne ou recruter ailleurs."
+---

@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "breakpoints";
+
+/// Look up a named breakpoint, failing loudly on a typo instead of silently
+/// compiling `null` into a media query.
+@function breakpoint($name) {
+  @if not map.has-key(breakpoints.$breakpoints, $name) {
+    @error "Unknown breakpoint `#{$name}`. Available: #{map.keys(breakpoints.$breakpoints)}.";
+  }
+
+  @return map.get(breakpoints.$breakpoints, $name);
+}

@@ -1,0 +1,54 @@
+// Two tightly-coupled blocks share this one file, matching the brief's own
+// file list (`_stat.scss` backs both `partials/stats-band.html`'s wrapper
+// grid and the individual `stat` item) — same "single file, brief-named"
+// exception `_form.scss` already takes for `form-field`/`form-fieldset`.
+@use "../abstracts";
+
+.stats-band {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-xl);
+
+  @include abstracts.mq-up("md") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// Optional lead-in paragraph sharing the band's grid (half the row on
+// wide screens, echoing the items' left-anchored rhythm).
+.stats-band__description {
+  grid-column: 1 / -1;
+  align-self: start;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 2;
+
+  @include abstracts.mq-up("md") {
+    grid-column: span 2;
+    max-width: 80%;
+    font-size: var(--fs-md);
+  }
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+}
+
+.stat__value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--fs-3xl), 6vw, var(--fs-6xl));
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat__unit {
+  font-size: clamp(var(--fs-md), 2vw, var(--fs-lg));
+}
+
+.stat__label {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.05em;
+}

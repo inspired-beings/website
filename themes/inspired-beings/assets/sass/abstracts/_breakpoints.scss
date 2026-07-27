@@ -1,0 +1,9 @@
+// Raw breakpoint scale. Media queries cannot read CSS custom properties, so
+// this stays a plain SCSS map (compile-time only, no CSS output).
+$breakpoints: (
+  "sm": 36em,
+  "md": 48em,
+  "lg": 62em,
+  "xl": 75em,
+  "2xl": 87.5em,
+);

@@ -1,0 +1,100 @@
+{{/* BEM block `pricing-table` — a real <table> + <caption> + scope'd <th>.
+  Dict params:
+  - `caption` (string, required) — real <caption>, not a heading.
+  - `plans` (list, required) — each `{name, price, period (optional string
+    appended verbatim to the price, e.g. " / month"), sub (optional
+    audience line), highlighted (bool, optional), cta (optional dict
+    {href, label})}`. One `<th scope="col">` per plan; the highlighted one
+    gets the tinted-column treatment plus a "recommended" badge, and its
+    price renders emphasized. The price itself renders as the FIRST body
+    row (`pricingTablePriceRowLabel`), not inside the header.
+  - `features` (list, optional) — each `{name, values}`, `values` a list
+    with exactly one entry per plan, in the same order as `plans`. A value
+    is `true` (filled dot), `false` (dash), the SENTINEL strings "Partial"
+    or "Partiel" (case-insensitive → outlined square, the third state), or
+    any other string (rendered verbatim, e.g. "99.9%"). The sentinel list
+    is deliberately closed: content in a future third locale must use one
+    of those two spellings to get the mark — anything else renders as
+    text. Marks are pure CSS shapes with `role="img" aria-label` (see
+    `_pricing-table.scss` for the axe/dingbat rationale).
+  - The CTA row renders only when at least one plan carries a `cta`.
+  Usage: see the styleguide's "Pricing table" section. */}}
+
+{{ $plans := .plans }}
+{{ $lastIndex := sub (len $plans) 1 }}
+{{ $highlightedIndex := -1 }}
+{{ $hasCta := false }}
+{{ range $i, $plan := $plans }}
+  {{ if $plan.highlighted }}{{ $highlightedIndex = $i }}{{ end }}
+  {{ if $plan.cta }}{{ $hasCta = true }}{{ end }}
+{{ end }}
+
+<table class="pricing-table">
+  <caption class="pricing-table__caption">{{ .caption }}</caption>
+  <thead>
+    <tr>
+      <th class="pricing-table__corner" scope="col">
+        {{ with .features }}
+          <span class="pricing-table__sr-label">{{ i18n "pricingTableFeatureColumnLabel" }}</span>
+        {{ end }}
+      </th>
+      {{ range $plans }}
+        <th class="pricing-table__plan{{ if .highlighted }} pricing-table__plan--highlighted{{ end }}" scope="col">
+          {{ if .highlighted }}
+            <span class="pricing-table__badge">{{ i18n "pricingTableRecommendedLabel" }}</span>
+          {{ end }}
+          <span class="pricing-table__plan-name">{{ .name }}</span>
+          {{ with .sub }}
+            <span class="pricing-table__plan-sub">{{ . }}</span>
+          {{ end }}
+        </th>
+      {{ end }}
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="pricing-table__feature" scope="row">{{ i18n "pricingTablePriceRowLabel" }}</th>
+      {{ range $i, $plan := $plans }}
+        <td class="pricing-table__value{{ if eq $i $highlightedIndex }} pricing-table__value--highlighted{{ end }}{{ if eq $i $lastIndex }} pricing-table__value--last{{ end }}">
+          <span class="pricing-table__price-text">
+            {{ $plan.price }}{{ with $plan.period }}{{ . }}{{ end }}
+          </span>
+        </td>
+      {{ end }}
+    </tr>
+    {{ range .features }}
+      <tr>
+        <th class="pricing-table__feature" scope="row">{{ .name }}</th>
+        {{ range $i, $value := .values }}
+          <td class="pricing-table__value{{ if eq $i $highlightedIndex }} pricing-table__value--highlighted{{ end }}{{ if eq $i $lastIndex }} pricing-table__value--last{{ end }}">
+            {{ if eq $value true }}
+              <span class="pricing-table__mark pricing-table__mark--yes" role="img" aria-label="{{ i18n "pricingTableIncludedLabel" }}"></span>
+            {{ else if eq $value false }}
+              <span class="pricing-table__mark pricing-table__mark--no" role="img" aria-label="{{ i18n "pricingTableNotIncludedLabel" }}"></span>
+            {{ else if in (slice "partial" "partiel") (lower (printf "%v" $value)) }}
+              <span class="pricing-table__mark pricing-table__mark--partial" role="img" aria-label="{{ i18n "pricingTablePartialLabel" }}"></span>
+            {{ else }}
+              {{ $value }}
+            {{ end }}
+          </td>
+        {{ end }}
+      </tr>
+    {{ end }}
+  </tbody>
+  {{ if $hasCta }}
+    <tfoot>
+      <tr>
+        <th class="pricing-table__corner" scope="row">
+          <span class="pricing-table__sr-label">{{ i18n "pricingTableActionColumnLabel" }}</span>
+        </th>
+        {{ range $i, $plan := $plans }}
+          <td class="pricing-table__cta-cell">
+            {{ with $plan.cta }}
+              <a class="button button--solid button--medium" href="{{ .href }}">{{ .label }}</a>
+            {{ end }}
+          </td>
+        {{ end }}
+      </tr>
+    </tfoot>
+  {{ end }}
+</table>

@@ -82,6 +82,9 @@ web_modules/
 .env.production.local
 .env.local
 
+# Python venv for tool/subset_fonts.sh (fonttools) — reproducible, not committed.
+.venv-fonts/
+
 # parcel-bundler cache (https://parceljs.org/)
 .cache
 .parcel-cache

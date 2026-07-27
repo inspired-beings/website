@@ -1,0 +1,36 @@
+@use "../abstracts";
+
+// Section title pair: small uppercase label + big display tagline, both
+// inside ONE h2 (single heading nav stop; the concise label leads the
+// accessible name, the display line completes it). Rendered by
+// `partials/section-title.html`.
+.section-title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+
+.section-title--centered {
+  align-items: center;
+  text-align: center;
+}
+
+.section-title__label {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  @include abstracts.mq-up("md") {
+    font-size: var(--fs-sm);
+  }
+}
+
+.section-title__tagline {
+  color: var(--color-text-default);
+  font-size: clamp(var(--fs-xl), 4vw, var(--fs-3xl));
+  line-height: 1.375;
+  white-space: pre-line;
+}

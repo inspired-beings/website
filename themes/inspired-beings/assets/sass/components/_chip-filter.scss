@@ -1,0 +1,29 @@
+// Chip-row filter nav (e.g. category filters above a listing). Links mix
+// the `.chip` component; the active filter is a real ARIA state
+// (`[aria-current="page"]`), same idiom as `.pagination__link--current`.
+.chip-filter {
+  padding-block-end: var(--sp-lg);
+}
+
+.chip-filter__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs);
+}
+
+.chip-filter__link {
+  text-decoration: none;
+}
+
+.chip-filter__link:hover,
+.chip-filter__link:focus-visible {
+  border-color: var(--color-accent-default);
+  color: var(--color-accent-default);
+}
+
+.chip-filter__link[aria-current="page"] {
+  background-color: var(--color-accent-default);
+  border-color: var(--color-accent-default);
+  color: var(--color-on-accent);
+  font-weight: 700;
+}

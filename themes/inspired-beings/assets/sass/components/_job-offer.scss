@@ -1,0 +1,36 @@
+// A vacancy entry: ruled block with title + contract chip header, location,
+// summary, requirements list and apply action.
+.job-offer {
+  padding-block: var(--sp-lg);
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.job-offer__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.job-offer__title {
+  margin: 0;
+}
+
+.job-offer__location {
+  margin-block-start: var(--sp-2xs);
+  color: var(--color-text-muted);
+}
+
+.job-offer__summary {
+  margin-block-start: var(--sp-sm);
+  max-width: 48rem;
+}
+
+.job-offer__requirements {
+  margin-block-start: var(--sp-sm);
+  max-width: 48rem;
+}
+
+.job-offer__apply {
+  margin-block-start: var(--sp-md);
+}

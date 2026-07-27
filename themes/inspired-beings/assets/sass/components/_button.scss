@@ -1,0 +1,77 @@
+// Button: two variants (`button--solid|outlined`) × two sizes
+// (`button--large|medium`). Pill shape (radius-full) is a deliberate CTA
+// styling choice — unspecified by the design spec's token tables, chosen to
+// read as a call-to-action distinct from `.card`'s squarer radius-md.
+// Disabled state covers both real `<button disabled>` and an `<a>` styled
+// as a button via `aria-disabled` (anchors have no native `disabled`).
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2xs);
+  border: 2px solid transparent;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  @media (prefers-reduced-motion: no-preference) {
+    transition:
+      background-color var(--transition-fast),
+      border-color var(--transition-fast),
+      color var(--transition-fast);
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.button--large {
+  padding: var(--sp-sm) var(--sp-xl);
+  font-size: var(--fs-md);
+}
+
+.button--medium {
+  padding: var(--sp-xs) var(--sp-lg);
+  font-size: var(--fs-md);
+}
+
+.button--solid {
+  background-color: var(--color-accent-default);
+  border-color: var(--color-accent-default);
+  color: var(--color-on-accent);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+
+  &:active {
+    background-color: var(--color-accent-active);
+    border-color: var(--color-accent-active);
+  }
+}
+
+// Neutral outlined action: quiet border + text, tinted fill on hover.
+.button--outlined {
+  background-color: transparent;
+  border-color: var(--color-border-default);
+  color: var(--color-text-default);
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--color-surface-alt);
+  }
+
+  &:active {
+    background-color: var(--color-surface-tertiary);
+  }
+}

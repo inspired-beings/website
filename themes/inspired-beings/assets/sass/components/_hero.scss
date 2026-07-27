@@ -1,0 +1,137 @@
+@use "../abstracts";
+
+// The single page-opening hero, everywhere. Variation is modifiers only:
+// `--narrow` (left-anchored 44rem column — an intentional narrow measure on
+// the block itself, not a container-width violation), `--intro` (tighter
+// bottom padding when a list/grid follows directly), `--centered` (icon +
+// title + lead, centered, for detail pages), `--ruled` (bottom rule),
+// `--display` (the home staircase-title flagship variant).
+//
+// Two container arrangements exist: most templates put a `.container`
+// INSIDE the hero (so `--ruled` draws viewport-wide and `--narrow` caps the
+// block before the container), but services/list.html + products/list.html
+// put the hero inside an already-`.container` article (so `--ruled` there
+// would draw container-width and `--narrow` caps within the container).
+// Slated for normalization to the wrapping arrangement when the pixel-lock
+// lifts (visual rework upcoming).
+.hero {
+  padding-block: var(--sp-2xl);
+}
+
+.hero--narrow {
+  max-width: 44rem;
+}
+
+.hero--intro {
+  padding-block-end: var(--sp-xl);
+}
+
+.hero--ruled {
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+
+.hero--centered {
+  text-align: center;
+}
+
+.hero__lead {
+  color: var(--color-text-muted);
+  font-size: var(--fs-lg);
+}
+
+.hero__icon {
+  display: block;
+  font-size: var(--fs-4xl);
+  margin-block-end: var(--sp-sm);
+}
+
+.hero--centered .hero__title {
+  margin-block-end: var(--sp-sm);
+}
+
+.hero--centered .hero__lead {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+// Article-header variant elements: date and/or category chip stacked above
+// the title. The sibling rule spaces the title only when such meta precedes
+// it, so plain heroes stay untouched.
+.hero__date {
+  display: block;
+  color: var(--color-text-subtle);
+  font-size: var(--fs-sm);
+}
+
+.hero__chip {
+  display: inline-flex;
+  margin-block-start: var(--sp-xs);
+}
+
+.hero__date + .hero__title,
+.hero__chip + .hero__title {
+  margin-block-start: var(--sp-sm);
+}
+
+// --- Display (home flagship) variant -----------------------------------
+
+.hero--display {
+  padding-block: var(--sp-3xl) var(--sp-lg);
+
+  @include abstracts.mq-up("md") {
+    padding-block-start: var(--sp-4xl);
+  }
+
+  @include abstracts.mq-up("lg") {
+    padding-block-start: var(--sp-5xl);
+  }
+}
+
+// The staircase spans the whole container on a 12-col grid: each line is
+// inset one column from the left, and the right-aligned line stops one
+// column short of the right edge — the block reads centered as a whole
+// while sitting close to the container edges.
+.hero--display .hero__title {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  font-size: clamp(var(--fs-2xl), 6vw, calc(var(--fs-4xl) * 2));
+  line-height: 1.25;
+}
+
+.hero--display .hero__title-line {
+  grid-column: 1 / -1;
+
+  @include abstracts.mq-up("md") {
+    grid-column: 2 / -1;
+  }
+}
+
+// Mobile keeps every line left-aligned (readability); the staggered
+// "staircase" only appears from `md` up.
+.hero__title-line--right {
+  @include abstracts.mq-up("md") {
+    align-self: flex-end;
+    text-align: right;
+  }
+}
+
+.hero--display .hero__title-line--right {
+  @include abstracts.mq-up("md") {
+    grid-column: 2 / 12;
+  }
+}
+
+.hero__cta {
+  display: inline-flex;
+  margin-block-start: var(--sp-xl);
+}
+
+// Centered under the centered staircase title.
+.hero--display .hero__cta-row {
+  display: flex;
+  justify-content: center;
+}
+
+.hero__image {
+  margin-block-start: var(--sp-2xl);
+}
