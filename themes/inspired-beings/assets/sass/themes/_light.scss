@@ -85,7 +85,15 @@ $container: (
 //   text-default night · text-muted slate-1 · text-subtle slate-2 ·
 //   accent peri-600/700/800 · on-accent frost-2 · border line-light/
 //   line-light-subtle · inverse-band-bg night · link peri-600 · focus night ·
-//   error error-light · success spring-deep · warning sun-deep
+//   error error-light · success spring-deep · warning sun-deep ·
+//   surface-tertiary TBD — brand pass · accent-surface TBD — brand pass ·
+//   accent-soft TBD — brand pass
+// The three TBD tokens were born during the comparison period and back
+// PERMANENT components (chip--flat, service-card icon, button--outlined
+// active, pricing-table fills) — the revert must assign real brand values
+// (light AND dark), and the `--color-primitive-cmp-*` primitives they
+// resolve through must survive until then or be replaced in the same
+// change.
 @mixin light-semantics {
   --color-surface-default: var(--color-primitive-cmp-white);
   --color-surface-alt: var(--color-primitive-cmp-paper);

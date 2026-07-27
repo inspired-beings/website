@@ -10,7 +10,7 @@
 
 .article-list__item-link {
   display: grid;
-  grid-template-columns: 88px 1fr;
+  grid-template-columns: 5.5em 1fr;
   grid-template-rows: auto auto;
   align-items: center;
   gap: var(--sp-sm) var(--sp-2xs);
@@ -18,7 +18,7 @@
   text-decoration: none;
 
   @include abstracts.mq-up("md") {
-    grid-template-columns: 88px 120px 1fr;
+    grid-template-columns: 5.5em 7.5em 1fr;
     grid-template-rows: auto;
     gap: 0 var(--sp-sm);
   }

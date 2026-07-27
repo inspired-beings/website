@@ -192,6 +192,18 @@ other = "Enterprise"
 [styleguidePricingPlanEnterprisePrice]
 other = "Custom"
 
+[styleguidePricingPlanStarterSub]
+other = "Early-stage teams"
+
+[styleguidePricingPlanGrowthSub]
+other = "Growing teams"
+
+[styleguidePricingPlanEnterpriseSub]
+other = "Critical systems"
+
+[styleguidePricingValuePartial]
+other = "Partial"
+
 [styleguidePricingCtaStarterLabel]
 other = "Get started"
 

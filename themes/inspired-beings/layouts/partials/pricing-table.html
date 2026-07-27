@@ -1,17 +1,21 @@
 {{/* BEM block `pricing-table` — a real <table> + <caption> + scope'd <th>.
   Dict params:
   - `caption` (string, required) — real <caption>, not a heading.
-  - `plans` (list, required) — each `{name, price, sub (optional audience
-    line), highlighted (bool, optional), cta (optional dict {href,
-    label})}`. One `<th scope="col">` per plan; the highlighted one gets
-    the tinted-column treatment plus a "recommended" badge, and its price
-    renders emphasized. The price itself renders as the FIRST body row
-    (`pricingTablePriceRowLabel`), not inside the header.
+  - `plans` (list, required) — each `{name, price, period (optional string
+    appended verbatim to the price, e.g. " / month"), sub (optional
+    audience line), highlighted (bool, optional), cta (optional dict
+    {href, label})}`. One `<th scope="col">` per plan; the highlighted one
+    gets the tinted-column treatment plus a "recommended" badge, and its
+    price renders emphasized. The price itself renders as the FIRST body
+    row (`pricingTablePriceRowLabel`), not inside the header.
   - `features` (list, optional) — each `{name, values}`, `values` a list
     with exactly one entry per plan, in the same order as `plans`. A value
-    is `true` (filled dot), `false` (dash), the string "Partial"/"Partiel"
-    (outlined square), or any other string (rendered verbatim, e.g.
-    "99.9%"). Marks are pure CSS shapes with `role="img" aria-label` (see
+    is `true` (filled dot), `false` (dash), the SENTINEL strings "Partial"
+    or "Partiel" (case-insensitive → outlined square, the third state), or
+    any other string (rendered verbatim, e.g. "99.9%"). The sentinel list
+    is deliberately closed: content in a future third locale must use one
+    of those two spellings to get the mark — anything else renders as
+    text. Marks are pure CSS shapes with `role="img" aria-label` (see
     `_pricing-table.scss` for the axe/dingbat rationale).
   - The CTA row renders only when at least one plan carries a `cta`.
   Usage: see the styleguide's "Pricing table" section. */}}

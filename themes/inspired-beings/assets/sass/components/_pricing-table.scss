@@ -167,8 +167,8 @@
 .pricing-table__mark {
   display: inline-block;
   position: relative;
-  width: 10px;
-  height: 10px;
+  width: 0.625em;
+  height: 0.625em;
   vertical-align: middle;
 }
 
@@ -178,16 +178,16 @@
 }
 
 .pricing-table__mark--partial {
-  border: 1.5px solid var(--color-text-muted);
+  border: 0.09em solid var(--color-text-muted);
 }
 
 .pricing-table__mark--no::before {
   content: "";
   position: absolute;
-  top: 4px;
+  top: 0.27em;
   left: 0;
-  width: 10px;
-  height: 1.5px;
+  width: 0.625em;
+  height: 0.09em;
   background-color: var(--color-text-muted);
 }
 
@@ -224,4 +224,14 @@
 .pricing-table__cta-cell {
   padding-block-start: var(--sp-sm);
   text-align: center;
+}
+
+// Narrow columns (table-layout: fixed) can't fit a nowrap pill button —
+// let it wrap and slim down below md.
+.pricing-table__cta-cell .button {
+  @include abstracts.mq-down("md") {
+    white-space: normal;
+    padding-inline: var(--sp-xs);
+    font-size: var(--fs-sm);
+  }
 }

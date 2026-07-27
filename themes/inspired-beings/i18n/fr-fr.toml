@@ -192,6 +192,18 @@ other = "Enterprise"
 [styleguidePricingPlanEnterprisePrice]
 other = "Sur devis"
 
+[styleguidePricingPlanStarterSub]
+other = "Jeunes équipes"
+
+[styleguidePricingPlanGrowthSub]
+other = "Équipes en croissance"
+
+[styleguidePricingPlanEnterpriseSub]
+other = "Systèmes critiques"
+
+[styleguidePricingValuePartial]
+other = "Partiel"
+
 [styleguidePricingCtaStarterLabel]
 other = "Commencer"
 

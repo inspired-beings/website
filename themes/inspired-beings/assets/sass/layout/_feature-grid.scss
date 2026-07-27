@@ -32,10 +32,14 @@
 
   @include abstracts.mq-up("lg") {
     grid-column: span 3;
+  }
+}
 
-    // Header occupies child slot 1, so odd children are cells 2, 4, 6.
-    &:nth-child(odd) {
-      margin-block-start: var(--sp-2xl);
-    }
+// Stagger step, applied by the template to alternate cells — an explicit
+// modifier rather than an nth-child rule so the rhythm can't silently
+// invert if the grid gains or loses a child.
+.feature-grid__cell--step {
+  @include abstracts.mq-up("lg") {
+    margin-block-start: var(--sp-2xl);
   }
 }

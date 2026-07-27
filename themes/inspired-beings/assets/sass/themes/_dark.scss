@@ -48,7 +48,10 @@
 // but visually inert. Restore with the revert:
 //   surfaces night/night-1/night-2 · @include inverse-band-semantics ·
 //   inverse-band-bg night-deep · error error-dark · success spring ·
-//   warning sun
+//   warning sun · PLUS dark values for the three comparison-born tokens
+//   (surface-tertiary / accent-surface / accent-soft — currently inherited
+//   from the light mirror; they have NO brand dark values yet and need
+//   real ones at the brand pass, see `_light.scss`'s TBD note)
 @mixin dark-semantics {
   @include light.light-semantics;
 }

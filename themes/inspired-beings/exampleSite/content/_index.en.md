@@ -35,37 +35,31 @@ services_extract:
     body: "Full-stack builds across Node.js, TypeScript and modern frontend/mobile frameworks, first commit to production."
     link:
       href: "/services/web-development/"
-      label: "Learn more"
   - icon: "☁️"
     title: "Cloud & DevOps"
     body: "Infrastructure as code and cost-aware cloud architecture that scales with you, not against you."
     link:
       href: "/services/cloud-devops/"
-      label: "Learn more"
   - icon: "🛡️"
     title: "Security Audits"
     body: "Independent review of your code, infrastructure and dependencies against current threat models."
     link:
       href: "/services/security-audits/"
-      label: "Learn more"
   - icon: "♿"
     title: "Accessibility Audits"
     body: "WCAG 2.2 AA audits with concrete, prioritised fixes — not a report that gathers dust."
     link:
       href: "/services/accessibility-audits/"
-      label: "Learn more"
   - icon: "🧭"
     title: "Technical Consulting"
     body: "Architecture reviews and fractional CTO support for teams making a big call."
     link:
       href: "/services/technical-consulting/"
-      label: "Learn more"
   - icon: "🔧"
     title: "Maintenance & TMA"
     body: "Monitoring, security patching and incremental feature work once you're live."
     link:
       href: "/services/maintenance-tma/"
-      label: "Learn more"
 stats:
   - value: "140"
     unit: "+"

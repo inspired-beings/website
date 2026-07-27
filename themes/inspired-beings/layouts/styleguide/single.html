@@ -149,18 +149,21 @@
             "name" (i18n "styleguidePricingPlanStarterName")
             "price" (i18n "styleguidePricingPlanStarterPrice")
             "period" (i18n "styleguidePricingPlanStarterPeriod")
+            "sub" (i18n "styleguidePricingPlanStarterSub")
             "cta" (dict "href" "/contact/" "label" (i18n "styleguidePricingCtaStarterLabel"))
           )
           (dict
             "name" (i18n "styleguidePricingPlanGrowthName")
             "price" (i18n "styleguidePricingPlanGrowthPrice")
             "period" (i18n "styleguidePricingPlanGrowthPeriod")
+            "sub" (i18n "styleguidePricingPlanGrowthSub")
             "highlighted" true
             "cta" (dict "href" "/contact/" "label" (i18n "styleguidePricingCtaGrowthLabel"))
           )
           (dict
             "name" (i18n "styleguidePricingPlanEnterpriseName")
             "price" (i18n "styleguidePricingPlanEnterprisePrice")
+            "sub" (i18n "styleguidePricingPlanEnterpriseSub")
             "cta" (dict "href" "/contact/" "label" (i18n "styleguidePricingCtaEnterpriseLabel"))
           )
         )
@@ -177,7 +180,7 @@
             (i18n "styleguidePricingValueSecurityAuditsEnterprise")
           ))
           (dict "name" (i18n "styleguidePricingFeatureAccessibilityAudit") "values" (slice false true true))
-          (dict "name" (i18n "styleguidePricingFeaturePrioritySupport") "values" (slice false false true))
+          (dict "name" (i18n "styleguidePricingFeaturePrioritySupport") "values" (slice false (i18n "styleguidePricingValuePartial") true))
         )
       ) }}
     </section>

@@ -57,10 +57,10 @@
           "tagline" (i18n "homeProblemsHeading")
           "class" "feature-grid__header"
         ) }}
-        {{ range .Params.problems }}
-          <div class="feature feature-grid__cell">
-            <h3 class="feature__title">{{ .title }}</h3>
-            <p class="feature__body">{{ .body }}</p>
+        {{ range $i, $problem := .Params.problems }}
+          <div class="feature feature-grid__cell{{ if eq (mod $i 2) 1 }} feature-grid__cell--step{{ end }}">
+            <h3 class="feature__title">{{ $problem.title }}</h3>
+            <p class="feature__body">{{ $problem.body }}</p>
           </div>
         {{ end }}
       </div>
