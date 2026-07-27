@@ -35,12 +35,20 @@ readonly KARLA_COMMIT="69b25f663101efb4113dd7ed416c120dd2dce56a"
 readonly KARLA_URL="https://raw.githubusercontent.com/googlefonts/karla/${KARLA_COMMIT}/fonts/variable/Karla%5Bwght%5D.ttf"
 readonly KARLA_SHA256="ed3ca4cd9bdd899c543927c30bf5ff50706b24b3f2b7328e64b25f7d2a9d23dc"
 
+# TEMP(comparison-skin): Bellefair (single static weight 400, OFL) — the
+# design-review comparison face. google/fonts @ main, pinned commit.
+# Remove this block (and its subset/gate steps below) with the skin revert.
+readonly BELLEFAIR_COMMIT="c13390277dfb1fcc7415d84ef7ef9cfc1e52f8c1"
+readonly BELLEFAIR_URL="https://raw.githubusercontent.com/google/fonts/${BELLEFAIR_COMMIT}/ofl/bellefair/Bellefair-Regular.ttf"
+readonly BELLEFAIR_SHA256="5c0cd4d526e6dfcb189106af6b5e6ec99a54efb6d458dfd61626ce6dc0f03026"
+
 # Latin + French essentials: ASCII, Latin-1 supplement, œŒ, €, «», en/em dash,
 # curly single/double quotes, ellipsis, single guillemets.
 readonly UNICODES="U+0020-007E,U+00A0-00FF,U+0152-0153,U+20AC,U+00AB,U+00BB,U+2013-2014,U+2018-2019,U+201C-201D,U+2026,U+2039-203A"
 
 readonly FRAUNCES_MAX_BYTES=81920 # 80 KB
 readonly KARLA_MAX_BYTES=40960 # 40 KB
+readonly BELLEFAIR_MAX_BYTES=40960 # 40 KB — TEMP(comparison-skin)
 
 command -v python3 >/dev/null || {
   echo "python3 not found — activate mise first (eval \"\$(mise activate bash)\")" >&2
@@ -92,6 +100,7 @@ fetch_and_verify() {
 echo "== downloading pinned sources =="
 fetch_and_verify "$FRAUNCES_URL" "$FRAUNCES_SHA256" "${work_dir}/fraunces-vf.ttf"
 fetch_and_verify "$KARLA_URL" "$KARLA_SHA256" "${work_dir}/karla-vf.ttf"
+fetch_and_verify "$BELLEFAIR_URL" "$BELLEFAIR_SHA256" "${work_dir}/bellefair-regular.ttf"
 
 echo "== instancing Fraunces (SOFT=0 WONK=0 wght=340:600, opsz=48 pinned) =="
 fonttools varLib.instancer \
@@ -117,11 +126,21 @@ pyftsubset "${work_dir}/karla-vf.ttf" \
   --layout-features+=kern,liga \
   --recalc-average-width
 
+# TEMP(comparison-skin): Bellefair is already a single static 400 — subset only.
+pyftsubset "${work_dir}/bellefair-regular.ttf" \
+  --output-file="${FONTS_OUT_DIR}/bellefair-roman.woff2" \
+  --flavor=woff2 \
+  --unicodes="$UNICODES" \
+  --layout-features+=kern,liga \
+  --recalc-average-width
+
 echo "== size gate =="
 fraunces_size="$(stat -c%s "${FONTS_OUT_DIR}/fraunces-roman.woff2")"
 karla_size="$(stat -c%s "${FONTS_OUT_DIR}/karla-roman.woff2")"
-echo "fraunces-roman.woff2: ${fraunces_size} bytes (budget ${FRAUNCES_MAX_BYTES})"
-echo "karla-roman.woff2:    ${karla_size} bytes (budget ${KARLA_MAX_BYTES})"
+bellefair_size="$(stat -c%s "${FONTS_OUT_DIR}/bellefair-roman.woff2")"
+echo "fraunces-roman.woff2:  ${fraunces_size} bytes (budget ${FRAUNCES_MAX_BYTES})"
+echo "karla-roman.woff2:     ${karla_size} bytes (budget ${KARLA_MAX_BYTES})"
+echo "bellefair-roman.woff2: ${bellefair_size} bytes (budget ${BELLEFAIR_MAX_BYTES})"
 failed=0
 ((fraunces_size <= FRAUNCES_MAX_BYTES)) || {
   echo "OVER BUDGET: fraunces-roman.woff2" >&2
@@ -129,6 +148,10 @@ failed=0
 }
 ((karla_size <= KARLA_MAX_BYTES)) || {
   echo "OVER BUDGET: karla-roman.woff2" >&2
+  failed=1
+}
+((bellefair_size <= BELLEFAIR_MAX_BYTES)) || {
+  echo "OVER BUDGET: bellefair-roman.woff2" >&2
   failed=1
 }
 
@@ -144,7 +167,7 @@ required = {
     "é": 0xE9, "à": 0xE0, "ç": 0xE7,
 }
 ok = True
-for name in ("fraunces-roman.woff2", "karla-roman.woff2"):
+for name in ("fraunces-roman.woff2", "karla-roman.woff2", "bellefair-roman.woff2"):
     cmap = TTFont(f"{out_dir}/{name}").getBestCmap()
     missing = [ch for ch, cp in required.items() if cp not in cmap]
     if missing:

@@ -39,6 +39,26 @@ $color-primitives: (
   "spring-deep": #457800,
   "error-light": #B42318,
   "error-dark": #FF8B80,
+
+  // TEMP(comparison-skin): design-review comparison palette — the semantic
+  // mixins in `_light.scss`/`_dark.scss` temporarily point at these instead
+  // of the brand hues above. Remove this block with the skin revert.
+  "cmp-green": #3b6d11,
+  "cmp-green-deep": #2a5009,
+  "cmp-green-soft": #c0dd97,
+  "cmp-green-tint": #eaf3de,
+  "cmp-white": #ffffff,
+  "cmp-paper": #f5f4f0,
+  "cmp-ink": #1a1a1a,
+  "cmp-gray": #666666,
+  "cmp-gray-soft": #6e6e6e, // AA nudge (source #888888: 3.5:1 on white)
+  "cmp-stone": #ccc9c0,
+  "cmp-stone-soft": #e0ddd6,
+  "cmp-stone-tint": #e8e6e0,
+  "cmp-coal": #1e1e1e,
+  "cmp-error": #c0392b, // AA nudge (source #e74c3c: 3.8:1 on white)
+  "cmp-success": #176e3a, // AA nudge (source #27ae60: 2.6:1 on white, and must clear the alt surface too)
+  "cmp-warning": #9f6000, // AA nudge (source #f39c12: 2.0:1 on white)
 );
 
 :root {

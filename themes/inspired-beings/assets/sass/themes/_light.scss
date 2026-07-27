@@ -78,25 +78,32 @@ $container: (
 // "Light" column) — every value is a `var()` reference into the shared
 // primitive layer (`_primitives.scss`), never a re-declared hex.
 
+// TEMP(comparison-skin): brand mapping parked for the design-review
+// comparison period — restore with the revert:
+//   surface-default frost-0 · surface-alt frost-1 · surface-raised frost-2 ·
+//   text-default night · text-muted slate-1 · text-subtle slate-2 ·
+//   accent peri-600/700/800 · on-accent frost-2 · border line-light/
+//   line-light-subtle · inverse-band-bg night · link peri-600 · focus night ·
+//   error error-light · success spring-deep · warning sun-deep
 @mixin light-semantics {
-  --color-surface-default: var(--color-primitive-frost-0);
-  --color-surface-alt: var(--color-primitive-frost-1);
-  --color-surface-raised: var(--color-primitive-frost-2);
-  --color-text-default: var(--color-primitive-night);
-  --color-text-muted: var(--color-primitive-slate-1);
-  --color-text-subtle: var(--color-primitive-slate-2);
-  --color-accent-default: var(--color-primitive-peri-600);
-  --color-accent-hover: var(--color-primitive-peri-700);
-  --color-accent-active: var(--color-primitive-peri-800);
-  --color-on-accent: var(--color-primitive-frost-2);
-  --color-border-default: var(--color-primitive-line-light);
-  --color-border-subtle: var(--color-primitive-line-light-subtle);
-  --color-inverse-band-bg: var(--color-primitive-night);
-  --color-link: var(--color-primitive-peri-600);
-  --color-focus-ring: var(--color-primitive-night);
-  --color-error: var(--color-primitive-error-light);
-  --color-success: var(--color-primitive-spring-deep);
-  --color-warning: var(--color-primitive-sun-deep);
+  --color-surface-default: var(--color-primitive-cmp-white);
+  --color-surface-alt: var(--color-primitive-cmp-paper);
+  --color-surface-raised: var(--color-primitive-cmp-white);
+  --color-text-default: var(--color-primitive-cmp-ink);
+  --color-text-muted: var(--color-primitive-cmp-gray);
+  --color-text-subtle: var(--color-primitive-cmp-gray-soft);
+  --color-accent-default: var(--color-primitive-cmp-green);
+  --color-accent-hover: var(--color-primitive-cmp-green-deep);
+  --color-accent-active: var(--color-primitive-cmp-green-deep);
+  --color-on-accent: var(--color-primitive-cmp-white);
+  --color-border-default: var(--color-primitive-cmp-stone);
+  --color-border-subtle: var(--color-primitive-cmp-stone-soft);
+  --color-inverse-band-bg: var(--color-primitive-cmp-coal);
+  --color-link: var(--color-primitive-cmp-green);
+  --color-focus-ring: var(--color-primitive-cmp-ink);
+  --color-error: var(--color-primitive-cmp-error);
+  --color-success: var(--color-primitive-cmp-success);
+  --color-warning: var(--color-primitive-cmp-warning);
 }
 
 :root {

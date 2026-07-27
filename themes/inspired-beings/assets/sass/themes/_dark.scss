@@ -9,6 +9,10 @@
 // Mapping copied VERBATIM from the design spec's semantic table, "Dark"
 // column.
 
+// TEMP(comparison-skin): needed while dark-semantics mirrors the light
+// mapping below.
+@use "light";
+
 // Subset of the dark-scheme semantic tokens (text/border/accent/link/focus)
 // that a permanently-dark content context needs — used directly by the
 // site :root override below, and re-included as-is by `layout/_footer.scss`
@@ -21,29 +25,32 @@
 // consumer that always wants "dark" must never touch it. Also excludes
 // error/success/warning (not needed by any inverse-band context yet —
 // add if one ever needs it, don't speculate).
+// TEMP(comparison-skin): brand band ramp parked for the design-review
+// comparison period — restore with the revert:
+//   text frost-t0/t1/t2 · accent peri-400/300/500 · on-accent night ·
+//   border line-dark/line-dark-subtle · link peri-400 · focus frost-t0
 @mixin inverse-band-semantics {
-  --color-text-default: var(--color-primitive-frost-t0);
-  --color-text-muted: var(--color-primitive-frost-t1);
-  --color-text-subtle: var(--color-primitive-frost-t2);
-  --color-accent-default: var(--color-primitive-peri-400);
-  --color-accent-hover: var(--color-primitive-peri-300);
-  --color-accent-active: var(--color-primitive-peri-500);
-  --color-on-accent: var(--color-primitive-night);
-  --color-border-default: var(--color-primitive-line-dark);
-  --color-border-subtle: var(--color-primitive-line-dark-subtle);
-  --color-link: var(--color-primitive-peri-400);
-  --color-focus-ring: var(--color-primitive-frost-t0);
+  --color-text-default: var(--color-primitive-cmp-white);
+  --color-text-muted: var(--color-primitive-cmp-stone-tint);
+  --color-text-subtle: var(--color-primitive-cmp-stone-tint);
+  --color-accent-default: var(--color-primitive-cmp-green-soft);
+  --color-accent-hover: var(--color-primitive-cmp-white);
+  --color-accent-active: var(--color-primitive-cmp-green-tint);
+  --color-on-accent: var(--color-primitive-cmp-green-deep);
+  --color-border-default: var(--color-primitive-cmp-stone-soft);
+  --color-border-subtle: var(--color-primitive-cmp-gray);
+  --color-link: var(--color-primitive-cmp-stone-tint);
+  --color-focus-ring: var(--color-primitive-cmp-white);
 }
 
+// TEMP(comparison-skin): the comparison reference has a single scheme, so
+// dark mirrors light for the review period — the toggle stays functional
+// but visually inert. Restore with the revert:
+//   surfaces night/night-1/night-2 · @include inverse-band-semantics ·
+//   inverse-band-bg night-deep · error error-dark · success spring ·
+//   warning sun
 @mixin dark-semantics {
-  --color-surface-default: var(--color-primitive-night);
-  --color-surface-alt: var(--color-primitive-night-1);
-  --color-surface-raised: var(--color-primitive-night-2);
-  @include inverse-band-semantics;
-  --color-inverse-band-bg: var(--color-primitive-night-deep);
-  --color-error: var(--color-primitive-error-dark);
-  --color-success: var(--color-primitive-spring);
-  --color-warning: var(--color-primitive-sun);
+  @include light.light-semantics;
 }
 
 // Automatic override: OS/browser reports a dark scheme preference.

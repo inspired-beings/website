@@ -19,13 +19,18 @@
 
 {{/* Fingerprint the self-hosted fonts once, then hand the same URLs to the
   Sass @font-face `src` (via hugo:vars) so the stylesheet and the preload
-  below resolve to the identical fingerprinted path — no double download. */}}
-{{ $fraunces := resources.Get "fonts/fraunces-roman.woff2" | resources.Fingerprint "sha384" }}
-{{ $karla := resources.Get "fonts/karla-roman.woff2" | resources.Fingerprint "sha384" }}
-{{ $fontVars := dict "fraunces-url" $fraunces.RelPermalink "karla-url" $karla.RelPermalink }}
+  below resolve to the identical fingerprinted path — no double download.
+
+  TEMP(comparison-skin): the brand faces (Fraunces + Karla) are unloaded for
+  the design-review comparison period — Bellefair carries all text. Restore
+  the fraunces/karla lines (and drop the bellefair ones) with the revert:
+  {{ $fraunces := resources.Get "fonts/fraunces-roman.woff2" | resources.Fingerprint "sha384" }}
+  {{ $karla := resources.Get "fonts/karla-roman.woff2" | resources.Fingerprint "sha384" }}
+  {{ $fontVars := dict "fraunces-url" $fraunces.RelPermalink "karla-url" $karla.RelPermalink }} */}}
+{{ $bellefair := resources.Get "fonts/bellefair-roman.woff2" | resources.Fingerprint "sha384" }}
+{{ $fontVars := dict "bellefair-url" $bellefair.RelPermalink }}
 {{ $cssSassOptions := dict "transpiler" "dartsass" "vars" $fontVars }}
 {{ $style := resources.Get "sass/main.scss" | css.Sass $cssSassOptions | css.PostCSS | resources.Minify | resources.Fingerprint "sha512" }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" />
 
-<link rel="preload" as="font" type="font/woff2" href="{{ $fraunces.RelPermalink }}" crossorigin />
-<link rel="preload" as="font" type="font/woff2" href="{{ $karla.RelPermalink }}" crossorigin />
+<link rel="preload" as="font" type="font/woff2" href="{{ $bellefair.RelPermalink }}" crossorigin />

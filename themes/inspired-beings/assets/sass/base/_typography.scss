@@ -8,26 +8,26 @@
 // same fingerprinted path — no double download.
 @use "hugo:vars" as fonts;
 
+// TEMP(comparison-skin): brand @font-face blocks (Fraunces display + Karla
+// body) parked for the design-review comparison period — one single-weight
+// face carries ALL text, faithful to the comparison reference. Restore with
+// the revert:
+//   @font-face { font-family: "Fraunces"; src: url("#{fonts.$fraunces-url}") format("woff2"); font-weight: 340 600; font-style: normal; font-display: swap; }
+//   @font-face { font-family: "Karla"; src: url("#{fonts.$karla-url}") format("woff2"); font-weight: 400 700; font-style: normal; font-display: swap; }
+//   --font-display: Fraunces, Georgia, "Iowan Old Style", "Times New Roman", serif;
+//   --font-body: Karla, ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
 @font-face {
-  font-family: "Fraunces";
-  src: url("#{fonts.$fraunces-url}") format("woff2");
-  font-weight: 340 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Karla";
-  src: url("#{fonts.$karla-url}") format("woff2");
-  font-weight: 400 700;
+  font-family: "Bellefair";
+  src: url("#{fonts.$bellefair-url}") format("woff2");
+  font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  // Fallback stacks verbatim from the design spec's Typography section.
-  --font-display: Fraunces, Georgia, "Iowan Old Style", "Times New Roman", serif;
-  --font-body: Karla, ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+  // TEMP(comparison-skin): one face for display AND body.
+  --font-display: Bellefair, Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --font-body: Bellefair, Georgia, "Iowan Old Style", "Times New Roman", serif;
 }
 
 body {
@@ -35,6 +35,11 @@ body {
   font-size: var(--fs-md);
   color: var(--color-text-default);
   background-color: var(--color-surface-default);
+
+  // TEMP(comparison-skin): the comparison face ships a single 400 weight —
+  // kill synthetic bolding so every weight renders as the true 400, exactly
+  // as the reference does. Inherited; remove with the revert.
+  font-synthesis: none;
 }
 
 h1 {
@@ -69,7 +74,9 @@ h5,
 h6 {
   font-family: var(--font-display);
   line-height: 1.2;
-  font-weight: 600;
+  // TEMP(comparison-skin): 400 for the single-weight comparison face
+  // (brand value: 600 — restore with the revert).
+  font-weight: 400;
 }
 
 small {
