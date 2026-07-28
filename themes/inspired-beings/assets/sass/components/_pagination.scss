@@ -1,9 +1,14 @@
+@use "../abstracts";
+
 // Pagination: `<nav aria-label>` (see `partials/pagination.html`). Current
-// page is a non-interactive element marked `[aria-current="page"]`, same
-// idiom as `.language-switcher__current`/`.top-bar__link[aria-current]`.
+// page is a non-interactive element marked `[aria-current="page"]`;
+// unavailable first/prev/next/last controls render as non-interactive
+// `--disabled` spans (kept visible so the control row is stable), same
+// idiom as `.language-switcher__current`.
 .pagination__list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: var(--sp-2xs);
 }
@@ -12,20 +17,31 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--sp-xl);
-  height: var(--sp-xl);
+  min-width: 2.75rem;
+  height: 2.75rem;
   padding-inline: var(--sp-xs);
   border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-md);
   color: var(--color-text-default);
   text-decoration: none;
   font-size: var(--fs-sm);
+  line-height: 1;
+}
 
-  &:hover,
-  &:focus-visible {
-    border-color: var(--color-accent-default);
-    color: var(--color-accent-default);
+@include abstracts.mq-up("sm") {
+  .pagination__list {
+    gap: var(--sp-xs);
   }
+
+  .pagination__link {
+    font-size: var(--fs-md);
+  }
+}
+
+a.pagination__link:hover,
+a.pagination__link:focus-visible {
+  border-color: var(--color-accent-default);
+  color: var(--color-accent-default);
 }
 
 .pagination__link--current {
@@ -35,7 +51,9 @@
   font-weight: 700;
 }
 
-.pagination__link--prev,
-.pagination__link--next {
-  font-weight: 500;
+// Dimmed via the AA-nudged gray, not opacity — the reference's 40%-opacity
+// treatment lands below the 4.5:1 floor and axe flags it.
+.pagination__link--disabled {
+  color: var(--color-text-subtle);
+  border-color: var(--color-border-subtle);
 }

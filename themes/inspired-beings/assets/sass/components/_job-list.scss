@@ -1,0 +1,64 @@
+@use "../abstracts";
+
+// Open-roles listing: ruled rows, each row one link — role name left,
+// meta (details + arrow) right.
+.job-list {
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+.job-list__item {
+  border-block-end: 1px solid var(--color-border-subtle);
+}
+
+.job-list__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-xs);
+  padding-block: var(--sp-lg);
+  color: var(--color-text-default);
+  text-decoration: none;
+}
+
+.job-list__name {
+  font-size: var(--fs-md);
+  line-height: 1.375;
+}
+
+.job-list__link:hover .job-list__name,
+.job-list__link:focus-visible .job-list__name {
+  color: var(--color-accent-default);
+}
+
+.job-list__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-sm);
+  color: var(--color-text-muted);
+}
+
+.job-list__details {
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+
+@include abstracts.mq-up("sm") {
+  .job-list__link {
+    justify-content: space-between;
+  }
+
+  .job-list__meta {
+    gap: var(--sp-md);
+  }
+
+  .job-list__details {
+    font-size: var(--fs-md);
+  }
+}
+
+@include abstracts.mq-up("lg") {
+  .job-list__name {
+    font-size: var(--fs-lg);
+  }
+}

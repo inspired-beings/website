@@ -1,0 +1,82 @@
+@use "../abstracts";
+
+// Asymmetric text/media section layout: a reading column beside a narrower
+// aside (portrait, figure), title row above both. Stacks below `sm`.
+.split {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--sp-xl) var(--sp-md);
+}
+
+.split__title {
+  grid-column: 1 / -1;
+}
+
+.split__main {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.split__aside {
+  grid-column: 1 / -1;
+}
+
+// Media-lead variant: the aside (portrait, figure) leads on the left in a
+// narrower column, reading content sits right — the inverse ratio of the
+// default. Top-aligned: the aside must not stretch with the content.
+.split--media-lead {
+  align-items: start;
+
+  // `.split__main` needs no base override — it already spans full width.
+  .split__aside {
+    grid-column: 3 / span 8;
+  }
+}
+
+@include abstracts.mq-up("sm") {
+  .split__main {
+    grid-column: 1 / 8;
+  }
+
+  .split__aside {
+    grid-column: 8 / -1;
+  }
+
+  .split--media-lead {
+    .split__aside {
+      grid-column: 1 / 5;
+    }
+
+    .split__main {
+      grid-column: 5 / -1;
+    }
+  }
+}
+
+@include abstracts.mq-up("lg") {
+  .split {
+    column-gap: var(--sp-xl);
+  }
+
+  .split__main {
+    grid-column: 2 / 8;
+  }
+
+  .split__aside {
+    grid-column: 8 / span 4;
+  }
+
+  .split--media-lead .split__main {
+    grid-column: 6 / span 6;
+    align-self: auto;
+  }
+}
+
+@include abstracts.mq-up("xl") {
+  .split__main {
+    grid-column: 2 / 7;
+    align-self: center;
+  }
+}

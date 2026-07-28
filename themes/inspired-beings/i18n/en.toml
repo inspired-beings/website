@@ -492,9 +492,6 @@ other = "FAQ"
 [serviceFaqHeading]
 other = "Frequently asked questions"
 
-[serviceContactLabel]
-other = "Contact"
-
 [serviceCtaHeading]
 other = "Ready to talk\nabout your project?"
 
@@ -522,14 +519,26 @@ other = "Tell us what you're building — we'll recommend a plan."
 [pricingCtaLabel]
 other = "Talk to us"
 
+[aboutPhilosophyLabel]
+other = "Our philosophy"
+
 [aboutPhilosophyHeading]
 other = "What we believe"
+
+[aboutFounderLabel]
+other = "From the founder"
 
 [aboutFounderHeading]
 other = "From our founder"
 
+[aboutFactsLabel]
+other = "Studio overview"
+
 [aboutFactsHeading]
 other = "At a glance"
+
+[aboutHistoryLabel]
+other = "Our history"
 
 [aboutHistoryHeading]
 other = "Our story so far"
@@ -636,23 +645,32 @@ other = "Enter a valid email address."
 [contactErrorInvalid]
 other = "Enter a valid value."
 
-[contactMailtoBody]
-other = "Our contact form is being wired up for this preview — email us directly instead, and a real engineer will reply within one business day."
+[careersMissionLabel]
+other = "Mission"
 
-[contactMailtoLabel]
-other = "Email us"
+[careersMissionHeading]
+other = "What drives us"
 
-[contactMailtoEmail]
-other = "hello@example.inspired-beings.com"
+[careersValuesLabel]
+other = "Values"
 
 [careersValuesHeading]
 other = "What we stand for as an employer"
 
+[careersVoicesLabel]
+other = "Team voices"
+
+[careersVoicesHeading]
+other = "Life at the studio"
+
+[careersOffersLabel]
+other = "Open roles"
+
 [careersOffersHeading]
 other = "Open roles"
 
-[careersOfferApplyLabel]
-other = "Apply for this role"
+[careersOfferApplyHint]
+other = "apply via the contact form"
 
 [careersCtaHeading]
 other = "Don't see the right role?"
@@ -707,3 +725,33 @@ other = "The page you're looking for doesn't exist, or has moved."
 
 [notFoundHomeLabel]
 other = "Back to the homepage"
+
+[contactRailLabel]
+other = "Contact"
+
+[formRequiredBadge]
+other = "Required"
+
+[formOptionalBadge]
+other = "Optional"
+
+[paginationFirstLabel]
+other = "First page"
+
+[paginationFirstShort]
+other = "First"
+
+[paginationLastLabel]
+other = "Last page"
+
+[paginationLastShort]
+other = "Last"
+
+[breadcrumbLabel]
+other = "Breadcrumb"
+
+[newsBreadcrumbRootLabel]
+other = "News"
+
+[newsBackToListLabel]
+other = "Back to all news"

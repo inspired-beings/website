@@ -1,20 +1,22 @@
-{{/* News list — hero → category `.chip-filter` row → `.article-list` rows →
-  pagination (`pagerSize = 9`) → CTA band. Standard site container width
-  throughout (spec: inspiration's narrowed news layout was rejected).
-  Content model: `_index.{en,fr-fr}.md` carries only `title` + optional
-  `lead`; each row's content is the article's own front matter
-  (`categories[]` — see `archetypes/news.md`). Section headings/CTA copy are
-  template-owned i18n strings, same convention as every other list page.
-  Body shared with `categories/term.html` via
+{{/* News list — page-hero (eyebrow = section title, display headline) →
+  category filter row + `.article-list` rows + first/prev/numbers/next/last
+  pagination (`pagerSize = 9`) → contact rail. The reading pattern follows
+  the current design decisions doc (list section keeps the standard
+  container width; only the article page narrows). Content model:
+  `_index.{en,fr-fr}.md` carries `title` + optional `headline`/`lead`; each
+  row's content is the article's own front matter (`categories[]` — see
+  `archetypes/news.md`). Body shared with `categories/term.html` via
   `partials/news-list-content.html`. */}}
 {{ define "main" }}
   <article>
-    <section class="hero hero--intro">
+    <section class="section">
       <div class="container">
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.lead }}
-          <p class="hero__lead">{{ . }}</p>
-        {{ end }}
+        <div class="page-hero">
+          <p class="page-hero__eyebrow">{{ .Title }}</p>
+          <div class="page-hero__heading">
+            <h1 class="page-hero__title">{{ .Params.headline | default .Title }}</h1>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -24,11 +26,12 @@
       </div>
     </section>
 
-    <section class="section section--band">
-      {{ partial "cta-band.html" (dict
-        "title" (i18n "newsCtaHeading")
+    <section class="section section--alt" aria-labelledby="news-contact-heading">
+      {{ partial "contact-rail.html" (dict
+        "id" "news-contact-heading"
+        "tagline" (i18n "newsCtaHeading")
         "body" (i18n "newsCtaBody")
-        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "newsCtaLabel")))
+        "actionLabel" (i18n "newsCtaLabel")
       ) }}
     </section>
   </article>

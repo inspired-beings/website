@@ -59,7 +59,10 @@ function markInvalid(form, container, field) {
   container.classList.add(invalidModifier)
 
   const name = field.name
-  const errorId = `${name}-error`
+  // Derive the error id from the same DOM id the server-side partials use
+  // (`idPrefix`, which only defaults to `name`): the control's own id, or
+  // the fieldset's for radio groups (radios are id-less by design).
+  const errorId = `${isFieldset ? container.id : field.id}-error`
   const controls = isFieldset ? container.querySelectorAll(`[name="${name}"]`) : [field]
   controls.forEach(control => {
     control.setAttribute('aria-invalid', 'true')

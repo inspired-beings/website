@@ -41,6 +41,58 @@
   text-align: center;
 }
 
+// Default-color intro paragraph opening a narrow section (offset below).
+.section__intro {
+  margin-block-end: var(--sp-2xl);
+  font-size: var(--fs-md);
+  line-height: 1.625;
+}
+
+// Display-size standalone statement paragraph (mission/philosophy bands).
+.section__statement {
+  font-size: var(--fs-lg);
+  line-height: 2;
+
+  @include abstracts.mq-up("sm") {
+    font-size: var(--fs-2xl);
+  }
+}
+
+// Ruled closing row of a section (e.g. a centered return link under an
+// article body).
+.section__footer {
+  display: flex;
+  justify-content: center;
+  margin-block-start: var(--sp-xl);
+  padding-block-start: var(--sp-xl);
+  border-block-start: 1px solid var(--color-border-subtle);
+}
+
+// Stacked-section body offset, one step airier than `section__body`
+// (title-above-content bands like facts/history).
+.section__body--spacious {
+  margin-block-start: var(--sp-2xl);
+}
+
+@include abstracts.mq-up("lg") {
+  .section__intro {
+    font-size: var(--fs-lg);
+  }
+
+  .section__statement {
+    font-size: var(--fs-3xl);
+  }
+
+  .section__footer {
+    margin-block-start: var(--sp-2xl);
+    padding-block-start: var(--sp-2xl);
+  }
+
+  .section__body--spacious {
+    margin-block-start: var(--sp-3xl);
+  }
+}
+
 .section--alt {
   background-color: var(--color-surface-alt);
 }
@@ -70,10 +122,6 @@
   margin-block-start: var(--sp-2xl);
 }
 
-.section--gap-top-sm {
-  margin-block-start: var(--sp-lg);
-}
-
 .section--gap-bottom {
   margin-block-end: var(--sp-2xl);
 }
@@ -85,11 +133,6 @@
 
 .section__body--measure {
   max-width: 48rem;
-}
-
-// Emphasized lead paragraph inside a section.
-.section__lede {
-  font-size: var(--fs-lg);
 }
 
 // Fine-print block under a section's body.

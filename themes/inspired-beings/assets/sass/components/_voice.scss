@@ -1,0 +1,52 @@
+@use "../abstracts";
+
+// Staff voice: a name/meta header and a Q&A list. Placement belongs to the
+// caller's layout (careers slots it into `.split--media-lead`); only the
+// content styles live here.
+.voice__header,
+.voice__qa-list,
+.voice__qa-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.voice__header {
+  gap: var(--sp-xs);
+}
+
+.voice__name {
+  font-size: var(--fs-lg);
+  font-weight: 500;
+}
+
+.voice__meta {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.voice__qa-list {
+  gap: var(--sp-lg);
+}
+
+.voice__qa-item {
+  gap: var(--sp-sm);
+}
+
+.voice__question {
+  color: var(--color-accent-default);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.375;
+}
+
+.voice__answer {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 2;
+}
+
+@include abstracts.mq-up("sm") {
+  .voice__question {
+    font-size: var(--fs-md);
+  }
+}

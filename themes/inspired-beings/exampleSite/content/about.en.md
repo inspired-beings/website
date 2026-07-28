@@ -1,9 +1,14 @@
 ---
 title: "About"
+headline: "The people behind the pixels."
 lead: "We're a small, senior studio that would rather turn down a rushed project than ship something we can't stand behind in five years."
 philosophy: "We believe good software is judged by who it excludes, how long it lasts, and how well it protects the people who trust it with their data — not by how fast it launched. That belief shapes every choice we make, from the color contrast on the first pixel to the incident-response plan nobody hopes to need. Accessibility, sustainable engineering and security aren't a phase at the end of the project; they're written into the very first sprint."
 founder_message:
+  portrait:
+    src: "images/person-portrait-placeholder.png"
+    alt: ""
   body: "We started this studio because we were tired of choosing between shipping fast and shipping right. Every engagement we take on has to hold up against three questions: is it accessible, is it sustainable, and is it secure? Not as an afterthought, but from the very first commit. That's not a slogan for us — it's how we plan sprints, review pull requests and price our work."
+  # Fictional placeholder persona — replace before any production use.
   name: "Alex Martin"
   role: "Founder & CEO"
 facts:

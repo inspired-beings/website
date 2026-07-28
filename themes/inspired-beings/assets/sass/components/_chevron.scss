@@ -1,0 +1,18 @@
+// Decorative chevron glyph (two currentColor borders), shared by the
+// breadcrumb, pagination steppers and row-link arrows — carriers keep an
+// aria-label or aria-hidden as appropriate.
+.chevron {
+  flex-shrink: 0;
+  width: 0.5em;
+  height: 0.5em;
+  border-block-start: 2px solid currentColor;
+  border-inline-end: 2px solid currentColor;
+}
+
+.chevron--right {
+  transform: rotate(45deg);
+}
+
+.chevron--left {
+  transform: rotate(-135deg);
+}

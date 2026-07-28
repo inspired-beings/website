@@ -1,77 +1,107 @@
-{{/* About — hero → philosophy → founder message (`.quote`) → facts table →
-  history timeline → join-team CTA (links `/careers/`) → closing CTA band.
-  Assembled entirely from shared primitives/components; no page-scoped CSS.
-  Content model: `philosophy` (string), `founder_message{body,name,role}`,
-  `facts[]{term,value}` (reused verbatim by `facts-table.html`),
-  `history[]{year,event}`.
-
-  `history[]` uses its own 2-field shape; the reused `timeline.html` partial
-  wants `{date,title,body}`, so `year`→`date`, `event`→`title`, and `body`
-  is passed as an explicit empty string (no 3rd field invented) — an empty
-  `<p>` is not an accessibility violation, just an unused slot in a
-  component built for a richer caller. */}}
+{{/* About — page-hero (eyebrow = page title, display headline) →
+  philosophy statement band → founder message (`.split`: text + portrait)
+  → facts `<dl>` → history rows → centered join band → contact rail.
+  Content model: `headline` (display title), `lead` (meta/list surfaces
+  only — the opener carries no lead line), `philosophy` (string),
+  `founder_message{body,name,role,portrait{src,alt}}`, `facts[]{term,
+  value}`, `history[]{year,event}`. Section labels/taglines and the
+  join/contact copy are template-owned i18n strings. */}}
 {{ define "main" }}
   <article>
-    <section class="hero hero--narrow">
+    <section class="section">
       <div class="container">
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.lead }}
-          <p class="hero__lead">{{ . }}</p>
-        {{ end }}
+        <div class="page-hero">
+          <p class="page-hero__eyebrow">{{ .Title }}</p>
+          <div class="page-hero__heading">
+            <h1 class="page-hero__title">{{ .Params.headline | default .Title }}</h1>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section section--alt" aria-labelledby="about-philosophy-heading">
       <div class="container">
-        <h2 id="about-philosophy-heading">{{ i18n "aboutPhilosophyHeading" }}</h2>
-        <p class="section__body section__body--measure section__lede">{{ .Params.philosophy }}</p>
+        {{ partial "section-title.html" (dict
+          "id" "about-philosophy-heading"
+          "label" (i18n "aboutPhilosophyLabel")
+          "tagline" (i18n "aboutPhilosophyHeading")
+        ) }}
+        <p class="section__statement section__body--spacious">{{ .Params.philosophy }}</p>
       </div>
     </section>
 
     <section class="section" aria-labelledby="about-founder-heading">
       <div class="container">
-        <h2 id="about-founder-heading">{{ i18n "aboutFounderHeading" }}</h2>
-        <blockquote class="quote section__body">
-          <p class="quote__body">{{ .Params.founder_message.body }}</p>
-          <footer class="quote__attribution">
-            <cite class="quote__name">{{ .Params.founder_message.name }}</cite>
-            <span class="quote__role">{{ .Params.founder_message.role }}</span>
-          </footer>
-        </blockquote>
+        <div class="split">
+          <div class="split__title">
+            {{ partial "section-title.html" (dict
+              "id" "about-founder-heading"
+              "label" (i18n "aboutFounderLabel")
+              "tagline" (i18n "aboutFounderHeading")
+            ) }}
+          </div>
+          <div class="split__main">
+            <p class="reading-text">{{ .Params.founder_message.body }}</p>
+            <p class="signature">
+              <span class="signature__role">{{ .Params.founder_message.role }}</span>
+              <span class="signature__name">{{ .Params.founder_message.name }}</span>
+            </p>
+          </div>
+          {{ with .Params.founder_message.portrait }}
+            <div class="split__aside">
+              {{ partial "figure.html" (dict "src" .src "alt" .alt "class" "figure--portrait") }}
+            </div>
+          {{ end }}
+        </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="about-facts-heading">
+    <section class="section section--alt" aria-labelledby="about-facts-heading">
       <div class="container">
-        <h2 id="about-facts-heading">{{ i18n "aboutFactsHeading" }}</h2>
-        {{ partial "facts-table.html" (dict "facts" .Params.facts "class" "section__body") }}
+        {{ partial "section-title.html" (dict
+          "id" "about-facts-heading"
+          "label" (i18n "aboutFactsLabel")
+          "tagline" (i18n "aboutFactsHeading")
+        ) }}
+        {{ partial "facts-table.html" (dict "facts" .Params.facts "class" "section__body--spacious") }}
       </div>
     </section>
 
-    <section class="section" aria-labelledby="about-history-heading">
+    <section class="section section--alt" aria-labelledby="about-history-heading">
       <div class="container">
-        <h2 id="about-history-heading">{{ i18n "aboutHistoryHeading" }}</h2>
+        {{ partial "section-title.html" (dict
+          "id" "about-history-heading"
+          "label" (i18n "aboutHistoryLabel")
+          "tagline" (i18n "aboutHistoryHeading")
+        ) }}
         {{ $events := slice }}
         {{ range .Params.history }}
           {{ $events = $events | append (dict "date" .year "title" .event "body" "") }}
         {{ end }}
-        {{ partial "timeline.html" (dict "events" $events "class" "section__body") }}
+        {{ partial "timeline.html" (dict "events" $events "class" "section__body--spacious") }}
       </div>
     </section>
 
-    <section class="section section--band section--gap-top">
-      {{ partial "cta-band.html" (dict
-        "title" (i18n "aboutJoinHeading")
-        "body" (i18n "aboutJoinBody")
-        "actions" (slice (dict "href" ("careers/" | relLangURL) "label" (i18n "aboutJoinLabel") "variant" "outlined"))
-      ) }}
+    <section class="section" aria-labelledby="about-join-heading">
+      <div class="container">
+        <div class="section__centered">
+          {{ partial "section-title.html" (dict
+            "id" "about-join-heading"
+            "tagline" (i18n "aboutJoinHeading")
+            "class" "section-title--centered"
+          ) }}
+          <p class="section__prose">{{ i18n "aboutJoinBody" }}</p>
+          <a class="button button--outlined button--medium" href="{{ "careers/" | relLangURL }}">{{ i18n "aboutJoinLabel" }}</a>
+        </div>
+      </div>
     </section>
 
-    <section class="section section--band section--gap-top-sm section--gap-bottom">
-      {{ partial "cta-band.html" (dict
-        "title" (i18n "aboutCtaHeading")
+    <section class="section section--alt" aria-labelledby="about-contact-heading">
+      {{ partial "contact-rail.html" (dict
+        "id" "about-contact-heading"
+        "tagline" (i18n "aboutCtaHeading")
         "body" (i18n "aboutCtaBody")
-        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "aboutCtaLabel")))
+        "actionLabel" (i18n "aboutCtaLabel")
       ) }}
     </section>
   </article>

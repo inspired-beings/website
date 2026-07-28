@@ -30,12 +30,12 @@
 {{ end }}
 
 <table class="pricing-table">
-  <caption class="pricing-table__caption">{{ .caption }}</caption>
+  <caption class="visually-hidden">{{ .caption }}</caption>
   <thead>
     <tr>
       <th class="pricing-table__corner" scope="col">
         {{ with .features }}
-          <span class="pricing-table__sr-label">{{ i18n "pricingTableFeatureColumnLabel" }}</span>
+          <span class="visually-hidden">{{ i18n "pricingTableFeatureColumnLabel" }}</span>
         {{ end }}
       </th>
       {{ range $plans }}
@@ -85,7 +85,7 @@
     <tfoot>
       <tr>
         <th class="pricing-table__corner" scope="row">
-          <span class="pricing-table__sr-label">{{ i18n "pricingTableActionColumnLabel" }}</span>
+          <span class="visually-hidden">{{ i18n "pricingTableActionColumnLabel" }}</span>
         </th>
         {{ range $i, $plan := $plans }}
           <td class="pricing-table__cta-cell">

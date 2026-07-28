@@ -137,7 +137,7 @@
       submits the form), same security posture as the real contact page. */}}
     <section class="styleguide__section" aria-labelledby="styleguide-contact-form">
       <h2 id="styleguide-contact-form">{{ i18n "styleguideContactFormHeading" }}</h2>
-      {{ partial "contact-form.html" (dict "endpoint" "/api/demo-contact") }}
+      {{ partial "contact-form.html" (dict "endpoint" "/api/demo-contact" "privacyHref" ("legal/" | relLangURL)) }}
     </section>
 
     <section class="styleguide__section" aria-labelledby="styleguide-pricing-table">
@@ -299,8 +299,10 @@
         "PageNumber" 2
         "HasPrev" true
         "Prev" (dict "URL" "?page=1")
+        "First" (dict "URL" "?page=1")
         "HasNext" true
         "Next" (dict "URL" "?page=3")
+        "Last" (dict "URL" "?page=3")
         "Pagers" (slice
           (dict "PageNumber" 1 "URL" "?page=1")
           (dict "PageNumber" 2 "URL" "?page=2")

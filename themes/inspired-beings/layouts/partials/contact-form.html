@@ -3,9 +3,11 @@
   styleguide (Task "final fix wave" — a permanent demo instance under the
   pa11y gate, exercising the same markup/consent/radio-group branches with
   a relative demo endpoint) render byte-identical markup instead of two
-  hand-kept copies. Dict params: `endpoint` (required — form `action`; the
-  contact layout passes `.Site.Params.contactFormEndpoint`, the styleguide
-  passes a fixed relative demo path).
+  hand-kept copies. Dict params: `endpoint` (optional — form `action` +
+  the JS enhancement hooks; when absent the form renders as a static,
+  action-less POST demo — where it should submit is an open decision, so
+  it deliberately posts nowhere yet), `privacyHref` (required — consent
+  link target; the contact layout passes the site's privacy-policy path).
 
   Form fields are template-authored (i18n), not page content — fixed
   structural UI, not authored prose. All four Task 4 field partials are
@@ -19,81 +21,78 @@
   `data-error-*`/`data-*-message` attributes hand the JS its i18n strings,
   keeping the bundle itself locale-agnostic (same idiom as
   `menu.js`/`theme.js`, which carry no translated text). */}}
-<section class="contact-form">
-  <div class="container">
-    <form
-      class="contact-form__form"
-      action="{{ .endpoint }}"
-      method="post"
-      data-contact-form
-      data-success-message="{{ i18n "contactSuccessMessage" }}"
-      data-error-message="{{ i18n "contactErrorMessage" }}"
-      data-error-required="{{ i18n "contactErrorRequired" }}"
-      data-error-email="{{ i18n "contactErrorEmail" }}"
-      data-error-invalid="{{ i18n "contactErrorInvalid" }}"
-    >
-      {{ partial "form/field-radio-group.html" (dict
-        "name" "type"
-        "legend" (i18n "contactTypeLegend")
-        "required" true
-        "options" (slice
-          (dict "value" "project-inquiry" "label" (i18n "contactTypeOptionProjectInquiry"))
-          (dict "value" "quote-request" "label" (i18n "contactTypeOptionQuoteRequest"))
-          (dict "value" "partnership" "label" (i18n "contactTypeOptionPartnership"))
-          (dict "value" "other" "label" (i18n "contactTypeOptionOther"))
+<form
+  class="contact-form"
+  {{ with .endpoint }}
+    action="{{ . }}"
+    data-contact-form
+    data-success-message="{{ i18n "contactSuccessMessage" }}"
+    data-error-message="{{ i18n "contactErrorMessage" }}"
+    data-error-required="{{ i18n "contactErrorRequired" }}"
+    data-error-email="{{ i18n "contactErrorEmail" }}"
+    data-error-invalid="{{ i18n "contactErrorInvalid" }}"
+  {{ end }}
+  method="post"
+>
+  {{ partial "form/field-radio-group.html" (dict
+    "name" "type"
+    "legend" (i18n "contactTypeLegend")
+    "required" true
+    "options" (slice
+      (dict "value" "project-inquiry" "label" (i18n "contactTypeOptionProjectInquiry"))
+      (dict "value" "quote-request" "label" (i18n "contactTypeOptionQuoteRequest"))
+      (dict "value" "partnership" "label" (i18n "contactTypeOptionPartnership"))
+      (dict "value" "other" "label" (i18n "contactTypeOptionOther"))
         )
-      ) }}
+  ) }}
 
-      {{ partial "form/field-textarea.html" (dict
-        "name" "message"
-        "label" (i18n "contactMessageLabel")
-        "required" true
-        "help" (i18n "contactMessageHelp")
-        "rows" 6
-      ) }}
+  {{ partial "form/field-textarea.html" (dict
+    "name" "message"
+    "label" (i18n "contactMessageLabel")
+    "required" true
+    "help" (i18n "contactMessageHelp")
+    "rows" 8
+  ) }}
 
-      {{ partial "form/field-text.html" (dict
-        "name" "name"
-        "label" (i18n "contactNameLabel")
-        "required" true
-        "autocomplete" "name"
-      ) }}
+  {{ partial "form/field-text.html" (dict
+    "name" "name"
+    "label" (i18n "contactNameLabel")
+    "required" true
+    "autocomplete" "name"
+  ) }}
 
-      {{ partial "form/field-text.html" (dict
-        "name" "company"
-        "label" (i18n "contactCompanyLabel")
-        "required" true
-        "autocomplete" "organization"
-      ) }}
+  {{ partial "form/field-text.html" (dict
+    "name" "company"
+    "label" (i18n "contactCompanyLabel")
+    "autocomplete" "organization"
+  ) }}
 
-      {{ partial "form/field-text.html" (dict
-        "name" "email"
-        "label" (i18n "contactEmailLabel")
-        "required" true
-        "type" "email"
-        "autocomplete" "email"
-      ) }}
+  {{ partial "form/field-text.html" (dict
+    "name" "email"
+    "label" (i18n "contactEmailLabel")
+    "required" true
+    "type" "email"
+    "autocomplete" "email"
+  ) }}
 
-      {{ partial "form/field-text.html" (dict
-        "name" "phone"
-        "label" (i18n "contactPhoneLabel")
-        "type" "tel"
-        "autocomplete" "tel"
-        "help" (i18n "contactPhoneHelp")
-      ) }}
+  {{ partial "form/field-text.html" (dict
+    "name" "phone"
+    "label" (i18n "contactPhoneLabel")
+    "type" "tel"
+    "autocomplete" "tel"
+    "help" (i18n "contactPhoneHelp")
+  ) }}
 
-      {{ partial "form/field-consent.html" (dict
-        "name" "consent"
-        "label" (i18n "contactConsentLabel")
-        "linkHref" ("legal/" | relLangURL)
-        "linkLabel" (i18n "contactConsentLinkLabel")
-      ) }}
+  {{ partial "form/field-consent.html" (dict
+    "name" "consent"
+    "label" (i18n "contactConsentLabel")
+    "linkHref" .privacyHref
+    "linkLabel" (i18n "contactConsentLinkLabel")
+  ) }}
 
-      <p class="contact-form__status" role="status" aria-live="polite" data-contact-status hidden></p>
+  <p class="contact-form__status" role="status" aria-live="polite" data-contact-status hidden></p>
 
-      <button type="submit" class="button button--solid button--large" data-contact-submit>
-        {{ i18n "contactSubmitLabel" }}
-      </button>
-    </form>
-  </div>
-</section>
+  <button type="submit" class="button button--solid button--large contact-form__submit" data-contact-submit>
+    {{ i18n "contactSubmitLabel" }}
+  </button>
+</form>

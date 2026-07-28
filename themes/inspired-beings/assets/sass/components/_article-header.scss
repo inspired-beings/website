@@ -1,0 +1,57 @@
+@use "../abstracts";
+
+// Article opener inside a narrow reading column: breadcrumb, title, meta
+// row (date + category chip).
+.article-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  margin-block-end: var(--sp-2xl);
+}
+
+.article-header__title {
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  line-height: 1.25;
+
+  @include abstracts.mq-up("sm") {
+    font-size: var(--fs-2xl);
+  }
+}
+
+.article-header__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+.article-header__date {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+// Reading rhythm for the article's Markdown body (composes with `.flow`,
+// which owns only block spacing).
+.article-body {
+  line-height: 2;
+}
+
+@include abstracts.mq-up("lg") {
+  .article-header {
+    gap: var(--sp-xl);
+    margin-block-end: var(--sp-3xl);
+  }
+
+  .article-header__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .article-header__date {
+    font-size: var(--fs-md);
+  }
+
+  .article-body {
+    font-size: var(--fs-lg);
+  }
+}

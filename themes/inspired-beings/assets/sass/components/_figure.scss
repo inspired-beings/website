@@ -46,3 +46,12 @@
     aspect-ratio: 16 / 7;
   }
 }
+
+// Vertical portrait crop (bios, staff voices).
+.figure--portrait .figure__image {
+  width: 100%;
+  aspect-ratio: 6 / 7;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-md);
+}

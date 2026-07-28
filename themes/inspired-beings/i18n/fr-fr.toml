@@ -492,9 +492,6 @@ other = "FAQ"
 [serviceFaqHeading]
 other = "Questions fréquentes"
 
-[serviceContactLabel]
-other = "Contact"
-
 [serviceCtaHeading]
 other = "Prêt·e à parler\nde votre projet ?"
 
@@ -522,14 +519,26 @@ other = "Dites-nous ce que vous construisez — nous recommandons une offre."
 [pricingCtaLabel]
 other = "Nous contacter"
 
+[aboutPhilosophyLabel]
+other = "Notre philosophie"
+
 [aboutPhilosophyHeading]
 other = "Ce en quoi nous croyons"
+
+[aboutFounderLabel]
+other = "Le mot du fondateur"
 
 [aboutFounderHeading]
 other = "Le mot de notre fondateur"
 
+[aboutFactsLabel]
+other = "Aperçu du studio"
+
 [aboutFactsHeading]
 other = "En bref"
+
+[aboutHistoryLabel]
+other = "Notre histoire"
 
 [aboutHistoryHeading]
 other = "Notre histoire jusqu'ici"
@@ -636,23 +645,32 @@ other = "Saisissez une adresse e-mail valide."
 [contactErrorInvalid]
 other = "Saisissez une valeur valide."
 
-[contactMailtoBody]
-other = "Notre formulaire de contact est en cours de branchement pour cet aperçu — écrivez-nous directement, un·e ingénieur·e répondra sous un jour ouvré."
+[careersMissionLabel]
+other = "Mission"
 
-[contactMailtoLabel]
-other = "Nous écrire"
+[careersMissionHeading]
+other = "Ce qui nous anime"
 
-[contactMailtoEmail]
-other = "hello@example.inspired-beings.com"
+[careersValuesLabel]
+other = "Valeurs"
 
 [careersValuesHeading]
 other = "Ce que nous défendons en tant qu'employeur"
 
+[careersVoicesLabel]
+other = "Paroles d'équipe"
+
+[careersVoicesHeading]
+other = "La vie au studio"
+
+[careersOffersLabel]
+other = "Postes ouverts"
+
 [careersOffersHeading]
 other = "Postes ouverts"
 
-[careersOfferApplyLabel]
-other = "Postuler à cette offre"
+[careersOfferApplyHint]
+other = "postuler via le formulaire de contact"
 
 [careersCtaHeading]
 other = "Aucun poste ne correspond ?"
@@ -707,3 +725,33 @@ other = "La page que vous cherchez n'existe pas, ou a été déplacée."
 
 [notFoundHomeLabel]
 other = "Retour à l'accueil"
+
+[contactRailLabel]
+other = "Contact"
+
+[formRequiredBadge]
+other = "Requis"
+
+[formOptionalBadge]
+other = "Facultatif"
+
+[paginationFirstLabel]
+other = "Première page"
+
+[paginationFirstShort]
+other = "Début"
+
+[paginationLastLabel]
+other = "Dernière page"
+
+[paginationLastShort]
+other = "Fin"
+
+[breadcrumbLabel]
+other = "Fil d'Ariane"
+
+[newsBreadcrumbRootLabel]
+other = "Actualités"
+
+[newsBackToListLabel]
+other = "Retour aux actualités"

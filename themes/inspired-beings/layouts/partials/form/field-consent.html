@@ -34,7 +34,7 @@
   <label class="form-field__label" for="{{ $idPrefix }}">
     {{ .label }}
     {{ with .linkHref }} <a href="{{ . }}">{{ $.linkLabel }}</a>{{ end }}
-    <span class="form-field__required" aria-hidden="true">*</span>
+    <span class="form-field__required" aria-hidden="true">{{ i18n "formRequiredBadge" }}</span>
   </label>
   {{ with .help }}
     <p class="form-field__help" id="{{ $idPrefix }}-help">{{ . }}</p>

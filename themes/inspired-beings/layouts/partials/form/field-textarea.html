@@ -20,7 +20,12 @@
 {{ end }}
 <div class="form-field{{ if .invalid }} form-field--invalid{{ end }}">
   <label class="form-field__label" for="{{ $idPrefix }}">
-    {{ .label }}{{ if .required }} <span class="form-field__required" aria-hidden="true">*</span>{{ end }}
+    {{ .label }}
+    {{ if .required }}
+      <span class="form-field__required" aria-hidden="true">{{ i18n "formRequiredBadge" }}</span>
+    {{ else }}
+      <span class="form-field__optional" aria-hidden="true">{{ i18n "formOptionalBadge" }}</span>
+    {{ end }}
   </label>
   <textarea
     class="form-field__input"

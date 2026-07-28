@@ -11,3 +11,13 @@
     padding-inline: var(--sp-2xl);
   }
 }
+
+// Narrower reading measures for single-column pages (forms, articles);
+// the padding allowance keeps the content box at the named measure.
+.container--narrow {
+  max-width: calc(var(--container-narrow-max-width) + var(--sp-2xl) * 2);
+}
+
+.container--medium {
+  max-width: calc(var(--container-medium-max-width) + var(--sp-2xl) * 2);
+}

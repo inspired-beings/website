@@ -25,13 +25,6 @@
   }
 }
 
-// Jumps straight to three columns at `md` (no two-column intermediate).
-.grid--3-md {
-  @include abstracts.mq-up("md") {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 // Phone-aspect screenshot gallery: always multi-column (cell content caps
 // itself — e.g. `.figure--capped`).
 .grid--gallery {

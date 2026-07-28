@@ -1,0 +1,39 @@
+@use "../abstracts";
+
+// Single-level breadcrumb over an article title: parent link, chevron,
+// clamped current-page label (ARIA breadcrumb pattern: nav > ol > li).
+.breadcrumb {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+// `min-width: 0` lets the clamped current label shrink inside the nested
+// flex items (harmless on the list itself).
+.breadcrumb__list,
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  min-width: 0;
+}
+
+.breadcrumb__link {
+  flex-shrink: 0;
+  color: var(--color-text-muted);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent-default);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+.breadcrumb__current {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  color: var(--color-text-subtle);
+}

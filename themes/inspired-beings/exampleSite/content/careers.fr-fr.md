@@ -1,5 +1,22 @@
 ---
 title: "Carrières"
+headline: "Construire des logiciels que l'on peut assumer."
+visual:
+  src: "images/studio-dashboard-placeholder.png"
+  alt: ""
+mission: "Nous recrutons pour le soin apporté au travail, pas seulement la compétence. Si vous pensez que l'accessibilité, la durabilité et la sécurité font partie du métier — et non des corvées de conformité — vous serez à votre place, quel que soit votre niveau. Nous préférons transmettre nos exigences à une personne motivée que de corriger de mauvais réflexes."
+voice:
+  # Persona fictif de démonstration — à remplacer avant toute mise en production.
+  name: "Camille Roux"
+  meta: "Ingénieure accessibilité · arrivée en 2021"
+  portrait:
+    src: "images/person-portrait-placeholder.png"
+    alt: ""
+  qa:
+    - q: "Qu'est-ce qui vous a surprise après votre arrivée ?"
+      a: "La précocité des exigences. La revue d'accessibilité a lieu dès le premier appel de conception, pas la semaine avant le lancement — je n'avais jamais vu cela appliqué pour de vrai."
+    - q: "Et la charge de travail ?"
+      a: "Les semaines de livraison sont intenses, mais les audits sont planifiés, jamais comprimés. Et personne ne vous sollicite à 21 h — le rythme soutenable fait partie de la conception durable."
 lead: "Nous sommes un studio senior, de petite taille, ouvert au remote — si un logiciel accessible, durable et sécurisé n'est pas non plus une simple case à cocher pour vous, parlons-en."
 values:
   - icon: "♿"
@@ -15,6 +32,7 @@ offers:
   - title: "Ingénieur·e Backend Senior (Node.js)"
     location: "Remote (fuseaux horaires UE)"
     contract_type: "CDI"
+    updated: "2026-07-01"
     summary: "Prenez en charge la couche API de nos missions clients de bout en bout — architecture, livraison et l'astreinte de 2h du matin quand quelque chose casse. Vous travaillerez en binôme étroit avec le frontend et le DevOps sur chaque projet."
     requirements:
       - "5 ans et plus en développement de services Node.js/TypeScript en production."
@@ -23,6 +41,7 @@ offers:
   - title: "Ingénieur·e Accessibilité & QA"
     location: "Paris, France (hybride)"
     contract_type: "CDI"
+    updated: "2026-06-12"
     summary: "Menez les passes d'accessibilité et de QA manuelle sur chaque mission cliente, rédigez les rapports d'audit remis aux clients, et accompagnez les autres ingénieur·es pour corriger ce que vous trouvez."
     requirements:
       - "Expérience pratique des lecteurs d'écran (NVDA, VoiceOver ou JAWS) en conditions réelles de test."

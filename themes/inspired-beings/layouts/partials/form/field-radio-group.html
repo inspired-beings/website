@@ -5,8 +5,8 @@
   `{value, label}`), `required` (bool), `help`, `invalid` (bool, also
   renders `aria-invalid="true"` on every radio), `errorText`, `idPrefix`
   (optional, defaults to `name` — set this to reuse the same logical group
-  twice on one page; only the help/error ids use it, the radios' shared
-  `name` attribute is untouched). */}}
+  twice on one page; the fieldset's own id and the help/error ids use it,
+  the radios' shared `name` attribute is untouched). */}}
 {{ $idPrefix := .idPrefix | default .name }}
 {{ $describedBy := "" }}
 {{ if .help }}
@@ -19,9 +19,9 @@
     {{ $describedBy = printf "%s-error" $idPrefix }}
   {{ end }}
 {{ end }}
-<fieldset class="form-fieldset{{ if .invalid }} form-fieldset--invalid{{ end }}">
+<fieldset class="form-fieldset{{ if .invalid }} form-fieldset--invalid{{ end }}" id="{{ $idPrefix }}">
   <legend class="form-fieldset__legend">
-    {{ .legend }}{{ if .required }} <span class="form-fieldset__required" aria-hidden="true">*</span>{{ end }}
+    {{ .legend }}{{ if .required }} <span class="form-fieldset__required" aria-hidden="true">{{ i18n "formRequiredBadge" }}</span>{{ end }}
   </legend>
   {{ with .help }}
     <p class="form-fieldset__help" id="{{ $idPrefix }}-help">{{ . }}</p>
