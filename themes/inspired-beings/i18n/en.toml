@@ -288,6 +288,45 @@ other = "Incident response coverage"
 [styleguideStatFourUnit]
 other = "/7"
 
+[styleguideStatsColumnHeading]
+other = "Stats band — column variant"
+
+[styleguideChecklistHeading]
+other = "Checklist — boxed variant"
+
+[styleguideChecklistItemOne]
+other = "Ships with accessible defaults out of the box."
+
+[styleguideChecklistItemTwo]
+other = "Works in both color schemes without extra wiring."
+
+[styleguideChecklistItemThree]
+other = "Documented here so every page can reuse it."
+
+[styleguideNumberedListHeading]
+other = "Numbered list"
+
+[styleguideNumberedItemOneTitle]
+other = "Scope the work"
+
+[styleguideNumberedItemOneBody]
+other = "Each item pairs an accent number with a title row and a muted body."
+
+[styleguideNumberedItemTwoTitle]
+other = "Ship the work"
+
+[styleguideNumberedItemTwoBody]
+other = "The ordered list carries the sequence; the numbers stay decorative."
+
+[styleguidePageHeroHeading]
+other = "Page hero"
+
+[styleguidePageHeroEyebrow]
+other = "Sample 01"
+
+[styleguidePageHeroTitle]
+other = "A page opener"
+
 [styleguideStepsHeading]
 other = "Steps"
 
@@ -426,20 +465,38 @@ other = "View all news"
 [servicesIndexLinkLabel]
 other = "Learn more"
 
-[serviceAudienceHeading]
+[serviceIndexLabel]
+other = "Service {{ .Index }}"
+
+[serviceAudienceLabel]
 other = "Who this is for"
 
+[serviceAudienceHeading]
+other = "Does this sound\nlike you?"
+
+[serviceCoverageLabel]
+other = "What we cover"
+
 [serviceCoverageHeading]
-other = "What's covered"
+other = "Everything the\nengagement includes"
+
+[serviceStatsLabel]
+other = "In numbers"
 
 [serviceStatsHeading]
-other = "The impact, in numbers"
+other = "What our work\nadds up to"
+
+[serviceFaqLabel]
+other = "FAQ"
 
 [serviceFaqHeading]
 other = "Frequently asked questions"
 
+[serviceContactLabel]
+other = "Contact"
+
 [serviceCtaHeading]
-other = "Ready to talk about your project?"
+other = "Ready to talk\nabout your project?"
 
 [serviceCtaBody]
 other = "Tell us where you're stuck — we'll reply within one business day with next steps, not a sales script."

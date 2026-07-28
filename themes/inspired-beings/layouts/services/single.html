@@ -1,87 +1,148 @@
-{{/* Service single — centered hero (icon+title+lead) → audience checklist →
-  numbered coverage (01-05) → stats band → FAQ accordions (native
-  <details>, zero JS) → CTA band. Content model: every word past the
-  section headings comes from front matter (`icon`, `tagline`, `audience[]`,
-  `coverage[]{title,body}`, `stats[]`, `faq[]{q,a}` — see
-  `archetypes/service.md`); section headings + the CTA band's copy are
-  template-owned i18n strings (fixed structural chrome, generic across
-  every service). FAQ items reuse `.accordion` markup/classes directly
-  (data-driven), not the `{{< accordion >}}` shortcode, since that shortcode
-  is for Markdown-authored content, not front-matter data. */}}
+{{/* Service single — page-hero opener (index eyebrow + icon + title) →
+  alternating full-bleed section bands, each a `.rail` (section-title pair
+  in the aside, content in the main column): boxed-check audience list →
+  sticky-aside numbered coverage → column stats → FAQ accordions (native
+  <details>, zero JS) → contact rail (same arrangement as the home contact
+  section). Content model: every word past the section chrome comes from
+  front matter (`icon`, `audience[]`, `coverage[]{title,body}`, `stats[]`,
+  `faq[]{q,a}` — see `archetypes/service.md`); section labels/taglines and
+  the contact copy are template-owned i18n strings (fixed structural
+  chrome, generic across every service). `tagline` stays in the content
+  model for list/meta surfaces but the opener deliberately carries no lead
+  line. FAQ items reuse `.accordion` markup/classes directly (data-driven),
+  not the `{{< accordion >}}` shortcode, since that shortcode is for
+  Markdown-authored content, not front-matter data. */}}
 {{ define "main" }}
+  {{ $ordinal := 0 }}
+  {{ range $i, $p := .CurrentSection.RegularPages.ByWeight }}
+    {{ if eq $p.RelPermalink $.RelPermalink }}{{ $ordinal = add $i 1 }}{{ end }}
+  {{ end }}
   <article>
-    <section class="hero hero--centered hero--ruled">
+    <section class="section">
       <div class="container">
-        {{ with .Params.icon }}
-          <span class="hero__icon" aria-hidden="true">{{ . }}</span>
-        {{ end }}
-        <h1 class="hero__title">{{ .Title }}</h1>
-        {{ with .Params.tagline }}
-          <p class="hero__lead">{{ . }}</p>
-        {{ end }}
+        <div class="page-hero">
+          {{ if gt $ordinal 0 }}
+            <p class="page-hero__eyebrow">{{ i18n "serviceIndexLabel" (dict "Index" (printf "%02d" $ordinal)) }}</p>
+          {{ end }}
+          <div class="page-hero__heading">
+            {{ with .Params.icon }}
+              <span class="page-hero__icon" aria-hidden="true">{{ . }}</span>
+            {{ end }}
+            <h1 class="page-hero__title">{{ .Title }}</h1>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="service-audience-heading">
+    <section class="section section--alt" aria-labelledby="service-audience-heading">
       <div class="container">
-        <h2 id="service-audience-heading">{{ i18n "serviceAudienceHeading" }}</h2>
-        <ul class="checklist grid grid--2 grid--gap-md section__body" role="list">
-          {{ range .Params.audience }}
-            <li class="checklist__item">
-              <span class="checklist__mark" aria-hidden="true"></span>
-              {{ . }}
-            </li>
-          {{ end }}
-        </ul>
+        <div class="rail">
+          <div class="rail__aside">
+            {{ partial "section-title.html" (dict
+              "id" "service-audience-heading"
+              "label" (i18n "serviceAudienceLabel")
+              "tagline" (i18n "serviceAudienceHeading")
+            ) }}
+          </div>
+          <ul class="rail__main checklist checklist--boxed" role="list">
+            {{ range .Params.audience }}
+              <li class="checklist__item">
+                <span class="checklist__mark" aria-hidden="true"></span>
+                {{ . }}
+              </li>
+            {{ end }}
+          </ul>
+        </div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="service-coverage-heading">
       <div class="container">
-        <h2 id="service-coverage-heading">{{ i18n "serviceCoverageHeading" }}</h2>
-        <ol class="numbered-list grid grid--2 section__body" role="list">
-          {{ range $i, $item := .Params.coverage }}
-            <li class="numbered-list__item">
-              <span class="numbered-list__number" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
-              <h3 class="numbered-list__title">{{ $item.title }}</h3>
-              <p class="numbered-list__body">{{ $item.body }}</p>
-            </li>
-          {{ end }}
-        </ol>
+        <div class="rail">
+          <div class="rail__aside rail__aside--sticky">
+            {{ partial "section-title.html" (dict
+              "id" "service-coverage-heading"
+              "label" (i18n "serviceCoverageLabel")
+              "tagline" (i18n "serviceCoverageHeading")
+            ) }}
+          </div>
+          <ol class="rail__main numbered-list" role="list">
+            {{ range $i, $item := .Params.coverage }}
+              <li class="numbered-list__item">
+                <h3 class="numbered-list__title">
+                  <span class="numbered-list__number" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</span>
+                  {{ $item.title }}
+                </h3>
+                <p class="numbered-list__body">{{ $item.body }}</p>
+              </li>
+            {{ end }}
+          </ol>
+        </div>
       </div>
     </section>
 
     <section class="section section--alt" aria-labelledby="service-stats-heading">
       <div class="container">
-        <h2 id="service-stats-heading">{{ i18n "serviceStatsHeading" }}</h2>
-        {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "section__body") }}
+        <div class="rail">
+          <div class="rail__aside">
+            {{ partial "section-title.html" (dict
+              "id" "service-stats-heading"
+              "label" (i18n "serviceStatsLabel")
+              "tagline" (i18n "serviceStatsHeading")
+            ) }}
+          </div>
+          <div class="rail__main">
+            {{ partial "stats-band.html" (dict "stats" .Params.stats "class" "stats-band--column") }}
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section" aria-labelledby="service-faq-heading">
       <div class="container">
-        <h2 id="service-faq-heading">{{ i18n "serviceFaqHeading" }}</h2>
-        {{/* No grid `gap` here: `.accordion + .accordion` (component-owned)
-          already spaces consecutive items. */}}
-        <div class="section__body">
-          {{ range .Params.faq }}
-            <details class="accordion">
-              <summary class="accordion__summary">{{ .q }}</summary>
-              <div class="accordion__content">
-                <p>{{ .a }}</p>
-              </div>
-            </details>
-          {{ end }}
+        <div class="rail">
+          <div class="rail__aside">
+            {{ partial "section-title.html" (dict
+              "id" "service-faq-heading"
+              "label" (i18n "serviceFaqLabel")
+              "tagline" (i18n "serviceFaqHeading")
+            ) }}
+          </div>
+          {{/* No grid `gap` here: `.accordion + .accordion` (component-owned)
+            already spaces consecutive items. */}}
+          <div class="rail__main">
+            {{ range .Params.faq }}
+              <details class="accordion">
+                <summary class="accordion__summary">
+                  {{ .q }}
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </summary>
+                <div class="accordion__content">
+                  <p>{{ .a }}</p>
+                </div>
+              </details>
+            {{ end }}
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section section--band">
-      {{ partial "cta-band.html" (dict
-        "title" (i18n "serviceCtaHeading")
-        "body" (i18n "serviceCtaBody")
-        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "serviceCtaLabel")))
-      ) }}
+    <section class="section section--alt" aria-labelledby="service-contact-heading">
+      <div class="container">
+        <div class="rail">
+          <div class="rail__aside">
+            {{ partial "section-title.html" (dict
+              "id" "service-contact-heading"
+              "label" (i18n "serviceContactLabel")
+              "tagline" (i18n "serviceCtaHeading")
+            ) }}
+          </div>
+          <div class="rail__main rail__main--end">
+            <p class="section__prose">{{ i18n "serviceCtaBody" }}</p>
+            <a class="button button--solid button--medium" href="{{ "contact/" | relLangURL }}">{{ i18n "serviceCtaLabel" }}</a>
+          </div>
+        </div>
+      </div>
     </section>
   </article>
 {{ end }}

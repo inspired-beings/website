@@ -23,7 +23,10 @@
           <div class="section__body section__body--measure">
             {{ range $group.items }}
               <details class="accordion">
-                <summary class="accordion__summary">{{ .q }}</summary>
+                <summary class="accordion__summary">
+                  {{ .q }}
+                  <span class="accordion__icon" aria-hidden="true"></span>
+                </summary>
                 <div class="accordion__content">
                   <p>{{ .a }}</p>
                 </div>

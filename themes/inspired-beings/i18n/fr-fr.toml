@@ -288,6 +288,45 @@ other = "Couverture de réponse aux incidents"
 [styleguideStatFourUnit]
 other = "/7"
 
+[styleguideStatsColumnHeading]
+other = "Bande de statistiques — variante colonne"
+
+[styleguideChecklistHeading]
+other = "Liste à coches — variante encadrée"
+
+[styleguideChecklistItemOne]
+other = "Des réglages accessibles par défaut, sans configuration."
+
+[styleguideChecklistItemTwo]
+other = "Fonctionne dans les deux schémas de couleurs sans câblage."
+
+[styleguideChecklistItemThree]
+other = "Documentée ici pour que chaque page puisse la réutiliser."
+
+[styleguideNumberedListHeading]
+other = "Liste numérotée"
+
+[styleguideNumberedItemOneTitle]
+other = "Cadrer le travail"
+
+[styleguideNumberedItemOneBody]
+other = "Chaque élément associe un numéro accentué, une ligne de titre et un corps discret."
+
+[styleguideNumberedItemTwoTitle]
+other = "Livrer le travail"
+
+[styleguideNumberedItemTwoBody]
+other = "La liste ordonnée porte la séquence ; les numéros restent décoratifs."
+
+[styleguidePageHeroHeading]
+other = "En-tête de page"
+
+[styleguidePageHeroEyebrow]
+other = "Exemple 01"
+
+[styleguidePageHeroTitle]
+other = "Une ouverture de page"
+
 [styleguideStepsHeading]
 other = "Étapes"
 
@@ -426,20 +465,38 @@ other = "Voir toutes les actualités"
 [servicesIndexLinkLabel]
 other = "En savoir plus"
 
-[serviceAudienceHeading]
+[serviceIndexLabel]
+other = "Service {{ .Index }}"
+
+[serviceAudienceLabel]
 other = "Pour qui"
 
+[serviceAudienceHeading]
+other = "Vous vous\nreconnaissez ?"
+
+[serviceCoverageLabel]
+other = "Ce que nous couvrons"
+
 [serviceCoverageHeading]
-other = "Ce que couvre cette offre"
+other = "Tout ce que la\nmission comprend"
+
+[serviceStatsLabel]
+other = "En chiffres"
 
 [serviceStatsHeading]
-other = "L'impact, en chiffres"
+other = "Ce que notre travail\nreprésente"
+
+[serviceFaqLabel]
+other = "FAQ"
 
 [serviceFaqHeading]
 other = "Questions fréquentes"
 
+[serviceContactLabel]
+other = "Contact"
+
 [serviceCtaHeading]
-other = "Prêt·e à parler de votre projet ?"
+other = "Prêt·e à parler\nde votre projet ?"
 
 [serviceCtaBody]
 other = "Dites-nous où vous bloquez — nous répondrons sous un jour ouvré, avec des étapes concrètes, pas un argumentaire commercial."

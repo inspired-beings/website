@@ -1,23 +1,58 @@
+@use "../abstracts";
+
 // Big-numbered feature list (01, 02, …) — the `<ol>` conveys order to
 // assistive tech, the number span is decorative (callers keep aria-hidden).
+// Single-column rhythm: each item is a title row (accent number inline with
+// the heading) over a muted body.
+.numbered-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2xl);
+
+  @include abstracts.mq-up("lg") {
+    gap: var(--sp-3xl);
+  }
+}
+
 .numbered-list__item {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-2xs);
-}
-
-.numbered-list__number {
-  font-family: var(--font-display);
-  font-size: var(--fs-2xl);
-  font-weight: 600;
-  color: var(--color-accent-default);
+  gap: var(--sp-md);
 }
 
 .numbered-list__title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
   font-family: var(--font-display);
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  line-height: 1.25;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-lg);
+  }
+}
+
+.numbered-list__number {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-default);
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-2xl);
+  }
 }
 
 .numbered-list__body {
   color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  line-height: 1.625;
+
+  @include abstracts.mq-up("lg") {
+    font-size: var(--fs-md);
+  }
 }
