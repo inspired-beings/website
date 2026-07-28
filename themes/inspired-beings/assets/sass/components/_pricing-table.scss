@@ -30,16 +30,8 @@
   }
 }
 
-// Caption kept for AT users only — the visible section title already
-// announces the table (same sr pattern as `__sr-label`).
-.pricing-table__caption {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
+// The caption and the mark/corner-cell labels are SR-only — markup uses
+// `.visually-hidden`.
 
 .pricing-table__corner {
   @include abstracts.mq-up("lg") {
@@ -210,18 +202,6 @@
   gap: var(--sp-xs);
   color: var(--color-text-muted);
   font-size: var(--fs-xs);
-}
-
-// Screen-reader-only label next to a decorative mark/corner cell — scoped to
-// this block, not a general-purpose utility class (same idiom as
-// `.language-switcher__current-suffix`).
-.pricing-table__sr-label {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 .pricing-table__cta-cell {

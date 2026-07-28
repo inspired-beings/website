@@ -20,9 +20,15 @@
       <div class="container container--medium">
         <header class="article-header">
           <nav class="breadcrumb" aria-label="{{ i18n "breadcrumbLabel" }}">
-            <a class="breadcrumb__link" href="{{ "news/" | relLangURL }}">{{ i18n "newsBreadcrumbRootLabel" }}</a>
-            <span class="chevron chevron--right" aria-hidden="true"></span>
-            <span class="breadcrumb__current">{{ .Title }}</span>
+            <ol class="breadcrumb__list" role="list">
+              <li class="breadcrumb__item">
+                <a class="breadcrumb__link" href="{{ "news/" | relLangURL }}">{{ i18n "newsBreadcrumbRootLabel" }}</a>
+              </li>
+              <li class="breadcrumb__item">
+                <span class="chevron chevron--right" aria-hidden="true"></span>
+                <span class="breadcrumb__current" aria-current="page">{{ .Title }}</span>
+              </li>
+            </ol>
           </nav>
           <h1 class="article-header__title">{{ .Title }}</h1>
           <div class="article-header__meta">

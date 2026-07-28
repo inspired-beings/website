@@ -34,13 +34,4 @@
   font-weight: 700;
 }
 
-.language-switcher__current-suffix {
-  // Visually redundant next to the bold styling above — kept for
-  // screen-reader users only, not a general-purpose utility class.
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
+// The current-language suffix is SR-only — markup uses `.visually-hidden`.

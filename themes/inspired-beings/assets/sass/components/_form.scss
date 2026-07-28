@@ -15,7 +15,8 @@
   gap: var(--sp-md);
 }
 
-.form-field__label {
+.form-field__label,
+.form-fieldset__legend {
   display: flex;
   align-items: center;
   gap: var(--sp-xs);
@@ -127,12 +128,10 @@ textarea.form-field__input {
   border: 0;
 }
 
-.form-fieldset__legend {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-xs);
-  font-size: var(--fs-md);
-  font-weight: 500;
+.form-fieldset__help {
+  margin-block: var(--sp-2xs) var(--sp-sm);
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
 }
 
 .form-fieldset__options {

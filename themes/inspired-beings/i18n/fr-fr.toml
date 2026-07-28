@@ -669,8 +669,8 @@ other = "Postes ouverts"
 [careersOffersHeading]
 other = "Postes ouverts"
 
-[careersOfferApplyLabel]
-other = "Postuler à cette offre"
+[careersOfferApplyHint]
+other = "postuler via le formulaire de contact"
 
 [careersCtaHeading]
 other = "Aucun poste ne correspond ?"

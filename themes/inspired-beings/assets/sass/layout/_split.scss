@@ -23,10 +23,16 @@
   grid-column: 1 / -1;
 }
 
-// Default-tone reading text inside the main column.
-.split__text {
-  font-size: var(--fs-sm);
-  line-height: 2;
+// Media-lead variant: the aside (portrait, figure) leads on the left in a
+// narrower column, reading content sits right — the inverse ratio of the
+// default. Top-aligned: the aside must not stretch with the content.
+.split--media-lead {
+  align-items: start;
+
+  // `.split__main` needs no base override — it already spans full width.
+  .split__aside {
+    grid-column: 3 / span 8;
+  }
 }
 
 @include abstracts.mq-up("sm") {
@@ -36,6 +42,16 @@
 
   .split__aside {
     grid-column: 8 / -1;
+  }
+
+  .split--media-lead {
+    .split__aside {
+      grid-column: 1 / 5;
+    }
+
+    .split__main {
+      grid-column: 5 / -1;
+    }
   }
 }
 
@@ -52,8 +68,9 @@
     grid-column: 8 / span 4;
   }
 
-  .split__text {
-    font-size: var(--fs-md);
+  .split--media-lead .split__main {
+    grid-column: 6 / span 6;
+    align-self: auto;
   }
 }
 

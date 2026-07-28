@@ -6,10 +6,11 @@ visual:
   alt: ""
 mission: "Nous recrutons pour le soin apporté au travail, pas seulement la compétence. Si vous pensez que l'accessibilité, la durabilité et la sécurité font partie du métier — et non des corvées de conformité — vous serez à votre place, quel que soit votre niveau. Nous préférons transmettre nos exigences à une personne motivée que de corriger de mauvais réflexes."
 voice:
+  # Persona fictif de démonstration — à remplacer avant toute mise en production.
   name: "Camille Roux"
   meta: "Ingénieure accessibilité · arrivée en 2021"
   portrait:
-    src: "images/founder-portrait-placeholder.png"
+    src: "images/person-portrait-placeholder.png"
     alt: ""
   qa:
     - q: "Qu'est-ce qui vous a surprise après votre arrivée ?"

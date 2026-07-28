@@ -1,26 +1,16 @@
 @use "../abstracts";
 
-// Staff voice: portrait beside a name/meta header and a Q&A list. Rides
-// the `.split` grid (callers mix both classes); only the placements and
+// Staff voice: a name/meta header and a Q&A list. Placement belongs to the
+// caller's layout (careers slots it into `.split--media-lead`); only the
 // content styles live here.
-.voice {
-  align-items: start;
-}
-
-.voice__figure {
-  grid-column: 3 / span 8;
-}
-
-.voice__content {
-  grid-column: 1 / -1;
+.voice__header,
+.voice__qa-list,
+.voice__qa-item {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-lg);
 }
 
 .voice__header {
-  display: flex;
-  flex-direction: column;
   gap: var(--sp-xs);
 }
 
@@ -35,14 +25,10 @@
 }
 
 .voice__qa-list {
-  display: flex;
-  flex-direction: column;
   gap: var(--sp-lg);
 }
 
 .voice__qa-item {
-  display: flex;
-  flex-direction: column;
   gap: var(--sp-sm);
 }
 
@@ -60,21 +46,7 @@
 }
 
 @include abstracts.mq-up("sm") {
-  .voice__figure {
-    grid-column: 1 / 5;
-  }
-
-  .voice__content {
-    grid-column: 5 / -1;
-  }
-
   .voice__question {
     font-size: var(--fs-md);
-  }
-}
-
-@include abstracts.mq-up("lg") {
-  .voice__content {
-    grid-column: 6 / span 6;
   }
 }

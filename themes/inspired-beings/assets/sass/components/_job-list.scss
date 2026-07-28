@@ -38,7 +38,7 @@
   color: var(--color-text-muted);
 }
 
-.job-list__date {
+.job-list__details {
   font-size: var(--fs-sm);
   white-space: nowrap;
 }
@@ -52,7 +52,7 @@
     gap: var(--sp-md);
   }
 
-  .job-list__date {
+  .job-list__details {
     font-size: var(--fs-md);
   }
 }

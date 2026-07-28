@@ -6,10 +6,11 @@ visual:
   alt: ""
 mission: "We hire for care, not just competence. If you believe accessibility, sustainability and security are part of the craft — not compliance chores — you will fit right in, whatever your seniority. We would rather teach a motivated engineer our standards than unteach shortcuts."
 voice:
+  # Fictional placeholder persona — replace before any production use.
   name: "Camille Roux"
   meta: "Accessibility engineer · joined 2021"
   portrait:
-    src: "images/founder-portrait-placeholder.png"
+    src: "images/person-portrait-placeholder.png"
     alt: ""
   qa:
     - q: "What surprised you after joining?"

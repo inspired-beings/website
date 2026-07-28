@@ -6,7 +6,7 @@
     <li class="language-switcher__item">
       <span class="language-switcher__current" aria-current="true">
         {{ .Language.Label }}
-        <span class="language-switcher__current-suffix">{{ i18n "languageSwitcherCurrentSuffix" }}</span>
+        <span class="visually-hidden">{{ i18n "languageSwitcherCurrentSuffix" }}</span>
       </span>
     </li>
     {{ range .Translations }}

@@ -5,9 +5,10 @@ lead: "Nous sommes un studio senior et restreint, qui préfère refuser un proje
 philosophy: "Nous pensons qu'un bon logiciel se juge à qui il exclut, à sa durée de vie et à la façon dont il protège les personnes qui lui confient leurs données — pas à la vitesse à laquelle il a été lancé. Cette conviction guide chacun de nos choix, du contraste des couleurs sur le premier pixel au plan de réponse aux incidents que personne n'espère utiliser. L'accessibilité, une ingénierie durable et la sécurité ne sont pas une phase de fin de projet : elles s'écrivent dès le premier sprint."
 founder_message:
   portrait:
-    src: "images/founder-portrait-placeholder.png"
+    src: "images/person-portrait-placeholder.png"
     alt: ""
   body: "Nous avons créé ce studio parce que nous étions fatigués de devoir choisir entre livrer vite et livrer bien. Chaque mission que nous acceptons doit répondre à trois questions : est-ce accessible, est-ce durable, est-ce sécurisé ? Pas comme une réflexion après-coup, mais dès le premier commit. Ce n'est pas un slogan pour nous — c'est ainsi que nous planifions nos sprints, relisons nos pull requests et fixons nos prix."
+  # Persona fictif de démonstration — à remplacer avant toute mise en production.
   name: "Alex Martin"
   role: "Fondateur et dirigeant"
 facts:

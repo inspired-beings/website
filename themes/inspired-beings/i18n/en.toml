@@ -669,8 +669,8 @@ other = "Open roles"
 [careersOffersHeading]
 other = "Open roles"
 
-[careersOfferApplyLabel]
-other = "Apply for this role"
+[careersOfferApplyHint]
+other = "apply via the contact form"
 
 [careersCtaHeading]
 other = "Don't see the right role?"

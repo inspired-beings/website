@@ -68,13 +68,13 @@
             "label" (i18n "careersVoicesLabel")
             "tagline" (i18n "careersVoicesHeading")
           ) }}
-          <div class="split voice section__body--spacious">
+          <div class="split split--media-lead section__body--spacious">
             {{ with .portrait }}
-              <div class="voice__figure">
+              <div class="split__aside">
                 {{ partial "figure.html" (dict "src" .src "alt" .alt "class" "figure--portrait") }}
               </div>
             {{ end }}
-            <div class="voice__content">
+            <div class="split__main">
               <div class="voice__header">
                 <p class="voice__name">{{ .name }}</p>
                 <p class="voice__meta">{{ .meta }}</p>
@@ -103,10 +103,10 @@
         <ul class="job-list section__body--spacious" role="list">
           {{ range .Params.offers }}
             <li class="job-list__item">
-              <a class="job-list__link" href="{{ "contact/" | relLangURL }}">
-                <span class="job-list__name">{{ .title }}</span>
+              <a class="job-list__link" href="{{ "contact/" | relLangURL }}?role={{ .title | urlquery }}">
+                <span class="job-list__name">{{ .title }}<span class="visually-hidden"> — {{ i18n "careersOfferApplyHint" }}</span></span>
                 <span class="job-list__meta">
-                  <span class="job-list__date">{{ .location }} · {{ .contract_type }}{{ with .updated }} · {{ . }}{{ end }}</span>
+                  <span class="job-list__details">{{ .location }} · {{ .contract_type }}{{ with .updated }} · {{ . }}{{ end }}</span>
                   <span class="chevron chevron--right" aria-hidden="true"></span>
                 </span>
               </a>

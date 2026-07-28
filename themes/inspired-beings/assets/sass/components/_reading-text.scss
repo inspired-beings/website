@@ -1,0 +1,14 @@
+@use "../abstracts";
+
+// Default-tone long-form reading text (single paragraphs outside a
+// Markdown `.prose` scope — founder message and the like).
+.reading-text {
+  font-size: var(--fs-sm);
+  line-height: 2;
+}
+
+@include abstracts.mq-up("lg") {
+  .reading-text {
+    font-size: var(--fs-md);
+  }
+}
