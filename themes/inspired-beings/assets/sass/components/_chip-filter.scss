@@ -12,10 +12,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-xs);
-
-  @include abstracts.mq-up("sm") {
-    gap: var(--sp-md);
-  }
 }
 
 .chip-filter__link {
@@ -27,8 +23,14 @@
   line-height: 1.25;
   text-decoration: none;
   text-transform: uppercase;
+}
 
-  @include abstracts.mq-up("sm") {
+@include abstracts.mq-up("sm") {
+  .chip-filter__list {
+    gap: var(--sp-md);
+  }
+
+  .chip-filter__link {
     font-size: var(--fs-md);
   }
 }

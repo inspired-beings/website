@@ -27,7 +27,8 @@
 // is decorative (`aria-hidden`) — the input's own `required`/absence of it
 // carries the state programmatically.
 .form-field__required,
-.form-field__optional {
+.form-field__optional,
+.form-fieldset__required {
   display: inline-block;
   padding: 2px var(--sp-xs);
   border-radius: var(--radius-sm);
@@ -37,7 +38,8 @@
   color: var(--color-on-accent);
 }
 
-.form-field__required {
+.form-field__required,
+.form-fieldset__required {
   background-color: var(--color-accent-default);
 }
 
@@ -131,23 +133,6 @@ textarea.form-field__input {
   gap: var(--sp-xs);
   font-size: var(--fs-md);
   font-weight: 500;
-}
-
-.form-fieldset__required {
-  display: inline-block;
-  padding: 2px var(--sp-xs);
-  border-radius: var(--radius-sm);
-  background-color: var(--color-accent-default);
-  color: var(--color-on-accent);
-  font-size: var(--fs-sm);
-  font-weight: 400;
-  line-height: 1.25;
-}
-
-.form-fieldset__help {
-  margin-block: var(--sp-2xs) var(--sp-sm);
-  color: var(--color-text-muted);
-  font-size: var(--fs-xs);
 }
 
 .form-fieldset__options {

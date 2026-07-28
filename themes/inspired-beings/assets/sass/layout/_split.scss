@@ -6,10 +6,6 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: var(--sp-xl) var(--sp-md);
-
-  @include abstracts.mq-up("lg") {
-    column-gap: var(--sp-xl);
-  }
 }
 
 .split__title {
@@ -21,40 +17,49 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-lg);
-
-  @include abstracts.mq-up("sm") {
-    grid-column: 1 / 8;
-  }
-
-  @include abstracts.mq-up("lg") {
-    grid-column: 2 / 8;
-  }
-
-  @include abstracts.mq-up("xl") {
-    grid-column: 2 / 7;
-    align-self: center;
-  }
 }
 
 .split__aside {
   grid-column: 1 / -1;
-
-  @include abstracts.mq-up("sm") {
-    grid-column: 8 / -1;
-  }
-
-  @include abstracts.mq-up("lg") {
-    grid-column: 8 / span 4;
-  }
 }
 
-// Default-tone reading text inside the main column (multi-line via `\n`).
+// Default-tone reading text inside the main column.
 .split__text {
   font-size: var(--fs-sm);
   line-height: 2;
-  white-space: pre-line;
+}
 
-  @include abstracts.mq-up("lg") {
+@include abstracts.mq-up("sm") {
+  .split__main {
+    grid-column: 1 / 8;
+  }
+
+  .split__aside {
+    grid-column: 8 / -1;
+  }
+}
+
+@include abstracts.mq-up("lg") {
+  .split {
+    column-gap: var(--sp-xl);
+  }
+
+  .split__main {
+    grid-column: 2 / 8;
+  }
+
+  .split__aside {
+    grid-column: 8 / span 4;
+  }
+
+  .split__text {
     font-size: var(--fs-md);
+  }
+}
+
+@include abstracts.mq-up("xl") {
+  .split__main {
+    grid-column: 2 / 7;
+    align-self: center;
   }
 }

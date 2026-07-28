@@ -68,7 +68,7 @@
             "label" (i18n "careersVoicesLabel")
             "tagline" (i18n "careersVoicesHeading")
           ) }}
-          <div class="voice section__body--spacious">
+          <div class="split voice section__body--spacious">
             {{ with .portrait }}
               <div class="voice__figure">
                 {{ partial "figure.html" (dict "src" .src "alt" .alt "class" "figure--portrait") }}
@@ -107,7 +107,7 @@
                 <span class="job-list__name">{{ .title }}</span>
                 <span class="job-list__meta">
                   <span class="job-list__date">{{ .location }} · {{ .contract_type }}{{ with .updated }} · {{ . }}{{ end }}</span>
-                  <span class="job-list__arrow" aria-hidden="true"></span>
+                  <span class="chevron chevron--right" aria-hidden="true"></span>
                 </span>
               </a>
             </li>

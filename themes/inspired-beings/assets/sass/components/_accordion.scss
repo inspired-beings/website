@@ -36,14 +36,6 @@
   line-height: 1.625;
   cursor: pointer;
 
-  @include abstracts.mq-up("sm") {
-    padding: var(--sp-md) var(--sp-lg);
-  }
-
-  @include abstracts.mq-up("lg") {
-    padding: var(--sp-lg);
-  }
-
   &::-webkit-details-marker {
     display: none;
   }
@@ -111,13 +103,25 @@
   color: var(--color-text-muted);
   font-size: var(--fs-sm);
   line-height: 2;
+}
 
-  @include abstracts.mq-up("sm") {
+@include abstracts.mq-up("sm") {
+  .accordion__summary {
+    padding: var(--sp-md) var(--sp-lg);
+  }
+
+  .accordion__content {
     padding: 0 var(--sp-lg) var(--sp-md);
     font-size: var(--fs-md);
   }
+}
 
-  @include abstracts.mq-up("lg") {
+@include abstracts.mq-up("lg") {
+  .accordion__summary {
+    padding: var(--sp-lg);
+  }
+
+  .accordion__content {
     padding: 0 var(--sp-lg) var(--sp-lg);
   }
 }

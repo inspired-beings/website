@@ -1,23 +1,14 @@
 @use "../abstracts";
 
-// Staff voice: portrait beside a name/meta header and a Q&A list.
+// Staff voice: portrait beside a name/meta header and a Q&A list. Rides
+// the `.split` grid (callers mix both classes); only the placements and
+// content styles live here.
 .voice {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
   align-items: start;
-  gap: var(--sp-xl) var(--sp-md);
-
-  @include abstracts.mq-up("lg") {
-    column-gap: var(--sp-xl);
-  }
 }
 
 .voice__figure {
   grid-column: 3 / span 8;
-
-  @include abstracts.mq-up("sm") {
-    grid-column: 1 / 5;
-  }
 }
 
 .voice__content {
@@ -25,14 +16,6 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-lg);
-
-  @include abstracts.mq-up("sm") {
-    grid-column: 5 / -1;
-  }
-
-  @include abstracts.mq-up("lg") {
-    grid-column: 6 / span 6;
-  }
 }
 
 .voice__header {
@@ -68,14 +51,30 @@
   font-size: var(--fs-sm);
   font-weight: 500;
   line-height: 1.375;
-
-  @include abstracts.mq-up("sm") {
-    font-size: var(--fs-md);
-  }
 }
 
 .voice__answer {
   color: var(--color-text-muted);
   font-size: var(--fs-sm);
   line-height: 2;
+}
+
+@include abstracts.mq-up("sm") {
+  .voice__figure {
+    grid-column: 1 / 5;
+  }
+
+  .voice__content {
+    grid-column: 5 / -1;
+  }
+
+  .voice__question {
+    font-size: var(--fs-md);
+  }
+}
+
+@include abstracts.mq-up("lg") {
+  .voice__content {
+    grid-column: 6 / span 6;
+  }
 }

@@ -23,15 +23,6 @@
   }
 }
 
-.breadcrumb__separator {
-  flex-shrink: 0;
-  width: 0.4em;
-  height: 0.4em;
-  border-block-start: 1.5px solid currentColor;
-  border-inline-end: 1.5px solid currentColor;
-  transform: rotate(45deg);
-}
-
 .breadcrumb__current {
   overflow: hidden;
   display: -webkit-box;

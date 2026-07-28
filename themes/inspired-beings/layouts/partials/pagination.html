@@ -24,11 +24,11 @@
     <li class="pagination__item">
       {{ if .HasPrev }}
         <a class="pagination__link" href="{{ .Prev.URL }}" aria-label="{{ i18n "paginationPreviousLabel" }}">
-          <span class="pagination__arrow pagination__arrow--prev" aria-hidden="true"></span>
+          <span class="chevron chevron--left" aria-hidden="true"></span>
         </a>
       {{ else }}
         <span class="pagination__link pagination__link--disabled">
-          <span class="pagination__arrow pagination__arrow--prev" aria-hidden="true"></span>
+          <span class="chevron chevron--left" aria-hidden="true"></span>
         </span>
       {{ end }}
     </li>
@@ -44,11 +44,11 @@
     <li class="pagination__item">
       {{ if .HasNext }}
         <a class="pagination__link" href="{{ .Next.URL }}" aria-label="{{ i18n "paginationNextLabel" }}">
-          <span class="pagination__arrow pagination__arrow--next" aria-hidden="true"></span>
+          <span class="chevron chevron--right" aria-hidden="true"></span>
         </a>
       {{ else }}
         <span class="pagination__link pagination__link--disabled">
-          <span class="pagination__arrow pagination__arrow--next" aria-hidden="true"></span>
+          <span class="chevron chevron--right" aria-hidden="true"></span>
         </span>
       {{ end }}
     </li>

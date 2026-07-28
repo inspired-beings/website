@@ -60,26 +60,30 @@
   display: flex;
   flex-direction: column;
   gap: var(--sp-xl);
-
-  @include abstracts.mq-up("sm") {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  @include abstracts.mq-up("lg") {
-    flex-direction: column;
-    gap: var(--sp-2xl);
-  }
 }
 
 .stats-band--column .stat {
   gap: var(--sp-xs);
+}
 
-  @include abstracts.mq-up("sm") {
-    flex: 1 1 calc(33.333% - var(--sp-xl));
+@include abstracts.mq-up("sm") {
+  .stats-band--column {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  @include abstracts.mq-up("lg") {
+  .stats-band--column .stat {
+    flex: 1 1 calc(33.333% - var(--sp-xl));
+  }
+}
+
+@include abstracts.mq-up("lg") {
+  .stats-band--column {
+    flex-direction: column;
+    gap: var(--sp-2xl);
+  }
+
+  .stats-band--column .stat {
     flex: none;
     gap: var(--sp-md);
   }

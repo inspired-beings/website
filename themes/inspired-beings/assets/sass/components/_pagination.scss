@@ -11,10 +11,6 @@
   justify-content: center;
   align-items: center;
   gap: var(--sp-2xs);
-
-  @include abstracts.mq-up("sm") {
-    gap: var(--sp-xs);
-  }
 }
 
 .pagination__link {
@@ -23,15 +19,21 @@
   justify-content: center;
   min-width: 2.75rem;
   height: 2.75rem;
-  padding: var(--sp-2xs) var(--sp-xs);
+  padding-inline: var(--sp-xs);
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-md);
   color: var(--color-text-default);
   text-decoration: none;
   font-size: var(--fs-sm);
   line-height: 1;
+}
 
-  @include abstracts.mq-up("sm") {
+@include abstracts.mq-up("sm") {
+  .pagination__list {
+    gap: var(--sp-xs);
+  }
+
+  .pagination__link {
     font-size: var(--fs-md);
   }
 }
@@ -54,23 +56,4 @@ a.pagination__link:focus-visible {
 .pagination__link--disabled {
   color: var(--color-text-subtle);
   border-color: var(--color-border-subtle);
-}
-
-// Chevron arrow for the prev/next steppers (decorative; the control keeps
-// an aria-label).
-.pagination__arrow {
-  width: 0.5em;
-  height: 0.5em;
-  border-block-start: 2px solid currentColor;
-  border-inline-end: 2px solid currentColor;
-}
-
-.pagination__arrow--prev {
-  transform: rotate(-135deg);
-  margin-inline-start: 0.2em;
-}
-
-.pagination__arrow--next {
-  transform: rotate(45deg);
-  margin-inline-end: 0.2em;
 }
