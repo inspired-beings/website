@@ -52,7 +52,8 @@
   }
 }
 
-.pricing-table__plan--highlighted {
+.pricing-table__plan--highlighted,
+.pricing-table__value--highlighted {
   background-color: var(--color-accent-surface);
 }
 
@@ -131,10 +132,6 @@
   @include abstracts.mq-up("md") {
     padding: var(--sp-md) var(--sp-xl);
   }
-}
-
-.pricing-table__value--highlighted {
-  background-color: var(--color-accent-surface);
 }
 
 .pricing-table__value--last {

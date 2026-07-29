@@ -7,8 +7,8 @@
 //
 // Known second contract: three call sites mix `.section` INSIDE a
 // `.container` instead of wrapping one (news/single.html, services/list.html,
-// products/list.html) — only padding-block matters there; `--alt`/`--ruled`
-// on those sites would paint container-width, not full-bleed. Slated for
+// products/list.html) — only padding-block matters there; `--alt` on those
+// sites would paint container-width, not full-bleed. Slated for
 // normalization to the wrapping arrangement when the pixel-lock lifts
 // (visual rework upcoming).
 
@@ -97,14 +97,6 @@
   background-color: var(--color-surface-alt);
 }
 
-.section--tight {
-  padding-block: var(--sp-xl);
-}
-
-.section--ruled {
-  border-block-start: 1px solid var(--color-border-subtle);
-}
-
 // Page-closing content band: flush against the hero/list above it, keeps
 // only the bottom breathing room before the footer.
 .section--flush-top {
@@ -112,18 +104,9 @@
 }
 
 // Hosts a full-bleed band component (e.g. `.cta-band`) that carries its own
-// padding; the gap modifiers position such a band relative to neighbours
-// (consecutive bands, or a deliberate float off the footer).
+// padding.
 .section--band {
   padding-block: 0;
-}
-
-.section--gap-top {
-  margin-block-start: var(--sp-2xl);
-}
-
-.section--gap-bottom {
-  margin-block-end: var(--sp-2xl);
 }
 
 // The section's main content, offset from the heading above it.

@@ -1,5 +1,6 @@
 ---
 title: "FAQ"
+headline: "Frequently asked questions"
 lead: "Answers to what prospective clients ask us most — if yours isn't here, just ask."
 groups:
   - title: "Getting started"

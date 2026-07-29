@@ -9,17 +9,17 @@
   gap: var(--sp-xl);
 }
 
-.grid--2 {
-  @include abstracts.mq-up("md") {
+// `--2`, `--3` and `--feed` share the same two-up mid-size state; their
+// wide-screen states diverge below.
+@include abstracts.mq-up("md") {
+  .grid--2,
+  .grid--3,
+  .grid--feed {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .grid--3 {
-  @include abstracts.mq-up("md") {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   @include abstracts.mq-up("lg") {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -40,10 +40,6 @@
 // mid-size ones.
 .grid--feed {
   gap: var(--sp-2xl);
-
-  @include abstracts.mq-up("md") {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   @include abstracts.mq-up("lg") {
     grid-template-columns: 1fr;
