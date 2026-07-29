@@ -1,47 +1,56 @@
-{{/* FAQ — hero → grouped accordions → CTA band. Content model:
-  `groups[]{title,items[]{q,a}}`. Each item reuses the `.accordion`/
-  `.accordion__summary`/`.accordion__content` markup directly (data-driven
-  from front matter) — not the `{{< accordion >}}` shortcode, which is for
-  Markdown-authored content. */}}
+{{/* FAQ — page-hero (eyebrow = page title, display headline) → one medium
+  column of category groups (`.faq-groups`: h2 per category + its
+  accordions) → contact rail. Content model: `headline` (display title),
+  `groups[]{title,items[]{q,a}}`; `lead` stays in the model but page
+  openers carry no lead line. Each item reuses the `.accordion` markup
+  directly (data-driven from front matter) — not the `{{< accordion >}}`
+  shortcode, which is for Markdown-authored content. */}}
 {{ define "main" }}
   <article>
-    <section class="hero hero--narrow">
+    <section class="section">
       <div class="container">
-        <h1>{{ .Title }}</h1>
-        {{ with .Params.lead }}
-          <p class="hero__lead">{{ . }}</p>
-        {{ end }}
+        <div class="page-hero">
+          <p class="page-hero__eyebrow">{{ .Title }}</p>
+          <div class="page-hero__heading">
+            <h1 class="page-hero__title">{{ .Params.headline | default .Title }}</h1>
+          </div>
+        </div>
       </div>
     </section>
 
-    {{ range $gi, $group := .Params.groups }}
-      <section class="section section--tight section--ruled" aria-labelledby="faq-group-heading-{{ $gi }}">
-        <div class="container">
-          <h2 id="faq-group-heading-{{ $gi }}">{{ $group.title }}</h2>
-          {{/* No grid `gap` here: `.accordion + .accordion` (component-owned)
-            already spaces consecutive items. */}}
-          <div class="section__body section__body--measure">
-            {{ range $group.items }}
-              <details class="accordion">
-                <summary class="accordion__summary">
-                  {{ .q }}
-                  <span class="accordion__icon" aria-hidden="true"></span>
-                </summary>
-                <div class="accordion__content">
-                  <p>{{ .a }}</p>
-                </div>
-              </details>
-            {{ end }}
-          </div>
+    <section class="section">
+      <div class="container container--medium">
+        <div class="faq-groups">
+          {{ range $gi, $group := .Params.groups }}
+            <div class="faq-groups__group">
+              <h2 class="faq-groups__title" id="faq-group-heading-{{ $gi }}">{{ $group.title }}</h2>
+              {{/* The heading id is a stable fragment anchor for linking to
+                a category — keep it. No wrapper spacing needed:
+                `.accordion + .accordion` (component-owned) already spaces
+                consecutive items. */}}
+              {{ range $group.items }}
+                <details class="accordion">
+                  <summary class="accordion__summary">
+                    {{ .q }}
+                    <span class="accordion__icon" aria-hidden="true"></span>
+                  </summary>
+                  <div class="accordion__content">
+                    <p>{{ .a }}</p>
+                  </div>
+                </details>
+              {{ end }}
+            </div>
+          {{ end }}
         </div>
-      </section>
-    {{ end }}
+      </div>
+    </section>
 
-    <section class="section section--band section--gap-top section--gap-bottom">
-      {{ partial "cta-band.html" (dict
-        "title" (i18n "faqCtaHeading")
+    <section class="section section--alt" aria-labelledby="faq-contact-heading">
+      {{ partial "contact-rail.html" (dict
+        "id" "faq-contact-heading"
+        "tagline" (i18n "faqCtaHeading")
         "body" (i18n "faqCtaBody")
-        "actions" (slice (dict "href" ("contact/" | relLangURL) "label" (i18n "faqCtaLabel")))
+        "actionLabel" (i18n "faqCtaLabel")
       ) }}
     </section>
   </article>

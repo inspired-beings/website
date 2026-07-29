@@ -1,0 +1,29 @@
+@use "../abstracts";
+
+// Stack of titled question groups: each `__group` pairs a small category
+// heading with its run of accordions; the block owns only the inter-group
+// rhythm and the heading scale (deliberately smaller than a section title —
+// the accordions carry the visual weight).
+.faq-groups {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3xl);
+}
+
+.faq-groups__title {
+  margin-block-end: var(--sp-lg);
+  font-size: var(--fs-md);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+@include abstracts.mq-up("lg") {
+  .faq-groups {
+    gap: var(--sp-4xl);
+  }
+
+  .faq-groups__title {
+    margin-block-end: var(--sp-xl);
+    font-size: var(--fs-lg);
+  }
+}

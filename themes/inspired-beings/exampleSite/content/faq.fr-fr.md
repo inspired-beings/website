@@ -1,5 +1,6 @@
 ---
 title: "FAQ"
+headline: "Questions fréquentes"
 lead: "Les réponses aux questions que nos futurs clients nous posent le plus — si la vôtre n'y est pas, demandez-nous."
 groups:
   - title: "Pour bien démarrer"
