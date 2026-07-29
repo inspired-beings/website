@@ -24,8 +24,10 @@
           {{ range $gi, $group := .Params.groups }}
             <div class="faq-groups__group">
               <h2 class="faq-groups__title" id="faq-group-heading-{{ $gi }}">{{ $group.title }}</h2>
-              {{/* No wrapper spacing needed: `.accordion + .accordion`
-                (component-owned) already spaces consecutive items. */}}
+              {{/* The heading id is a stable fragment anchor for linking to
+                a category — keep it. No wrapper spacing needed:
+                `.accordion + .accordion` (component-owned) already spaces
+                consecutive items. */}}
               {{ range $group.items }}
                 <details class="accordion">
                   <summary class="accordion__summary">
